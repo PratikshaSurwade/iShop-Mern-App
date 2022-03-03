@@ -1,5 +1,4 @@
 import React from "react";
-import { Route } from "react-router-dom";
 import "./navbar.css";
 import mainImg from "./corousel_3.png"
 
@@ -28,7 +27,7 @@ class Heading extends React.Component{
 
                     </div>
                     
-                    <hr style={{marginLeft:"10%",marginRight:"10%"}}></hr>
+                    <hr style={{margin:"0px 10%"}}></hr>
                 </div>
                 <Subnavbar />
                 <img  className="mainImg" src={mainImg} />
