@@ -1,11 +1,23 @@
-.Subnavbar{
+.subnavbarContainer{
+    left:0;
+    right:0;
+  
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -30px;
+  
     position: absolute;
-    /* top : 200px; */
-    margin: -30px 20%;
+    position: absolute;
     background-color: aliceblue;
     height: 15rem;
     width: 60rem;
     z-index: 6;
+}
+.Subnavbar{
+    /* position: absolute; */
+    /* top : 200px; */
+    
+    
     display: flex;
     align-items: center;
     justify-content: space-around;

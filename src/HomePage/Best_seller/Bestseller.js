@@ -2,7 +2,6 @@ import React from "react";
 import "./bestseller.css";
 import mainImg2 from "./2_corousel.png";
 
-
 function Bestseller() {
     return(
         <>
@@ -20,56 +19,48 @@ function Bestseller() {
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
             <div className="subCards">
                 <img></img>
                 <div className="itemName"></div>
                 <div className="itemRatings"></div>
                 <div className="itemPrice"></div>
-
             </div>
         </div>
         <div className="homePageImg2">

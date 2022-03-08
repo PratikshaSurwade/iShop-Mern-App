@@ -1,8 +1,9 @@
 import "./Facilitis.css";
 
-import React from 'react'
+import React from 'react';
 
-export default function Facilitis() {
+export default function Facilitis(props) {
+  console.log(props);
   return (
     <div className="Facilitis">
         <div className="subFacilities">
