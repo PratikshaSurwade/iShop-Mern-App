@@ -8,6 +8,11 @@
     height: 12rem;
     border: 3px red ridge;
 }
+
+.subFacilities>img{
+    width: 2rem;
+    height: 2rem;
+}
 @media screen {
     
 }

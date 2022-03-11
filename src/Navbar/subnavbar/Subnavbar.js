@@ -30,10 +30,8 @@ export default function Subnavbar() {
 
         </div>
         <div className="columnsTab">
-          
           <p>Headphones</p>
           <p>HealthKit</p>
-
         </div>
         <div className="columnsTab">
           <h4>Category</h4>

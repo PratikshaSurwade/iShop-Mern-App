@@ -1,16 +1,13 @@
 import React from "react";
+import Home from "./HomePage/Home";
 import Heading from "./Navbar/Navbar";
-import Bestseller from "./HomePage/Best_seller/Bestseller.js";
-import Facilitis from "./HomePage/Facilities/Facilitis";
-import Feactured from "./HomePage/feacturedprods/Feactured";
+
 
 function App() {
   return (
   <>
     <Heading />
-    <Bestseller />
-    <Facilitis />
-    <Feactured />
+    <Home />
   </>
   );
 }
