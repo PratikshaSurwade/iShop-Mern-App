@@ -4,12 +4,15 @@
     justify-content: space-between;
 }
 .subFacilities{
-    width: 12rem;
+    width: 15rem;
     /* height: 12rem; */
     display: flex;
     border: 3px red ridge;
     flex-direction: column;
     align-items: center;
+}
+.subFacilities>div{
+    text-align: center;
 }
 
 .subFacilities>img{

@@ -1,5 +1,7 @@
 import React from 'react';
 import "./Facilitis.css";
+
+// images
 import shipping from "./fascilities_images/shipping.svg";
 import refund from "./fascilities_images/refund.svg";
 import support from "./fascilities_images/support.svg";

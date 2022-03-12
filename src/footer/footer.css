@@ -1,0 +1,12 @@
+.subfooter1{
+    display: grid;
+    grid-template-columns: 50% 25% 25%;
+    grid-column: 50% 25% 25%;
+}
+.tiTle{
+    color: #d3d3d3;
+}
+.subfooter2{
+    display:  flex;
+    justify-content: space-around;
+}
