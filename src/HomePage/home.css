@@ -1,0 +1,6 @@
+.mainImg{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+}
