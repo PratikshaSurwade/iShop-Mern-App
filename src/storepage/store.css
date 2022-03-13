@@ -2,21 +2,14 @@
     display: flex;
     padding: 0px 10%;
 }
-/*
-tujjnkj nkjikn    \
-l
-
-
-*/
 
 .smallsidebar{
     flex: 3;
     border: red dotted 2px;
     margin : 10px;
-    background-color:#e1e1e1;
-    border-radius: 0.5rem;
     height: 100vh;
 }
+
 .elementsContainer{
     display: flex;
     justify-content: space-between;

@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "./footer/Footer";
-import Home from "./HomePage/Home";
+// import Home from "./HomePage/Home";
 import Heading from "./Navbar/Navbar";
 import Store from "./storepage/Store";
 
