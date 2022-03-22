@@ -1,15 +1,14 @@
 import React from "react";
-import Footer from "./footer/Footer";
-// import Home from "./HomePage/Home";
+
 import Heading from "./Navbar/Navbar";
-import Store from "./storepage/Store";
+import Home from "./HomePage/Home";
+import Footer from "./footer/Footer";
 
 function App() {
   return (
   <>
     <Heading />
-    {/* <Home /> */}
-    <Store />
+    <Home />
     <Footer />
   </>
   );

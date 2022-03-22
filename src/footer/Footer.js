@@ -2,7 +2,7 @@ import React from 'react';
 import "./footer.css";
 
 
-export default function Footer() {
+function Footer() {
   return (
     <>
       <hr></hr>
@@ -78,4 +78,4 @@ export default function Footer() {
     </>
   )
 }
-
+export default Footer;
