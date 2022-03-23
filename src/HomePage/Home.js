@@ -17,6 +17,14 @@ export default class Home extends Component {
         <Subnavbar />
         <img  className="mainImg" src={mainImg} />
 
+        <div className="subHead">BEST SELLER</div>
+        <div className="subHeadSubpoints">
+            <div className="subListItems">All</div>
+            <div className="subListItems">iPhone</div>
+            <div className="subListItems">iPad</div>
+            <div className="subListItems">iPod</div>
+            <div className="subListItems">Accessories</div>
+        </div>
         
         <Bestseller />
         <Iphoneadd />

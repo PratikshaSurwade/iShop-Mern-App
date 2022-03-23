@@ -1,13 +1,12 @@
 .Facilitis{
-    margin: 3rem 20%;
+    margin: 3rem 15%;
     display: flex;
     justify-content: space-between;
 }
 .subFacilities{
-    width: 15rem;
+    width: 17rem;
     /* height: 12rem; */
     display: flex;
-    border: 3px red ridge;
     flex-direction: column;
     align-items: center;
 }
@@ -16,8 +15,8 @@
 }
 
 .subFacilities>img{
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
 }
  
 @media screen {

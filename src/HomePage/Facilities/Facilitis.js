@@ -14,17 +14,17 @@ export default function Facilitis() {
             {/* <img src={img} alt="Fascilitis"/> */}
 
             <h4 className="facilityName">FREE SHIPPING</h4>
-            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis repudiandae dolore nemo quidem sit vitae soluta, aliquam deleniti nesciunt delectus</div>
+            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis</div>
         </div>
         <div className="subFacilities">
             <img src={refund} alt="Fascilitis"/>
             <h4 className="facilityName">100% REFUND</h4>
-            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis repudiandae dolore nemo quidem sit vitae soluta, aliquam deleniti nesciunt delectus</div>
+            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis</div>
         </div>
         <div className="subFacilities">
             <img src={support} alt="Fascilitis"/>
             <h4 className="facilityName">SUPPORT 24/7</h4>
-            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis repudiandae dolore nemo quidem sit vitae soluta, aliquam deleniti nesciunt delectus</div>
+            <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis</div>
         </div> 
     </div>
   )

@@ -1,15 +1,4 @@
-.subHead{
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: 700;
-}
-.subHeadSubpoints{
-    display: flex;
-    justify-content: center;
-}
-.subListItems{
-    padding: 1.5rem ;
-}
+
 /* card design */
 .homepageItems{
     margin: 1.5rem 20%;

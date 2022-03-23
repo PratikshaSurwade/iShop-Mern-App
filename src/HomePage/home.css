@@ -4,3 +4,16 @@
     width: 100%;
     height: auto;
 }
+.subHead{
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+.subHeadSubpoints{
+    display: flex;
+    justify-content: center;
+}
+.subListItems{
+    padding: 1.5rem ;
+}
+
