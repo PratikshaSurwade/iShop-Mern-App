@@ -1,11 +1,6 @@
 
 /* card design */
-.homepageItems{
-    margin: 1.5rem 20%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-}
+
 .subCards{
     height: 15rem;
     width : 10rem;
@@ -13,5 +8,15 @@
     margin: 1.5rem;
     border-radius: 0.5rem;
     border: black dashed 3px;
+    text-align: center;
+}
+.imagepart{
+    width: 5rem;
+    height: 5rem;
+}
+.itemRatings{
+    /* align-self: center; */
+    margin-left: auto;
+    margin-right: auto;
 }
 

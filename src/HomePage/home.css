@@ -16,4 +16,10 @@
 .subListItems{
     padding: 1.5rem ;
 }
+.homepageItems{
+    margin: 1.5rem 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
 

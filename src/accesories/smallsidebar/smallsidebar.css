@@ -1,0 +1,29 @@
+.sidebarHeader{
+    background-color:#f5f4f4;
+    border-radius: 0.5rem;
+}
+
+.sidebarHeader>h3{
+    margin : 0.4rem;
+}
+
+.elementsContainer{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.ranger{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    
+}
+/* COLOR */
+.colorize{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 1.5rem;
+}
+

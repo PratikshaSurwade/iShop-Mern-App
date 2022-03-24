@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Subnavbar from '../Navbar/subnavbar/Subnavbar.js';
 import Bestseller from "./Best_seller/Bestseller.js";
 import Facilitis from "./Facilities/Facilitis";
@@ -9,13 +9,18 @@ import "./home.css";
 
 import mainImg from "./corousel_3.png";
 
-export default class Home extends Component {
+//import json
+import bestSeller from "./../jsondata/homepage/bestseller.json";
+
+
+const bestseler = bestSeller;
+
+function Home(){
   
-  render() {
     return (
       <>
         <Subnavbar />
-        <img  className="mainImg" src={mainImg} />
+        <img className="mainImg" src={mainImg} />
 
         <div className="subHead">BEST SELLER</div>
         <div className="subHeadSubpoints">
@@ -26,12 +31,17 @@ export default class Home extends Component {
             <div className="subListItems">Accessories</div>
         </div>
         
-        <Bestseller />
+        <div className="homepageItems">
+          {bestseler.map(data=> {
+            return <Bestseller info={ data } />
+          })}
+        </div>
         <Iphoneadd />
         <Facilitis />
+        <div className="subHead">FEATURED PTODUCTS</div>
         <Feactured />
       </>
     )
-  }
 }
 
+export default Home;
