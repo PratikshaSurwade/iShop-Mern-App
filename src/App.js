@@ -14,8 +14,9 @@ function App() {
     <BrowserRouter>
       <Heading />
       <Routes>
-      <Route path="/" element={<Home />} />
-        <Route path="/accesories" element={<Store />} />
+      
+      <Route path="/" style={{"zIndex":"5"}} element={<Home />} />
+      <Route path="/accesories" element={<Store />} />
       </Routes>
       <Footer/>
     </BrowserRouter>

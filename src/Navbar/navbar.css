@@ -14,12 +14,11 @@ hr.hrTopNavbar{
 }
 .navBar{
     width: 100%;
-    position: fixed;
+    position: absolute;
     top: 0px;
     z-index: 10;
     background-color: white;
-    margin: 0px;
-    overflow: hidden;
+    
 }
 .headstyle{
     text-align: center;
@@ -29,12 +28,45 @@ hr.hrTopNavbar{
 
 .Linkitems{  
     padding: 1.5rem ;
+    font-weight: bolder;
     text-decoration: none;
-    color: black    ; 
+    color: black    ;
+    font-size: 1.1rem; 
     
 }
-
+.Linkitems:hover{
+    color: #006CFF;
+    font-weight: 900;
+    font-size: 1.15rem;
+}
 .Navbarstyle{
     display: flex;
     justify-content: center;
 }
+
+/*dropdown*/
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    /* z-index: 8; */
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: -200%;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2); */
+    z-index: 8;
+    overflow: visible;
+    /* border-top: 1.5px solid rgb(177, 177, 177, 0.5); */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    position: absolute;
+}
+  

@@ -1,5 +1,5 @@
 import React from 'react';
-import Subnavbar from '../Navbar/subnavbar/Subnavbar.js';
+// import Subnavbar from '../Navbar/subnavbar/Subnavbar.js';
 import Bestseller from "./Best_seller/Bestseller.js";
 import Facilitis from "./Facilities/Facilitis";
 import Feactured from "./feacturedprods/Feactured";
@@ -19,12 +19,13 @@ function Home(){
   
     return (
       <>
-        <Subnavbar />
+        {/* <Subnavbar /> */}
         <img className="mainImg" src={mainImg} />
 
-        <div className="subHead">BEST SELLER</div>
+        <h2 className="subHead">BEST SELLER</h2>
         <div className="subHeadSubpoints">
             <div className="subListItems">All</div>
+            <div className="subListItems">Mac</div>
             <div className="subListItems">iPhone</div>
             <div className="subListItems">iPad</div>
             <div className="subListItems">iPod</div>
@@ -38,7 +39,7 @@ function Home(){
         </div>
         <Iphoneadd />
         <Facilitis />
-        <div className="subHead">FEATURED PTODUCTS</div>
+        <h3 className="subHead">FEATURED PTODUCTS</h3>
         <Feactured />
       </>
     )

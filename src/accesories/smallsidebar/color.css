@@ -1,0 +1,18 @@
+/* COLOR */
+.colorize{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 1.5rem;
+}
+
+.forBlue {
+    cursor: pointer;
+    border: 2px dotted #006cff;
+    background-color: aliceblue;
+    padding: 2px;
+}
+
+.removeAll {
+    border: none;
+    padding: 0;
+}

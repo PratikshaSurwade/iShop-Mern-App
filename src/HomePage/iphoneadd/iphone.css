@@ -18,4 +18,5 @@
 }
 .mainImg2{
     height: 29rem;
+    z-index:1;
 }

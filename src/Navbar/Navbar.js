@@ -1,5 +1,9 @@
 import React from "react";
+// import { Link } from 'react-router-dom';
+// import 'bootstrap/dist/css/bootstrap.min.css';
+
 import "./navbar.css";
+import Subnavbar from "./subnavbar/Subnavbar";
 
 
 class Heading extends React.Component{
@@ -15,7 +19,14 @@ class Heading extends React.Component{
                     </h1>
                     <div className="Navbarstyle" id="Navbarstyle2">
                         <div className="Linkitems">HOME</div>
-                        <div className="Linkitems">STORE</div>
+                        <div className='dropdown'>
+                            <div className='Linkitems'>STORE</div>
+                            <div className="dropdown-content">
+                                <Subnavbar />
+                            </div>
+
+                        </div>
+                      
                         <div className="Linkitems">IPHONE</div>
                         <div className="Linkitems">IPAD</div>
                         <div className="Linkitems">MACBOOK</div>
@@ -24,6 +35,7 @@ class Heading extends React.Component{
                     </div>
                     
                     <hr style={{margin:"0px 10%"}}></hr>
+                    {/* <Subnavbar /> */}
                 </div>
             </>
         )
