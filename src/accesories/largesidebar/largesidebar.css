@@ -9,6 +9,8 @@
 
 /**/
 .verticalStrip{
+    display: flex;
+    flex-direction: row;
     
 }
 .dropdown {

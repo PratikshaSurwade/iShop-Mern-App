@@ -15,7 +15,6 @@ function Verticalbar() {
 
                     {/* right side filter */}
                     <div className='verticalStrip'>
-                        <div className='d-flex justify-content-between flex-row flex-nowrap rounded' style={{ margin: "10px auto", width: "100%", backgroundColor:"#F6F7F8", height:"fit-content", minWidth:"fit-content" }}>
                             
                             <div className='d-flex justify-content-between flex-row flex-nowrap overflow-visible align-items-center' style={{ width: "55%", margin:"1%", minWidth:"450px" }}>
                                 <div>13 Items</div>
@@ -61,7 +60,6 @@ function Verticalbar() {
                                 <button style={{border:"0", padding:"10px 5px", margin:"0 10px"}}><img className='my-auto' style={{margin:"auto"}} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png"/></button>
                             </div>
                         </div>
-            </div>
             </div>
          </div>
     
