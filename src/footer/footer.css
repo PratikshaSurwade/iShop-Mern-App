@@ -20,3 +20,9 @@
 .box1,.box2>div{
     font-size: 0.8rem;
 }
+.footer_icons{
+    color: #006CFF;
+}
+.fa-facebook-f{
+    margin-right: 2rem;
+}

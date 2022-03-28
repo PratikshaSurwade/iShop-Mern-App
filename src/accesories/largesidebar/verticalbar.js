@@ -1,9 +1,14 @@
 import React from 'react';
 import Crousals2 from "./2_corousel.png";
+import Bestseller from "./../../HomePage/Best_seller/Bestseller.js"
 import DropDownIcon from "./dropdownIcon.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./largesidebar.css";
+
+//json data
+import itemdata from "./../../jsondata/storepage/storepage.json";
+const itemData = itemdata;
 
 function Verticalbar() {
   return (
@@ -60,7 +65,10 @@ function Verticalbar() {
                                 <button style={{border:"0", padding:"10px 5px", margin:"0 10px"}}><img className='my-auto' style={{margin:"auto"}} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png"/></button>
                             </div>
                         </div>
-            </div>
+                    </div>
+                    {itemData.map(data=> {
+                        return <Bestseller info={ data } />
+                    })}
          </div>
     
   )
