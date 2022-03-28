@@ -1,55 +1,55 @@
 [
     {
-        "image": "./../../HomePage/images/bestseller/4.png",
+        "image": "images/bestseller/3.png",
         "name": "Apple Macbook Pro",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../../HomePage/images/bestseller/4.png",
+        "image": "images/bestseller/3.png",
         "name": "Apple Macbook Pro",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../../HomePage/images/bestseller/4.png",
+        "image": "images/bestseller/3.png",
         "name": "Apple Macbook Air",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "./../HomePage/images/bestseller/4.png",
+        "image": "images/bestseller/4.png",
         "name": "Apple iPhone 11",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../HomePage/images/bestseller/4.png",
+        "image": "images/bestseller/5.png",
         "name": "Apple Macbook Pro",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "./../../E-commerce Project(PrepBytes)/Products/in-resources-8fda3511-a61f-4c26-a4a0-f2bd37049878-images-productimages-29679821-500x500.png",
+        "image": "images/bestseller/6.png",
         "name": "Apple Ipad",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "./../../../E-commerce Project(PrepBytes)/Products/MY812_VW_34FR+watch-44-alum-spacegray-nc-6s_VW_34FR_WF_CO_GEO_MY.png",
+        "image": "images/bestseller/7.png",
         "name": "Apple Watch 21-1",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "./../../../../E-commerce Project(PrepBytes)/Products/MY812_VW_34FR+watch-44-alum-spacegray-nc-6s_VW_34FR_WF_CO_GEO_MY.png",
+        "image": "images/bestseller/8.png",
         "name": "Apple iPod 2A",
         "rating": 4,
         "originalPrice": 699,

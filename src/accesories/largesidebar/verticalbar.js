@@ -45,7 +45,7 @@ function Verticalbar() {
                                             
                                             <button style={{ "borderColor": "#a6a6a6" }} className='text-center mybutton d-flex justify-content-between flex-row flex-nowrap align-items-center'><div>12</div> | <img src={DropDownIcon} style={{ "width": "15px" }} alt="" /></button>
 
-                                            <div className="dropdown-content2 text-start " style={{ "padding": "3px" }}>
+                                            <div className="dropdown-content2" style={{ "padding": "3px" }}>
                                                 
                                                 <div>6</div>
                                                 <div>9</div>

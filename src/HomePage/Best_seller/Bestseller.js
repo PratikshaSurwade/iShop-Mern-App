@@ -1,16 +1,24 @@
 import "./bestseller.css";
 import ReactStars from "react-rating-stars-component";
 
+
 function Bestseller(props) {
     console.log(props.info.image)
     return(
         <>
         
             <div className="subCards">
-                <img className="imagepart" src={props.info.image} alt="" />
+                <div className="tag">HOT</div>
+                <div className="hoveritems">
+                    <img className="imagepart" src={props.info.image} alt="" />
+                    <div className="blurEffect">
+                        <i class="fa-brands fa-gratipay"></i>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </div>
+                </div>
                 <div className="itemName">{ props.info.name }</div>
                 <div className="itemRatings">
-                    <ReactStars className="text-center" style={{ "border":"0"}}
+                    <ReactStars
                             count={5}
                             value={props.info.rating}
                             edit={false}
@@ -18,7 +26,8 @@ function Bestseller(props) {
                             activeColor="#ffd700"
                     />
                 </div>
-                <div className="itemPrice">
+                
+                <div>
                     <span style={{"marginRight":"10px", "color":"red"}}> 
                         ${props.info.discountedPrice}
                     </span>
@@ -27,49 +36,7 @@ function Bestseller(props) {
                     </span>
                 </div>
             </div>
-            {/* <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div>
-            <div className="subCards">
-                <img></img>
-                <div className="itemName"></div>
-                <div className="itemRatings"></div>
-                <div className="itemPrice"></div>
-            </div> */}
-      
+         
         </>
     )
 }
