@@ -1,0 +1,46 @@
+.itemContain{
+    
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+.sliderElement{
+    width: 15rem;
+    height: 10rem;
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    border: ridge grey 3px;
+}
+.paddings{
+    padding: 2rem;
+}
+.sliderElement>img{
+    font-size: 3rem;
+}
+.sliderElement:hover{
+    transform: scale(1.15,1.15);
+}
+.itemDetailss{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sliderContainer{
+    width: 65rem;
+    padding: 2% 1%;
+    display: flex;
+    flex-direction: row;
+  
+
+}
+.sliderContainerrr{
+    min-height: 0;
+min-width: 0;
+}
+
+.arrows{
+    font-size: 3rem;
+}

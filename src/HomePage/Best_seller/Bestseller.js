@@ -1,5 +1,7 @@
 import "./bestseller.css";
 import ReactStars from "react-rating-stars-component";
+import likeButton from "./icons/favorite_icon.svg";
+import cart from "./icons/fill_cart.svg";
 
 
 function Bestseller(props) {
@@ -12,8 +14,8 @@ function Bestseller(props) {
                 <div className="hoveritems">
                     <img className="imagepart" src={props.info.image} alt="" />
                     <div className="blurEffect">
-                        <i class="fa-brands fa-gratipay"></i>
-                        <i class="fa-solid fa-cart-shopping"></i>
+                        <img src={likeButton} />
+                        <img src={cart} />
                     </div>
                 </div>
                 <div className="itemName">{ props.info.name }</div>

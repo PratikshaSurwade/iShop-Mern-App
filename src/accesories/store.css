@@ -8,7 +8,6 @@
     flex: 3;
     border: red dotted 2px;
     margin : 10px;
-    height: 100vh;
 }
 
 .sidebarHeader >h4 {
@@ -18,7 +17,6 @@
 .largesidebar{
     flex: 9;
     border: purple  dotted 2px;
-    height: 100vh;
     margin : 10px;
     border-radius: 0.5rem;
 }

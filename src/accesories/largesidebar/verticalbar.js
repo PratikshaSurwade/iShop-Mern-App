@@ -33,9 +33,9 @@ function Verticalbar() {
 
                                             <div className="dropdown-content2 text-start" style={{ "padding": "3px" }}>
                                                 
-                                                <div>Name</div>
-                                                <div>Price</div>
-                                                <div>Rating</div>
+                                                <div>---</div>
+                                                <div>---</div>
+                                                <div>---</div>
 
                                             </div>
                                         </div>
@@ -52,9 +52,9 @@ function Verticalbar() {
 
                                             <div className="dropdown-content2" style={{ "padding": "3px" }}>
                                                 
-                                                <div>6</div>
-                                                <div>9</div>
-                                                <div>12</div>
+                                                <div>---</div>
+                                                <div>---</div>
+                                                <div>---</div>
                                             </div>
                                         </div>
                                     </span>
@@ -66,9 +66,11 @@ function Verticalbar() {
                             </div>
                         </div>
                     </div>
-                    {itemData.map(data=> {
-                        return <Bestseller info={ data } />
-                    })}
+                    <div className='cardsbox'>
+                        {itemData.map(data=> {
+                            return <Bestseller info={ data } />
+                        })}
+                    </div>
          </div>
     
   )

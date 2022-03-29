@@ -31,4 +31,28 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
+.Feactured{
+    margin: 3rem 10%;
+    /* display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center; */
+}
+.sliderContainer{
+    /* width: 65rem; */
+    padding: 2% 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+
+}
+.sliderContainerrr{
+    min-height: 0;
+min-width: 0;
+}
+
+.arrows{
+    font-size: 3rem;
+}
 

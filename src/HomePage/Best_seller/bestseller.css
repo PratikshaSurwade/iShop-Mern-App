@@ -2,7 +2,7 @@
 /* card design */
 
 .subCards{
-    height: 15rem;
+    height: 16rem;
     width: 11rem;
     /* width: calc(100% * (1/4) - 10px - 1px);     */
     /* flex: 1 0 18%; */
@@ -13,13 +13,14 @@
     border: rgb(228, 225, 225) solid 0.2rem;
     text-align: center;
     cursor: pointer;
-
 }
+
 .subCards:hover{
     box-shadow: 0px 8px 10px rgb(224, 224, 224), 
         -10px 8px 15px rgb(230, 227, 227), 10px 8px 15px rgb(230, 227, 227);
     opacity: 1;
 }
+
 .tag{
     position: absolute;
     font-size: 9px;
@@ -31,9 +32,11 @@
     background-color: red;
     color: white;
 }
+
 .hoveritems{
     position: relative;
 }
+
 .imagepart{
     z-index: 1;
     width: 9rem;
@@ -41,31 +44,37 @@
     padding-top: 10px;
     /* filter:opacity(70%) blur(8px); */
 }
-/* .imagepart:hover{
-    filter:opacity(70%) blur(8px);
 
-} */
+.itemName{
+    font-weight: 500;
+}
+
 .blurEffect{
     display: none;
     /* position: absolute; */
-    margin: -5.4rem 0 0 3.2rem;
+    margin: -5.4rem 0 0 2.6rem;
     z-index: 2;
     font-size:2rem;
-    color: #006CFF;
+    
 }
+
 .subCards:hover .imagepart,.subCards:hover .tag{
     
     filter:opacity(90%) blur(1rem);
 
 }
 
+.subCards:hover .itemName{
+    font-weight: 700;
+}
+
 .subCards:hover .blurEffect{
     display: block;
     position: absolute;
 }
+
 .itemRatings{
     display: flex;
     justify-content: center;
-
 }
 
