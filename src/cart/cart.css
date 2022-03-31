@@ -1,0 +1,71 @@
+.topHeader{
+    background-color:#f5f4f4;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    margin-bottom: 1rem;
+}
+.cartitembox{
+    background-color: aqua;
+    margin-left:10% ;
+    margin-right: 10%;
+}
+/* .mainitemBox{
+    height: 25rem;
+
+    overflow-y: scroll;
+} */
+.topHead{
+    display: grid;
+    grid-template-columns: 55% 15% 15% 15%;
+}
+.topHead>:first-child{
+    padding-left: 1.5rem;
+}
+.itemContainer{
+    border: red 2px solid;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2% 13% 40% 15% 15% 15%;
+
+}
+.fa-xmark{
+    font-size: 1rem;
+}
+.cancle{
+    width: 1rem;
+    height: 1rem;
+    margin: 0cm;
+    padding: 0px;
+    display: flex;
+    color: red;
+    background-color: rgb(250, 239, 239);
+    border-radius: 50%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+.itemImage{
+    width: 7rem;
+    height: 8rem;
+}
+.itemname{
+    padding-left: 2.5rem;
+}
+.itemsCount{
+    width: 5.5rem;
+    background-color:#f5f4f4;
+
+    display: flex;
+    align-items: center;
+}
+.itemsCount>p,.itemsCount>i{
+    margin: 0rem;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+}
+.itemsCount>i{
+    color: #006CFF;
+    cursor: pointer;
+
+}

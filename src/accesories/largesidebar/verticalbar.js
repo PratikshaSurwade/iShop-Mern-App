@@ -67,7 +67,7 @@ function Verticalbar() {
                         </div>
                     </div>
                     <div className='cardsbox'>
-                        {itemData.map(data=> {
+                        {itemData.slice(0,12).map(data=> {
                             return <Bestseller info={ data } />
                         })}
                     </div>
