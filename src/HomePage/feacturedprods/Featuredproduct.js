@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import "./featured_prod.css";
 import { useRef } from "react";
@@ -13,8 +13,52 @@ export default function Featuredproduct() {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
+    // slidesToShow: 3,
+    // slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 2000, // tablet breakpoint
+        settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1
+        }
+      },
+      {
+          breakpoint: 1250, // tablet breakpoint
+          settings: {
+              slidesToShow: 2,
+              slidesToScroll: 1
+          }
+      },
+      {
+          breakpoint: 768, // mobile breakpoint
+          settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+          }
+      },
+      {
+          breakpoint: 576, // mobile breakpoint
+          settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+          }
+      },
+      {
+          breakpoint: 381, // mobile breakpoint
+          settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+          }
+      },
+      {
+          breakpoint: 200, // mobile breakpoint
+          settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1
+          }
+      }
+  ]
   };
   const sliderRef = useRef(null);
   console.log(sliderRef.current);
@@ -41,8 +85,6 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
-                      activeColor="#ffd700"
                     />
                   </div>
                   <div className="item_prices">
@@ -66,8 +108,28 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
+                      responsive={ [
+                        {
+                          breakpoint:998, // tablet breakpoint
+                          settings: {
+                              size:15
+                          }
+                        },
+                        {
+                          breakpoint:556, // tablet breakpoint
+                          settings: {
+                              size:20
+                          }
+                        },
+                        {
+                          breakpoint:200, // tablet breakpoint
+                          settings: {
+                              size:10
+                          }
+                        }
+                      ]}
                     />
                   </div>
                   <div className="item_prices">
@@ -91,7 +153,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -118,7 +180,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -143,7 +205,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -168,7 +230,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -195,7 +257,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -220,7 +282,7 @@ export default function Featuredproduct() {
                       count={5}
                       value={4}
                       edit={false}
-                      size={20}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>
@@ -244,8 +306,8 @@ export default function Featuredproduct() {
                     <ReactStars
                       count={5}
                       value={4}
-                      edit={false}
-                      size={20}
+                      edit={true}
+                      // size={20}
                       activeColor="#ffd700"
                     />
                   </div>

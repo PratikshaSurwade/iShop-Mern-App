@@ -26,3 +26,8 @@
 .fa-facebook-f{
     margin-right: 2rem;
 }
+@media (max-width:576px){
+    .footerContainer{
+        display: none;
+    }
+}

@@ -1,7 +1,6 @@
 import React from "react";
 import Bestseller from "./Best_seller/Bestseller.js";
 import Facilitis from "./Facilities/Facilitis";
-import Feactured from "./feacturedprods/Feactured";
 
 import Iphoneadd from "./iphoneadd/iphoneadd.js";
 
@@ -31,17 +30,18 @@ function Home() {
         <div className="subListItems">Accessories</div>
       </div>
 
-      <div className="homepageItems">
-        {bestseler.map((data) => {
-          return <Bestseller info={data} />;
-        })}
+      <div className="home">
+          <div className="homepageItems">
+            {bestseler.map((data) => {
+              return <Bestseller info={data} />;
+            })}
+          </div>
       </div>
       <Iphoneadd />
       <Facilitis />
 
       <h3 className="subHead">FEATURED PTODUCTS</h3>
     
-      {/* <Feactured /> */}
       <Featuredproduct />
     </>
   );

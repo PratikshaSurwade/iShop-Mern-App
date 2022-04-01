@@ -12,11 +12,28 @@
     margin-bottom: 5rem;
     margin-left: 1rem;
 }
+
 .homeImgText>h4{
     padding: 0.7rem;
     border-bottom: white 2px linear;
 }
+
 .mainImg2{
     height: 29rem;
     z-index:1;
+}
+
+@media (max-width:576px){
+    .homePageImg2{
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+    }
+    .mainImg2{
+        height: 17rem;
+    }
+    .homeImgText{
+        margin-bottom: 0rem;
+        margin-left: 0rem;
+    }
 }

@@ -77,4 +77,22 @@
     display: flex;
     justify-content: center;
 }
+/* @media only  screen and (min-width:480px) and (max-width:576px){
+    html{
+        font-size:45%;
+    }
+    
+} */
+@media only  screen and (min-width:576px) and (max-width:768px){
+    html{
+        font-size:60%;
+    }
+    
+}
 
+@media only  screen and (min-width:768px) and (max-width:992px){
+    html{
+        font-size:75%;
+    }
+    
+}

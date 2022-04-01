@@ -69,4 +69,16 @@ hr.hrTopNavbar{
     display: block;
     position: absolute;
 }
-  
+
+
+/* responsive design */
+.navbar-nav .nav-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@media (max-width:576px){
+    .Navbarstyle{
+        display: none;
+    }
+}
