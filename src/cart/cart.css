@@ -20,7 +20,11 @@
     grid-template-columns: 55% 15% 15% 15%;
 }
 .topHead>:first-child{
-    padding-left: 1.5rem;
+    padding-left: 0.4rem;
+    margin-bottom: 5px;
+}
+.scrollbar{
+    height: 34.5rem;
 }
 .itemContainer{
     display: grid;
@@ -74,7 +78,14 @@
     display: flex;
     justify-content: space-around;
 }
-.voucher{
+.inputVoucher{
+    width: 19rem;
+}
+.inputbuton{
+    width: 6rem;
+}
+.totalbutton{
+    width: 25rem;
 }
 .toTal{
     width: 25rem;
@@ -82,7 +93,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 20rem;
+    height: 17rem;
 }
 .gridofPrices{
     display: flex;
@@ -91,6 +102,21 @@
 
 
 @media (max-width:576px){
+    .bottOm>html{
+        font-size: 70%;
+    }
+    .inputVoucher{
+        width: 13rem;
+    }
+    .inputbuton{
+        width: 5rem;
+    }
+    .totalbutton{
+        width: 18rem;
+    }
+    .toTal{
+        width: 18rem;
+    }
     .cartitembox{
         margin-left:1% ;
         margin-right: 1%;
@@ -143,9 +169,7 @@
         flex-direction: column;
         align-items: center;
     }
-    .bottOm html{
-        font-size: 70%;
-    }
+    
     .voucher,.toTal{
         margin-bottom: 3rem;
     }

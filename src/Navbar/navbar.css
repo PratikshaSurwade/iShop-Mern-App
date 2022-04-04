@@ -4,13 +4,13 @@
 
 body{
     /* margin: 0px; */
-    padding-top: 14rem;
+    padding-top: 11rem;
     font-family: 'Varela Round', sans-serif;
 }
 hr.hrTopNavbar{
     /* margin-top: 45px; */
     margin: 0px;
-    color: grey;
+    color: #d3d3d3;
     /* opacity: 0.2%; */
 }
 .navBar{
@@ -21,7 +21,7 @@ hr.hrTopNavbar{
     background-color: white; 
 }
 .logo{
-    margin-top: 3rem;
+    margin-top: 2rem;
     width: 10rem;
     display: block;
     margin-left: auto;
@@ -31,19 +31,10 @@ hr.hrTopNavbar{
 .navBarIcon{
     width: 1.3rem;
 }
-.headstyle{
-    margin-top: 3rem;
-    text-align: center;
-    font-weight: 900;
-    color: red;
-}
-.headstyle2{
-    text-align: center;
-    font-weight: 900;
-    color: red;
-}
+
 .navbarItems{  
     padding: 1.5rem ;
+    /* padding-bottom: 0.5rem; */
     font-weight: bolder;
     text-decoration: none;
     /* color: white    ; */

@@ -6,29 +6,31 @@ import Prices from './smallsidebar/prices';
 import Color from './smallsidebar/color';
 import Brand from './smallsidebar/Brand';
 import Iphoneadd from '../HomePage/iphoneadd/iphoneadd';
-import Verticalbar from './largesidebar/verticalbar';
+import Largesidebar from './largesidebar/largesidebar';
 
 function Store() {
   return (
-    <div className='mainBar'>
-            <div className='smallsidebar'>
-                <Accesories />
-                <Prices />
-                <Color />
-                <Brand />
-                <div className='sidebarHeader'>
-                  <h4>More</h4>
+    <>
+        <h5 className='topHeader' style={{color:"#006CFF"}}>Store/Accesories</h5>
+
+        <div className='mainBar'>
+                <div className='smallsidebar'>
+                    <Accesories />
+                    <Prices />
+                    <Color />
+                    <Brand />
+                    <div className='sidebarHeader'>
+                      <h4>More</h4>
+                    </div>
                 </div>
-            </div>
-            <div className='largesidebar'>
-              <div className='advertise'>
-                <Iphoneadd />
-              </div>
-              <Verticalbar />
-                <div className='storeitemContainer'>
+                <div className='largesidebar'>
+                  <div className='advertise'>
+                    <Iphoneadd />
+                  </div>
+                  <Largesidebar />
                 </div>
-            </div>
-    </div>
+        </div>
+    </>
   )
 }
 

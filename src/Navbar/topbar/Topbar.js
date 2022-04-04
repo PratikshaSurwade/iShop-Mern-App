@@ -9,19 +9,30 @@ function Topbar() {
     
     <div className='topBar'>
         <div className='firstBar'>
-            <NavDropdown  className="topbarColor" title="EN" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Spanish</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">French</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Hindi</NavDropdown.Item>
-                  {/* <NavDropdown.Divider /> */}
-                  {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
-            </NavDropdown>
+            
+            <select class="form-select" style={{border:"none"}} aria-label="Default select example">
+              <option selected>En</option>
+              <option value="1">Spanish</option>
+              <option value="2">French</option>
+              <option value="3">Hindi</option>
+            
 
-            <NavDropdown  className="topbarColor" title="$" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Rupees</NavDropdown.Item>
+            </select>
+            <select class="form-select form-select-sm" aria-label=".form-select-sm example" style={{border:"none",fontSize:"1rem",fontWeight:"400"}} >
+              <option selected>$</option>
+              <option value="Rupees">Rupees</option>
+              <option value="Pound">Pound</option>
+              <option value="Euro">Euro</option>
+            </select>
+  
+  
+
+
+            {/* <NavDropdown  className="topbarColor" title="$" id="basic-nav-dropdown">
+                  <NavDropdown.Item href="#Rupees" title="Rupees">Rupees</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Pound</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">Euro</NavDropdown.Item>
-            </NavDropdown>
+            </NavDropdown> */}
         </div>
         <div className='secondBar'>
           <div className='profile'>

@@ -5,7 +5,7 @@ import cart from "./icons/fill_cart.svg";
 
 
 function Bestseller(props) {
-    console.log(props.info.image)
+    // console.log(props.info.image)
     return(
         <>
         

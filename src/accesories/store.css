@@ -6,7 +6,6 @@
 
 .smallsidebar{
     flex: 3;
-    border: red dotted 2px;
     margin : 10px;
 }
 
@@ -16,12 +15,31 @@
 }
 .largesidebar{
     flex: 9;
-    border: purple  dotted 2px;
     margin : 10px;
     border-radius: 0.5rem;
 }
 .advertise{
     margin-top: -2rem;
     padding: 0px;
+    border-radius: 0.5rem;
+}
+
+@media  (max-width:576px){
+    .mainBar{
+        display: block;
+        padding: 0px;
+    }
+    .mainBar>html{
+        font-size: 50%;
+    }
+    .smallsidebar{
+        display: none;
+    }
     
+}
+
+@media only  screen and (min-width:576px) and (max-width:768px){
+    .smallsidebar{
+        display: none;
+    }
 }

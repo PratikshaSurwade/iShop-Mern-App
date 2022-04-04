@@ -11,38 +11,63 @@
 .verticalStrip{
     display: flex;
     flex-direction: row;
-    
+    justify-content: space-between;
 }
-.dropdown {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .dropdown-content2 {
-    display: none;
-    position: absolute;
-    left:5rem;
-    background-color: #f1f1f1;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 15;
-    border-top: 1.5px solid rgb(177, 177, 177, 0.5);
-  }
 
-  .dropdown:hover .dropdown-content2 {
-    display: block;
-  } 
-  
-  .mybutton {
-    margin-left: 10%;
-    margin-right: 5px;
-    width: 116px;
-    height: 38px;
-    border: 2px solid #f1f3f4;
-    border-radius: 4px;
-    opacity: 1;
-  }
+.verticalStrip2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.flexDiv{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: visible;
+  align-items: center;
+  width: 25% ;
+  margin: 1%;
+  /* min-width: 450px; */
+}
+
+.myAuto{
+  width: 1.2rem;
+}
 .cardsbox{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+}
+@media only  screen and (min-width:250px) and (max-width:370px){
+  .largeSidebar>html{
+    font-size: 50%;
+  }
+  .verticalStrip{
+    display: none;
+  }
+}
+
+@media only  screen and (min-width:370px) and (max-width:576px){
+  .largeSidebar>html{
+    font-size: 70%;
+  }
+  .verticalStrip{
+    display: none;
+  }
+}
+
+@media only  screen and (min-width:576px) and (max-width:768px){
+  .largeSidebar>html{
+    font-size: 80%;
+  }
+  .flexDiv{
+      min-width: 50%;
+      width: 15% ;
+  }
+  .verticalStrip{
+    display: none;
+  }
 }

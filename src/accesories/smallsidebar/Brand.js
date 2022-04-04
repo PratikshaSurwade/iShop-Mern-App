@@ -7,19 +7,12 @@ function Brand() {
     <div className='sidebarHeader'>
             <h3>BRAND</h3>
             <div className='elementsContainer'>
-                <div className='elements'>
-                        <p>Apple</p>
-                        <p>LG</p>
-                        <p>Samsung</p>
-                        <p>Siemens</p>
-                </div>
-                <div className='elements'>
-                        <p>99</p>
-                        <p>99</p>
-                        <p>99</p>
-                        <p>99</p>
+       
+                        <div className='ele_classifier'><p>Apple Car</p><p>99</p></div>
+                        <div className='ele_classifier'><p>LG</p><p>99</p></div>
+                        <div className='ele_classifier'><p>Samsung</p><p>99</p></div>
+                        <div className='ele_classifier'><p>Siemens</p><p>99</p></div>
 
-                </div>
             </div>
         </div>
   )
