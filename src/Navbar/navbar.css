@@ -4,11 +4,12 @@
 
 body{
     /* margin: 0px; */
-    padding-top: 220px;
+    padding-top: 14rem;
     font-family: 'Varela Round', sans-serif;
 }
 hr.hrTopNavbar{
-    margin-top: 45px;
+    /* margin-top: 45px; */
+    margin: 0px;
     color: grey;
     /* opacity: 0.2%; */
 }
@@ -17,31 +18,48 @@ hr.hrTopNavbar{
     position: absolute;
     top: 0px;
     z-index: 10;
-    background-color: white;
-    
+    background-color: white; 
+}
+.logo{
+    margin-top: 3rem;
+    width: 10rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+.navBarIcon{
+    width: 1.3rem;
 }
 .headstyle{
+    margin-top: 3rem;
     text-align: center;
     font-weight: 900;
     color: red;
 }
-
-.Linkitems{  
+.headstyle2{
+    text-align: center;
+    font-weight: 900;
+    color: red;
+}
+.navbarItems{  
     padding: 1.5rem ;
     font-weight: bolder;
     text-decoration: none;
-    color: black    ;
+    /* color: white    ; */
     font-size: 1.1rem; 
     
 }
-.Linkitems:hover{
-    color: #006CFF;
+.navbarItems:hover{
     font-weight: 900;
     font-size: 1.15rem;
+    color: #006CFF;
+    cursor: pointer;
 }
 .Navbarstyle{
     display: flex;
     justify-content: center;
+    /* display: block; */
 }
 
 /*dropdown*/
@@ -76,9 +94,36 @@ hr.hrTopNavbar{
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
+    padding: 0.8rem 0rem 0.8rem 0rem;
+}
+
+.offcanvas.show {
+    transform: none;
+    /* background: rgba(255,255,255,0.5); */
+    background: rgb(71, 70, 70,0.5);
+    backdrop-filter: blur(20px);
 }
 @media (max-width:576px){
-    .Navbarstyle{
+    body{
+        padding: 0.2rem;
+
+    }
+    .logo2{
+        width: 6rem;
+    }
+    .navBar{
+        display: none;
+    }
+    .navBar2{
+        display: block;
+    }
+}
+@media (min-width:576px){
+    .navBar{
+        display: block;
+    }
+    .navBar2{
         display: none;
     }
 }

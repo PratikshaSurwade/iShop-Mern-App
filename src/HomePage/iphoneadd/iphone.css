@@ -14,26 +14,41 @@
 }
 
 .homeImgText>h4{
-    padding: 0.7rem;
+    margin: 0px;
+    padding:0.7rem 0.7rem 0.7rem 0rem;
     border-bottom: white 2px linear;
+    text-decoration: underline 2px white;
 }
 
 .mainImg2{
+    /* position: absolute; */
     height: 29rem;
     z-index:1;
 }
 
 @media (max-width:576px){
     .homePageImg2{
-        flex-direction: column;
+        /* flex-direction: column;
         justify-content: space-between;
-        align-items: stretch;
+        align-items: flex-end ; */
+        display: block;
+        position: relative;
+        /* text-align: center; */
     }
     .mainImg2{
-        height: 17rem;
+        position: absolute;
+        bottom: 0rem;
+        margin-left: 36%;
+        height: 20rem;
+        bottom: 0rem;
+        /* top: 2rem; */
     }
     .homeImgText{
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-right: 2rem;        
         margin-bottom: 0rem;
-        margin-left: 0rem;
+        margin-left: 2rem;
+        /* padding-top: 2rem; */
     }
 }

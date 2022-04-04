@@ -1,0 +1,35 @@
+.topbarColor>a{
+    color: black;
+}
+.topBar{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.secondBar{
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+}
+.itemPrice{
+    color: #d3d3d3;
+}
+.TopmobBar>.items>img{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+.TopmobBar>.profile>img{
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+}
+/* MOBILE TOPBAR */
+
+.TopmobBar{
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+
+.topmobBarClor>a{
+    color: white;
+}

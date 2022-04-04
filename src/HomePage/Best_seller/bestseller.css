@@ -51,10 +51,12 @@
 
 .blurEffect{
     display: none;
-    /* position: absolute; */
+    position: absolute;
     margin: -5.4rem 0 0 2.6rem;
     z-index: 2;
     font-size:2rem;
+    /* text-align: center; */
+
     
 }
 
@@ -83,6 +85,15 @@
     }
     
 } */
+
+@media (max-width:576px){
+    .blurEffect>img{
+        width: 3rem;
+        vertical-align: middle;
+        text-align: center;
+        
+    }
+}
 @media only  screen and (min-width:576px) and (max-width:768px){
     html{
         font-size:60%;

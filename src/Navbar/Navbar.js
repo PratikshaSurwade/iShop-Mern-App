@@ -3,6 +3,7 @@ import React from "react";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./navbar.css";
+import logo from "./iSHOP Logo.svg"
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
@@ -15,6 +16,8 @@ import navbarIcon from "./hamburger_icon.svg";
 
 import Subnavbar from "./subnavbar/Subnavbar";
 import Subnavbar2 from "./subnavbar/Subnavbar2";
+import Topbar from "./topbar/Topbar";
+import TopmobBar from "./topbar/topbarformob";
 
 
 class Heading extends React.Component{
@@ -24,24 +27,26 @@ class Heading extends React.Component{
             <>
                 
                 <div className="navBar">
+                    <Topbar />
                     <hr className="hrTopNavbar"></hr>
-                    <h1 className="headstyle">
+                    {/* <h1 className="headstyle">
                         iSHOP
-                    </h1>
-                    <div className="Navbarstyle" id="Navbarstyle2">
-                        <div className="Linkitems">HOME</div>
+                    </h1> */}
+                    <img className="logo" src={logo} alt="" />
+                    <div className="Navbarstyle">
+                        <div className="navbarItems">HOME</div>
                         <div className='dropdown'>
-                            <div className='Linkitems'>STORE</div>
+                            <div className='navbarItems'>STORE</div>
                             <div className="dropdown-content">
                                 <Subnavbar />
                             </div>
 
                         </div>
                       
-                        <div className="Linkitems">IPHONE</div>
-                        <div className="Linkitems">IPAD</div>
-                        <div className="Linkitems">MACBOOK</div>
-                        <div className="Linkitems">ACCESORIES</div>
+                        <div className="navbarItems">IPHONE</div>
+                        <div className="navbarItems">IPAD</div>
+                        <div className="navbarItems">MACBOOK</div>
+                        <div className="navbarItems">ACCESORIES</div>
 
                     </div>
                     
@@ -49,12 +54,15 @@ class Heading extends React.Component{
                     {/* <Subnavbar /> */}
                 </div>
                 <div className="navBar2">
-                    <Navbar bg="light" expand={false} vertical-height="100%">
+                    <Navbar expand={false} vertical-height="100%">
                       <Container fluid>
-                        <Navbar.Brand href="#"><h1 className="headstyle">
+                        <Navbar.Brand href="#">
+                          {/* <h1 className="headstyle2">
                                             iSHOP
-                                        </h1></Navbar.Brand>
-                        <Navbar.Toggle aria-controls="offcanvasNavbar" ><img src={navbarIcon}></img></Navbar.Toggle>
+                                        </h1> */}
+                                        <img className="logo2" src={logo} alt="" />
+                                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls="offcanvasNavbar" ><img className="navBarIcon" src={navbarIcon}></img></Navbar.Toggle>
                         <Navbar.Offcanvas
                           id="offcanvasNavbar"
                           aria-labelledby="offcanvasNavbarLabel"
@@ -62,8 +70,9 @@ class Heading extends React.Component{
                           style={{height:"fit-content"}}
                         >
                           <Offcanvas.Header closeButton>
-                            <Offcanvas.Title id="offcanvasNavbarLabel">Offcanvas</Offcanvas.Title>
+                            <Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
                           </Offcanvas.Header>
+                          <TopmobBar />
                           <Offcanvas.Body>
                             <Form className="d-flex">
                                 <FormControl
@@ -76,25 +85,23 @@ class Heading extends React.Component{
                               </Form>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
                               <Nav.Link href="#action1"><div className="linkItems2">HOME</div></Nav.Link>
-                                <Nav.Link href="#action1"><div className='dropdown'>
-                                    <div className='linkItems2'>STORE</div>
-                                        <div className="dropdown-content">
-                                          <Subnavbar />
-                                        </div>
-                                    </div>
-                                </Nav.Link>
+                              <Nav.Link href="#action1">
+                                <div className="linkItems2">
+                                  <NavDropdown className="linkItems2" title="STORE" id="offcanvasNavbarDropdown">
+                                    <NavDropdown.Item href="#action3"><Subnavbar2 /></NavDropdown.Item>
+                                    {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="#action5">
+                                      Something else here
+                                    </NavDropdown.Item> */}
+                                  </NavDropdown>
+                                </div>
+                              </Nav.Link>
 
                               <Nav.Link href="#action1"><div className="linkItems2">IPHONE</div></Nav.Link>
-                              <Nav.Link href="#action1"><div className="linkItems2">
-                              <NavDropdown className="linkItems2" title="STORE" id="offcanvasNavbarDropdown">
-                                <NavDropdown.Item href="#action3"><Subnavbar2 /></NavDropdown.Item>
-                                {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
-                                  Something else here
-                                </NavDropdown.Item> */}
-                              </NavDropdown></div></Nav.Link>
+                              
 
+                              <Nav.Link href="#action1"><div className="linkItems2">IPAD</div></Nav.Link>
 
                               <Nav.Link href="#action1"><div className="linkItems2">MACBOOK</div></Nav.Link>
                               <Nav.Link href="#action1"><div className="linkItems2">ACCESORIES</div></Nav.Link>
@@ -102,15 +109,15 @@ class Heading extends React.Component{
                       
                         
                       
-                              <Nav.Link href="#action2">Link</Nav.Link>
+                              {/* <Nav.Link href="#action2">Link</Nav.Link>
                               <NavDropdown className="linkItems2" title="Dropdown" id="offcanvasNavbarDropdown">
                                 <NavDropdown.Item href="#action3"> <Subnavbar2 /></NavDropdown.Item>
                                 {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
                                 <NavDropdown.Divider />
                                 <NavDropdown.Item href="#action5">
                                   Something else here
-                                </NavDropdown.Item> */}
-                              </NavDropdown>
+                              </NavDropdown.Item> }
+                              </NavDropdown> */}
                             </Nav>
                             
                           </Offcanvas.Body>

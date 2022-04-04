@@ -12,7 +12,7 @@ function Bestseller(props) {
             <div className="subCards">
                 <div className="tag">HOT</div>
                 <div className="hoveritems">
-                    <img className="imagepart" src={props.info.image} alt="" />
+                    <img className="imagepart" src={props.info.image} alt="" ></img>
                     <div className="blurEffect">
                         <img src={likeButton} />
                         <img src={cart} />
