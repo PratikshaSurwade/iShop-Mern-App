@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import Crousals2 from "./2_corousel.png";
 import Bestseller from "../../HomePage/Best_seller/Bestseller.js"
-import DropDownIcon from "./dropdownIcon.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./largesidebar.css";

@@ -16,7 +16,7 @@ function Cart() {
                     <p>PRICE</p>
                 </div>
                 <hr style={{margin:"5px",color:"#d3d3d3"}}></hr>
-                <Scrollbars style={{minHeight:"13rem"}}>
+                <Scrollbars style={{minHeight:"18rem"}}>
                     <div className='itemContainer'>
                         <i class="cancle fa-solid fa-xmark" id='one'></i>                
                         <img className='itemImage' id="two" src={imagee}></img>

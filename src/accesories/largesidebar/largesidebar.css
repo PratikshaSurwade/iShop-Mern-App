@@ -30,23 +30,42 @@
   align-items: center;
   width: 25% ;
   margin: 1%;
-  /* min-width: 450px; */
+  min-width: 25rem;
 }
 
 .myAuto{
   width: 1.2rem;
 }
+
 .cardsbox{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
+
+/* Strip bar */
+
+.stripMobile{
+  display: none;
+}
+
+.stripmobile{
+  background-color:#f5f4f4;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-around ;
+  align-items: center;
+}
+
 @media only  screen and (min-width:250px) and (max-width:370px){
   .largeSidebar>html{
     font-size: 50%;
   }
   .verticalStrip{
     display: none;
+  }
+  .stripMobile{
+    display: block;
   }
 }
 
@@ -56,6 +75,9 @@
   }
   .verticalStrip{
     display: none;
+  }
+  .stripMobile{
+    display: block;
   }
 }
 

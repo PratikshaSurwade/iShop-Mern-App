@@ -50,15 +50,9 @@
 .mainImgmob1,.mainImgmob2{
     /* width: 20rem; */
     height: 20rem;
-    
-
-}
-.mainImgpart1{
-    /* position: relative; */
 }
 
 @media (max-width:576px){
-
 
     .homePageImg2{
 
@@ -69,7 +63,7 @@
     .mainImg2{
         position: absolute;
         bottom: 0rem;
-        margin-left: 15%;
+        margin-left: 25%;
         height: 20rem;
         bottom: 0rem;
         /* top: 2rem; */
