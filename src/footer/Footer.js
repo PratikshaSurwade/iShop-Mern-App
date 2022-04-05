@@ -1,6 +1,13 @@
 import React from "react";
 import "./footer.css";
 
+//importing images
+
+import masterCard from "./payment_icons/master_card.svg";
+import visa from "./payment_icons/visa.svg";
+import paypal from "./payment_icons/Paypal.svg";
+import unionCard from "./payment_icons/Western_union.svg";
+
 function Footer() {
   return (
     <>
@@ -80,6 +87,13 @@ function Footer() {
               <p>Terms & Conditions</p>
             </div>
           </div>
+        </div>
+        <hr></hr>
+        <div style={{textAlign:"end"}}>
+          <img src={unionCard}></img>
+          <img src={masterCard}></img>
+          <img src={paypal}></img>
+          <img src={visa}></img>
         </div>
       </div>
     </>

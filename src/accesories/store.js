@@ -5,8 +5,8 @@ import Accesories from './smallsidebar/accesories';
 import Prices from './smallsidebar/prices';
 import Color from './smallsidebar/color';
 import Brand from './smallsidebar/Brand';
-import Iphoneadd from '../HomePage/iphoneadd/iphoneadd';
 import Largesidebar from './largesidebar/largesidebar';
+import Iphonemob from '../HomePage/iphoneadd/iphonemob';
 
 function Store() {
   return (
@@ -25,7 +25,7 @@ function Store() {
                 </div>
                 <div className='largesidebar'>
                   <div className='advertise'>
-                    <Iphoneadd />
+                    <Iphonemob />
                   </div>
                   <Largesidebar />
                 </div>
