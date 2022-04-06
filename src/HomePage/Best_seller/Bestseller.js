@@ -14,8 +14,8 @@ function Bestseller(props) {
                 <div className="hoveritems">
                     <img className="imagepart" src={props.info.image} alt="" ></img>
                     <div className="blurEffect">
-                        <img src={likeButton} />
-                        <img src={cart} />
+                        <img src={likeButton} alt="" />
+                        <img src={cart} alt="" />
                     </div>
                 </div>
                 <div className="itemName">{ props.info.name }</div>

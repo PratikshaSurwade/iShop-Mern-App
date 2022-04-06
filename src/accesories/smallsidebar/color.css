@@ -5,14 +5,32 @@
     margin: 0px 1.5rem;
 }
 
-.forBlue {
-    cursor: pointer;
-    border: 2px dotted #006cff;
-    background-color: aliceblue;
-    padding: 2px;
-}
-
 .removeAll {
     border: none;
     padding: 0;
+}
+
+.forBlue {
+    border: 2px groove #2200ff;
+}
+
+.forPink{
+    border: 2px groove #FC3E39;
+}
+
+.forBlack{
+    border: 2px groove #171717;
+}
+
+.forYellow{
+    border: 2px groove #FFF600;
+}
+
+
+.forLightPink{
+    border: 2px groove #FF00B4;
+}
+
+.forCamron{
+    border: 2px groove #FC3E39;
 }

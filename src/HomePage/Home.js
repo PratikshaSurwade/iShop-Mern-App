@@ -31,8 +31,8 @@ function Home() {
   return (
     
     <>
-      <img className="mainImg" src={mainImg} />
-      <img className="mobImg" src={mobImg} />      
+      <img className="mainImg" src={mainImg} alt="" />
+      <img className="mobImg" src={mobImg} alt="" />      
 
       <h2 className="subHead">BEST SELLER</h2>
       <NavDropdown className="sortbestSeller" title="MAC" id="basic-nav-dropdown" >

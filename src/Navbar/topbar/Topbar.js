@@ -1,6 +1,5 @@
 import React from 'react';
 import "./topbar.css";
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import profile from "./icons/profile_icon.svg";
 import bag_icon from "./icons/bag_icon.svg";
 function Topbar() {
@@ -36,11 +35,11 @@ function Topbar() {
         </div>
         <div className='secondBar'>
           <div className='profile'>
-            <img src={profile} />My profile
+            <img src={profile} alt="" />My profile
 
           </div>
           <div className='items'>
-            <img src={bag_icon} /><span className='itemCount'>2</span> Items<span className='itemPrice'>  $998</span> 
+            <img src={bag_icon} alt="" /><span className='itemCount'>2</span> Items<span className='itemPrice'>  $998</span> 
 
           </div>
           <div className='search'><i class="fa-solid fa-magnifying-glass"></i></div>

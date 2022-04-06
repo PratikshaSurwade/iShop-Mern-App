@@ -11,7 +11,7 @@ function Iphoneadd() {
                 <div>Performance and design. Taken right to the edge.</div>
                 <h4>SHOP NOW</h4>
             </div>
-            <img  className="mainImg2" src={mainImg2} />
+            <img  className="mainImg2" src={mainImg2}  alt="" />
         </div>
     </>
   )

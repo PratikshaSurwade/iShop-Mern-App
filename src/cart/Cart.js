@@ -19,7 +19,7 @@ function Cart() {
                 <Scrollbars style={{minHeight:"18rem"}}>
                     <div className='itemContainer'>
                         <i class="cancle fa-solid fa-xmark" id='one'></i>                
-                        <img className='itemImage' id="two" src={imagee}></img>
+                        <img className='itemImage' id="two" src={imagee} alt=""></img>
                         <div className='itemname' id='three'>Philips Hue 7W BR30 Connected Downlight Lamp</div>
                         <div className='perItemPrice' id='notShow'>$499</div>
                         <div id='four'>
@@ -35,7 +35,7 @@ function Cart() {
 
                     <div className='itemContainer'>
                         <i class="cancle fa-solid fa-xmark" id='one'></i>                
-                        <img className='itemImage' id="two" src={imagee}></img>
+                        <img className='itemImage' id="two" src={imagee} alt="" ></img>
                         <div className='itemname' id='three'>Philips Hue 7W BR30 Connected Downlight Lamp</div>
                         <div className='perItemPrice' id='notShow'>$499</div>
                         <div id='four'>

@@ -13,8 +13,8 @@ function Iphonemob() {
                 <p>Performance and design. Taken right to the edge.</p>
                 <h5>SHOP NOW</h5>
             </div>
-            <div  className="mainImgpart1"><img  className="mainImgmob1" src={mainImg1} /></div>
-            <div  className="mainImgpart2"><img  className="mainImgmob2" src={mainImg2} /></div>
+            <div  className="mainImgpart1"><img  className="mainImgmob1" src={mainImg1} alt="" /></div>
+            <div  className="mainImgpart2"><img  className="mainImgmob2" src={mainImg2} alt="" /></div>
         </div>
     </>
   )

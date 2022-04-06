@@ -11,7 +11,6 @@ import Nav from 'react-bootstrap/Nav';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Form from 'react-bootstrap/Form';
 import FormControl from 'react-bootstrap/FormControl';
-import Button from 'react-bootstrap/Button';
 import navbarIcon from "./hamburger_icon.svg";
 
 import Subnavbar from "./subnavbar/Subnavbar";
@@ -62,7 +61,7 @@ class Heading extends React.Component{
                                         </h1> */}
                                         <img className="logo2" src={logo} alt="" />
                                         </Navbar.Brand>
-                        <Navbar.Toggle aria-controls="offcanvasNavbar" ><img className="navBarIcon" src={navbarIcon}></img></Navbar.Toggle>
+                        <Navbar.Toggle aria-controls="offcanvasNavbar" ><img className="navBarIcon" src={navbarIcon} alt="" ></img></Navbar.Toggle>
                         <Navbar.Offcanvas
                           id="offcanvasNavbar"
                           aria-labelledby="offcanvasNavbarLabel"

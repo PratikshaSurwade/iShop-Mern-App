@@ -13,23 +13,23 @@ function Webpagination({showPerPage , onPaginationChange , total}) {
     onPaginationChange(value - showPerPage ,value)
   },[counter]);
 
-  const onButtonClick =(type) => {
-    if(type === "prev"){
-      if(counter === 1){
-        setCounter(1);
-      }else{
-        setCounter(counter-1);
-      }
+  // const onButtonClick =(type) => {
+  //   if(type === "prev"){
+  //     if(counter === 1){
+  //       setCounter(1);
+  //     }else{
+  //       setCounter(counter-1);
+  //     }
 
-    }else if(type === "next"){
-      if(numberOfButtons === counter){
-        setCounter(counter);
-      }else{
-        setCounter(counter + 1);
-      }
-    }
+  //   }else if(type === "next"){
+  //     if(numberOfButtons === counter){
+  //       setCounter(counter);
+  //     }else{
+  //       setCounter(counter + 1);
+  //     }
+  //   }
 
-  }
+  // }
   return (
     <>
         <div className='webpagination'>

@@ -9,11 +9,11 @@ function TopmobBar() {
     <div className='TopmobBar'>
         
             <div className='items'>
-                <img src={bag_icon} style={{fill:"#ffffff"}} /> <span className='itemCount'>2</span> Items<span className='itemPrice'>  $998</span> 
+                <img src={bag_icon} alt="" style={{fill:"#ffffff"}} /> <span className='itemCount'>2</span> Items<span className='itemPrice'>  $998</span> 
 
             </div>
             <div className='profile'>
-                <img src={profile} /> My profile
+                <img src={profile} alt="" /> My profile
 
             </div>
                   
