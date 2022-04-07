@@ -39,7 +39,11 @@ hr.hrTopNavbar{
     font-size: 1.1rem; 
     
 }
-.navbarItems:hover{
+.navbarItems>a{
+    text-decoration: none;
+    color: black;
+}
+.navbarItems:hover,.navbarItems>a:hover{
     font-weight: 900;
     font-size: 1.15rem;
     color: #006CFF;
@@ -71,7 +75,10 @@ hr.hrTopNavbar{
     overflow: visible;
     /* border-top: 1.5px solid rgb(177, 177, 177, 0.5); */
 }
-
+.dropdown-content >a,.dropdown-content >a:hover,.dropdown-item>a,.dropdown-item>a:hover{
+    text-decoration: none;
+    color: black;
+}
 .dropdown:hover .dropdown-content {
     display: block;
     position: absolute;

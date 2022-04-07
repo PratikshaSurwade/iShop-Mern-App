@@ -13,11 +13,12 @@ function App() {
   <> 
     <BrowserRouter>
       <Heading />
-      <Routes>
-      <Route path="/" style={{"zIndex":"5"}} element={<Home />} />
-      <Route path="/accesories" element={<Store />} />
-      <Route path="/cart" element={<Cart />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} exact />
+          <Route path="/home" element={<Home />} exact />
+          <Route path="/accesories" element={<Store />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
       <Footer/>
     </BrowserRouter>
   </>

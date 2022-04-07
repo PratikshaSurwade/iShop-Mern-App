@@ -20,8 +20,18 @@
 .itemPrice{
     color: #d3d3d3;
 }
+.cartBadge{
+    position: absolute;
+    z-index: 4;
+    
+}
+.items>a{
+    /* color: black; */
+    /* text-decoration: none; */
+}
 .TopmobBar>.items>img{
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);
+    z-index: 3;
 }
 .TopmobBar>.profile>img{
     filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(288deg) brightness(102%) contrast(102%);

@@ -1,7 +1,13 @@
 import React from 'react';
 import "./topbar.css";
+import Badge from 'react-bootstrap/Badge';
+import { NavLink } from "react-router-dom";
+
 import profile from "./icons/profile_icon.svg";
 import bag_icon from "./icons/bag_icon.svg";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function Topbar() {
   return (
     <>
@@ -38,8 +44,12 @@ function Topbar() {
             <img src={profile} alt="" />My profile
 
           </div>
-          <div className='items'>
-            <img src={bag_icon} alt="" /><span className='itemCount'>2</span> Items<span className='itemPrice'>  $998</span> 
+          <div className='items' title="Go to Cart" style={{cursor:"pointer",position:"relative"}}>
+            <NavLink  style={{textDecoration:"none",textDecorationColor:"none",color:"black"}} to="/cart">
+              <img src={bag_icon} alt="" /><span className='itemCount'>
+                <Badge pill bg="danger" className='cartBadge'>2</Badge>
+              </span>"""  Items<span className='itemPrice'>  $998</span> 
+            </NavLink>
 
           </div>
           <div className='search'><i class="fa-solid fa-magnifying-glass"></i></div>

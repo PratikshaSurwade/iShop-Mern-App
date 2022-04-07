@@ -1,5 +1,5 @@
 import React from "react";
-// import { Link } from 'react-router-dom';
+import { NavLink } from "react-router-dom";
 // import 'bootstrap/dist/css/bootstrap.min.css';
 
 import "./navbar.css";
@@ -33,11 +33,13 @@ class Heading extends React.Component{
                     </h1> */}
                     <img className="logo" src={logo} alt="" />
                     <div className="Navbarstyle">
-                        <div className="navbarItems">HOME</div>
+                        <div className="navbarItems" title="Homepage"><NavLink to="/home">HOME</NavLink></div>
                         <div className='dropdown'>
-                            <div className='navbarItems'>STORE</div>
-                            <div className="dropdown-content">
+                            <div className='navbarItems'><NavLink to="/accesories">STORE</NavLink></div>
+                            <div className="dropdown-content" title="Go to Accesories page">
+                            <NavLink to="/accesories">
                                 <Subnavbar />
+                              </NavLink>
                             </div>
 
                         </div>
@@ -87,7 +89,9 @@ class Heading extends React.Component{
                               <Nav.Link href="#action1">
                                 <div className="linkItems2">
                                   <NavDropdown className="linkItems2" title="STORE" id="offcanvasNavbarDropdown">
-                                    <NavDropdown.Item href="#action3"><Subnavbar2 /></NavDropdown.Item>
+                                    <NavDropdown.Item href="#action3"><NavLink to="/accesories">
+                                    <Subnavbar2 />
+                              </NavLink></NavDropdown.Item>
                                     {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item href="#action5">

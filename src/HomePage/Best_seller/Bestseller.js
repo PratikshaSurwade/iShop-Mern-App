@@ -24,7 +24,7 @@ function Bestseller(props) {
                             count={5}
                             value={props.info.rating}
                             edit={false}
-                            size={20}
+                            size={17}
                             activeColor="#ffd700"
                     />
                 </div>

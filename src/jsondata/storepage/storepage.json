@@ -168,4 +168,12 @@
         "originalPrice": 699,
         "discountedPrice": 499
     }
+    ,
+    {
+        "image": "../images/storepage/12.jpg",
+        "name": "Apple Airpods",
+        "rating": 4,
+        "originalPrice": 699,
+        "discountedPrice": 499
+    }
 ]
