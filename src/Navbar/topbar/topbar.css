@@ -20,9 +20,24 @@
 .itemPrice{
     color: #d3d3d3;
 }
-.cartBadge{
+.rounded-pill ,.cartBadge{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.itemCount{
     position: absolute;
     z-index: 4;
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+    font-size: 10px;
+    margin: 0;
+    border-radius: 50%;
+    position:absolute;
+    top:-1px;
+    left:12px;
+    /* padding:5px; */
     
 }
 

@@ -11,13 +11,13 @@ function TopmobBar() {
   return (
     <div className='TopmobBar'>
         
-            <div className='items'>
+            <div className='items' title="Go to Cart" style={{cursor:"pointer",position:"relative"}}>
                 
                     <img src={bag_icon} alt="" style={{fill:"#ffffff"}} />
                     <NavLink style={{textDecoration:"none",textDecorationColor:"none",color:"white"}} to="/cart">
                         <span className='itemCount'>
                             <Badge pill bg="danger" className='cartBadge'>2</Badge>
-                        </span>"""  Items<span className='itemPrice'>  $998</span> 
+                        </span> <span style={{position:"relative",marginLeft:"7px"}}>Items</span><span className='itemPrice'>  $998</span> 
                     </NavLink>
 
             </div>

@@ -45,11 +45,14 @@ function Topbar() {
 
           </div>
           <div className='items' title="Go to Cart" style={{cursor:"pointer",position:"relative"}}>
-            <NavLink  style={{textDecoration:"none",textDecorationColor:"none",color:"black"}} to="/cart">
-              <img src={bag_icon} alt="" /><span className='itemCount'>
-                <Badge pill bg="danger" className='cartBadge'>2</Badge>
-              </span>"""  Items<span className='itemPrice'>  $998</span> 
-            </NavLink>
+              <NavLink  style={{textDecoration:"none",textDecorationColor:"none",color:"black"}} to="/cart">
+                <img src={bag_icon} alt="" />
+                <span className='itemCount'>
+                  <Badge pill bg="danger" className='cartBadge'>2</Badge>
+                </span>  <span style={{position:"relative",marginLeft:"7px"}}>Items</span>
+              </NavLink>
+              <span className='itemPrice'>  $998</span> 
+            
 
           </div>
           <div className='search'><i class="fa-solid fa-magnifying-glass"></i></div>
