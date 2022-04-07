@@ -1,6 +1,4 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
-
 
 body{
     /* margin: 0px; */
@@ -97,8 +95,7 @@ hr.hrTopNavbar{
 }
 @media (max-width:576px){
     body{
-        padding: 0.2rem;
-
+        padding-top: 0.3rem;
     }
     .logo2{
         width: 6rem;

@@ -20,8 +20,9 @@ function Largesidebar() {
         start:0,
         end:showPerPage,
     })
+    
     const onPaginationChange = ( start ,  end ) => {
-        setpagination({start:start , end:end})
+        setpagination({start:start , end:end});
     };
   return (
     <>

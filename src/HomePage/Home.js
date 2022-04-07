@@ -60,6 +60,7 @@ function Home() {
             })}
           </div>
       </div>
+      <div className="loadmore">LOAD MORE</div>
       <Iphoneadd />
 
       <Facilitis />

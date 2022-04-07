@@ -83,80 +83,87 @@
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
-    },
-    {
-        "image": "../images/storepage/8.png",
-        "name": "MacBook Stand",
+    },{
+        "image": "../images/storepage/1.png",
+        "name": "Apple Ipad",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "AirPods",
+        "image": "../images/storepage/2.png",        
+        "name": "Apple Smart Watch 2",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "Apple HomePod Mini White",
+        "image": "../images/storepage/3.jpg",
+        "name": "Apple Smart Watch 2.0",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "iPod 2A",
+        "image": "../images/storepage/4.jpg",
+        "name": "Apple homepod mini",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "Design Hero",
+        "image": "../images/storepage/5.jpg",
+        "name": "Apple AirPods Max",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "iPod Touch Select",
+        "image": "../images/storepage/6.png",
+        "name": "Apple Camera",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
+        "image": "../images/storepage/7.jpg",
+        "name": "iPhone Lightning Dock - Gold",
+        "rating": 4,
+        "originalPrice": 699,
+        "discountedPrice": 499
+    },
+    
+    {
         "image": "../images/storepage/8.png",
-        "name": "iPod Pen",
+        "name": "Apple Magic Trackpad 2",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "Mini Mac",
+        "image": "../images/storepage/9.png",
+        "name": "Apple Macbook Pro",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "Aluminium Gold Watch",
+        "image": "../images/storepage/10.jpg",
+        "name": "New Apple Mac Mini",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "iPhone 8",
+        "image": "../images/storepage/11.jpg",
+        "name": "Apple Smartwatch Magic",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499
     },
     {
-        "image": "../images/storepage/8.png",
-        "name": "Beats HeadPhone",
+        "image": "../images/storepage/12.jpg",
+        "name": "Apple Airpods",
         "rating": 4,
         "originalPrice": 699,
         "discountedPrice": 499

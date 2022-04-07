@@ -69,6 +69,12 @@
     justify-content: center;
 }
 
+.loadmore{
+    color: #006CFF ;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
 .Feactured{
     margin: 3rem 10%;
     /* display: flex;
@@ -106,6 +112,9 @@
     }
     .sortbestSeller{
         display: block;
+    }
+    .loadmore{
+        display: none;
     }
 }
 

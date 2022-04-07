@@ -49,7 +49,7 @@ function Stripbar() {
                 </div>
         </div>
 
-        <div className='stripMobile'>
+        {/* <div className='stripMobile'>
         <div className='stripmobile'>
                 <div style={{ width: "15%" }} className='d-flex text-end flex-row flex-nowrap overflow-visible align-items-center'>
                     <button style={{border:"0", padding:"10px 5px", margin:"0 10px"}}><img className='myAuto' style={{margin:"auto"}} src="https://img.icons8.com/ios-glyphs/30/000000/squared-menu.png" alt=""/></button>
@@ -74,9 +74,9 @@ function Stripbar() {
                 </div>
 
         </div>
-        </div>
+        </div> */}
     </>
   )
 }
 
-export default Stripbar
+export default Stripbar;

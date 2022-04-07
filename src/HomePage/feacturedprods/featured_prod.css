@@ -68,7 +68,7 @@
         .sliderContainer>html{
             font-size: 30%;
         }
-        .slick-dots{
+        ul.slick-dots,.slick-dots li button:before{
             display: none;
         }
         .sliderElement{
@@ -82,6 +82,12 @@
 
     .sliderContainer{
         width: 25rem;
+    }
+    .sliderElement{
+        width: 13rem;
+    }
+    ul.slick-dots,.slick-dots li button:before{
+        display: none;
     }
 }
 
