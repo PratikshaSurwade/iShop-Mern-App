@@ -23,9 +23,8 @@ class Heading extends React.Component{
 
     render(){
         return(
-            <>
-                
-                <div className="navBar">
+            <>           
+              <div className="navBar">
                     <Topbar />
                     <hr className="hrTopNavbar" style={{color:"#d3d3d3"}}></hr>
                     {/* <h1 className="headstyle">
