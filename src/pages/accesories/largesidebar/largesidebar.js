@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./largesidebar.css";
 
 //json data
-import itemdata from "../../jsondata/storepage/storepage.json";
+import itemdata from "../../../jsondata/storepage/storepage.json";
 // import { Pagination } from 'react-bootstrap';
 
 import Pagination from './Pagination';

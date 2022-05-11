@@ -7,7 +7,6 @@ import profile from "./icons/profile_icon.svg";
 import bag_icon from "./icons/bag_icon.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function Topbar() {
   return (
     <>

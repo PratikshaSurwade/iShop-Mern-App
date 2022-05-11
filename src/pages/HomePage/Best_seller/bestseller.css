@@ -55,9 +55,7 @@
     margin: -5.4rem 0 0 2.6rem;
     z-index: 2;
     font-size:2rem;
-    /* text-align: center; */
-
-    
+    /* text-align: center; */  
 }
 
 .subCards:hover .imagepart,.subCards:hover .tag{
@@ -98,12 +96,19 @@
     html{
         font-size:60%;
     }
-    
+    .blurEffect{
+        margin: -5.4rem 0 0 0.6rem;
+        font-size:0.5rem;
+
+    }
 }
 
 @media only  screen and (min-width:768px) and (max-width:992px){
     html{
         font-size:75%;
+    }
+    .blurEffect{
+        margin: -5.4rem 0 0 1.8rem;
     }
     
 }

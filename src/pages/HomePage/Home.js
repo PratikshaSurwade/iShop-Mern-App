@@ -13,7 +13,7 @@ import mobImg from "./mobile_c3.png";
 
 
 //import json
-import bestSeller from "./../jsondata/homepage/bestseller.json";
+import bestSeller from "./../../jsondata/homepage/bestseller.json";
 
 import Featuredproduct from "./feacturedprods/Featuredproduct.js";
 
