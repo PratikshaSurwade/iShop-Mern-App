@@ -5,7 +5,7 @@ function Webpagination({showPerPage , onPaginationChange , total}) {
   const [counter , setCounter] = useState(1);
 
   const [numberOfButtons , setnumberOfButtons ] = useState(Math.ceil(total/showPerPage))
-
+console.log(numberOfButtons)
 
   useEffect(() => {
     const value = showPerPage *  counter;
@@ -13,7 +13,7 @@ function Webpagination({showPerPage , onPaginationChange , total}) {
     onPaginationChange(value - showPerPage ,value)
   },[counter]);
 
-  const onButtonClick =(type) => {
+  const onButtonClickweb =(type) => {
     if(type === "prev"){
       if(counter === 1){
         setCounter(1);
@@ -36,7 +36,7 @@ function Webpagination({showPerPage , onPaginationChange , total}) {
             <div className='d-flex justify-content-center'>
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
-                        {/* <li class="page-item"><a class="page-link"  onClick={() => onButtonClick("prev")}>Previous</a></li> */}
+                        <li class="page-item"><a class="page-link"  onClick={() => onButtonClickweb("prev")}>Previous</a></li>
                         
                         {
                             new Array(numberOfButtons).fill("").map((el, index)=> (
@@ -48,7 +48,7 @@ function Webpagination({showPerPage , onPaginationChange , total}) {
                             ))
                         }
                     
-                        {/* <li class="page-item"><a class="page-link" onClick={() => onButtonClick("next")}>Next</a></li> */}
+                        <li class="page-item"><a class="page-link" onClick={() => onButtonClickweb("next")}>Next</a></li>
                     </ul>
                 </nav>
             </div>

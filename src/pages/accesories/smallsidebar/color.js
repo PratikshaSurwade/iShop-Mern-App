@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import "./smallsidebar.css";
-import "./color.css";
+import "../store";
 
 function Color() {
-    
+    const [selectedcolor, setSelectedcolor] = useState("");
+
     const [blueClicked, setBlueClicked] = useState(true);
     const [darkPinkClicked, setDarkPinkClicked] = useState(false);
     const [blackClicked, setBlackClicked] = useState(false);
@@ -18,6 +18,7 @@ function Color() {
         setLightPinkClicked(false);
         setYellowClicked(false);
         setCamronClicked(false);
+        setSelectedcolor("blue")
     }
     const handleDarkPink = () => {
         setBlueClicked(false);
@@ -26,7 +27,7 @@ function Color() {
         setLightPinkClicked(false);
         setYellowClicked(false);
         setCamronClicked(false);
-        
+        setSelectedcolor("red");       
     }
     const handleBlack = () => {
         setBlueClicked(false);
@@ -35,7 +36,7 @@ function Color() {
         setLightPinkClicked(false);
         setYellowClicked(false);
         setCamronClicked(false);
-        
+        setSelectedcolor("black")
     }
     const handleYellow = () => {
         setBlueClicked(false);
@@ -44,7 +45,7 @@ function Color() {
         setYellowClicked(true);
         setLightPinkClicked(false);
         setCamronClicked(false);
-        
+        setSelectedcolor("yellow")
     }
     const handleLightPink = () => {
         setBlueClicked(false);
@@ -53,16 +54,16 @@ function Color() {
         setYellowClicked(false);
         setLightPinkClicked(true);
         setCamronClicked(false);
-        
+        setSelectedcolor("pink") ; 
     }
-    const handleCamron = () => {
+    const handleWhite = () => {
         setBlueClicked(false);
         setDarkPinkClicked(false);
         setBlackClicked(false);
         setLightPinkClicked(false);
         setYellowClicked(false);
         setCamronClicked(true);
-        
+        setSelectedcolor("white");
     }
 
   return (
@@ -96,15 +97,12 @@ function Color() {
                                     </div>
                                 </span>
                                 <span>
-                                    <div style={{borderRadius:"50%", width:"1.5rem", height:"1.5rem",position:"relative",cursor:"pointer"}} onClick={handleCamron} className={camronClicked?"forCamron":"removeAll"}>
-                                        <div style={{backgroundColor:"#FC3E39",borderRadius:"50%", width:"1rem", height:"1rem" ,border:"none",position:"absolute",margin:"auto",top:"2px",right:"2px"}}></div>
+                                    <div style={{borderRadius:"50%", width:"1.5rem", height:"1.5rem",position:"relative",cursor:"pointer"}} onClick={handleWhite} className={camronClicked?"forCamron":"removeAll"}>
+                                        <div style={{backgroundColor:"white",borderRadius:"50%", width:"1rem", height:"1rem" ,border:"none",position:"absolute",margin:"auto",top:"2px",right:"2px"}}></div>
 
                                     </div>
                                 </span>
-                                
-
             </div>
-        
     </div>
   )
 }

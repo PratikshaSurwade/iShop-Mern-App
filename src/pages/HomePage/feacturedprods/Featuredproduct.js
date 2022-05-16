@@ -3,7 +3,7 @@ import Slider from "react-slick";
 import "./featured_prod.css";
 import { useRef } from "react";
 
-import ReactStars from "react-rating-stars-component";
+import StarRatings from 'react-star-ratings';
 import img1 from "./featuredproducts/beats_solo_2.svg";
 import img2 from "./featuredproducts/H-squared.svg";
 import img3 from "./featuredproducts/Netatmo_rain.svg";
@@ -81,9 +81,14 @@ export default function Featuredproduct() {
                     Beats Solo 2 On Ear Headphones - Black
                   </div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                     />
                   </div>
@@ -104,9 +109,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">H-Squared tvTray</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -149,9 +159,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">Netatmo Rain Gauge</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -176,9 +191,14 @@ export default function Featuredproduct() {
                     Beats Solo 2 On Ear Headphones - Black
                   </div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -201,9 +221,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">H-Squared tvTray</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -226,9 +251,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">Netatmo Rain Gauge</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -253,9 +283,14 @@ export default function Featuredproduct() {
                     Beats Solo 2 On Ear Headphones - Black
                   </div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -278,9 +313,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">H-Squared tvTray</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={false}
                       // size={20}
                       activeColor="#ffd700"
@@ -303,9 +343,14 @@ export default function Featuredproduct() {
                 <div className="itemDetailss">
                   <div className="item_name">Netatmo Rain Gauge</div>
                   <div className="stars">
-                    <ReactStars
-                      count={5}
-                      value={4}
+                    <StarRatings
+                        rating={3.5}
+                        starRatedColor="#FFD700
+          "
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                       edit={true}
                       // size={20}
                       activeColor="#ffd700"

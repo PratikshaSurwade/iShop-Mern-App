@@ -23,6 +23,77 @@
     padding: 0px;
     border-radius: 0.5rem;
 }
+/* //sidebar */
+.sidebarHeader{
+    background-color:#f5f4f4;
+    border-radius: 0.5rem;
+}
+
+.sidebarHeader>h3{
+    margin : 0.4rem;
+}
+
+.elementsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+}
+.ele_classifier{
+    display: flex;
+    justify-content: space-between;
+}
+.accesory,.brand{
+    display: flex;
+    justify-content: space-between;
+}
+.ele_classifier:hover,.accesory:hover,.brand:hover{
+    color: #006CFF;
+    cursor: pointer;
+
+}
+.ranger{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+/* COLOR */
+.colorize{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 1.5rem;
+}
+
+.removeAll {
+    border: none;
+    padding: 0;
+}
+
+.forBlue {
+    border: 2px groove #2200ff;
+}
+
+.forPink{
+    border: 2px groove #FC3E39;
+}
+
+.forBlack{
+    border: 2px groove #171717;
+}
+
+.forYellow{
+    border: 2px groove #FFF600;
+}
+
+
+.forLightPink{
+    border: 2px groove #FF00B4;
+}
+
+.forCamron{
+    border: 2px groove #FC3E39;
+}
 
 
 

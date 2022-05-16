@@ -20,7 +20,8 @@ import TopmobBar from "./topbar/topbarformob";
 
 
 class Heading extends React.Component{
-
+// ...................................................................................  ash cvmbv cmv cvmnsdf dfwfkf mdfn tryty df sds dfd
+//               m mm mmm mmmm mmmmm mmmmmm mmmmmmm mmmm||| || | || |||mmmm mmmmmmm mmmmmm mmmmm mmmm mmm mm m  
     render(){
         return(
             <>           
@@ -40,16 +41,12 @@ class Heading extends React.Component{
                                 <Subnavbar />
                               </NavLink>
                             </div>
-
                         </div>
-                      
                         <div className="navbarItems">IPHONE</div>
                         <div className="navbarItems">IPAD</div>
                         <div className="navbarItems">MACBOOK</div>
-                        <div className="navbarItems">ACCESORIES</div>
-
-                    </div>
-                    
+                        <div className="navbarItems"><NavLink to="/accesory">ACCESORIES</NavLink></div>
+                    </div>                    
                     <hr style={{margin:"0px 10%"}}></hr>
                     {/* <Subnavbar /> */}
                 </div>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "./topbar.css";
 import Badge from 'react-bootstrap/Badge';
 import { NavLink } from "react-router-dom";
@@ -7,8 +7,17 @@ import profile from "./icons/profile_icon.svg";
 import bag_icon from "./icons/bag_icon.svg";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useSelector, useDispatch } from "react-redux";
+
 function Topbar() {
-  return (
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const getCartCount = () => {
+    return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+  };
+
+return (
     <>
     
     <div className='topBar'>
@@ -47,7 +56,7 @@ function Topbar() {
               <NavLink  style={{textDecoration:"none",textDecorationColor:"none",color:"black"}} to="/cart">
                 <img src={bag_icon} alt="" />
                 <span className='itemCount'>
-                  <Badge pill bg="danger" className='cartBadge'>2</Badge>
+                  <Badge pill bg="danger" className='cartBadge'>{getCartCount()}</Badge>
                 </span>  <span style={{position:"relative",marginLeft:"7px"}}>Items</span>
               </NavLink>
               <span className='itemPrice'>  $998</span> 

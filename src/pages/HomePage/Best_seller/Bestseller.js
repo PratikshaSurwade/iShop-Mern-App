@@ -1,44 +1,76 @@
 import "./bestseller.css";
-import ReactStars from "react-rating-stars-component";
+import StarRatings from 'react-star-ratings';
 import likeButton from "./icons/favorite_icon.svg";
-import cart from "./icons/fill_cart.svg";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+import cart from "./icons/fill_cart.svg";
+// import { addProduct } from "../../../redux/cartRedux";
+// import { useSelector } from "react-redux";
+
+// import { useDispatch } from "react-redux";
 
 function Bestseller(props) {
-    // console.log(props.info.image)
-    return(
+    // console.log(props)
+
+
+    const [quantity, setQuantity] = useState(1);
+    // const handleQuantity = (type) => {
+    //     if (type === "dec") {
+    //       quantity > 1 && setQuantity(quantity - 1);
+    //     } else if(type === "inc"){
+    //         // quantity =quantity++;
+    //         setQuantity(quantity+1)
+    //     }
+    // }
+
+    // const dispatch = useDispatch();
+
+    // const product = props.info;
+    // // console.log(product)
+    // const handleClick = () => {
+    //     dispatch(
+    //       addProduct({ ...product, quantity:product.quantity ,price: product.discountedPrice*quantity })
+    //     );
+    //   };
+
+    return (
         <>
-        
+
             <div className="subCards">
                 <div className="tag">HOT</div>
                 <div className="hoveritems">
-                    <img className="imagepart" src={props.info.image} alt="" ></img>
+                    <img className="imagepart" src={props.info.img} alt="" ></img>
                     <div className="blurEffect">
                         <img src={likeButton} alt="" />
                         <img src={cart} alt="" />
                     </div>
                 </div>
-                <div className="itemName">{ props.info.name }</div>
+                <Link to={`/api/products/${props.info._id}`} className="info__button">
+                    <div className="itemName">{props.info.name}</div>
+                </Link>
+
                 <div className="itemRatings">
-                    <ReactStars
-                            count={5}
-                            value={props.info.rating}
-                            edit={false}
-                            size={17}
-                            activeColor="#ffd700"
+                    <StarRatings
+                        rating={props.info.rating}
+                        starRatedColor="#FFD700"
+                        numberOfStars={5}
+                        name='rating'
+                        starDimension="10px"
+                        starSpacing="1px"
                     />
                 </div>
-                
+
                 <div>
-                    <span style={{"marginRight":"10px", "color":"red"}}> 
+                    <span style={{ "marginRight": "10px", "color": "red" }}>
                         ${props.info.discountedPrice}
                     </span>
-                    <span style={{"color":"#999999"}}>
+                    <span style={{ "color": "#999999" }}>
                         <del>${props.info.originalPrice}</del>
                     </span>
                 </div>
             </div>
-         
+
         </>
     )
 }

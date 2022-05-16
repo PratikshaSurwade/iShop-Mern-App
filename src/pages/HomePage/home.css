@@ -92,6 +92,10 @@
     font-size: 3rem;
 }
 
+.navlinkremoval{
+    text-decoration: none;
+    color: black;
+}
 @media (max-width:576px){
 
     .homepageItems {
