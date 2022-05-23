@@ -61,7 +61,7 @@ export default function Featuredproduct() {
   ]
   };
   const sliderRef = useRef(null);
-  console.log(sliderRef.current);
+  // console.log(sliderRef.current);
   return (
     <div className="itemContain">
       <div className="sliderContainer">

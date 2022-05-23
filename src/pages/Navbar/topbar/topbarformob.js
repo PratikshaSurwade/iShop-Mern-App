@@ -23,10 +23,7 @@ function TopmobBar() {
             </div>
             <div className='profile'>
                 <img src={profile} alt="" /> My profile
-
             </div>
-                  
-
         <div className='secmobbar'>
             <NavDropdown  className="topmobBarClor" title="EN" id="basic-nav-dropdown">
                 <NavDropdown.Item href="#action/3.1">Spanish</NavDropdown.Item>

@@ -4,12 +4,13 @@ import imagee from "./../HomePage/feacturedprods/featuredproducts/Netatmo_rain.s
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link ,useNavigate } from "react-router-dom";
 // Actions
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 
-function Cart() {
+const Cart = () => {
     const dispatch = useDispatch();
+    let navigate = useNavigate ();
 
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
@@ -34,7 +35,11 @@ function Cart() {
             .toFixed(2);
     };
 
+    const checkout = () => {
+        // navigate("/login?redirect=shipping");
+        navigate("/shipping");
 
+      };
     return (
         <>
             <h5 className='topHeader'>Cart</h5>
@@ -106,7 +111,7 @@ function Cart() {
                         <div className='gridofPrices'>
                             <h2>TOTAL</h2><h2>Rs.({getCartSubTotal()})</h2>
                         </div>
-                        <button className='totalbutton' style={{ height: "3rem", backgroundColor: "#006CFF", color: "white", border: "rgb(0,108,255) solid 1px", borderRadius: "2px" }}>Check Out</button>
+                        <button className='totalbutton' style={{ height: "3rem", backgroundColor: "#006CFF", color: "white", border: "rgb(0,108,255) solid 1px", borderRadius: "2px" }} disabled={cartItems.length === 0} onClick={checkout}>Check Out</button>
                     </div>
                 </div>
             </div>

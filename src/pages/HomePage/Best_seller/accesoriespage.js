@@ -8,7 +8,6 @@ import StarRatings from 'react-star-ratings';
 const Items = ({ info }) => {
     return (
         <>
-
             <div className="subCards">
                 <div className="tag">HOT</div>
                 <div className="hoveritems">

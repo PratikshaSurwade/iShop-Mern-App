@@ -7,10 +7,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Iphoneadd from "./iphoneadd/iphoneadd.js";
 import { NavLink } from "react-router-dom";
 import { useLocation } from "react-router";
-import {useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts as listProducts } from "../../redux/actions/productActions";
-
 
 import "./home.css";
 import axios from "axios";
@@ -18,93 +17,109 @@ import axios from "axios";
 import mainImg from "./corousel_3.png";
 import mobImg from "./mobile_c3.png";
 
-
 //import json
-import bestSeller from "./../../jsondata/homepage/bestseller.json";
-
 import Featuredproduct from "./feacturedprods/Featuredproduct.js";
-
-const bestseler = bestSeller;
+import Loader from "../effects/loader.js";
 
 function Home() {
-  const location = useLocation();
-  const subtab = location.pathname.split("/")[2];
-  console.log(subtab);
-  const [bestseller ,setBestseller] = useState([]);
-
+  //fetching products from reducer
   const dispatch = useDispatch();
-
   const getProducts = useSelector((state) => state.getProducts);
   const { products, loading, error } = getProducts;
+  //subtab filtering
+  const [list, setlist] = useState([])
+  const [listavailable, setlistavailable] = useState(false)
 
+  const [subtabSelect, setSubtabSelect] = useState()
+  //load more pagination
+  const [showPerPage , setShowPerPage] = useState(8);
+  // const [total , setTotal] = useState(products.length);
+  const [counter , setCounter] = useState(1);
+
+  const selectsubTag = ((e) => {
+    const val = (e.target.innerHTML)
+    setSubtabSelect(val)
+  })
+  const selectsubTab = () => {
+    
+    let lists = products
+    if (subtabSelect) {
+      lists = products.filter((item) => (item.subtab.indexOf(subtabSelect.toLowerCase()) !== -1))
+      !lists.length? (setlistavailable(false) ): setlistavailable(true)
+      setlist(lists)
+    } else {
+      setlist(products)
+    }
+  }
+  const [pagination , setpagination] = useState({
+    start:0,
+    end:showPerPage,
+})
+const onPaginationChange = ( start ,  end ) => {
+  setpagination({start:0 , end:end});
+
+};
+  const setLoadmorefun = () => {
+  }
   useEffect(() => {
     dispatch(listProducts());
-  }, [dispatch]);
+    // setlist(products)
+    selectsubTab(subtabSelect);
+    setLoadmorefun();
+    const value = showPerPage *  counter;
 
+    onPaginationChange(value - showPerPage ,value)
 
-  // useEffect(() => {
-  //   const getPost = async () => {
-  //     const res = await axios.get(subtab
-  //       ? `http://localhost:7000/api/products?subtab=${subtab}`
-  //       : "http://localhost:7000/api/products"
-  //   );
-  //     console.log(res.data)
-  //     setBestseller(res.data);
-  //   };
-  //   getPost();
-  // }, [subtab]);
-  // console.log(bestseller)
+  }, [dispatch, subtabSelect,counter]);
+
   return (
-    
     <>
       <img className="mainImg" src={mainImg} alt="" />
-      <img className="mobImg" src={mobImg} alt="" />      
-
+      <img className="mobImg" src={mobImg} alt="" />
       <h2 className="subHead">BEST SELLER</h2>
       <NavDropdown className="sortbestSeller" title="Categories" id="basic-nav-dropdown" >
-            <NavDropdown.Item><NavLink className="navlinkremoval" to="/home/mac">Mac</NavLink></NavDropdown.Item>
-            <NavDropdown.Item ><NavLink to="/home/iphone">iPhone</NavLink></NavDropdown.Item>
-            <NavDropdown.Item><NavLink to="/mac">iPad</NavLink></NavDropdown.Item>
-            <NavDropdown.Item><NavLink to="">iPod</NavLink></NavDropdown.Item>
-            <NavDropdown.Item><NavLink to="/accesory">Accessories</NavLink></NavDropdown.Item>
-
-            {/* <NavDropdown.Divider /> */}
-            
-            {/* <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
+        <NavDropdown.Item><NavLink className="navlinkremoval" to="/home/mac">Mac</NavLink></NavDropdown.Item>
+        <NavDropdown.Item ><NavLink to="/home/iphone">iPhone</NavLink></NavDropdown.Item>
+        <NavDropdown.Item><NavLink to="/mac">iPad</NavLink></NavDropdown.Item>
+        <NavDropdown.Item><NavLink to="">iPod</NavLink></NavDropdown.Item>
+        <NavDropdown.Item><NavLink to="/accesory">Accessories</NavLink></NavDropdown.Item>
       </NavDropdown>
-      
       <div className="subHeadSubpoints">
-        <div className="subListItems"><NavLink className="navlinkremoval" to="/home">All</NavLink></div>
-        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/mac">Mac</NavLink></div>
-        <div className="subListItems"><NavLink  className="navlinkremoval" to="/home/iphone">iPhone</NavLink></div>
-        <div className="subListItems"><NavLink className="navlinkremoval"  to="/home/ipad">iPad</NavLink></div>
-        <div className="subListItems"><NavLink className="navlinkremoval"  to="/home/ipod">iPod</NavLink></div>
-        <div className="subListItems"><NavLink className="navlinkremoval"  to="/home/accessories">Accessories</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home" onClick={selectsubTag}>All</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/mac" onClick={selectsubTag}>Mac</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/iphone" onClick={selectsubTag}>iPhone</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/ipad" onClick={selectsubTag}>iPad</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/ipod" onClick={selectsubTag}>iPod</NavLink></div>
+        <div className="subListItems" ><NavLink className="navlinkremoval" to="/home/accessories" onClick={selectsubTag}>Accessories</NavLink></div>
       </div>
-
+      
       <div className="home">
-          <div className="homepageItems">
+       
+        {console.log(listavailable)}
+        <div className="homepageItems">
+        
           {loading ? (
-          <h2>Loading...</h2>
-        ) : error ? (
-          <h2>{error}</h2>
-        ) : (
-          products.map((product) => {
-              return <Bestseller info={product} />;
-            })
-            )}
-          </div>
+            <div style={{display:"flex",justifyContent:"center",flexDirection:"column"}}>
+            <h2 style={{textAlign:"center"}}>Loading...</h2>
+                  <Loader />
+                  </div>
+          ) : (
+            listavailable ? (list.slice(pagination.start,pagination.end).map((info) => {
+              return <Bestseller info={info} />;
+            })) : ( products.slice(pagination.start,pagination.end).map((info) => {
+              return <Bestseller info={info} />;
+            }))
+            
+          )}
+        </div>
       </div>
-      <div className="loadmore">LOAD MORE</div>
+      <div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div>
+      {/* {totalPages !== page && <div className="loadmore" onClick={() => setPage(page + 1)}>{loading ? 'Loading...' : 'Load More'}</div>} */}
       <Iphoneadd />
-
       <Facilitis />
-
       <h3 className="subHead">FEATURED PTODUCTS</h3>
-    
       <Featuredproduct />
     </>
   );
 }
-
 export default Home;

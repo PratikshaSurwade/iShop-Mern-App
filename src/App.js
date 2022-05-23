@@ -13,6 +13,10 @@ import Bestseller from "./pages/HomePage/Best_seller/Bestseller";
 import Itembar from "./pages/accesories/largesidebar/itembar";
 import PageSecond from "./pages/accesories/page2";
 import Singleproduct from "./pages/singleproduct/Singleproduct";
+import ShippingScreen from "./pages/shipping/ShippingScreen";
+import PaymentScreen from "./pages/shipping/PaymentScreen";
+import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
+import OrderScreen from "./pages/shipping/OrderScreen";
 
 function App() {
   const user = false;
@@ -45,6 +49,12 @@ function App() {
 
           <Route path="/trial" element={<Trial />} exact />
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
+          <Route path="/shipping" element={<ShippingScreen />} exact />
+          <Route path="/payment" element={<PaymentScreen />} exact />
+          <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
+          <Route path="/api/orders/:id" element={<OrderScreen />} exact />
+
+
 
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />

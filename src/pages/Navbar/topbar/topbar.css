@@ -25,6 +25,13 @@
     justify-content: center;
     align-items: center;
 }
+.topListItemRight{
+    margin: 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    color: #666;
+}
 .itemCount{
     position: absolute;
     z-index: 4;

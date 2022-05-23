@@ -11,32 +11,8 @@ import cart from "./icons/fill_cart.svg";
 // import { useDispatch } from "react-redux";
 
 function Bestseller(props) {
-    // console.log(props)
-
-
-    const [quantity, setQuantity] = useState(1);
-    // const handleQuantity = (type) => {
-    //     if (type === "dec") {
-    //       quantity > 1 && setQuantity(quantity - 1);
-    //     } else if(type === "inc"){
-    //         // quantity =quantity++;
-    //         setQuantity(quantity+1)
-    //     }
-    // }
-
-    // const dispatch = useDispatch();
-
-    // const product = props.info;
-    // // console.log(product)
-    // const handleClick = () => {
-    //     dispatch(
-    //       addProduct({ ...product, quantity:product.quantity ,price: product.discountedPrice*quantity })
-    //     );
-    //   };
-
     return (
         <>
-
             <div className="subCards">
                 <div className="tag">HOT</div>
                 <div className="hoveritems">
@@ -49,7 +25,6 @@ function Bestseller(props) {
                 <Link to={`/api/products/${props.info._id}`} className="info__button">
                     <div className="itemName">{props.info.name}</div>
                 </Link>
-
                 <div className="itemRatings">
                     <StarRatings
                         rating={props.info.rating}
@@ -60,7 +35,6 @@ function Bestseller(props) {
                         starSpacing="1px"
                     />
                 </div>
-
                 <div>
                     <span style={{ "marginRight": "10px", "color": "red" }}>
                         ${props.info.discountedPrice}
@@ -70,7 +44,6 @@ function Bestseller(props) {
                     </span>
                 </div>
             </div>
-
         </>
     )
 }

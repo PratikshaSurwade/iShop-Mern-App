@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams , useNavigate} from "react-router-dom";
 import "./singleproduct.css"
 import { useSelector, useDispatch } from "react-redux";
 
@@ -7,9 +7,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { getProductDetails } from "../../redux/actions/productActions";
 import { addToCart } from "../../redux/actions/cartActions";
 
-const Singleproduct = ({ match, history }) => {
+const Singleproduct = ({ match }) => {
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
+  let navigate = useNavigate ();
+
   const { id } = useParams();
 
   const productDetails = useSelector((state) => state.getProductDetails);
@@ -23,7 +25,7 @@ const Singleproduct = ({ match, history }) => {
 console.log(qty)
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty , product.img , product.discountedPrice ,product.name));
-    history.push(`/cart`);
+    navigate(`/cart`);
   };
 
   return (
