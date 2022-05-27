@@ -130,7 +130,7 @@ function Store() {
     updatedList = updatedList.filter(
       (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
     );
-    console.log(updatedList)
+    // console.log(updatedList)
     setFilteredProducts(updatedList);
     !updatedList.length ? setResultsFound(false) : setResultsFound(true);
   };

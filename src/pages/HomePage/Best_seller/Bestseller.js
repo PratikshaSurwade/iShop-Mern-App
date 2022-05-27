@@ -2,15 +2,33 @@ import "./bestseller.css";
 import StarRatings from 'react-star-ratings';
 import likeButton from "./icons/favorite_icon.svg";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 
 import cart from "./icons/fill_cart.svg";
-// import { addProduct } from "../../../redux/cartRedux";
-// import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-// import { useDispatch } from "react-redux";
+// Actions
+import { getProductDetails } from "../../../redux/actions/productActions";
+import { addToCart } from "../../../redux/actions/cartActions";
 
-function Bestseller(props) {
+function Bestseller  ( props ) {
+    const [qty, setQty] = useState(1);
+
+    const dispatch = useDispatch();
+    let navigate = useNavigate ();
+
+    // // useEffect(() => {
+    // //     if (props.info && id !== props.info._id) {
+    // //       dispatch(getProductDetails(id));
+    // //     }
+    // //   }, [dispatch, match, props.info]);
+
+    // console.log(props.info)
+
+    // const addToCartHandler = () => {
+    //     dispatch(addToCart(props.info._id, props.info.img , props.info.discountedPrice ,props.info.name));
+    //     navigate(`/cart`);
+    //   };
     return (
         <>
             <div className="subCards">
@@ -19,7 +37,9 @@ function Bestseller(props) {
                     <img className="imagepart" src={props.info.img} alt="" ></img>
                     <div className="blurEffect">
                         <img src={likeButton} alt="" />
-                        <img src={cart} alt="" />
+                        {/* <img src={cart} alt=""  onClick={addToCartHandler}  /> */}
+                        <img src={cart} alt=""  />
+
                     </div>
                 </div>
                 <Link to={`/api/products/${props.info._id}`} className="info__button">

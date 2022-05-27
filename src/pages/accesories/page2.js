@@ -3,19 +3,78 @@ import { Slider } from '@material-ui/core';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./store.css";
-import "./largesidebar/largesidebar.css"
+import "./largesidebar/largesidebar.css";
+import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { useCallback } from 'react';
+import { getProducts as listProducts } from "../../redux/actions/productActions";
+import { useDispatch, useSelector } from "react-redux";
+
 // import Largesidebar from './largesidebar/largesidebar';
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
 import Items from '../HomePage/Best_seller/accesoriespage';
+// import Slider from '@mui/material/Slider';
+import { Radio } from '@material-ui/core';
+import { RadioGroup } from '@material-ui/core'
+//////
 
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+// import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import InputLabel from '@mui/material/InputLabel';
+// import {RoomIcon} from '@material-ui/icons/Room';
+
+// import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+// import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { FormControl } from '@material-ui/core';
+import { FormControlLabel } from '@material-ui/core';
+import Loader from "../effects/loader.js";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+import Chip from '@mui/material/Chip';
+import Stack from '@mui/material/Stack';
 function PageSecond() {
+
+
+    const [selcat, setSelcat] = useState(null);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+    const handleListItemClick = (event, index) => {
+        setSelcat(event.target.textContent);
+        if(index==8){
+            setSelcat(null)
+        }
+        console.log(event.target.textContent)
+
+    };
+    const handleClick = () => {
+        console.info('You clicked the Chip.');
+    };
+
+    const handleDelete = () => {
+        console.info('You clicked the delete icon.');
+    };
+    const dispatch = useDispatch();
+    const getProducts = useSelector((state) => state.getProducts);
+    const { products, loading, error } = getProducts;
+    console.log(products)
+
     const [prices, setPrice] = useState([4, 99]);
-    const [productsss, setProductsss] = useState([]);
+    const [productsss, setproductsss] = useState([]);
     // const [products, setProducts] = useState([]);
 
     //filtered data 1,2,3
     const [filteredbrand, setFilteredbrand] = useState(null);
     const [filteredcategory, setFilteredcategory] = useState(null);
+    const location = useLocation();
+
+    const path = location.pathname.split("/")[2];
+    console.log(path);
+    // setFilteredcategory(path)
     const [filteredprice, setFilteredprice] = useState([null]);
     //color
     const [selectedcolor, setSelectedcolor] = useState(null);
@@ -86,14 +145,26 @@ function PageSecond() {
         setWhiteclicked(true);
         setSelectedcolor("white")
     }
+    // const total = (productsss.length);
+
     // console.log(selectedcolor);
+    const [price, setPricee] = useState([0, 10000]);
+    const [categoryToggle, setCategoryToggle] = useState(true);
+
+
+    const priceHandler = (e, newPrice) => {
+        setPricee(newPrice);
+    }
+
+
     const selectBrand = ((event) => {
         const value = event.target.innerHTML;
-        setFilteredbrand(value)
+        setFilteredbrand(value.toLowerCase())
     })
     const selectCategory = ((event) => {
         const value = event.target.innerHTML;
-        setFilteredcategory(value)
+        console.log(value)
+        !value.length ? setFilteredcategory("null") : setFilteredcategory(value);
     })
     // console.log(filteredcategory)
     const updateRange = (e, data) => {
@@ -101,13 +172,17 @@ function PageSecond() {
         setFilteredprice([data[0] * 100, data[1] * 100])
     }
 
-    const [showPerPage, setShowPerPage] = useState(4);
-    const total = (productsss.length);
-    console.log()
-    // const total = filteredProducts ? (filteredProducts.length) :products.length;
+    const [showPerPage, setShowPerPage] = useState(6);
+    // console.log()
+    // const total = filteredProducts ? (filteredProducts.length) :products.length;        123456789/*-+.0123654789/*-+.0
     //data for filters upcoming
     const [counter, setCounter] = useState(1);
     const [items, setItems] = useState([]);
+    const [needalert, setNeedAlert] = useState(false);
+    const [pageload, setPageload] = useState(true);
+    // const [filters, setFilters] = useState({});
+
+
     const [sortType, setSortType] = useState('createdAt');
     const [pagination, setpagination] = useState({
         start: 0,
@@ -117,6 +192,8 @@ function PageSecond() {
     const onPaginationChange = (start, end) => {
         setpagination({ start: start, end: end });
     };
+    const total = resultsFound ? (items.length) : (productsss.length);
+
     const onButtonClickpage = (type) => {
         if (type === "prev") {
             if (counter === 1) {
@@ -150,57 +227,122 @@ function PageSecond() {
         }
 
     }
+
     // console.log();
     const applyFilters = () => {
         let updatedList = productsss;
+        console.log(productsss);
+        console.log("in apply filters");
 
-        // color Filter
-        if (selectedcolor) {
-            updatedList = [...updatedList].filter(
-                (data) => (data.color.indexOf(selectedcolor) !== -1)
-            )
-        }
-        console.log(selectedcolor)
         // category filter
-        if (filteredcategory) {
-            updatedList =[...updatedList].filter(
-                (data) => (data.categories.indexOf(filteredcategory.toLowerCase()) !== -1)
-            )
-        }        console.log(filteredcategory)
-
-        // brand filter
-        if (filteredbrand) {
+        if ((selcat) != null) {
+            setPageload(false);
             updatedList = [...updatedList].filter(
-                (data) => (data.brand.indexOf(filteredbrand.toLowerCase()) !== -1)
-            )
-        }        console.log(filteredbrand)
+                (data) => (data.categories.indexOf(selcat) !== -1)
+            );
+        }
+        console.log(selcat)
+        console.log(updatedList);
 
         // Price Filter
-        const minPrice = filteredprice[0];
-        const maxPrice = filteredprice[1];
+        const minPrice = price[0];
+        const maxPrice = price[1];
 
         updatedList = [...updatedList].filter(
             (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
-        );        console.log(filteredprice)
-
+        );
         console.log(updatedList)
-        setFilteredProducts(updatedList);
-        !updatedList.length ? setResultsFound(false) : setResultsFound(true);
-        { resultsFound ? setFilteredProducts(updatedList) : setFilteredProducts(productsss) }
 
-    };
-    console.log(prices,filteredprice, filteredbrand,filteredcategory, selectedcolor)
+        // color Filter
+        if ((selectedcolor) != null) {
+            setPageload(false);
+
+            updatedList = [...updatedList].filter(
+                (data) => (data.color.indexOf(selectedcolor) !== -1)
+            )  
+        }
+        console.log(updatedList)
+
+        // brand filter
+        if ((filteredbrand) != null) {
+            setPageload(false);
+
+            console.log(filteredbrand)
+            updatedList = [...updatedList].filter(
+                (data) => (data.brand.indexOf(filteredbrand) !== -1)
+            )  
+        }
+
+        console.log(updatedList.length)
+        // setFilteredProducts(updatedList);
+        console.log(!updatedList.length);
+        console.log(productsss.length);
+
+        // (!updatedList.length) ? setResultsFound(false) : setResultsFound(true);
+        // console.log(resultsFound)
+        // resultsFound ? setFilteredProducts(updatedList) : setFilteredProducts(productsss)
+        // resultsFound ? setItems(updatedList) : setItems(productsss)
+
+        // (!updatedList.length) ? setFilteredProducts(productsss) : setFilteredProducts(updatedList);
+        // (!updatedList.length) ? setItems(productsss) : setItems(updatedList);
+
+
+        if (!updatedList.length) {
+            setNeedAlert(true)
+            setFilteredProducts(productsss);
+            setItems(productsss);
+            console.log("in updatedlist == 0 ");
+
+        }
+        else {
+            setNeedAlert(false)
+            setFilteredProducts(updatedList)
+            setItems(updatedList)
+            console.log("in else of apply filterd");
+
+        }
+
+        // console.log(productsss)
+        // if (filteredbrand || selcat || selectedcolor) {
+        //     setNeedAlert(false)
+        //     setFilteredProducts(productsss);
+        //     setItems(productsss);
+        //     console.log("in updatedlist == 0 ");
+
+        // }
+        // else {
+        //     if (updatedList.length = 0) {
+        //         setNeedAlert(true)
+        //         setFilteredProducts(productsss);
+        //     }
+        //     setNeedAlert(false)
+        //     setFilteredProducts(updatedList)
+        //     setItems(updatedList)
+        //     console.log("in else of apply filterd");
+        // }
+
+    }
+    // ,[price, prices, filteredprice, filteredbrand, selcat, selectedcolor]);
+    console.log(price, prices, filteredbrand, selcat, selectedcolor, filteredcategory);
+    // console.log(filters)
+
+    // useEffect(() => {
+    //     dispatch(listProducts());
+    // }, [dispatch]);
+
+    useEffect(() => {
+        applyFilters(price, prices, filteredbrand, selcat, selectedcolor);
+
+    }, [price, prices, filteredbrand, selcat, selectedcolor]);
     useEffect(() => {
         const getProducts = async () => {
             try {
-                const res = await axios.get("http://localhost:7000/api/products");
-                setProductsss(res.data);
+                const res = await axios.get("/api/products");
+                setproductsss(res.data);
             } catch (err) { }
         };
-        getProducts();
-        applyFilters()
-
         console.log(productsss)
+        getProducts();
         setnumberOfButtons(Math.round(total / showPerPage))
         const value = showPerPage * counter;
 
@@ -213,15 +355,14 @@ function PageSecond() {
                 rating: 'rating',
             };
             const sortProperty = types[type];
-            // const sorted = filteredItems ? [...filteredItems].sort((a, b) => a[sortProperty] - b[sortProperty]):[...products].sort((a, b) => a[sortProperty] - b[sortProperty]);
-
+            console.log(filteredProducts)
             const sorted = [...filteredProducts].sort((a, b) => a[sortProperty] - b[sortProperty]);
+            console.log(sorted);
             setItems(sorted);
         };
-
         sortArray(sortType);
 
-    }, [counter, showPerPage, numberOfButtons, total, sortType, filteredprice, filteredbrand, filteredcategory, selectedcolor]);
+    }, [path, counter, showPerPage, numberOfButtons, total, sortType, resultsFound]);
 
     return (
         <>
@@ -232,18 +373,71 @@ function PageSecond() {
                     <div className='sidebarHeader'>
                         <h3>ACCESORIES</h3>
                         <div name="accesories" className='elementsContainer'>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>watches</p><p>2</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>ipod</p><p>48</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>iphone</p><p>14</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>wireless</p><p>15</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>connecting devices</p><p>23</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>cables</p><p>1</p></div>
-                            <div className='accesory' ><p onClick={selectCategory} style={{ cursor: "pointer" }}>headphones</p><p>95</p></div>
+                            {/* <div className='accesory' ><Link to="/page2/watches"><p onClick={selectCategory} style={{ cursor: "pointer" }}>watches</p></Link><p>2</p></div>
+                            <div className='accesory' ><Link to="/page2/ipad"><p onClick={selectCategory} style={{ cursor: "pointer" }}>ipod</p></Link><p>48</p></div>
+                            <div className='accesory' ><Link to="/page2/iphone"><p onClick={selectCategory} style={{ cursor: "pointer" }}>iphone</p></Link><p>14</p></div>
+                            <div className='accesory' ><Link to="/page2/wireless"><p onClick={selectCategory} style={{ cursor: "pointer" }}>wireless</p></Link><p>15</p></div>
+                            <div className='accesory' ><Link to="/page2/connecting devices"><p onClick={selectCategory} style={{ cursor: "pointer" }}>connecting devices</p></Link><p>23</p></div>
+                            <div className='accesory' ><Link to="/page2/cables"><p onClick={selectCategory} style={{ cursor: "pointer" }}>cables</p></Link><p>1</p></div>
+                            <div className='accesory' ><Link to="/page2/headphones"><p onClick={selectCategory} style={{ cursor: "pointer" }}>headphones</p></Link><p>95</p></div>
+                            <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><Link to="/page2"><img className='myAuto' onClick={selectCategory} style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></Link></button> */}
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }}><Link to="/page2/watches">watches</Link></div>
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }}><Link to="/page2/ipad">ipod</Link></div>
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }}><Link to="/page2/iphone">iphone</Link></div>
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }} ><Link to="/page2/wireless">wireless</Link></div>
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }}><Link to="/page2/connecting devices">connecting devices</Link></div>
+                            {/* <div className='accesory' ><Link to="/page2/cables">onClick={(e) => setFilteredcategory(e.target.innerHTML)}  style={{ cursor: "pointer" }}>cables</Link></div> */}
+                            <div className='accesory' onClick={(e) => setFilteredcategory(e.target.innerHTML)} style={{ cursor: "pointer" }}><Link to="/page2/headphones">headphones</Link></div>
+                            <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><Link to="/page2"><img className='myAuto' onClick={selectCategory} style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></Link></button>
+                            {/* <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}> */}
+
+                            {/* <List component="nav" aria-label="secondary mailbox folder"> */}
+                            <ListItemButton
+                                selected={selectedIndex === 2}
+                                onClick={(event, v) => handleListItemClick(event, 2)}
+                            >
+                                <ListItemText primary="devices" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 3}
+                                onClick={(event) => handleListItemClick(event, 3)}
+                            >
+                                <ListItemText primary="watches" />
+                            </ListItemButton>
+
+                            <ListItemButton
+                                selected={selectedIndex === 4}
+                                onClick={(event) => handleListItemClick(event, 4)}
+                            >
+                                <ListItemText primary="iphone" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 5}
+                                onClick={(event) => handleListItemClick(event, 5)}
+                            >
+                                <ListItemText primary="ipad" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 6}
+                                onClick={(event) => handleListItemClick(event, 6)}
+                            >
+                                <ListItemText primary="wireless" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 7}
+                                onClick={(event) => handleListItemClick(event, 7)}
+                            >
+                                <ListItemText primary="headphones" />
+                            </ListItemButton>
+                            {/* </List> */}
+                            {/* </Box> */}
+                            {/* <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><Link to="/page2"><img className='myAuto' onClick={setSelcat(null)} style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></Link></button> */}
+
                         </div>
                     </div>
                     <div className='sidebarHeader'>
                         <h3>Prices</h3>
-                        {/* <div className='elementsContainer'> */}
+                        {/* <div className='elementsContainer'> 12345678910159753357159852456   */}
                         <div className='ranger'>
                             <div>Ranger</div>
                             <div>${prices[0]}00-${prices[1]}00</div>
@@ -255,7 +449,26 @@ function PageSecond() {
                                 onChange={updateRange}
                             />
                         </div>
+                        <div className="flex flex-col gap-2 border-b px-4">
+                            <span className="font-medium text-xs">PRICE</span>
+
+                            <Slider
+                                value={price}
+                                onChange={priceHandler}
+                                valueLabelDisplay="auto"
+                                getAriaLabel={() => 'Price range slider'}
+                                min={0}
+                                max={10000}
+                            />
+
+                            <div className="flex gap-3 items-center justify-between mb-2 min-w-full">
+                                <span className="flex-1 border px-4 py-1 rounded-sm text-gray-800 bg-gray-50">₹{price[0].toLocaleString()}</span>
+                                <span className="font-medium text-gray-400">to</span>
+                                <span className="flex-1 border px-4 py-1 rounded-sm text-gray-800 bg-gray-50">₹{price[1].toLocaleString()}</span>
+                            </div>
+                        </div>
                     </div>
+
                     <div className='sidebarHeader'>
                         <h3>Color</h3>
                         <div className='colorize'>
@@ -347,12 +560,68 @@ function PageSecond() {
                                 </div>
                             </div>
                         </div>
-                        <div className='cardsbox'>
-                            {console.log(items)}
-                            {items.slice(pagination.start, pagination.end).map(data => {
-                                return <Items info={data} />
-                            })}
-                        </div>
+                        {/* {console.log(filters[1])} */}
+                        {/* <Stack direction="row" spacing={1}>
+                            <Chip
+                                label={filters[1]}
+                                onClick={handleClick}
+                                onDelete={handleDelete}
+                            />
+                            <Chip
+                                label={filters.selectBrand}
+                                variant="outlined"
+                                onClick={handleClick}
+                                onDelete={handleDelete}
+                            />
+                        </Stack>
+                         */}
+
+                            {/* {loading ? (
+                                <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+                                    <h2 style={{ textAlign: "center" }}>Loading...</h2>
+                                    <Loader />
+                                </div>
+                            ) : (
+                            */}
+                            {(needalert) ?
+                                (
+                                    (pageload) ? (
+                                        <div className='cardsbox'>
+
+                                       { productsss.slice(pagination.start, pagination.end).map(data => {
+                                            return <Items info={data} />
+                                        })}
+                                        </div>
+                                    ) : (
+                                        <>
+                                        <Alert severity="error">
+                                            <AlertTitle>Sorry {filteredProducts.length} items found </AlertTitle>
+                                            Please Do Check other Items<br></br> <strong>No result found for your Search!</strong>
+                                        </Alert>
+                                        <div className='cardsbox'>
+
+                                        {productsss.slice(pagination.start, pagination.end).map(data => {
+                                            return <Items info={data} />
+                                        })}
+                                        </div>
+                                    </>
+                                    )    
+                                )
+                                :
+                                (
+                                    <>
+                                        {console.log(items)}
+                                        <div className='cardsbox'>
+
+                                        {items.slice(pagination.start, pagination.end).map(data => {
+                                            return <Items info={data} />
+                                        })}
+                                        </div>
+                                    </>
+                                )
+                            }
+     
+                        {/* </div> */}
                         {/* <div className='pagination'></div> */}
                         <div className='page'>
                             <div className='d-flex justify-content-between'>

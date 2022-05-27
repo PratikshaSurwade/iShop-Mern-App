@@ -69,10 +69,13 @@ const OrderScreen = () => {
 			// image: order.img,
 			// order_id: order._id,
 			handler: async (response) => {
+        console.log(response)
 				try {
 					const verifyUrl = "http://localhost:7000/api/payment/verify";
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
+          console.log("payment succeessful")
+
 				} catch (error) {
 					console.log(error);
 				}

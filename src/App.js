@@ -17,6 +17,7 @@ import ShippingScreen from "./pages/shipping/ShippingScreen";
 import PaymentScreen from "./pages/shipping/PaymentScreen";
 import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
+import BootcampsPage from "./pages/accesories/dsdcsdd";
 
 function App() {
   const user = false;
@@ -41,9 +42,21 @@ function App() {
           {/* <Route path="/mac" element={<Home />} exact />
           <Route path="/home/mac" element={<Store />} exact /> */}
           {/* <Route path="/mac" element={<Cart />} exact /> */}
+          <Route path="/try" element={<BootcampsPage />} exact />
 
           <Route path="/accesories" element={<Store />} exact />
+
           <Route path="/page2" element={<PageSecond />} exact />
+          <Route path="/page2" element={<PageSecond />} exact >
+            <Route path="/page2" element={<PageSecond />} exact />
+
+            <Route path="/page2/watches" element={<PageSecond />} exact />
+            <Route path="/page2/headphones" element={<PageSecond />} exact />
+            <Route path="/page2/connecting devices" element={<PageSecond />} exact />
+            <Route path="/page2/headphones" element={<PageSecond />} exact />
+            <Route path="/page2/accessories" element={<PageSecond />} exact />
+
+          </Route>
 
           <Route path="/accesory" element={<Itembar />} exact />
 

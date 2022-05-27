@@ -1,5 +1,5 @@
 import "./bestseller.css";
-
+import { Link } from "react-router-dom";
 import likeButton from "./icons/favorite_icon.svg";
 import cart from "./icons/fill_cart.svg";
 import StarRatings from 'react-star-ratings';
@@ -17,8 +17,9 @@ const Items = ({ info }) => {
                         <img src={cart} alt="" />
                     </div>
                 </div>
-                <div className="itemName">{info.name}</div>
-                <div className="itemRatings">
+                <Link to={`/api/products/${info._id}`} className="info__button">
+                    <div className="itemName">{info.name}</div>
+                </Link>                <div className="itemRatings">
                     <StarRatings
                         rating={info.rating}
                         starRatedColor="#FFD700"
