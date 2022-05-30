@@ -37,15 +37,19 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
-function PageSecond() {
-
+const Accesories = () => {
+  
 
     const [selcat, setSelcat] = useState(null);
     const [selectedIndex, setSelectedIndex] = React.useState(1);
 
     const handleListItemClick = (event, index) => {
         setSelcat(event.target.textContent);
+        if (index == 8) {
+            setSelcat(null)
+        }
         console.log(event.target.textContent)
+
     };
     const handleClick = () => {
         console.info('You clicked the Chip.');
@@ -176,9 +180,8 @@ function PageSecond() {
     const [items, setItems] = useState([]);
     const [needalert, setNeedAlert] = useState(false);
     const [pageload, setPageload] = useState(true);
-    const [total, setTotal] = useState(35);
     const [loader, setLoader] = useState(false);
-console.log(total)
+
     // const [filters, setFilters] = useState({});
 
 
@@ -191,7 +194,7 @@ console.log(total)
     const onPaginationChange = (start, end) => {
         setpagination({ start: start, end: end });
     };
-    // const total = resultsFound ? (items.length) : (productsss.length);
+    const total = resultsFound ? (items.length) : (productsss.length);
 
     const onButtonClickpage = (type) => {
         if (type === "prev") {
@@ -289,7 +292,6 @@ console.log(total)
         if (!updatedList.length) {
             setNeedAlert(true)
             setFilteredProducts(productsss);
-            setTotal(35)
             setItems(productsss);
             console.log("in updatedlist == 0 ");
 
@@ -297,19 +299,43 @@ console.log(total)
         else {
             setNeedAlert(false)
             setFilteredProducts(updatedList)
-            setTotal(updatedList.length)
             setItems(updatedList)
             console.log("in else of apply filterd");
+
         }
+
+        // console.log(productsss)
+        // if (filteredbrand || selcat || selectedcolor) {
+        //     setNeedAlert(false)
+        //     setFilteredProducts(productsss);
+        //     setItems(productsss);
+        //     console.log("in updatedlist == 0 ");
+
+        // }
+        // else {
+        //     if (updatedList.length = 0) {
+        //         setNeedAlert(true)
+        //         setFilteredProducts(productsss);
+        //     }
+        //     setNeedAlert(false)
+        //     setFilteredProducts(updatedList)
+        //     setItems(updatedList)
+        //     console.log("in else of apply filterd");
+        // }
+
     }
+    // ,[price, prices, filteredprice, filteredbrand, selcat, selectedcolor]);
     console.log(price, prices, filteredbrand, selcat, selectedcolor, filteredcategory);
+    // console.log(filters)
+
     // useEffect(() => {
     //     dispatch(listProducts());
     // }, [dispatch]);
-    useEffect(() => {
-        applyFilters(price, filteredbrand, selcat, selectedcolor);
 
-    }, [price, filteredbrand, selcat, selectedcolor]);
+    useEffect(() => {
+        applyFilters(price, prices, filteredbrand, selcat, selectedcolor);
+
+    }, [price, prices, filteredbrand, selcat, selectedcolor]);
     useEffect(() => {
         setLoader(true);
         const getProducts = async () => {
@@ -317,7 +343,6 @@ console.log(total)
                 const res = await axios.get("/api/products");
                 setproductsss(res.data);
                 setLoader(false);
-                // setTotal(res.data.length)
             } catch (err) { }
         };
         console.log(productsss)
@@ -341,7 +366,7 @@ console.log(total)
         };
         sortArray(sortType);
 
-    }, [path, counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
+    }, [path, counter, showPerPage, numberOfButtons, total, sortType, resultsFound]);
 
     return (
         <>
@@ -539,7 +564,7 @@ console.log(total)
                                 </div>
                             </div>
                         </div>
-
+                   
                         {loader ? (
                             <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                                 <h2 style={{ textAlign: "center" }}>Loading...</h2>
@@ -563,7 +588,7 @@ console.log(total)
                                                 No result found for your Search!<br></br> <strong>Please Do Check other Items</strong>
                                             </Alert>
                                             <div className='cardsbox'>
-                                                {setTotal(productsss.length)}
+
                                                 {productsss.slice(pagination.start, pagination.end).map(data => {
                                                     return <Items info={data} />
                                                 })}
@@ -620,7 +645,7 @@ console.log(total)
                     </div>        </div>
             </div>
         </>
-    )
+  )
 }
-export default PageSecond
 
+export default Accesories

@@ -8,7 +8,6 @@ import Store from "./pages/accesories/store";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Trial from "./pages/accesories/largesidebar/filtereditem";
 import Bestseller from "./pages/HomePage/Best_seller/Bestseller";
 import Itembar from "./pages/accesories/largesidebar/itembar";
 import PageSecond from "./pages/accesories/page2";
@@ -18,6 +17,7 @@ import PaymentScreen from "./pages/shipping/PaymentScreen";
 import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
 import BootcampsPage from "./pages/accesories/dsdcsdd";
+import Accesories from "./pages/accesories/Accesories";
 
 function App() {
   const user = false;
@@ -47,6 +47,9 @@ function App() {
           <Route path="/accesories" element={<Store />} exact />
 
           <Route path="/page2" element={<PageSecond />} exact />
+          <Route path="/store" element={<Accesories />} exact />
+
+
           <Route path="/page2" element={<PageSecond />} exact >
             <Route path="/page2" element={<PageSecond />} exact />
 
@@ -60,7 +63,6 @@ function App() {
 
           <Route path="/accesory" element={<Itembar />} exact />
 
-          <Route path="/trial" element={<Trial />} exact />
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />
           <Route path="/payment" element={<PaymentScreen />} exact />
