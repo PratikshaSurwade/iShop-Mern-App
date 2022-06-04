@@ -46,7 +46,16 @@ function App() {
 			console.log(error);
 		}
 	};
-
+	const fetchingorder = async () => {
+		try {
+		  const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
+		  const { data } = await axios.put(verifyUrl);
+	
+		} catch (error) {
+		  console.log(error);
+	
+		}
+	  }
 	return (
 		<div className="App">
 			<div className="book_container">
@@ -56,9 +65,13 @@ function App() {
 				<p className="book_price">
 					Price : <span>&#x20B9; {book.price}</span>
 				</p>
+				<button onClick={fetchingorder} className="buy_btn">
+					see details
+				</button>
 				<button onClick={handlePayment} className="buy_btn">
 					buy now
 				</button>
+
 			</div>
 		</div>
 	);

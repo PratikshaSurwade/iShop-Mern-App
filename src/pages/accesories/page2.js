@@ -226,7 +226,7 @@ console.log(total)
         }
 
     }
-
+console.log(numberOfButtons);
     // console.log();
     const applyFilters = () => {
         let updatedList = productsss;

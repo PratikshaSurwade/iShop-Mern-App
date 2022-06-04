@@ -4,7 +4,7 @@ import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
+import { getOrderDetails, setPaymentResult } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader";
@@ -19,8 +19,10 @@ const OrderScreen = () => {
 
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successpay } = orderPay;
-  // if (!loading) {
-  //   Calculate prices
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
@@ -28,55 +30,26 @@ const OrderScreen = () => {
   order.itemsPrice = addDecimal(
     order.orderItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
   );
-  // }
+  const [ paymentResult , setPaymentResult] = useState({});
+  const [ data , setData] = useState({});
+  const [ id , setid] = useState();
 
-  const successPaymentHandler = (paymentResult) => {
-    console.log(paymentResult);
-    dispatch(payOrder(orderId, paymentResult));
-  };
-
-  useEffect(() => {
-    const addPaypalScript = async () => {
-      const { data: clientId } = await axios.get("/api/config/paypal");
-      const script = document.createElement("script");
-      script.type = "text/javascript";
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
-      script.async = true;
-      script.onload = () => {
-        setSdkReady(true);
-      };
-      document.body.appendChild(script);
-    };
-    if (!order || successpay) {
-      dispatch({ type: ORDER_PAY_RESET });
-      dispatch(getOrderDetails(orderId));
-    } else if (!order.isPaid) {
-      if (!window.paypal) {
-        addPaypalScript();
-      } else {
-        setSdkReady(true);
-      }
-    }
-  }, [dispatch, orderId, order, successpay]);
   // -----------------------------------------------
-  const initPayment = (order) => {
+  const initPayment = (data) => {
 		const options = {
 			key: "rzp_test_9oRiUh2HfSJzwy",
-			amount: order.totalPrice*100,
-			// currency: order.currency,
-			// name: order.name,
-			// description: "Test Transaction",
-			// image: order.img,
-			// order_id: order._id,
+			amount: data.amount,
+			currency: data.currency,
+			order_id: data.id,
 			handler: async (response) => {
-        console.log(response)
 				try {
-					const verifyUrl = "http://localhost:7000/api/payment/verify";
+					const verifyUrl = "http://localhost:3000/api/payment/verify";
 					const { data } = await axios.post(verifyUrl, response);
-					console.log(data);
-          console.log("payment succeessful")
+          console.log(data)
+          console.log("Payment Verified Succeessfully");
 
 				} catch (error) {
+          console.log("Payment Verification Failed")
 					console.log(error);
 				}
 			},
@@ -84,24 +57,44 @@ const OrderScreen = () => {
 				color: "#3399cc",
 			},
 		};
-    console.log(options)
 		const rzp1 = new window.Razorpay(options);
 		rzp1.open();
-    console.log("payment succeessful")
-	};      console.log( order.totalPrice)
-
-  const handlePayment = async () => {
-		// try {
-		// 	const orderUrl = "http://localhost:7000/api/payment/orders";
-    //   console.log( order.totalPrice)
-		// 	const { data } = await axios.post(orderUrl, { amount:  order.totalPrice });
-			console.log(order);
-			initPayment(order);
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+    console.log(data.orderId)
 	};
-
+  console.log(order.paymentResult);
+  const setpayment = (id,data) => {
+    // dispatch(setPaymentResult(id,data));
+  }
+  const handlePayment = async () => {
+    try {
+      const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
+      const { data } = await axios.put(verifyUrl);
+      console.log(data)
+    } catch (error) {
+      
+    }
+	};
+  console.log(order._id)
+  const fetchingorder = async () => {
+    try {
+      const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
+      const { data } = await axios.put(verifyUrl);
+      console.log(data)
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  useEffect(() => {
+    if (successpay) {
+      dispatch({ type: ORDER_PAY_RESET });
+      dispatch(getOrderDetails(orderId));
+      console.log("order reset")
+    }
+    else{      
+      console.log("order reset failed")
+  }
+  }, [successpay,order,orderId])
+  
   return loading ? (
     <Loader />
   ) : error ? (
@@ -117,11 +110,11 @@ const OrderScreen = () => {
             <h2>Shipping</h2>
             <p>
               <strong>Name : </strong>
-              {/* {order.user.name} */}
+              {userInfo.username}
             </p>
             <p>
               <strong>Email : </strong>
-              {/* {order.user.email} */}
+              {userInfo.email}
             </p>
             <p>
               <strong>Address :</strong>
@@ -142,6 +135,7 @@ const OrderScreen = () => {
               <strong>Method :</strong>
               <strong>{order.paymentMethod}</strong>
             </p>
+            {console.log(order.isPaid)}
             {order.isPaid ? (
               <Message variant="success">Paid On {order.paidAt}</Message>
             ) : (
@@ -167,6 +161,8 @@ const OrderScreen = () => {
                       {item.qty} X Rs.{item.price} = Rs.{item.price}
                     </Col>
                   </Row>
+                  {console.log(item)}
+
                 </ListGroup.Item>
               ))}
             </ListGroup>
@@ -202,8 +198,15 @@ const OrderScreen = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
+          <button onClick={fetchingorder} className="buy_btn">
+					see details
+				</button>
+
           <button onClick={handlePayment} className="buy_btn">
-          buy now
+          confirm order
+				</button>
+        <button onClick={setpayment} className="buy_btn">
+          place order now
 				</button>
           {/* {!order.isPaid && (
             <ListGroup.Item>

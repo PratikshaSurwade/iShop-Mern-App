@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams , useNavigate} from "react-router-dom";
 import "./singleproduct.css"
 import { useSelector, useDispatch } from "react-redux";
-
+import Loader from "../effects/loader";
 // Actions
 import { getProductDetails } from "../../redux/actions/productActions";
 import { addToCart } from "../../redux/actions/cartActions";
@@ -31,7 +31,10 @@ console.log(qty)
   return (
     <div className="productscreen">
       {loading ? (
-        <h2>Loading...</h2>
+        <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
+        <h2 style={{ textAlign: "center" }}>Loading...</h2>
+        <Loader />
+    </div>
       ) : error ? (
         <h2>{error}</h2>
       ) : (

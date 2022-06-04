@@ -18,6 +18,7 @@ import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
 import BootcampsPage from "./pages/accesories/dsdcsdd";
 import Accesories from "./pages/accesories/Accesories";
+import Fs from "./pages/HomePage/feacturedprods/fs";
 
 function App() {
   const user = false;
@@ -45,6 +46,7 @@ function App() {
           <Route path="/try" element={<BootcampsPage />} exact />
 
           <Route path="/accesories" element={<Store />} exact />
+          <Route path="/fs" element={<Fs />} exact />
 
           <Route path="/page2" element={<PageSecond />} exact />
           <Route path="/store" element={<Accesories />} exact />
