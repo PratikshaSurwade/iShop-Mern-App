@@ -110,26 +110,6 @@ const PlaceOrderScreen = () => {
 	}, [navigate, success,paymentResult]);
 	return (
 		<>
-{/*as europian clien  f s y hbh  yarvalate hd  sye urashi    
-khup bright tuze ajj tinch scean ahet may be lvkr zal tr al 
-s,md   deus nakos kahi ... .. .. ... . . . 
-pahate   tila   lvkr jaych ast pahate 
-delivery paisa online pay ho chuka hai sir  ... . . 
-net netke pna vapareaychach dada ... ... .. . .. ... ... 
-
-dada tas mala mhanale atta kahi mahine zaleyy 
-doghehi busy daily soap mala are mast   tu jarashi hii ye urashiii 
-he ek magne ... .. . . . .. ...
-amhi dohe ithe ektech rahtoo  tu jarshii ye urashi ukirda kasa karaycha 
-and i mean it 
-ananya mazya ch sarkhi ek independant mulgi ahe tuz te office is spoiling our lifes
-jara atahi javl pass 
-ek minute deshil 
-apl ka tuz ?? ? ?? ??? ...... ..... .... ... .. .
-maudi basun ghee please ... .. . . . . .. ... 
-*/}
-
-			{/* <CheckOutStep step1 step2 step3 step4 /> */}
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
@@ -206,7 +186,7 @@ maudi basun ghee please ... .. . . . . .. ...
 							<ListGroup.Item>
 								{error && <Message variant="danger">{error}</Message>}
 							</ListGroup.Item>
-						{/* <Button
+						<Button
 								type="button"
 								className="btn-block"
 								disabled={cart.cartItems === 0}
@@ -221,8 +201,8 @@ maudi basun ghee please ... .. . . . . .. ...
 								onClick={placeOrderHandler}
 							>
 								Place Order
-							</Button> */}
-							{console.log(successs)}
+							</Button>
+							{/* {console.log(successs)}
 							 {!successs?<Button
 								type="button"
 								className="btn-block"
@@ -254,7 +234,7 @@ maudi basun ghee please ... .. . . . . .. ...
 							>
 								Place Order
 							</Button>
-							} 
+							}  */}
 
 						</ListGroup>
 					</Card>

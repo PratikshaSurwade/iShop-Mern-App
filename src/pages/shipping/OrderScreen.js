@@ -4,19 +4,22 @@ import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
-import { getOrderDetails, setPaymentResult } from "../../redux/actions/orderAction";
+import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader";
 
 const OrderScreen = () => {
-  const { orderId } = useParams();
+  // const { orderId } = useParams();
   const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderCreate);
   const { order, loading, error } = orderDetails;
 
+  const orderDetails1 = useSelector((state) => state.orderDetails);
+  const { order:order1, loading:loadingDets, error:errorDets } = orderDetails1;
+console.log(order1)
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success: successpay } = orderPay;
 
@@ -30,10 +33,8 @@ const OrderScreen = () => {
   order.itemsPrice = addDecimal(
     order.orderItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
   );
-  const [ paymentResult , setPaymentResult] = useState({});
-  const [ data , setData] = useState({});
-  const [ id , setid] = useState();
-
+const id = (order._id);
+  console.log(id);
   // -----------------------------------------------
   const initPayment = (data) => {
 		const options = {
@@ -63,7 +64,7 @@ const OrderScreen = () => {
 	};
   console.log(order.paymentResult);
   const setpayment = (id,data) => {
-    // dispatch(setPaymentResult(id,data));
+    // dispatch(payOrder(id,data));
   }
   const handlePayment = async () => {
     try {
@@ -71,29 +72,27 @@ const OrderScreen = () => {
       const { data } = await axios.put(verifyUrl);
       console.log(data)
     } catch (error) {
-      
-    }
-	};
-  console.log(order._id)
-  const fetchingorder = async () => {
-    try {
-      const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
-      const { data } = await axios.put(verifyUrl);
-      console.log(data)
-    } catch (error) {
       console.log(error);
     }
+	};
+  console.log(order._id);
+  const fetchingorder =  () => {
+    console.log(id)
+    dispatch(payOrder(id));
   }
   useEffect(() => {
+    console.log("successpay")
+    console.log(successpay)
     if (successpay) {
+      console.log("successpay true inside")
       dispatch({ type: ORDER_PAY_RESET });
-      dispatch(getOrderDetails(orderId));
+      dispatch(getOrderDetails(id));
       console.log("order reset")
     }
     else{      
       console.log("order reset failed")
   }
-  }, [successpay,order,orderId])
+  }, [successpay,order,id])
   
   return loading ? (
     <Loader />

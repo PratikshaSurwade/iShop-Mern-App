@@ -41,7 +41,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
   }
 };
 
-export const getOrderDetails = (id) => async (dispatch, getState) => {
+export const getOrderDetails = (orderId) => async (dispatch, getState) => {
   try {
     dispatch({
       type: ORDER_DETAILS_REQUEST,
@@ -55,7 +55,8 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.get(`/api/orders/${id}`, config);
+    const { data } = await axios.get(`/api/orders/${orderId}`, config);
+    console.log(data)
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -68,8 +69,8 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 };
 
-export const setPaymentResult =
-  (orderId) => async (dispatch, getState) => {
+export const payOrder = (orderId) => async (dispatch, getState) => {
+  console.log(orderId)
     try {
       dispatch({
         type: ORDER_PAY_REQUEST,
@@ -84,10 +85,10 @@ export const setPaymentResult =
         },
       };
       const { data } = await axios.put(
-        `/api/orders/${orderId}/pay`,
+        `http://localhost:3000/api/orders/${orderId}/pay`,
         config
       );
-      dispatch({ type: ORDER_PAY_SUCCESS, payload: data.data });
+      dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
     } catch (error) {
       dispatch({
         type: ORDER_PAY_FAIL,
