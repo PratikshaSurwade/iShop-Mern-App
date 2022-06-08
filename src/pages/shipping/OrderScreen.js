@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { PayPalButton } from "react-paypal-button-v2";
+// import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
 import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
@@ -8,20 +8,20 @@ import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader";
+import { useLocation } from 'react-router-dom';
 
 const OrderScreen = () => {
   // const { orderId } = useParams();
+  const location = useLocation();
+  const path = (location.pathname.split("/")[3]);
   const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
 
-  const orderDetails = useSelector((state) => state.orderCreate);
+  const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
 
-  const orderDetails1 = useSelector((state) => state.orderDetails);
-  const { order:order1, loading:loadingDets, error:errorDets } = orderDetails1;
-console.log(order1)
   const orderPay = useSelector((state) => state.orderPay);
-  const { loading: loadingPay, success: successpay } = orderPay;
+  const { loading: loadingPay, success } = orderPay;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -30,70 +30,87 @@ console.log(order1)
     return (Math.round(num * 100) / 100).toFixed(2);
   };
 
-  order.itemsPrice = addDecimal(
-    order.orderItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
-  );
-const id = (order._id);
-  console.log(id);
-  // -----------------------------------------------
-  const initPayment = (data) => {
-		const options = {
-			key: "rzp_test_9oRiUh2HfSJzwy",
-			amount: data.amount,
-			currency: data.currency,
-			order_id: data.id,
-			handler: async (response) => {
-				try {
-					const verifyUrl = "http://localhost:3000/api/payment/verify";
-					const { data } = await axios.post(verifyUrl, response);
-          console.log(data)
-          console.log("Payment Verified Succeessfully");
+  // order.itemsPrice = addDecimal(
+  //   order.orderItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
+  // );
+  // const id = (order._id);
+  // const totalprice = order.totalPrice *100;
+  //   console.log(id);
+  // console.log(order.paymentResult)
 
-				} catch (error) {
+  const [successs, setSuccess] = useState(false);
+  const [paid, setPaid] = useState(false);
+
+
+  // -----------------------------------------------
+//important function
+  // const handlePayment = async () => {
+  //   try {
+  //     const verifyUrl = `http://localhost:3000/api/orders/${path}/pay`;
+  //     const { data } = await axios.put(verifyUrl);
+  //     console.log(data)
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  const makePayment = (info) => {
+    console.log(info)
+    const options = {
+      key: "rzp_test_9oRiUh2HfSJzwy",
+      amount: info.totalPrice,
+      currency: info.currency,
+      order_id: info.id,
+      handler: async (response) => {
+        try {
+          const verifyUrl = "http://localhost:3000/api/payment/verify";
+          const { data } = await axios.post(verifyUrl, response);
+          console.log(data);
+          setSuccess(data.success);
+          setPaid(true);
+          console.log("Payment Verified Succeessfully");
+        } catch (error) {
           console.log("Payment Verification Failed")
-					console.log(error);
-				}
-			},
-			theme: {
-				color: "#3399cc",
-			},
-		};
-		const rzp1 = new window.Razorpay(options);
-		rzp1.open();
-    console.log(data.orderId)
-	};
-  console.log(order.paymentResult);
-  const setpayment = (id,data) => {
-    // dispatch(payOrder(id,data));
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
+    const rzp1 = new window.Razorpay(options);
+    rzp1.open();
+
+  };
+  const setpayment = () => {
+    const info = (order.paymentResult);
+    console.log(info);
+    makePayment(info);
   }
-  const handlePayment = async () => {
-    try {
-      const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
-      const { data } = await axios.put(verifyUrl);
-      console.log(data)
-    } catch (error) {
-      console.log(error);
-    }
-	};
-  console.log(order._id);
-  const fetchingorder =  () => {
-    console.log(id)
-    dispatch(payOrder(id));
+
+  console.log(path);
+  const fetchingorder = () => {
+    dispatch(payOrder(path));
   }
+  console.log(!order,success,successs);
+
   useEffect(() => {
-    console.log("successpay")
-    console.log(successpay)
-    if (successpay) {
-      console.log("successpay true inside")
-      dispatch({ type: ORDER_PAY_RESET });
-      dispatch(getOrderDetails(id));
-      console.log("order reset")
+    if(paid){
+      console.log("inside sucess")
+      dispatch(payOrder(path));
+      dispatch(getOrderDetails(path));
+      setPaid(false);
     }
-    else{      
-      console.log("order reset failed")
-  }
-  }, [successpay,order,id])
-  
+    if (!order || success) {
+      dispatch({ type: ORDER_PAY_RESET });
+      console.log("inside !order")
+      dispatch(getOrderDetails(path));
+    }
+    
+    console.log("success")
+    console.log(success);
+  }, [success, order, path, successs,paid])
+
   return loading ? (
     <Loader />
   ) : error ? (
@@ -134,7 +151,6 @@ const id = (order._id);
               <strong>Method :</strong>
               <strong>{order.paymentMethod}</strong>
             </p>
-            {console.log(order.isPaid)}
             {order.isPaid ? (
               <Message variant="success">Paid On {order.paidAt}</Message>
             ) : (
@@ -160,7 +176,7 @@ const id = (order._id);
                       {item.qty} X Rs.{item.price} = Rs.{item.price}
                     </Col>
                   </Row>
-                  {console.log(item)}
+                  {/* {console.log(item)} */}
 
                 </ListGroup.Item>
               ))}
@@ -197,29 +213,17 @@ const id = (order._id);
               </ListGroup.Item>
             </ListGroup>
           </Card>
-          <button onClick={fetchingorder} className="buy_btn">
-					see details
-				</button>
-
-          <button onClick={handlePayment} className="buy_btn">
-          confirm order
-				</button>
-        <button onClick={setpayment} className="buy_btn">
-          place order now
-				</button>
-          {/* {!order.isPaid && (
-            <ListGroup.Item>
-              {loadingPay && <Loader />}
-              {!sdkReady ? (
-                <Loader />
-              ) : (
-                <PayPalButton
-                  amount={order.totalPrice}
-                  onSuccess={successPaymentHandler}
-                />
-              )}
-            </ListGroup.Item>
-          )} */}
+         {(!order.isPaid)? 
+         <button onClick={setpayment} className="buy_btn">
+            makePayment
+          </button>: 
+          <button onClick={setpayment} disabled className="buy_btn">
+            makePayment
+          </button>}
+          <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JeDaUBJzpYKfJq" async> </script> </form>
+          {/* <button onClick={fetchingorder} className="buy_btn">
+            confirm order
+          </button> */}
         </Col>
       </Row>
     </>

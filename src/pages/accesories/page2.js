@@ -287,18 +287,18 @@ console.log(numberOfButtons);
 
 
         if (!updatedList.length) {
-            setNeedAlert(true)
-            setFilteredProducts(productsss);
-            setTotal(35)
-            setItems(productsss);
             console.log("in updatedlist == 0 ");
-
+            setNeedAlert(true);
+            setFilteredProducts(productsss);
+            setTotal(35);
+            setItems(productsss);
         }
+
         else {
-            setNeedAlert(false)
-            setFilteredProducts(updatedList)
-            setTotal(updatedList.length)
-            setItems(updatedList)
+            setNeedAlert(false);
+            setFilteredProducts(updatedList);
+            setTotal(updatedList.length);
+            setItems(updatedList);
             console.log("in else of apply filterd");
         }
     }
@@ -551,7 +551,6 @@ console.log(numberOfButtons);
                                 (
                                     (pageload) ? (
                                         <div className='cardsbox'>
-
                                             {productsss.slice(pagination.start, pagination.end).map(data => {
                                                 return <Items info={data} />
                                             })}
@@ -563,11 +562,12 @@ console.log(numberOfButtons);
                                                 No result found for your Search!<br></br> <strong>Please Do Check other Items</strong>
                                             </Alert>
                                             <div className='cardsbox'>
-                                                {setTotal(productsss.length)}
+                                                {/* {setTotal(productsss.length)} */}
                                                 {productsss.slice(pagination.start, pagination.end).map(data => {
                                                     return <Items info={data} />
                                                 })}
                                             </div>
+                                            {/* {setNeedAlert(false)} */}
                                         </>
                                     )
                                 )
@@ -583,7 +583,6 @@ console.log(numberOfButtons);
                                         </div>
                                     </>
                                 )
-
                         )}
                         {/* </div> */}
                         {/* <div className='pagination'></div> */}
@@ -595,13 +594,11 @@ console.log(numberOfButtons);
                             </div>
                         </div>
                         {/* <Webpagination  showPerPage={showPerPage} onPaginationChange={onPaginationChange} total={total} /> */}
-
                         <div className='webpagination'>
                             <div className='d-flex justify-content-center'>
                                 <nav aria-label="Page navigation example">
                                     <ul class="pagination">
                                         <li class="page-item"><a class="page-link" onClick={() => onButtonClickweb("prev")}>Previous</a></li>
-
                                         {
                                             new Array(numberOfButtons).fill("").map((el, index) => (
                                                 <li class={`page-item ${index + 1 === counter ? "active" : null}`}>
@@ -611,16 +608,15 @@ console.log(numberOfButtons);
                                                 </li>
                                             ))
                                         }
-
                                         <li class="page-item"><a class="page-link" onClick={() => onButtonClickweb("next")}>Next</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                    </div>        </div>
+                    </div>        
+                </div>
             </div>
         </>
     )
 }
 export default PageSecond
-

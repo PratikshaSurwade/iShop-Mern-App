@@ -15,10 +15,9 @@ const PlaceOrderScreen = () => {
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, success, error } = orderCreate;
 
-	const [paymentResult, setPaymentResult] = useState({})
-	const [paid, setPaid] = useState(false); 
-	const [ successs ,setSuccess] =  useState(false);
-
+	// const [paymentResult, setPaymentResult] = useState({})
+	const [ successs ,setsucesss] =  useState(false);
+const [ waiting , setWaiting ] = useState(false);
 	//fun for decimal
 	const addDecimal = (num) => {
 		return (Math.round(num * 100) / 100).toFixed(2);
@@ -35,59 +34,13 @@ const PlaceOrderScreen = () => {
 		Number(cart.itemsPrice) +
 		Number(cart.shippingPrice) +
 		Number(cart.taxPrice)
-	).toFixed(2);
+	).toFixed(0);
 
-	console.log(cart.totalPrice);
-
-	// const fetchingorder = async (data) => {
-	// 	try {
-	// 	  const verifyUrl = `http://localhost:3000/api/payment/orders/pay/${data.id}`;
-	// 	  const { data } = await axios.get(verifyUrl);
-	// 	  console.log(data);
-	// 	} catch (error) {
-	// 	  console.log(error);
-	// 	}
-	//   }
-	const initPayment = (data) => {
-		const options = {
-			key: "rzp_test_9oRiUh2HfSJzwy",
-			amount: data.amount,
-			currency: data.currency,
-			order_id: data.id,
-			handler: async (response) => {
-				try {
-					const verifyUrl = "http://localhost:3000/api/payment/verify";
-					const { data } = await axios.post(verifyUrl, response);
-					console.log(data);
-					setSuccess(data.success);
-					console.log("Payment Verified Succeessfully");
-				} catch (error) {
-					console.log("Payment Verification Failed")
-					console.log(error);
-				}
-			},
-			theme: {
-				color: "#3399cc",
-			},
-		};
-		const rzp1 = new window.Razorpay(options);
-		rzp1.open();
-		
-	};
-
-	const makePayment = async () => {
-		try {
-			const orderUrl = "http://localhost:3000/api/payment/orders";
-			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
-			initPayment(data.data);
-			setPaymentResult(data.data);
-			console.log(data.data);
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	const placeOrderHandler = () => {
+	const makePayment = async (paymentResult) => {
+		console.log("checking");
+		console.log(paymentResult);
+		console.log("placing");
+		if(waiting){
 		dispatch(
 			createOrder({
 				orderItems: cart.cartItems,
@@ -98,16 +51,34 @@ const PlaceOrderScreen = () => {
 				shippingPrice: cart.shippingPrice,
 				taxPrice: cart.taxPrice,
 				totalPrice: cart.totalPrice,
-			})
-		);
-	};
+			}));
+		setsucesss(true);}
+		}
+
+	const placeOrderHandler = async () => {
+		try {
+			console.log("first");
+			const orderUrl = "http://localhost:3000/api/payment/orders";
+			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
+			// initPayment(data.data);
+			console.log("sec")
+			console.log(data.data)
+			// setPaymentResult(data.data)
+			// console.log(paymentResult);
+			setWaiting(true);
+			makePayment(data.data);
+			console.log("check")
+			// console.log(paymentResult);
+		} catch (error) {
+			console.log(error);
+		}};
 
 	useEffect(() => {
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success,paymentResult]);
+	}, [navigate, success]);
 	return (
 		<>
 			<Row>
@@ -146,11 +117,11 @@ const PlaceOrderScreen = () => {
 														{item.name}
 													</Link>
 												</Col>
-												{console.log(item.price, Number(item.qty))}
+												{/* {console.log(item.price, Number(item.qty))} */}
 												<Col md={4}>
 													{item.qty} X {item.price} = ${item.price}
 												</Col>
-												{console.log(item.price)}
+												{/* {console.log(item.price)} */}
 											</Row>
 										</ListGroup.Item>
 									))}
@@ -186,14 +157,14 @@ const PlaceOrderScreen = () => {
 							<ListGroup.Item>
 								{error && <Message variant="danger">{error}</Message>}
 							</ListGroup.Item>
-						<Button
+						{/* <Button
 								type="button"
 								className="btn-block"
 								disabled={cart.cartItems === 0}
 								onClick={makePayment}
 							>
 								Make payment
-							</Button>
+							</Button> */}
 							<Button
 								type="button"
 								className="btn-block"

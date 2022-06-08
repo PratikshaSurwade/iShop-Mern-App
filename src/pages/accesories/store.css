@@ -47,7 +47,7 @@
     display: flex;
     justify-content: space-between;
 }
-.ele_classifier:hover,.accesory:hover,.brand:hover{
+.ele_classifier:hover,.accesory:hover,.brand:hover,.selected:hover,.unselected:hover{
     color: #006CFF;
     cursor: pointer;
 
@@ -57,6 +57,17 @@
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: nowrap;
+}
+/* selection of category and brands */
+.selected{
+    display: flex;
+    justify-content: space-between;
+    color: #006CFF;
+}
+.unselected{
+    display: flex;
+    justify-content: space-between;
+    color:black;
 }
 /* COLOR */
 .colorize{

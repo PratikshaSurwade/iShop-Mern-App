@@ -4,11 +4,9 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Heading from "./pages/Navbar/Navbar";
 import Home from "./pages/HomePage/Home";
 import Footer from "./pages/footer/Footer";
-import Store from "./pages/accesories/store";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Bestseller from "./pages/HomePage/Best_seller/Bestseller";
 import Itembar from "./pages/accesories/largesidebar/itembar";
 import PageSecond from "./pages/accesories/page2";
 import Singleproduct from "./pages/singleproduct/Singleproduct";
@@ -19,6 +17,7 @@ import OrderScreen from "./pages/shipping/OrderScreen";
 import BootcampsPage from "./pages/accesories/dsdcsdd";
 import Accesories from "./pages/accesories/Accesories";
 import Fs from "./pages/HomePage/feacturedprods/fs";
+import Tab from "./pages/accesories/Tab";
 
 function App() {
   const user = false;
@@ -45,8 +44,9 @@ function App() {
           {/* <Route path="/mac" element={<Cart />} exact /> */}
           <Route path="/try" element={<BootcampsPage />} exact />
 
-          <Route path="/accesories" element={<Store />} exact />
           <Route path="/fs" element={<Fs />} exact />
+          <Route path="/cat/:category" element={<Tab />} exact />
+
 
           <Route path="/page2" element={<PageSecond />} exact />
           <Route path="/store" element={<Accesories />} exact />
@@ -70,9 +70,7 @@ function App() {
           <Route path="/payment" element={<PaymentScreen />} exact />
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
-
-
-
+          
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />

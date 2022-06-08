@@ -20,8 +20,6 @@ import TopmobBar from "./topbar/topbarformob";
 
 
 class Heading extends React.Component{
-// ...................................................................................  ash cvmbv cmv cvmnsdf dfwfkf mdfn tryty df sds dfd
-//               m mm mmm mmmm mmmmm mmmmmm mmmmmmm mmmm||| || | || |||mmmm mmmmmmm mmmmmm mmmmm mmmm mmm mm m  
     render(){
         return(
             <>           
@@ -35,17 +33,17 @@ class Heading extends React.Component{
                     <div className="Navbarstyle">
                         <div className="navbarItems" title="Homepage"><NavLink to="/home">HOME</NavLink></div>
                         <div className='dropdown'>
-                            <div className='navbarItems'><NavLink to="/accesories">STORE</NavLink></div>
+                            <div className='navbarItems'><NavLink to="/store">STORE</NavLink></div>
                             <div className="dropdown-content" title="Go to Accesories page">
                             <NavLink to="/accesories">
                                 <Subnavbar />
                               </NavLink>
                             </div>
                         </div>
-                        <div className="navbarItems">IPHONE</div>
-                        <div className="navbarItems">IPAD</div>
-                        <div className="navbarItems">MACBOOK</div>
-                        <div className="navbarItems"><NavLink to="/accesory">ACCESORIES</NavLink></div>
+                        <NavLink to="/cat/iphone" className="navbarItems">IPHONE</NavLink>
+                        <NavLink to="/cat/ipad" className="navbarItems">IPAD</NavLink>
+                        <NavLink to="/cat/mac" className="navbarItems">MACBOOK</NavLink>
+                        <NavLink to="/cat/wireless" className="navbarItems">ACCESORIES</NavLink>
                     </div>                    
                     <hr style={{margin:"0px 10%"}}></hr>
                     {/* <Subnavbar /> */}
@@ -85,7 +83,7 @@ class Heading extends React.Component{
                               <Nav.Link href="#action1">
                                 <div className="linkItems2">
                                   <NavDropdown className="linkItems2" title="STORE" id="offcanvasNavbarDropdown">
-                                    <NavDropdown.Item href="#action3"><NavLink to="/accesories">
+                                    <NavDropdown.Item href="#action3"><NavLink to="/store">
                                     <Subnavbar2 />
                               </NavLink></NavDropdown.Item>
                                     {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>

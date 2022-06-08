@@ -14,28 +14,31 @@ import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 
-function Accesories() {
+
+function Tab() {
     const [selcat, setSelcat] = useState(null);
-    const [selectedIndex, setSelectedIndex] = useState(1);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
 
-    // const handleListItemClick = (event, index) => {
-    //     setSelcat(event.target.textContent);
-    //     console.log(event.target.textContent)
-    // };
-    const getProducts = useSelector((state) => state.getProducts);
-    const { products, loading, error } = getProducts;
-    console.log(products)
+    const handleListItemClick = (event, index) => {
+        setSelcat(event.target.textContent);
+        console.log(event.target.textContent)
+    };
+    // const getProducts = useSelector((state) => state.getProducts);
+    // const { products, loading, error } = getProducts;
+    // // console.log(products)
 
-    const [prices, setPrice] = useState([4, 99]);
+    // const [prices, setPrice] = useState([4, 99]);
     const [productsss, setproductsss] = useState([]);
 
     //filtered data 1,2,3
     const [filteredbrand, setFilteredbrand] = useState(null);
+    const [filteredcategory, setFilteredcategory] = useState(null);
     const location = useLocation();
 
     const path = location.pathname.split("/")[2];
-    const [filteredprice, setFilteredprice] = useState([null]);
+    console.log(path)
     //color
     const [selectedcolor, setSelectedcolor] = useState(null);
 
@@ -106,41 +109,29 @@ function Accesories() {
     }
     // const total = (productsss.length);
 
+    // console.log(selectedcolor);
     const [price, setPricee] = useState([0, 10000]);
 
     const priceHandler = (e, newPrice) => {
         setPricee(newPrice);
     }
-    const slectcat = ((event) => {
-        const value = event.target.innerHTML;
-        if(value !== "remove"){
-        setSelcat(value.toLowerCase());
-        }else{
-            setSelcat(null);
-        }
-    })
+
     const selectBrand = ((event) => {
         const value = event.target.innerHTML;
-        if(value !== "remove"){
         setFilteredbrand(value.toLowerCase())
-        } 
-        else if(value === "remove"){
-            setFilteredbrand(null);
-        }
     })
 
     const [showPerPage, setShowPerPage] = useState(6);
     //data for filters upcoming
     const [counter, setCounter] = useState(1);
     const [items, setItems] = useState([]);
-    const [needalert, setNeedAlert] = useState(false);
+    const [needalert, setNeedAlert] = useState(true);
     const [pageload, setPageload] = useState(true);
-    const [total, setTotal] = useState(35);
+    const [total, setTotal] = useState(20);
     const [loader, setLoader] = useState(false);
-
     console.log(total);
-
     const [sortType, setSortType] = useState('createdAt');
+
     const [pagination, setpagination] = useState({
         start: 0,
         end: showPerPage,
@@ -184,6 +175,7 @@ function Accesories() {
 
     }
     console.log(numberOfButtons);
+
     const applyFilters = () => {
         let updatedList = productsss;
         console.log(productsss);
@@ -196,8 +188,6 @@ function Accesories() {
                 (data) => (data.categories.indexOf(selcat) !== -1)
             );
         }
-        console.log(selcat)
-        console.log(updatedList);
 
         // Price Filter
         const minPrice = price[0];
@@ -206,7 +196,6 @@ function Accesories() {
         updatedList = [...updatedList].filter(
             (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
         );
-        console.log(updatedList)
 
         // color Filter
         if ((selectedcolor) != null) {
@@ -216,7 +205,6 @@ function Accesories() {
                 (data) => (data.color.indexOf(selectedcolor) !== -1)
             )
         }
-        console.log(updatedList)
 
         // brand filter
         if ((filteredbrand) != null) {
@@ -232,7 +220,8 @@ function Accesories() {
             console.log("in updatedlist == 0 ");
             setNeedAlert(true);
             setFilteredProducts(productsss);
-            setTotal(35);
+
+            setTotal(productsss.length);
             setItems(productsss);
         }
 
@@ -242,27 +231,34 @@ function Accesories() {
             setTotal(updatedList.length);
             setItems(updatedList);
             console.log("in else of apply filterd");
-        }
+        }      
     }
-    console.log(price, prices, filteredbrand, selcat, selectedcolor);
+    console.log(price, filteredbrand, selcat, selectedcolor, filteredcategory);
+    
+    useEffect(() => {
+        setLoader(true);
+        const getProducts = async () => {
+            try {
+                console.log("in getprod")
+                const res = await axios.get(`http://localhost:3000/api/products/cat/${path}`);
+                setproductsss(res.data);
+                setLoader(false);
+                setTotal(res.data.length);
+            } catch (err) { }
+        };
+        console.log(productsss);
+        getProducts();
+        
+    }, [path]);
+
     useEffect(() => {
         applyFilters(price, filteredbrand, selcat, selectedcolor);
 
     }, [price, filteredbrand, selcat, selectedcolor]);
     
     useEffect(() => {
-        setLoader(true);
-        const getProducts = async () => {
-            try {
-                const res = await axios.get("/api/products");
-                setproductsss(res.data);
-                setLoader(false);
-                // setTotal(res.data.length)
-            } catch (err) { }
-        };
-        console.log(productsss)
-        getProducts();
-        setnumberOfButtons(Math.round(total / showPerPage))
+
+        setnumberOfButtons(Math.round(total / showPerPage));
         const value = showPerPage * counter;
 
         onPaginationChange(value - showPerPage, value);
@@ -276,77 +272,26 @@ function Accesories() {
             const sortProperty = types[type];
             let sorted;
             if(needalert){
+                console.log("inf if of fil produ");
                 sorted = [...productsss].sort((a, b) => a[sortProperty] - b[sortProperty]);
                 setproductsss(sorted);
-
             }else{
-                sorted = [...items].sort((a, b) => a[sortProperty] - b[sortProperty]);
+                console.log("inf else of fil produ");
+                sorted = [...filteredProducts].sort((a, b) => a[sortProperty] - b[sortProperty]);
                 setItems(sorted);
-
             }
         };
         sortArray(sortType);
-
-    }, [path, counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
-
+      
+    }, [counter, showPerPage, numberOfButtons, total, sortType,filteredProducts,needalert])
+    
     return (
         <>
-            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/Accesories</h5>
+            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/Tab</h5>
 
             <div className='mainBar'>
                 <div className='smallsidebar'>
-                    <div className='sidebarHeader'>
-                        <h3>ACCESORIES</h3>
-                        <div name="accesories" className='elementsContainer'>
-                        <div className={(selcat==="null") ? "selected" : "unselected"} onClick={slectcat}><p style={{ cursor: "pointer"}}>remove</p><i class="cancle fa-solid fa-xmark" id='one'></i></div>
-
-                            <div className={(selcat==="watches") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>watches</p><p>2</p></div>
-                            <div className={(selcat==="ipod") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>ipod</p><p>48</p></div>
-                            <div className={(selcat==="iphone") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iphone</p><p>14</p></div>
-                            <div className={(selcat==="wireless") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>wireless</p><p>15</p></div>
-                            <div className={(selcat==="apple") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>connecting devices</p><p>23</p></div>
-                            <div className={(selcat==="cables") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>cables</p><p>1</p></div>
-                            <div className={(selcat==="headphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>headphones</p><p>95</p></div>
-                            {/* <ListItemButton
-                                selected={selectedIndex === 2}
-                                onClick={(event, v) => handleListItemClick(event, 2)}
-                            >
-                                <ListItemText primary="devices" />
-                            </ListItemButton>
-                            <ListItemButton
-                                className={(selcat==="watches") ? "selected" : "unselected"}
-                                selected={selectedIndex === 3}
-                                onClick={(event) => handleListItemClick(event, 3)}
-                            >
-                                <ListItemText primary="watches" />
-                            </ListItemButton>
-
-                            <ListItemButton
-                                selected={selectedIndex === 4}
-                                onClick={(event) => handleListItemClick(event, 4)}
-                            >
-                                <ListItemText primary="iphone" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 5}
-                                onClick={(event) => handleListItemClick(event, 5)}
-                            >
-                                <ListItemText primary="ipad" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 6}
-                                onClick={(event) => handleListItemClick(event, 6)}
-                            >
-                                <ListItemText primary="wireless" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 7}
-                                onClick={(event) => handleListItemClick(event, 7)}
-                            >
-                                <ListItemText primary="headphones" />
-                            </ListItemButton> */}
-                        </div>
-                    </div>
+                    
                     <div className='sidebarHeader'>
                         <h3>Prices</h3>
                         <div className='ranger'>
@@ -392,7 +337,6 @@ function Accesories() {
                                 <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handleWhite} className={whiteclicked ? "forCamron" : "removeAll"}>
                                     <div style={{ backgroundColor: "white", borderRadius: "50%", width: "1rem", height: "1rem", border: "none", position: "absolute", margin: "auto", top: "2px", right: "2px" }}></div>
                                 </div>
-
                             </span>
                             <span>
                                 <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handlegrey} className={lightPinkClicked ? "forLightPink" : "removeAll"}>
@@ -400,14 +344,14 @@ function Accesories() {
                                 </div>
                             </span>
                         </div>
-                    </div>          <div className='sidebarHeader'>
+                    </div>          
+                    <div className='sidebarHeader'>
                         <h3>BRAND</h3>
                         <div name="brand" className='elementsContainer'>
-                            <div className={(filteredbrand==="null") ? "selected" : "unselected"} onClick={selectBrand}><p name="6"  style={{ cursor: "pointer"}}>remove</p><i class="cancle fa-solid fa-xmark" id='one'></i></div>
-                            <div className={(filteredbrand==="apple") ? "selected" : "unselected"} onClick={selectBrand}><p name="1"  style={{ cursor: "pointer" }}>Apple</p><p>99</p></div>
-                            <div className={(filteredbrand==="boat") ? "selected" : "unselected"} onClick={selectBrand}><p name="2"  style={{ cursor: "pointer" }}>BoAt</p><p>99</p></div>
-                            <div className={(filteredbrand==="samsung") ? "selected" : "unselected"} onClick={selectBrand}><p name="3"  style={{ cursor: "pointer" }}>Samsung</p><p>99</p></div>
-                            <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Siemens</p><p>99</p></div>
+                            <div className="brand" ><p name="1" onClick={selectBrand} style={{ cursor: "pointer" }}>Apple</p><p>99</p></div>
+                            <div className="brand"><p name="2" onClick={selectBrand} style={{ cursor: "pointer" }}>BoAt</p><p>99</p></div>
+                            <div className="brand"><p name="3" onClick={selectBrand} style={{ cursor: "pointer" }}>Samsung</p><p>99</p></div>
+                            <div className="brand"><p name="4" onClick={selectBrand} style={{ cursor: "pointer" }}>Siemens</p><p>99</p></div>
                         </div>
                     </div>
                     <div className='sidebarHeader'>
@@ -415,9 +359,7 @@ function Accesories() {
                     </div>
                 </div>
                 <div className='largesidebar'>
-                    <div className='advertise'>
-                        <Iphonemob />
-                    </div>
+                    
                     <div className='largeSidebar'>
                         <div className='sidebarHeader'>
                             <div className='verticalStrip'>
@@ -438,8 +380,8 @@ function Accesories() {
                                         <span>
                                             <span>
                                                 <select name="showitem" onChange={(e) => setShowPerPage(e.target.value)} class="form-select form-select-sm" aria-label=".form-select-sm example" style={{ fontSize: "1rem", fontWeight: "400", backgroundColor: "#f1f1f1" }} >
-                                                    <option defult="true" value="4">6</option>
-                                                    <option value="6">4</option>
+                                                    <option value="4">4</option>
+                                                    <option defult="true" value="6">6</option>
                                                     <option value="8">8</option>
                                                     <option value="10">10</option>
                                                 </select>
@@ -533,4 +475,4 @@ function Accesories() {
         </>
     )
 }
-export default Accesories
+export default Tab
