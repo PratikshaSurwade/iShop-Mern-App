@@ -7,32 +7,17 @@ import axios from "axios";
 import { publicRequest } from '../../../requestMethod';
 
 const Itembar = ({ filteredprice, filteredbrand, filteredcategory, selectedcolor }) => {
-    // console.log(filteredProducts);
-    // const [filproducts, setFilproducts] = useState(false);
-    // console.log(resultsFound)
-    // const isfilAvailable = () => {
-    //     resultsFound ? setFilproducts(true) : setFilproducts(false)
-    // }
+   
     const [products, setProducts] = useState([]);
     const [fetchedata, setFetchedata] = useState([]);
     const [resultsFound, setResultsFound] = useState(true);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    //filtered data 1,2,3
-    //  const [filteredbrand, setFilteredbrand] = useState(filteredBrand);
-    //  const [filteredcategory, setFilteredcategory] = useState(filteredCategory);
-
-    //  const [filteredprice, setFilteredprice] = useState([filteredPrice]);
-
-    //  //color
-    //  const [selectedcolor, setSelectedcolor] = useState(selectedColor);
-
-    //,filteredPrice, filteredBrand,filteredCategory, selectedColor
+    
 
     const [showPerPage, setShowPerPage] = useState(4);
     const total = (products.length);
     console.log()
-    // const total = filteredProducts ? (filteredProducts.length) :products.length;
-    //data for filters upcoming
+  
     const [counter, setCounter] = useState(1);
     const [items, setItems] = useState([]);
     const [sortType, setSortType] = useState('createdAt');

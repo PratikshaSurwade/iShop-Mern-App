@@ -16,8 +16,11 @@ import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
 import BootcampsPage from "./pages/accesories/dsdcsdd";
 import Accesories from "./pages/accesories/Accesories";
-import Fs from "./pages/HomePage/feacturedprods/fs";
 import Tab from "./pages/accesories/Tab";
+import Tabsec from "./pages/accesories/tab2";
+
+
+// import PageSecond from "./pages/accesories/page2";
 
 function App() {
   const user = false;
@@ -44,8 +47,8 @@ function App() {
           {/* <Route path="/mac" element={<Cart />} exact /> */}
           <Route path="/try" element={<BootcampsPage />} exact />
 
-          <Route path="/fs" element={<Fs />} exact />
-          <Route path="/cat/:category" element={<Tab />} exact />
+          {/* <Route path="/cat/:category" element={<Tab />} exact /> */}
+          <Route path="/cat/:category" element={<Tabsec />} exact />
 
 
           <Route path="/page2" element={<PageSecond />} exact />
@@ -64,6 +67,8 @@ function App() {
           </Route>
 
           <Route path="/accesory" element={<Itembar />} exact />
+          {/* <Route path="/tab2" element={<Tabsec />} exact /> */}
+
 
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />

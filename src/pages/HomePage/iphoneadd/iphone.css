@@ -52,6 +52,10 @@
     height: 20rem;
 }
 
+.navLink{
+    text-decoration: none;
+    color:white
+}
 @media (max-width:576px){
 
     .homePageImg2{

@@ -49,6 +49,14 @@
 .slick-arrow,.slick-next:before, .slick-prev:before {
     display: none;
 }
+
+.navLink,a{
+    text-decoration: none;
+    color: black;
+}
+.navLink:hover{
+    text-decoration: underline;
+}
 /* @media (max-width:381px){
     .sliderContainer{
         width: 15rem;

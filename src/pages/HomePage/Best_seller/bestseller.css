@@ -77,6 +77,36 @@
     display: flex;
     justify-content: center;
 }
+
+.rounded-pill ,.cartBadge1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.itemCount1{
+    position: absolute;
+    z-index: 4;
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+    font-size: 10px;
+    margin: 0;
+    border-radius: 50%;
+    position:absolute;
+    top:-1px;
+    right: 5px
+    /* left:6px; */
+    /* padding:5px; */
+    
+}
+
+.navLink{
+    text-decoration: none;
+    color: black;
+}
+.navLink:hover{
+    text-decoration: underline;
+}
 /* @media only  screen and (min-width:480px) and (max-width:576px){
     html{
         font-size:45%;

@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
-import Items from '../HomePage/Best_seller/accesoriespage';
+import Items from '../HomePage/Best_seller/Bestseller';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader.js";
@@ -25,10 +25,12 @@ function Accesories() {
     // };
     const getProducts = useSelector((state) => state.getProducts);
     const { products, loading, error } = getProducts;
-    console.log(products)
+    // console.log(products)
 
     const [prices, setPrice] = useState([4, 99]);
     const [productsss, setproductsss] = useState([]);
+    const [goods, setGoods] = useState([]);
+
 
     //filtered data 1,2,3
     const [filteredbrand, setFilteredbrand] = useState(null);
@@ -39,7 +41,7 @@ function Accesories() {
     //color
     const [selectedcolor, setSelectedcolor] = useState(null);
 
-    //filtered data
+    //filtered data    
     const [filteredProducts, setFilteredProducts] = useState([]);
 
 
@@ -104,6 +106,15 @@ function Accesories() {
         setWhiteclicked(true);
         setSelectedcolor("white")
     }
+    const setRomoveColor = () => {
+        setBlueClicked(false);
+        setDarkPinkClicked(false);
+        setBlackClicked(false);
+        setLightPinkClicked(false);
+        setYellowClicked(false);
+        setWhiteclicked(false);
+        setSelectedcolor(null)
+    }
     // const total = (productsss.length);
 
     const [price, setPricee] = useState([0, 10000]);
@@ -113,7 +124,7 @@ function Accesories() {
     }
     const slectcat = ((event) => {
         const value = event.target.innerHTML;
-        if(value !== "remove"){
+        if(value){
         setSelcat(value.toLowerCase());
         }else{
             setSelcat(null);
@@ -121,10 +132,10 @@ function Accesories() {
     })
     const selectBrand = ((event) => {
         const value = event.target.innerHTML;
-        if(value !== "remove"){
+        if(value){
         setFilteredbrand(value.toLowerCase())
         } 
-        else if(value === "remove"){
+        else{
             setFilteredbrand(null);
         }
     })
@@ -186,18 +197,20 @@ function Accesories() {
     console.log(numberOfButtons);
     const applyFilters = () => {
         let updatedList = productsss;
-        console.log(productsss);
         console.log("in apply filters");
 
         // category filter
-        if ((selcat) != null) {
+        if (selcat) {
             setPageload(false);
             updatedList = [...updatedList].filter(
                 (data) => (data.categories.indexOf(selcat) !== -1)
             );
         }
-        console.log(selcat)
-        console.log(updatedList);
+        else{
+            setPageload(true);
+        }
+        // console.log(selcat,!selcat,"selcat")
+        // console.log(updatedList);
 
         // Price Filter
         const minPrice = price[0];
@@ -206,7 +219,7 @@ function Accesories() {
         updatedList = [...updatedList].filter(
             (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
         );
-        console.log(updatedList)
+        // console.log(updatedList)
 
         // color Filter
         if ((selectedcolor) != null) {
@@ -215,18 +228,22 @@ function Accesories() {
             updatedList = [...updatedList].filter(
                 (data) => (data.color.indexOf(selectedcolor) !== -1)
             )
+        }else if((selectedcolor) == null){
+            setPageload(true);
         }
-        console.log(updatedList)
+        // console.log(updatedList)
 
         // brand filter
-        if ((filteredbrand) != null) {
+        if (filteredbrand) {
             setPageload(false);
-
-            console.log(filteredbrand)
             updatedList = [...updatedList].filter(
                 (data) => (data.brand.indexOf(filteredbrand) !== -1)
             )
+        }else{
+            console.log("setting ''");
+            setPageload(true);
         }
+        // console.log(filteredbrand,!filteredbrand,"filtered brand")
 
         if (!updatedList.length) {
             console.log("in updatedlist == 0 ");
@@ -234,6 +251,7 @@ function Accesories() {
             setFilteredProducts(productsss);
             setTotal(35);
             setItems(productsss);
+            setGoods(productsss)
         }
 
         else {
@@ -241,10 +259,13 @@ function Accesories() {
             setFilteredProducts(updatedList);
             setTotal(updatedList.length);
             setItems(updatedList);
+            // setGoods()
             console.log("in else of apply filterd");
         }
     }
+    
     console.log(price, prices, filteredbrand, selcat, selectedcolor);
+    
     useEffect(() => {
         applyFilters(price, filteredbrand, selcat, selectedcolor);
 
@@ -257,11 +278,13 @@ function Accesories() {
                 const res = await axios.get("/api/products");
                 setproductsss(res.data);
                 setLoader(false);
+                console.log("insideuse effect")
                 // setTotal(res.data.length)
             } catch (err) { }
         };
         console.log(productsss)
         getProducts();
+        // setGoods(productsss)
         setnumberOfButtons(Math.round(total / showPerPage))
         const value = showPerPage * counter;
 
@@ -277,18 +300,18 @@ function Accesories() {
             let sorted;
             if(needalert){
                 sorted = [...productsss].sort((a, b) => a[sortProperty] - b[sortProperty]);
-                setproductsss(sorted);
+                setGoods(sorted);
+                console.log(sorted)
+                console.log("set products")
 
             }else{
                 sorted = [...items].sort((a, b) => a[sortProperty] - b[sortProperty]);
                 setItems(sorted);
-
             }
         };
         sortArray(sortType);
 
     }, [path, counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
-
     return (
         <>
             <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/Accesories</h5>
@@ -296,55 +319,15 @@ function Accesories() {
             <div className='mainBar'>
                 <div className='smallsidebar'>
                     <div className='sidebarHeader'>
-                        <h3>ACCESORIES</h3>
+                        <div className="removecat" onClick={slectcat} ><h3>ACCESORIES</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
                         <div name="accesories" className='elementsContainer'>
-                        <div className={(selcat==="null") ? "selected" : "unselected"} onClick={slectcat}><p style={{ cursor: "pointer"}}>remove</p><i class="cancle fa-solid fa-xmark" id='one'></i></div>
-
                             <div className={(selcat==="watches") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>watches</p><p>2</p></div>
-                            <div className={(selcat==="ipod") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>ipod</p><p>48</p></div>
+                            <div className={(selcat==="ipod") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>ipad</p><p>48</p></div>
                             <div className={(selcat==="iphone") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iphone</p><p>14</p></div>
                             <div className={(selcat==="wireless") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>wireless</p><p>15</p></div>
                             <div className={(selcat==="apple") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>connecting devices</p><p>23</p></div>
                             <div className={(selcat==="cables") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>cables</p><p>1</p></div>
                             <div className={(selcat==="headphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>headphones</p><p>95</p></div>
-                            {/* <ListItemButton
-                                selected={selectedIndex === 2}
-                                onClick={(event, v) => handleListItemClick(event, 2)}
-                            >
-                                <ListItemText primary="devices" />
-                            </ListItemButton>
-                            <ListItemButton
-                                className={(selcat==="watches") ? "selected" : "unselected"}
-                                selected={selectedIndex === 3}
-                                onClick={(event) => handleListItemClick(event, 3)}
-                            >
-                                <ListItemText primary="watches" />
-                            </ListItemButton>
-
-                            <ListItemButton
-                                selected={selectedIndex === 4}
-                                onClick={(event) => handleListItemClick(event, 4)}
-                            >
-                                <ListItemText primary="iphone" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 5}
-                                onClick={(event) => handleListItemClick(event, 5)}
-                            >
-                                <ListItemText primary="ipad" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 6}
-                                onClick={(event) => handleListItemClick(event, 6)}
-                            >
-                                <ListItemText primary="wireless" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 7}
-                                onClick={(event) => handleListItemClick(event, 7)}
-                            >
-                                <ListItemText primary="headphones" />
-                            </ListItemButton> */}
                         </div>
                     </div>
                     <div className='sidebarHeader'>
@@ -366,7 +349,8 @@ function Accesories() {
                     </div>
 
                     <div className='sidebarHeader'>
-                        <h3>Color</h3>
+                        {/* <h3>Color</h3> */}
+                        <div className="removecat" onClick={setRomoveColor} ><h3>COLOR</h3><i style={{ cursor: "pointer" }} className={(selectedcolor!=null)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
                         <div className='colorize'>
                             <span>
                                 <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handleBlue} className={blueClicked ? "forBlue" : "removeAll"}>
@@ -400,10 +384,14 @@ function Accesories() {
                                 </div>
                             </span>
                         </div>
-                    </div>          <div className='sidebarHeader'>
+                    </div> 
+                    {/* <div className='sidebarHeader'>
                         <h3>BRAND</h3>
+                        <div name="brand" className='elementsContainer'>          */}
+                    <div className='sidebarHeader'>
+                        <h3 className="removecat" onClick={selectBrand} ><h3>BRAND</h3><i style={{ cursor: "pointer" }} className={(filteredbrand)?"cancle fa-solid fa-xmark":"cancled"} title="remove brand filter"></i></h3>
+
                         <div name="brand" className='elementsContainer'>
-                            <div className={(filteredbrand==="null") ? "selected" : "unselected"} onClick={selectBrand}><p name="6"  style={{ cursor: "pointer"}}>remove</p><i class="cancle fa-solid fa-xmark" id='one'></i></div>
                             <div className={(filteredbrand==="apple") ? "selected" : "unselected"} onClick={selectBrand}><p name="1"  style={{ cursor: "pointer" }}>Apple</p><p>99</p></div>
                             <div className={(filteredbrand==="boat") ? "selected" : "unselected"} onClick={selectBrand}><p name="2"  style={{ cursor: "pointer" }}>BoAt</p><p>99</p></div>
                             <div className={(filteredbrand==="samsung") ? "selected" : "unselected"} onClick={selectBrand}><p name="3"  style={{ cursor: "pointer" }}>Samsung</p><p>99</p></div>
@@ -438,8 +426,8 @@ function Accesories() {
                                         <span>
                                             <span>
                                                 <select name="showitem" onChange={(e) => setShowPerPage(e.target.value)} class="form-select form-select-sm" aria-label=".form-select-sm example" style={{ fontSize: "1rem", fontWeight: "400", backgroundColor: "#f1f1f1" }} >
-                                                    <option defult="true" value="4">6</option>
-                                                    <option value="6">4</option>
+                                                    <option default="true" value="6">6</option>
+                                                    <option  value="4">4</option>
                                                     <option value="8">8</option>
                                                     <option value="10">10</option>
                                                 </select>
@@ -453,7 +441,7 @@ function Accesories() {
                                 </div>
                             </div>
                         </div>
-
+{console.log("goods",goods,!goods.length)}
                         {loader ? (
                             <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                                 <h2 style={{ textAlign: "center" }}>Loading...</h2>
@@ -464,11 +452,22 @@ function Accesories() {
                             (needalert) ?
                                 (
                                     (pageload) ? (
-                                        <div className='cardsbox'>
+                                        (!goods.length) ? (
+                                            <div className='cardsbox'>
+                                                {console.log("ingoods")}
                                             {productsss.slice(pagination.start, pagination.end).map(data => {
                                                 return <Items info={data} />
                                             })}
                                         </div>
+                                        ) :(
+                                            <div className='cardsbox'>
+                                                {console.log("in products")}
+                                            {goods.slice(pagination.start, pagination.end).map(data => {
+                                                return <Items info={data} />
+                                            })}
+                                        </div>
+                                        ) 
+                                        
                                     ) : (
                                         <>
                                             <Alert severity="error">
@@ -477,7 +476,7 @@ function Accesories() {
                                             </Alert>
                                             <div className='cardsbox'>
                                                 {/* {setTotal(productsss.length)} */}
-                                                {productsss.slice(pagination.start, pagination.end).map(data => {
+                                                {goods.slice(pagination.start, pagination.end).map(data => {
                                                     return <Items info={data} />
                                                 })}
                                             </div>
@@ -534,3 +533,42 @@ function Accesories() {
     )
 }
 export default Accesories
+
+/* <ListItemButton
+                                selected={selectedIndex === 2}
+                                onClick={(event, v) => handleListItemClick(event, 2)}
+                            >
+                                <ListItemText primary="devices" />
+                            </ListItemButton>
+                            <ListItemButton
+                                className={(selcat==="watches") ? "selected" : "unselected"}
+                                selected={selectedIndex === 3}
+                                onClick={(event) => handleListItemClick(event, 3)}
+                            >
+                                <ListItemText primary="watches" />
+                            </ListItemButton>
+
+                            <ListItemButton
+                                selected={selectedIndex === 4}
+                                onClick={(event) => handleListItemClick(event, 4)}
+                            >
+                                <ListItemText primary="iphone" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 5}
+                                onClick={(event) => handleListItemClick(event, 5)}
+                            >
+                                <ListItemText primary="ipad" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 6}
+                                onClick={(event) => handleListItemClick(event, 6)}
+                            >
+                                <ListItemText primary="wireless" />
+                            </ListItemButton>
+                            <ListItemButton
+                                selected={selectedIndex === 7}
+                                onClick={(event) => handleListItemClick(event, 7)}
+                            >
+                                <ListItemText primary="headphones" />
+                            </ListItemButton> */

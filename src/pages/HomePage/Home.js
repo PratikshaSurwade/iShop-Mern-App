@@ -20,7 +20,7 @@ import mobImg from "./mobile_c3.png";
 //import json
 import Featuredproduct from "./feacturedprods/Featuredproduct.js";
 import Loader from "../effects/loader.js";
-
+       
 function Home() {
 	//fetching products from reducer
 	const dispatch = useDispatch();
@@ -35,6 +35,7 @@ function Home() {
 	const [showPerPage, setShowPerPage] = useState(8);
 	// const [total , setTotal] = useState(products.length);
 	const [counter, setCounter] = useState(1);
+	const [ expanded , setExpanded ] = useState(false);
 
 	const selectsubTag = ((e) => {
 		const val = (e.target.innerHTML)
@@ -56,7 +57,13 @@ function Home() {
 		end: showPerPage,
 	})
 	const onPaginationChange = (start, end) => {
-		setpagination({ start: 0, end: end });
+		if(products.length!==0 && ( listavailable ? end>=list.length :end>=products.length  )){
+			setExpanded(true);
+
+		}else{
+			setpagination({ start: 0, end: end });
+			setExpanded(false);
+		}
 	};
 	const setLoadmorefun = () => {
 	}
@@ -70,19 +77,19 @@ function Home() {
 
 		onPaginationChange(value - showPerPage, value);
 
-	}, [dispatch, subtabSelect, counter]);
+	}, [dispatch, subtabSelect, counter,showPerPage]);
 
 	return (
 		<>
 			<img className="mainImg" src={mainImg} alt="" />
 			<img className="mobImg" src={mobImg} alt="" />
 			<h2 className="subHead">BEST SELLER</h2>
-			<NavDropdown className="sortbestSeller" title="Categories" id="basic-nav-dropdown" >
-				<NavDropdown.Item><NavLink className="navlinkremoval" to="/home/mac">Mac</NavLink></NavDropdown.Item>
-				<NavDropdown.Item ><NavLink to="/home/iphone">iPhone</NavLink></NavDropdown.Item>
-				<NavDropdown.Item><NavLink to="/mac">iPad</NavLink></NavDropdown.Item>
-				<NavDropdown.Item><NavLink to="">iPod</NavLink></NavDropdown.Item>
-				<NavDropdown.Item><NavLink to="/accesory">Accessories</NavLink></NavDropdown.Item>
+			<NavDropdown className="sortbestSeller" title="All" id="basic-nav-dropdown" >
+				<NavDropdown.Item><NavLink className="navlinkremoval" onClick={selectsubTag} to="/home/mac">Mac</NavLink></NavDropdown.Item>
+				<NavDropdown.Item ><NavLink to="/home/iphone" onClick={selectsubTag}>iPhone</NavLink></NavDropdown.Item>
+				<NavDropdown.Item><NavLink to="/home/ipad" onClick={selectsubTag}>iPad</NavLink></NavDropdown.Item>
+				<NavDropdown.Item><NavLink to="/home/ipod" onClick={selectsubTag}>iPod</NavLink></NavDropdown.Item>
+				<NavDropdown.Item><NavLink to="/home/accessories" onClick={selectsubTag}>Accessories</NavLink></NavDropdown.Item>
 			</NavDropdown>
 			<div className="subHeadSubpoints">
 				<div className="subListItems" ><NavLink className="navlinkremoval" to="/home" onClick={selectsubTag}>All</NavLink></div>
@@ -111,11 +118,22 @@ function Home() {
 
 				</div>
 			</div>
-			<div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div>
+			{console.log(list.length)}
+			<div className="loadMoreForWeb">
+				{(list.length===0||list.length>=8) ? (
+					expanded? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
+				) : (<>...</>) }		
+			</div>
+			<div className="loadMoreForMob">
+				{(list.length===0||list.length>=8) ? (
+					expanded? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
+				) : (<>...</>) }		
+			</div>
+			
 			{/* {totalPages !== page && <div className="loadmore" onClick={() => setPage(page + 1)}>{loading ? 'Loading...' : 'Load More'}</div>} */}
 			<Iphoneadd />
 			<Facilitis />
-			<h3 className="subHead">FEATURED PTODUCTS</h3>
+			<h3 className="subHead">FEATURED PRODUCTS</h3>
 			<Featuredproduct />
 		</>
 	);

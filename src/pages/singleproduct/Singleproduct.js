@@ -8,7 +8,6 @@ import { getProductDetails } from "../../redux/actions/productActions";
 import { addToCart } from "../../redux/actions/cartActions";
 
 const Singleproduct = ({ match }) => {
-  const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
   let navigate = useNavigate ();
 
@@ -17,12 +16,26 @@ const Singleproduct = ({ match }) => {
   const productDetails = useSelector((state) => state.getProductDetails);
   const { loading, error, product } = productDetails;
 
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+
+  const setcount= () =>{
+    const data = cartItems.find(e => e.product === id);
+    if(data){
+      console.log("qty",data.qty);
+      // setQty(data.qty);
+      return data.qty
+  }else{ return 1}; 
+  }
+  const [qty, setQty] = useState(setcount());
+
+
   useEffect(() => {
     if (product && id !== product._id) {
       dispatch(getProductDetails(id));
     }
-  }, [dispatch, match, product]);
-console.log(qty)
+  }, [dispatch, match, product,id]);
+// console.log(qty)
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty , product.img , product.discountedPrice ,product.name));
     navigate(`/cart`);

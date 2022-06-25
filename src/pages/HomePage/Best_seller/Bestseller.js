@@ -1,34 +1,44 @@
 import "./bestseller.css";
 import StarRatings from 'react-star-ratings';
 import likeButton from "./icons/favorite_icon.svg";
-import { useEffect, useState } from "react";
-import { Link , useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import Badge from 'react-bootstrap/Badge';
 
-import cart from "./icons/fill_cart.svg";
+import carticon from "./icons/fill_cart.svg";
 import { useSelector, useDispatch } from "react-redux";
 
 // Actions
-import { getProductDetails } from "../../../redux/actions/productActions";
 import { addToCart } from "../../../redux/actions/cartActions";
 
-function Bestseller  ( props ) {
+function Bestseller(props) {
+
     const [qty, setQty] = useState(1);
 
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
     const dispatch = useDispatch();
-    let navigate = useNavigate ();
 
-    // // useEffect(() => {
-    // //     if (props.info && id !== props.info._id) {
-    // //       dispatch(getProductDetails(id));
-    // //     }
-    // //   }, [dispatch, match, props.info]);
+    const handleCart = () => {
+        const data = cartItems.find(e => e.product === props.info._id);
+        if(data){
+            return data.qty
+        }else
+        { return 0}
+    }
 
-    // console.log(props.info)
-
-    // const addToCartHandler = () => {
-    //     dispatch(addToCart(props.info._id, props.info.img , props.info.discountedPrice ,props.info.name));
-    //     navigate(`/cart`);
-    //   };
+    const addToCartHandler = () => {
+        const data = cartItems.find(e => e.product === props.info._id);
+        if(data)
+        {
+            const qnty = Number(Number(data.qty) + 1);
+            dispatch(addToCart( props.info._id, qnty ));
+        }
+        else{
+            dispatch(addToCart( props.info._id, qty))
+        }
+    }
+  
     return (
         <>
             <div className="subCards">
@@ -37,12 +47,14 @@ function Bestseller  ( props ) {
                     <img className="imagepart" src={props.info.img} alt="" ></img>
                     <div className="blurEffect">
                         <img src={likeButton} alt="" />
-                        {/* <img src={cart} alt=""  onClick={addToCartHandler}  /> */}
-                        <img src={cart} alt=""  />
-
+                        <img src={carticon} alt="" onClick={addToCartHandler} />
+                            <span className='itemCount1'>
+                                <Badge pill bg="danger" className='cartBadge1'>{handleCart()}</Badge>
+                            </span>
                     </div>
                 </div>
-                <Link to={`/api/products/${props.info._id}`} className="info__button">
+                {/* style={{color:"black",textDecoration:"none"}} */}
+                <Link to={`/api/products/${props.info._id}`} style={{color:"black"}} className="navLink">
                     <div className="itemName">{props.info.name}</div>
                 </Link>
                 <div className="itemRatings">

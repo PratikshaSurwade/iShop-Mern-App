@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 // import Largesidebar from './largesidebar/largesidebar';
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
-import Items from '../HomePage/Best_seller/accesoriespage';
+import Items from '../HomePage/Best_seller/Bestseller';
 // import Slider from '@mui/material/Slider';
 import { Radio } from '@material-ui/core';
 import { RadioGroup } from '@material-ui/core'
@@ -310,6 +310,7 @@ console.log(numberOfButtons);
         applyFilters(price, filteredbrand, selcat, selectedcolor);
 
     }, [price, filteredbrand, selcat, selectedcolor]);
+    
     useEffect(() => {
         setLoader(true);
         const getProducts = async () => {
@@ -320,13 +321,13 @@ console.log(numberOfButtons);
                 // setTotal(res.data.length)
             } catch (err) { }
         };
-        console.log(productsss)
+        console.log(productsss);
         getProducts();
         setnumberOfButtons(Math.round(total / showPerPage))
         const value = showPerPage * counter;
 
         onPaginationChange(value - showPerPage, value)
-
+        let sorted;
         const sortArray = type => {
             const types = {
                 newest: 'createdAt',
@@ -335,7 +336,7 @@ console.log(numberOfButtons);
             };
             const sortProperty = types[type];
             console.log(filteredProducts)
-            const sorted = [...filteredProducts].sort((a, b) => a[sortProperty] - b[sortProperty]);
+            sorted = [...filteredProducts].sort((a, b) => a[sortProperty] - b[sortProperty]);
             console.log(sorted);
             setItems(sorted);
         };
