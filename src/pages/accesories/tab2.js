@@ -196,12 +196,18 @@ function Tabsec() {
         // console.log(updatedList);
 
         // Price Filter
-        const minPrice = price[0];
-        const maxPrice = price[1];
+        if(price[0]!==0 || price[1]!==10000){
+            setPageload(false);
 
-        updatedList = [...updatedList].filter(
-            (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
-        );
+            const minPrice = price[0];
+            const maxPrice = price[1];
+
+            updatedList = [...updatedList].filter(
+                (item) => item.discountedPrice >= minPrice && item.discountedPrice <= maxPrice
+            );
+        }else if(price[0]===0 || price[1]===10000){
+            setPageload(true);
+        }
         // console.log(updatedList)
 
         // color Filter
@@ -227,12 +233,11 @@ function Tabsec() {
         }
         // console.log(filteredbrand,!filteredbrand,"filtered brand")
 
-        if ((filteredbrand !== null) || (selectedcolor !== null)) {
+        if ((filteredbrand !== null) || (selectedcolor !== null) || price[0]!==0 || price[1]!==10000) {
             setNeedAlert(false);
             setTotal(updatedList.length);
             setItems(updatedList);
-            console.log("in updatedlist == 0 ");
-            
+            console.log("in updatedlist == 0 ");    
         }
 
         else {
@@ -261,11 +266,11 @@ function Tabsec() {
         console.log(productsss)
         getProducts();
         setNeedAlert(true);
-                setFilteredbrand(null);
-                setSelectedcolor(null);
-                setSelcat(null);
-                setPricee([0,10000]);
-                setBlueClicked(false);
+        setFilteredbrand(null);
+        setSelectedcolor(null);
+        setSelcat(null);
+        setPricee([0,10000]);
+        setBlueClicked(false);
         setDarkPinkClicked(false);
         setBlackClicked(false);
         setLightPinkClicked(false);
@@ -293,7 +298,7 @@ function Tabsec() {
 
     return (
         <>
-            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/Accesories</h5>
+            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/{path.charAt(0).toUpperCase() + path.slice(1)}</h5>
 
             <div className='mainBar'>
                 <div className='smallsidebar'>
@@ -360,10 +365,10 @@ function Tabsec() {
                         <h3 className="removecat" onClick={selectBrand} ><h3>BRAND</h3><i style={{ cursor: "pointer" }} className={(filteredbrand)?"cancle fa-solid fa-xmark":"cancled"} title="remove brand filter"></i></h3>
 
                         <div name="brand" className='elementsContainer'>
-                            <div className={(filteredbrand==="apple") ? "selected" : "unselected"} onClick={selectBrand}><p name="1"  style={{ cursor: "pointer" }}>Apple</p><p>99</p></div>
-                            <div className={(filteredbrand==="boat") ? "selected" : "unselected"} onClick={selectBrand}><p name="2"  style={{ cursor: "pointer" }}>BoAt</p><p>99</p></div>
-                            <div className={(filteredbrand==="samsung") ? "selected" : "unselected"} onClick={selectBrand}><p name="3"  style={{ cursor: "pointer" }}>Samsung</p><p>99</p></div>
-                            <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Siemens</p><p>99</p></div>
+                            <div className={(filteredbrand==="apple") ? "selected" : "unselected"} onClick={selectBrand}><p name="1"  style={{ cursor: "pointer" }}>Apple</p><p> </p></div>
+                            <div className={(filteredbrand==="boat") ? "selected" : "unselected"} onClick={selectBrand}><p name="2"  style={{ cursor: "pointer" }}>BoAt</p><p> </p></div>
+                            <div className={(filteredbrand==="samsung") ? "selected" : "unselected"} onClick={selectBrand}><p name="3"  style={{ cursor: "pointer" }}>Samsung</p><p> </p></div>
+                            <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Vivo</p><p> </p></div>
                         </div>
                     </div>
                     <div className='sidebarHeader'>

@@ -33,17 +33,16 @@ class Heading extends React.Component{
                     <div className="Navbarstyle">
                         <div className="navbarItems" title="Homepage"><NavLink to="/home">HOME</NavLink></div>
                         <div className='dropdown'>
-                            <div className='navbarItems'><NavLink to="/store">STORE</NavLink></div>
+                            <div className='navbarItems'><NavLink to="/store" style={{color:""}}>STORE</NavLink></div>
                             <div className="dropdown-content" title="Go to Accesories page">
-                            <NavLink to="/accesories">
                                 <Subnavbar />
-                              </NavLink>
                             </div>
                         </div>
-                        <NavLink to="/cat/iphone" className="navbarItems">IPHONE</NavLink>
-                        <NavLink to="/cat/ipad" className="navbarItems">IPAD</NavLink>
-                        <NavLink to="/cat/mac" className="navbarItems">MACBOOK</NavLink>
-                        <NavLink to="/cat/wireless" className="navbarItems">ACCESORIES</NavLink>
+                        <div className="navbarItems" title="Homepage"> <NavLink to="/cat/iphone" style={{color:""}}>IPHONE</NavLink></div>
+                        <div className="navbarItems" title="Homepage"> <NavLink to="/cat/ipad" style={{color:""}}>IPAD</NavLink></div>
+                        <div className="navbarItems" title="Homepage"> <NavLink to="/cat/macbook" style={{color:""}}>MACBOOK</NavLink></div>
+                        <div className="navbarItems" title="Homepage"> <NavLink to="/cat/accessories" style={{color:""}}>ACCESSOREIS</NavLink></div>
+
                     </div>                    
                     <hr style={{margin:"0px 10%"}}></hr>
                     {/* <Subnavbar /> */}
@@ -52,10 +51,8 @@ class Heading extends React.Component{
                     <Navbar expand={false} vertical-height="100%">
                       <Container fluid>
                         <Navbar.Brand href="#">
-                          {/* <h1 className="headstyle2">
-                                            iSHOP
-                                        </h1> */}
-                                        <img className="logo2" src={logo} alt="" />
+        
+                                        <img className="logo2" src={logo} alt="Logo" />
                                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls="offcanvasNavbar" ><img className="navBarIcon" src={navbarIcon} alt="" ></img></Navbar.Toggle>
                         <Navbar.Offcanvas
@@ -83,9 +80,9 @@ class Heading extends React.Component{
                               <Nav.Link href="#action1">
                                 <div className="linkItems2">
                                   <NavDropdown className="linkItems2" title="STORE" id="offcanvasNavbarDropdown">
-                                    <NavDropdown.Item href="#action3"><NavLink to="/store">
-                                    <Subnavbar2 />
-                              </NavLink></NavDropdown.Item>
+                                    <NavDropdown.Item href="#action3">
+                                      <Subnavbar2 />
+                                    </NavDropdown.Item>
                                     {/* <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
                                     <NavDropdown.Divider />
                                     <NavDropdown.Item href="#action5">

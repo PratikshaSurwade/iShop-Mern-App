@@ -60,7 +60,6 @@ hr.hrTopNavbar{
 .dropdown {
     position: relative;
     display: inline-block;
-    cursor: pointer;
     /* z-index: 8; */
 }
   

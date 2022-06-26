@@ -7,20 +7,15 @@ import Footer from "./pages/footer/Footer";
 import Cart from "./pages/cart/Cart";
 import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
-import Itembar from "./pages/accesories/largesidebar/itembar";
-import PageSecond from "./pages/accesories/page2";
 import Singleproduct from "./pages/singleproduct/Singleproduct";
 import ShippingScreen from "./pages/shipping/ShippingScreen";
 import PaymentScreen from "./pages/shipping/PaymentScreen";
 import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
-import BootcampsPage from "./pages/accesories/dsdcsdd";
 import Accesories from "./pages/accesories/Accesories";
-import Tab from "./pages/accesories/Tab";
+// import Tab from "./pages/accesories/Tab";
 import Tabsec from "./pages/accesories/tab2";
 
-
-// import PageSecond from "./pages/accesories/page2";
 
 function App() {
   const user = false;
@@ -32,7 +27,7 @@ function App() {
         <Route path="/" element={<Home />} exact />
 
           <Route path="/home" element={<Home />} exact >
-          <Route path="/home" element={<Home />} exact />
+            <Route path="/home" element={<Home />} exact />
 
             <Route path="/home/mac" element={<Home />} exact />
             <Route path="/home/iphone" element={<Home />} exact />
@@ -41,33 +36,12 @@ function App() {
             <Route path="/home/accessories" element={<Home />} exact />
 
           </Route>
-          {/* <Route path="/home/mac" element={<Home />} exact /> */}
-          {/* <Route path="/mac" element={<Home />} exact />
-          <Route path="/home/mac" element={<Store />} exact /> */}
-          {/* <Route path="/mac" element={<Cart />} exact /> */}
-          <Route path="/try" element={<BootcampsPage />} exact />
 
           {/* <Route path="/cat/:category" element={<Tab />} exact /> */}
           <Route path="/cat/:category" element={<Tabsec />} exact />
 
 
-          <Route path="/page2" element={<PageSecond />} exact />
           <Route path="/store" element={<Accesories />} exact />
-
-
-          <Route path="/page2" element={<PageSecond />} exact >
-            <Route path="/page2" element={<PageSecond />} exact />
-
-            <Route path="/page2/watches" element={<PageSecond />} exact />
-            <Route path="/page2/headphones" element={<PageSecond />} exact />
-            <Route path="/page2/connecting devices" element={<PageSecond />} exact />
-            <Route path="/page2/headphones" element={<PageSecond />} exact />
-            <Route path="/page2/accessories" element={<PageSecond />} exact />
-
-          </Route>
-
-          <Route path="/accesory" element={<Itembar />} exact />
-          {/* <Route path="/tab2" element={<Tabsec />} exact /> */}
 
 
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
