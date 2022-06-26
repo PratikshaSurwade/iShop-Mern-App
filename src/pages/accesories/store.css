@@ -114,6 +114,9 @@
     border: 2px groove #FC3E39;
 }
 
+.display{
+    display: none;
+}
 
 
 @media  (max-width:576px){

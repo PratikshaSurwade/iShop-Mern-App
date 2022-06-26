@@ -45,7 +45,7 @@ function Accesories() {
     const [filteredProducts, setFilteredProducts] = useState([]);
 
 
-    const [blueClicked, setBlueClicked] = useState(true);
+    const [blueClicked, setBlueClicked] = useState(false);
     const [darkPinkClicked, setDarkPinkClicked] = useState(false);
     const [blackClicked, setBlackClicked] = useState(false);
     const [lightPinkClicked, setLightPinkClicked] = useState(false);
@@ -314,12 +314,12 @@ function Accesories() {
     }, [path, counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
     return (
         <>
-            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/Accesories</h5>
+            <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/All Items</h5>
 
             <div className='mainBar'>
                 <div className='smallsidebar'>
                     <div className='sidebarHeader'>
-                        <div className="removecat" onClick={slectcat} ><h3>ACCESORIES</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
+                        <div className="removecat" onClick={slectcat} ><h3>All Categories</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
                         <div name="accesories" className='elementsContainer'>
                             <div className={(selcat==="watches") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Watches</p><p>.</p></div>
                             <div className={(selcat==="ipod") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Mobile</p><p>.</p></div>
@@ -328,6 +328,10 @@ function Accesories() {
                             <div className={(selcat==="apple") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>HomePod</p><p> </p></div>
                             <div className={(selcat==="cables") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Cables</p><p> </p></div>
                             <div className={(selcat==="headphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Headphones</p><p> </p></div>
+                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPhone</p><p> </p></div>
+                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPad</p><p> </p></div>
+                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple MacBook</p><p> </p></div>
+
                         </div>
                     </div>
                     <div className='sidebarHeader'>
@@ -398,9 +402,23 @@ function Accesories() {
                             <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Vivo</p><p></p></div>
                         </div>
                     </div>
-                    <div className='sidebarHeader'>
-                        <h4>More</h4>
-                    </div>
+                    {/* <div className='sidebarHeader'>
+                        <div className="removecat" onClick={slectcat} ><h3>IPhone</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
+
+                        <div className='elementsContainer'>
+                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPhone</p><p> </p></div>
+                        </div>
+                        <div className="removecat" onClick={slectcat} ><h3>IPad</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
+
+                        <div className='elementsContainer'>
+                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPad</p><p> </p></div>
+                        </div>
+                        <div className="removecat" onClick={slectcat} ><h3>Macbook</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
+
+                        <div className='elementsContainer'>
+                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple MacBook</p><p> </p></div>
+                        </div>
+                    </div> */}
                 </div>
                 <div className='largesidebar'>
                     <div className='advertise'>

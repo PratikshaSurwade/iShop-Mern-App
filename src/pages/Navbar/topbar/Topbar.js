@@ -43,7 +43,7 @@ function Topbar() {
 								<Badge pill bg="danger" className='cartBadge'>{getCartCount()}</Badge>
 							</span>  <span style={{ position: "relative", marginLeft: "7px" }}>Items</span>
 						</NavLink>
-						<span className='itemPrice'>{getCartSubTotal()}</span>
+						<span className='itemPrice'>₹{getCartSubTotal()}</span>
 					</div>
 				</div>
 				<div className='secondBar'>
@@ -66,7 +66,8 @@ function Topbar() {
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
 								</div>
 							)}
-					<div className='search'><i class="fa-solid fa-magnifying-glass"></i></div>
+							
+					{/* <div className='search'><i class="fa-solid fa-magnifying-glass"></i></div> */}
 				</div>
 			</div>
 		</>

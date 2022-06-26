@@ -25,6 +25,8 @@ function Tabsec() {
     const [prices, setPrice] = useState([4, 99]);
     const [productsss, setproductsss] = useState([]);
     const [goods, setGoods] = useState([]);
+    const [goodsAvailable, setIsGoodsAvilable] = useState(false);
+
 
 
     //filtered data 1,2,3
@@ -183,7 +185,7 @@ function Tabsec() {
         console.log("in apply filters");
 
         // category filter
-        if (selcat) {
+        if ((selcat!==null)) {
             setPageload(false);
             updatedList = [...updatedList].filter(
                 (data) => (data.categories.indexOf(selcat) !== -1)
@@ -233,10 +235,12 @@ function Tabsec() {
         }
         // console.log(filteredbrand,!filteredbrand,"filtered brand")
 
-        if ((filteredbrand !== null) || (selectedcolor !== null) || price[0]!==0 || price[1]!==10000) {
+        if ((filteredbrand !== null) || (selectedcolor !== null) ||(selcat !== null) || price[0]!==0 || price[1]!==10000) {
             setNeedAlert(false);
             setTotal(updatedList.length);
             setItems(updatedList);
+            setIsGoodsAvilable(false)
+
             console.log("in updatedlist == 0 ");    
         }
 
@@ -244,6 +248,8 @@ function Tabsec() {
             console.log("in else of apply filterd");
             setNeedAlert(true);
             setTotal(12);
+            setIsGoodsAvilable(false)
+            setItems(productsss);
         }
     }
     
@@ -263,8 +269,9 @@ function Tabsec() {
                 // setTotal(res.data.length)
             } catch (err) { console.log(err) }
         };
-        console.log(productsss)
+        console.log(productsss);
         getProducts();
+
         setNeedAlert(true);
         setFilteredbrand(null);
         setSelectedcolor(null);
@@ -276,7 +283,12 @@ function Tabsec() {
         setLightPinkClicked(false);
         setYellowClicked(false);
         setWhiteclicked(false);
-        console.log("in useeffect",price,newpath, prices, filteredbrand, selcat, selectedcolor);
+        setIsGoodsAvilable(false);
+        setGoods([]);
+
+
+        console.log("in useeffect",price,newpath, prices, filteredbrand, selcat, selectedcolor,goods);
+
     }, [path])
     
 
@@ -292,9 +304,30 @@ function Tabsec() {
         const value = showPerPage * counter;
 
         onPaginationChange(value - showPerPage, value);
+        const sortArray = type => {
+            const types = {
+                newest: 'createdAt',
+                price: 'discountedPrice',
+                rating: 'rating',
+            };
+            const sortProperty = types[type];
+            let sorted;
+            if(needalert){
+                sorted = [...productsss].sort((a, b) => a[sortProperty] - b[sortProperty]);
+                setIsGoodsAvilable(true);
+                setproductsss(sorted);
+                console.log(sorted)
+                console.log("set products")
+
+            }else{
+                sorted = [...items].sort((a, b) => a[sortProperty] - b[sortProperty]);
+                setItems(sorted);
+            }
+        };
+        sortArray(sortType);
 
 
-    }, [counter, showPerPage, numberOfButtons, total, sortType]);
+    }, [ counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
 
     return (
         <>
@@ -302,6 +335,27 @@ function Tabsec() {
 
             <div className='mainBar'>
                 <div className='smallsidebar'>
+                <div className='sidebarHeader'>
+                        <div className="removecat" onClick={slectcat} ><h3>{path.charAt(0).toUpperCase() + path.slice(1)}</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
+                        <div className={(path==="accessories") ?'elementsContainer' : "display"}>
+                            <div className={(selcat==="watches") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Watches</p><p> </p></div>
+                            <div className={(selcat==="mobile") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Cameralens</p><p> </p></div>
+                            <div className={(selcat==="bluetooth") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Bluetooth</p><p> </p></div>
+                            <div className={(selcat==="airpods") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Airpods</p><p> </p></div>
+                            <div className={(selcat==="homepod") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>HomePod</p><p> </p></div>
+                            <div className={(selcat==="cables") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Cables</p><p> </p></div>
+                            <div className={(selcat==="headphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Headphones</p><p> </p></div>
+                        </div>
+                        <div className={(path==="iphone") ?'elementsContainer' : "display"}>
+                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iPhone</p><p> </p></div>
+                        </div>
+                        <div className={(path==="ipad") ?'elementsContainer' : "display"}>
+                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iPad</p><p> </p></div>
+                        </div>
+                        <div className={(path==="macbook") ?'elementsContainer' : "display"}>
+                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>MacBook</p><p> </p></div>
+                        </div>
+                    </div>
                     
                     <div className='sidebarHeader'>
                         <h3>Prices</h3>
@@ -371,13 +425,51 @@ function Tabsec() {
                             <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Vivo</p><p> </p></div>
                         </div>
                     </div>
-                    <div className='sidebarHeader'>
+                    {/* <div className='sidebarHeader'>
                         <h4>More</h4>
-                    </div>
+                    </div> */}
                 </div>
                 <div className='largesidebar'>
+                    <div className='advertise'>
+                        <Iphonemob />
+                    </div>
                     
                     <div className='largeSidebar'>
+                    <div className='sidebarHeader'>
+                            <div className='verticalStrip'>
+                                <div className="flexDiv">
+                                    <div>{showPerPage} Items</div>
+                                    <div className='d-flex justify-content-between flex-row flex-nowrap align-items-center'>
+                                        <span>Sort By</span>
+                                        <span>
+                                            <select name="sort" class="form-select form-select-sm" onChange={(e) => setSortType(e.target.value)} aria-label=".form-select-sm example" style={{ fontSize: "1rem", fontWeight: "400", backgroundColor: "#f1f1f1" }}  >
+                                                <option value="newest">Newest</option>
+                                                <option value="price">Price</option>
+                                                <option value="rating">Rating</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                    <div className='d-flex justify-content-between flex-row flex-nowrap align-items-center'>
+                                        <span>Show</span>
+                                        <span>
+                                            <span>
+                                                <select name="showitem" onChange={(e) => setShowPerPage(e.target.value)} class="form-select form-select-sm" aria-label=".form-select-sm example" style={{ fontSize: "1rem", fontWeight: "400", backgroundColor: "#f1f1f1" }} >
+                                                    <option default="true" value="6">6</option>
+                                                    <option  value="4">4</option>
+                                                    <option value="8">8</option>
+                                                    <option value="10">10</option>
+                                                </select>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div style={{ width: "15%" }} className='d-flex text-end flex-row flex-nowrap overflow-visible align-items-center'>
+                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/ios-glyphs/30/000000/squared-menu.png" alt="" /></button>
+                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></button>
+                                </div>
+                            </div>
+                        </div>
+                        {console.log(goods,!goodsAvailable,!goods.length)}
                         {loader ? (
                             <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
                                 <h2 style={{ textAlign: "center" }}>Loading...</h2>
@@ -387,12 +479,14 @@ function Tabsec() {
 
                             (needalert) ?
                                 (
-                                    <div className='cardsbox'>
-                                                {console.log("ingoods")}
+                                    
+                                            <div className='cardsbox'>
+                                                {console.log("in products")}
                                             {productsss.slice(pagination.start, pagination.end).map(data => {
                                                 return <Items info={data} />
                                             })}
                                         </div>
+                                   
                                 )
                                 :
                                 (
@@ -400,7 +494,7 @@ function Tabsec() {
                                     (   
                                         <>
                                             <div className='cardsbox'>
-
+                                                {console.log("items")}
                                                 {items.slice(pagination.start, pagination.end).map(data => {
                                                     return <Items info={data} />
                                                 })}

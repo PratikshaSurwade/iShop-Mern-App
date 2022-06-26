@@ -7,6 +7,10 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Message from "../effects/Message";
 
+import { login } from "../../redux/actions/userAction";
+// import FormContainer from "../effects/FromContainer";
+import { useLocation } from "react-router-dom";
+
 const PlaceOrderScreen = () => {
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
@@ -15,13 +19,18 @@ const PlaceOrderScreen = () => {
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, success, error } = orderCreate;
 
-	// const [paymentResult, setPaymentResult] = useState({})
+	// const [paymentResult, setPaymentResult] = useState({});
+	const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+
 	const [ successs ,setsucesss] =  useState(false);
-const [ waiting , setWaiting ] = useState(false);
+	const [ waiting , setWaiting ] = useState(false);
+
 	//fun for decimal
 	const addDecimal = (num) => {
 		return (Math.round(num * 100) / 100).toFixed(2);
 	};
+
 	cart.itemsPrice = addDecimal(
 		cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0)
 	);
@@ -37,48 +46,48 @@ const [ waiting , setWaiting ] = useState(false);
 	).toFixed(0);
 
 	const makePayment = async (paymentResult) => {
-		console.log("checking");
-		console.log(paymentResult);
-		console.log("placing");
+		
 		if(waiting){
-		dispatch(
-			createOrder({
-				orderItems: cart.cartItems,
-				shippingAddress: cart.shippingAddress,
-				paymentMethod: cart.paymentMethod,
-				paymentResult: paymentResult,
-				itemsPrice: cart.itemsPrice,
-				shippingPrice: cart.shippingPrice,
-				taxPrice: cart.taxPrice,
-				totalPrice: cart.totalPrice,
-			}));
-		setsucesss(true);}
+			dispatch(
+				createOrder({
+					orderItems: cart.cartItems,
+					shippingAddress: cart.shippingAddress,
+					paymentMethod: cart.paymentMethod,
+					paymentResult: paymentResult,
+					itemsPrice: cart.itemsPrice,
+					shippingPrice: cart.shippingPrice,
+					taxPrice: cart.taxPrice,
+					totalPrice: cart.totalPrice,
+				}));
+			setsucesss(true);
 		}
+	}
 
 	const placeOrderHandler = async () => {
 		try {
-			console.log("first");
 			const orderUrl = "http://localhost:3000/api/payment/orders";
 			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
 			// initPayment(data.data);
-			console.log("sec")
-			console.log(data.data)
-			// setPaymentResult(data.data)
-			// console.log(paymentResult);
 			setWaiting(true);
 			makePayment(data.data);
-			console.log("check")
-			// console.log(paymentResult);
+			console.log("check");
+
 		} catch (error) {
 			console.log(error);
 		}};
+		console.log(userInfo)
 
 	useEffect(() => {
+
+		if (!userInfo) {
+			navigate("/login");
+		}
+		  
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success]);
+	}, [navigate, success, userInfo]);
 	return (
 		<>
 			<Row>

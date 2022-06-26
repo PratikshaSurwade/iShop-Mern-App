@@ -85,12 +85,16 @@ hr.hrTopNavbar{
 
 
 /* responsive design */
-.navbar-nav .nav-link {
+.navbar-nav .nav-link ,.linkItems2{
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     padding: 0.8rem 0rem 0.8rem 0rem;
+}
+.linkItems2:hover{
+    color: #006CFF;
+    cursor: pointer;
 }
 
 .offcanvas.show {

@@ -15,7 +15,7 @@ import OrderScreen from "./pages/shipping/OrderScreen";
 import Accesories from "./pages/accesories/Accesories";
 // import Tab from "./pages/accesories/Tab";
 import Tabsec from "./pages/accesories/tab2";
-
+// import HandleImageUpload from "./pages/register/signup"
 
 function App() {
   const user = false;
@@ -51,6 +51,9 @@ function App() {
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
           
           <Route path="/cart" element={<Cart />} exact />
+          {/* <Route path="/signup" element={<HandleImageUpload />} exact /> */}
+
+
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
         </Routes>

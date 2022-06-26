@@ -6,6 +6,7 @@
     align-items: center;
     justify-content: space-around;
     height: 1.8rem;
+
 }
 .firstBar{
     /* width: 30%; */
@@ -67,4 +68,11 @@
 
 .topmobBarClor>a{
     color: white;
+}
+
+.logout{
+    border: none;
+    border-radius: 5px;
+    background-color: #d3d3d3;
+    margin-left: 5px;
 }
