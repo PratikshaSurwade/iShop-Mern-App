@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 // import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card ,Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
+import FromContainer from "../effects/FromContainer";
 
 const OrderScreen = () => {
   // const { orderId } = useParams();
@@ -116,10 +117,10 @@ const OrderScreen = () => {
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
-    <>
+    <Container>
       {console.log(order)}
 
-      <h2>Order {order._id}</h2>
+      <h2 style={{marginTop:"1rem"}}>Order {order._id}</h2>
       <Row>
         <Col md={8}>
           <ListGroup.Item variant="flush">
@@ -167,7 +168,7 @@ const OrderScreen = () => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <Image src={item.imageUrl} alt={item.name} fluid />
+                      <img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid />
                     </Col>
                     <Col>
                       <Link to={`/api/product/${item.product}`}>{item.name}</Link>
@@ -214,19 +215,19 @@ const OrderScreen = () => {
             </ListGroup>
           </Card>
          {(!order.isPaid)? 
-         <button onClick={setpayment} className="buy_btn">
-            makePayment
-          </button>: 
-          <button onClick={setpayment} disabled className="buy_btn">
-            makePayment
-          </button>}
+         <Button onClick={setpayment} className="buy_btn">
+            Make Payment
+          </Button>: 
+          <Button onClick={setpayment} disabled className="buy_btn">
+            Make Payment
+          </Button>}
           <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JeDaUBJzpYKfJq" async> </script> </form>
           {/* <button onClick={fetchingorder} className="buy_btn">
             confirm order
           </button> */}
         </Col>
       </Row>
-    </>
+    </Container>
   );
 };
 

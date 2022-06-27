@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader.js";
 import { login } from "../../redux/actions/userAction";
-// import FormContainer from "../effects/FromContainer";
+import FormContainer from "../effects/FromContainer";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
@@ -37,8 +37,8 @@ const LoginScreen = () => {
 
   return (
     <>
-      {/* <FormContainer> */}
-        <h1>SIGN IN</h1>
+      <FormContainer>
+        <h1 style={{marginTop:"1.5rem"}}>SIGN IN</h1>
         {error && <Message varient="danger">{error}</Message>}
         {loading && <Loader />}
         {Loader}
@@ -72,7 +72,7 @@ const LoginScreen = () => {
             </Link>
           </Col>
         </Row>
-      {/* </FormContainer> */}
+      </FormContainer>
     </>
   );
 };

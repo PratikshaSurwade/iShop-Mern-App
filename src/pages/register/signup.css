@@ -1,39 +1,50 @@
-.edit-profile-container {
-    position: relative;
-  }
+/* body{
+    background-color: rgb(225, 250, 250);
+} */
+.register{
+  width: 100%;
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(225, 250, 250);
+
   
-  .edit-profile-container .edit-profile-image {
-    position: relative;
-    width: 200px;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .edit-profile-container .edit-profile-image .item-image {
-    height: 160px;
-    width: 160px;
-    border-radius: 360px;
-  }
-  
-  .edit-profile-container .edit-profile-image .common-button {
-    position: absolute;
-    right: 0;
-    top: 30px;
-  }
-  
-  .edit-profile-container .edit-profile-image .common-button .button-image {
-    outline: none;
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: none;
-    background: transparent;
-  }
-  
-  .edit-profile-container .edit-profile-image .common-button .image-button-img {
-    height: 30px;
-    width: 30px;
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  }
+}
+.registerTitle{
+  font-size: 3rem;
+}
+.registerForm{
+  margin-top: 1.2rem;
+  display: flex;
+  flex-direction: column;
+}
+.registerForm>label{
+  margin:0.8rem 0;
+}
+.registerInput{
+  padding:0.8rem;
+  background-color: white;
+  border: none;
+}
+.registerButton{
+  margin-top: 1.4rem;
+  cursor: pointer;
+  background-color: teal;
+  border: none;
+  color: white;
+  border-radius:0.7rem ;
+  padding: 0.9rem
+}
+.LoginButton{
+  position: absolute;
+  top:4rem;
+  right:1.5rem;
+  border: none;
+  background-color: lightcoral;
+  padding: 0.7rem;
+  cursor: pointer;
+  border-radius: 0.7rem;
+  color:white
+}

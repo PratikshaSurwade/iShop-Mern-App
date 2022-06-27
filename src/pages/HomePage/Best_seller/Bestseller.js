@@ -46,7 +46,6 @@ function Bestseller(props) {
                 <div className="hoveritems">
                     <img className="imagepart" src={props.info.img} alt="" ></img>
                     <div className="blurEffect">
-                        <img src={likeButton} alt="" />
                         <img src={carticon} alt="" onClick={addToCartHandler} />
                             <span className='itemCount1'>
                                 <Badge pill bg="danger" className='cartBadge1'>{handleCart()}</Badge>

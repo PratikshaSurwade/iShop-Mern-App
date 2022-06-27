@@ -61,9 +61,11 @@ function Topbar() {
 							:
 							(
 								<div className='profile'>
-									<img src={profile} alt="" />{userInfo.username}
+									{console.log(userInfo)}
+									<img className="profilePhoto" src={!userInfo?`${profile}`:`${userInfo.profilePic}`} alt="" />{userInfo.username.split(" ")[0]}
 									{/* {userInfo?`${profile}`:`${userInfo.profile}`} */}
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
+									{console.log(userInfo.profilePic)}
 								</div>
 							)}
 							

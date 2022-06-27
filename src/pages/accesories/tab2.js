@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
-import Items from '../HomePage/Best_seller/accesoriespage';
+import Items from '../HomePage/Best_seller/Bestseller';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader.js";

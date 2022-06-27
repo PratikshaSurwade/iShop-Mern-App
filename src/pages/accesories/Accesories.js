@@ -16,33 +16,23 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 
 function Accesories() {
-    const [selcat, setSelcat] = useState(null);
-    const [selectedIndex, setSelectedIndex] = useState(1);
 
-    // const handleListItemClick = (event, index) => {
-    //     setSelcat(event.target.textContent);
-    //     console.log(event.target.textContent)
-    // };
-    const getProducts = useSelector((state) => state.getProducts);
-    const { products, loading, error } = getProducts;
-    // console.log(products)
-
-    const [prices, setPrice] = useState([4, 99]);
-    const [productsss, setproductsss] = useState([]);
-    const [goods, setGoods] = useState([]);
-
-
-    //filtered data 1,2,3
-    const [filteredbrand, setFilteredbrand] = useState(null);
     const location = useLocation();
 
     const path = location.pathname.split("/")[2];
-    const [filteredprice, setFilteredprice] = useState([null]);
+
+
+    const [productsss, setproductsss] = useState([]);
+    const [goods, setGoods] = useState([]);
+
+    //filtered data 1,2,3
+
+    const [selcat, setSelcat] = useState(null);
+
+    const [filteredbrand, setFilteredbrand] = useState(null);
+
     //color
     const [selectedcolor, setSelectedcolor] = useState(null);
-
-    //filtered data    
-    const [filteredProducts, setFilteredProducts] = useState([]);
 
 
     const [blueClicked, setBlueClicked] = useState(false);
@@ -122,6 +112,7 @@ function Accesories() {
     const priceHandler = (e, newPrice) => {
         setPricee(newPrice);
     }
+
     const slectcat = ((event) => {
         const value = event.target.innerHTML;
         if(value){
@@ -130,6 +121,7 @@ function Accesories() {
             setSelcat(null);
         }
     })
+
     const selectBrand = ((event) => {
         const value = event.target.innerHTML;
         if(value){
@@ -141,7 +133,8 @@ function Accesories() {
     })
 
     const [showPerPage, setShowPerPage] = useState(6);
-    //data for filters upcoming
+
+    //data for filters ,pagination
     const [counter, setCounter] = useState(1);
     const [items, setItems] = useState([]);
     const [needalert, setNeedAlert] = useState(false);
@@ -192,9 +185,10 @@ function Accesories() {
                 setCounter(counter + 1);
             }
         }
-
     }
     console.log(numberOfButtons);
+
+    //apply filters
     const applyFilters = () => {
         let updatedList = productsss;
         console.log("in apply filters");
@@ -210,7 +204,6 @@ function Accesories() {
             setPageload(true);
         }
         // console.log(selcat,!selcat,"selcat")
-        // console.log(updatedList);
 
         // Price Filter
         const minPrice = price[0];
@@ -248,7 +241,6 @@ function Accesories() {
         if (!updatedList.length) {
             console.log("in updatedlist == 0 ");
             setNeedAlert(true);
-            setFilteredProducts(productsss);
             setTotal(35);
             setItems(productsss);
             setGoods(productsss)
@@ -256,7 +248,6 @@ function Accesories() {
 
         else {
             setNeedAlert(false);
-            setFilteredProducts(updatedList);
             setTotal(updatedList.length);
             setItems(updatedList);
             // setGoods()
@@ -264,7 +255,7 @@ function Accesories() {
         }
     }
     
-    console.log(price, prices, filteredbrand, selcat, selectedcolor);
+    console.log(price, filteredbrand, selcat, selectedcolor);
     
     useEffect(() => {
         applyFilters(price, filteredbrand, selcat, selectedcolor);
@@ -311,7 +302,7 @@ function Accesories() {
         };
         sortArray(sortType);
 
-    }, [path, counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
+    }, [path, counter, showPerPage, numberOfButtons, total, sortType]);
     return (
         <>
             <h5 className='topHeader' style={{ color: "#006CFF" }}>Store/All Items</h5>
@@ -328,9 +319,9 @@ function Accesories() {
                             <div className={(selcat==="apple") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>HomePod</p><p> </p></div>
                             <div className={(selcat==="cables") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Cables</p><p> </p></div>
                             <div className={(selcat==="headphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Headphones</p><p> </p></div>
-                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPhone</p><p> </p></div>
-                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPad</p><p> </p></div>
-                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple MacBook</p><p> </p></div>
+                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iPhone</p><p> </p></div>
+                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>iPad</p><p> </p></div>
+                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>MacBook</p><p> </p></div>
 
                         </div>
                     </div>
@@ -368,16 +359,16 @@ function Accesories() {
                             </span>
                             <span>
                                 <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handleDarkPink} className={darkPinkClicked ? "forPink" : "removeAll"}>
-                                    <div style={{ backgroundColor: "#FF00B4", borderRadius: "50%", width: "1rem", height: "1rem", border: "none", position: "absolute", margin: "auto", top: "2px", right: "2px" }}></div>
+                                    <div title="silver" style={{ backgroundColor: "#FF00B4", borderRadius: "50%", width: "1rem", height: "1rem", border: "none", position: "absolute", margin: "auto", top: "2px", right: "2px" }}></div>
                                 </div>
                             </span>
                             <span>
-                                <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handlesilver} className={yellowClicked ? "forYellow" : "removeAll"}>
+                                <div title='white' style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handlesilver} className={yellowClicked ? "forYellow" : "removeAll"}>
                                     <div style={{ backgroundColor: "#C0C0C0", borderRadius: "50%", width: "1rem", height: "1rem", border: "none", position: "absolute", margin: "auto", top: "2px", right: "2px" }}></div>
                                 </div>
                             </span>
                             <span>
-                                <div style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handleWhite} className={whiteclicked ? "forCamron" : "removeAll"}>
+                                <div title='grey' style={{ borderRadius: "50%", width: "1.5rem", height: "1.5rem", position: "relative", cursor: "pointer" }} onClick={handleWhite} className={whiteclicked ? "forCamron" : "removeAll"}>
                                     <div style={{ backgroundColor: "white", borderRadius: "50%", width: "1rem", height: "1rem", border: "none", position: "absolute", margin: "auto", top: "2px", right: "2px" }}></div>
                                 </div>
 
