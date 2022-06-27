@@ -263,7 +263,7 @@ function Accesories() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`${baseUrl}/api/products`);
+                const res = await axios.get(`https://mern-ishop-backend.herokuapp.com/api/products`);
                 setproductsss(res.data);
                 setLoader(false);
                 // setTotal(res.data.length)

@@ -261,7 +261,7 @@ function Tabsec() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`${baseUrl}/api/products/cat/${path}`);
+                const res = await axios.get(`https://mern-ishop-backend.herokuapp.com/api/products/cat/${path}`);
                 setNewpath(true);
                 setproductsss(res.data);
                 setLoader(false);               

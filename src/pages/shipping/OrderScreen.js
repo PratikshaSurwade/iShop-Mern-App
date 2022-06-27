@@ -46,7 +46,7 @@ const OrderScreen = () => {
       order_id: info.id,
       handler: async (response) => {
         try {
-          const verifyUrl = `${baseUrl}/api/payment/verify`;
+          const verifyUrl = `https://mern-ishop-backend.herokuapp.com/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           setSuccess(data.success);

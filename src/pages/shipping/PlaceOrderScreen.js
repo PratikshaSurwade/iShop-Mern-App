@@ -63,7 +63,7 @@ const PlaceOrderScreen = () => {
 
 	const placeOrderHandler = async () => {
 		try {
-			const orderUrl = `${baseUrl}/api/payment/orders`;
+			const orderUrl = `https://mern-ishop-backend.herokuapp.com/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
 			// initPayment(data.data);
 			setWaiting(true);
