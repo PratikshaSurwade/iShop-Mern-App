@@ -99,17 +99,17 @@ const Cart = () => {
                     </div>
                     <div className='toTal'>
                         <div className='gridofPrices'>
-                            <p>Subtotal</p><p>Rs.({getCartCount()})</p>
+                            <p>Subtotal</p><p>₹({getCartCount()})</p>
                         </div>
                         <div className='gridofPrices'>
-                            <p>Shipping free</p><p>$20</p>
+                            <p>Shipping free</p><p>₹20</p>
                         </div>
                         <div className='gridofPrices'>
                             <p>Coupon</p><p>No</p>
                         </div>
                         <hr style={{ margin: "5px", color: "#d3d3d3" }}></hr>
                         <div className='gridofPrices'>
-                            <h2>TOTAL</h2><h2>Rs.({getCartSubTotal()})</h2>
+                            <h2>TOTAL</h2><h2>₹({getCartSubTotal()})</h2>
                         </div>
                         <button className='totalbutton' style={{ height: "3rem", backgroundColor: "#006CFF", color: "white", border: "rgb(0,108,255) solid 1px", borderRadius: "2px" }} disabled={cartItems.length === 0} onClick={checkout}>Check Out</button>
                     </div>

@@ -6,15 +6,12 @@ import "./store.css";
 import "./largesidebar/largesidebar.css";
 import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
 import Items from '../HomePage/Best_seller/accesoriespage';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+
 import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
 
 
 function Tab() {

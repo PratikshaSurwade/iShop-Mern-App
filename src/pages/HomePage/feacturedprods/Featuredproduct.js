@@ -94,10 +94,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $5099
+                      ₹5099
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$5599</del>
+                      <del>₹5599</del>
                     </span>
                   </div>
                 </div>
@@ -143,10 +143,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $950
+                      ₹950
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$1500</del>
+                      <del>₹1500</del>
                     </span>
                   </div>
                 </div>
@@ -172,10 +172,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $3200
+                      ₹3200
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$3500</del>
+                      <del>₹3500</del>
                     </span>
                   </div>
                 </div>
@@ -201,10 +201,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $5099
+                      ₹5099
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$5599</del>
+                      <del>₹5599</del>
                     </span>
                   </div>
                 </div>
@@ -250,10 +250,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $950
+                      ₹950
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$1500</del>
+                      <del>₹1500</del>
                     </span>
                   </div>
                 </div>
@@ -279,10 +279,10 @@ export default function Featuredproduct() {
                   </div>
                   <div className="item_prices">
                     <span style={{ marginRight: "10px", color: "red" }}>
-                      $3200
+                      ₹3200
                     </span>
                     <span style={{ color: "#999999" }}>
-                      <del>$3500</del>
+                      <del>₹3500</del>
                     </span>
                   </div>
                 </div>

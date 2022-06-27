@@ -15,6 +15,8 @@ import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 
+import baseUrl from '../path/Baseurl';
+
 function Tabsec() {
     const [selcat, setSelcat] = useState(null);
 
@@ -259,7 +261,7 @@ function Tabsec() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`http://localhost:3000/api/products/cat/${path}`);
+                const res = await axios.get(`${baseUrl}/api/products/cat/${path}`);
                 setNewpath(true);
                 setproductsss(res.data);
                 setLoader(false);               
@@ -462,10 +464,6 @@ function Tabsec() {
                                             </span>
                                         </span>
                                     </div>
-                                </div>
-                                <div style={{ width: "15%" }} className='d-flex text-end flex-row flex-nowrap overflow-visible align-items-center'>
-                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/ios-glyphs/30/000000/squared-menu.png" alt="" /></button>
-                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></button>
                                 </div>
                             </div>
                         </div>

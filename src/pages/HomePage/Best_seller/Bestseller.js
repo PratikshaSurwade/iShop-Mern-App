@@ -68,10 +68,10 @@ function Bestseller(props) {
                 </div>
                 <div>
                     <span style={{ "marginRight": "10px", "color": "red" }}>
-                        ${props.info.discountedPrice}
+                        ₹{props.info.discountedPrice}
                     </span>
                     <span style={{ "color": "#999999" }}>
-                        <del>${props.info.originalPrice}</del>
+                        <del>₹{props.info.originalPrice}</del>
                     </span>
                 </div>
             </div>

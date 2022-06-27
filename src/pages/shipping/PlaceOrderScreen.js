@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Row, Col, ListGroup, Image, Card } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card ,Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { createOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,9 +7,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Message from "../effects/Message";
 
-import { login } from "../../redux/actions/userAction";
-// import FormContainer from "../effects/FromContainer";
-import { useLocation } from "react-router-dom";
+import baseUrl from "../path/Baseurl";
+
 
 const PlaceOrderScreen = () => {
 	const cart = useSelector((state) => state.cart);
@@ -37,7 +36,6 @@ const PlaceOrderScreen = () => {
 
 	cart.shippingPrice = addDecimal(cart.cartItems > 500 ? 0 : 50);
 	cart.taxPrice = addDecimal(Number((0.15 * Number(cart.itemsPrice)).toFixed(2)));
-	console.log(successs);
 
 	cart.totalPrice = (
 		Number(cart.itemsPrice) +
@@ -65,7 +63,7 @@ const PlaceOrderScreen = () => {
 
 	const placeOrderHandler = async () => {
 		try {
-			const orderUrl = "http://localhost:3000/api/payment/orders";
+			const orderUrl = `${baseUrl}/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
 			// initPayment(data.data);
 			setWaiting(true);
@@ -75,7 +73,6 @@ const PlaceOrderScreen = () => {
 		} catch (error) {
 			console.log(error);
 		}};
-		console.log(userInfo)
 
 	useEffect(() => {
 
@@ -89,12 +86,12 @@ const PlaceOrderScreen = () => {
 		//eslint-disable-next-line
 	}, [navigate, success, userInfo]);
 	return (
-		<>
+		<Container>
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
 						<ListGroup.Item>
-							<h2>Shipping</h2>
+							<h2 style={{marginTop:"1rem"}}>Shipping</h2>
 							<p>
 								<strong>Address :</strong>
 								{cart.shippingAddress.address}&nbsp;
@@ -103,12 +100,7 @@ const PlaceOrderScreen = () => {
 								{cart.shippingAddress.country}&nbsp;
 							</p>
 						</ListGroup.Item>
-						<ListGroup.Item>
-							<h2>Payment Method</h2>
-							<p>
-								<strong>{cart.paymentMethod}</strong>
-							</p>
-						</ListGroup.Item>
+						
 						<ListGroup.Item>
 							<h2>Order Items</h2>
 							{cart.cartItems.length === 0 ? (
@@ -119,18 +111,16 @@ const PlaceOrderScreen = () => {
 										<ListGroup.Item key={index}>
 											<Row>
 												<Col md={1}>
-													<Image src={item.imageUrl} alt={item.name} fluid />
+												<img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid />
 												</Col>
 												<Col>
 													<Link to={`/product/${item.product}`}>
 														{item.name}
 													</Link>
 												</Col>
-												{/* {console.log(item.price, Number(item.qty))} */}
 												<Col md={4}>
-													{item.qty} X {item.price} = ${item.price}
+													{item.qty} X {item.price} = ₹{item.price}
 												</Col>
-												{/* {console.log(item.price)} */}
 											</Row>
 										</ListGroup.Item>
 									))}
@@ -143,24 +133,24 @@ const PlaceOrderScreen = () => {
 					<Card>
 						<ListGroup variant="flush">
 							<ListGroup.Item>
-								<h2>Order Summary</h2>
+								<h2 style={{marginTop:"1rem"}}>Order Summary</h2>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
 									<Col>Items</Col>
-									<Col>${cart.itemsPrice}</Col>
+									<Col>₹{cart.itemsPrice}</Col>
 								</Row>
 								<Row>
 									<Col>Shipping</Col>
-									<Col>${cart.shippingPrice}</Col>
+									<Col>₹{cart.shippingPrice}</Col>
 								</Row>
 								<Row>
 									<Col>Tax</Col>
-									<Col>${cart.taxPrice}</Col>
+									<Col>₹{cart.taxPrice}</Col>
 								</Row>
 								<Row>
 									<Col>Total</Col>
-									<Col>${cart.totalPrice}</Col>
+									<Col>₹{cart.totalPrice}</Col>
 								</Row>
 							</ListGroup.Item>
 							<ListGroup.Item>
@@ -220,7 +210,7 @@ const PlaceOrderScreen = () => {
 					</Card>
 				</Col>
 			</Row>
-		</>
+		</Container>
 	);
 };
 

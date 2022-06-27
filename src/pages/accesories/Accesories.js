@@ -14,6 +14,7 @@ import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import baseUrl from '../path/Baseurl';
 
 function Accesories() {
 
@@ -191,7 +192,6 @@ function Accesories() {
     //apply filters
     const applyFilters = () => {
         let updatedList = productsss;
-        console.log("in apply filters");
 
         // category filter
         if (selcat) {
@@ -233,13 +233,11 @@ function Accesories() {
                 (data) => (data.brand.indexOf(filteredbrand) !== -1)
             )
         }else{
-            console.log("setting ''");
             setPageload(true);
         }
         // console.log(filteredbrand,!filteredbrand,"filtered brand")
 
         if (!updatedList.length) {
-            console.log("in updatedlist == 0 ");
             setNeedAlert(true);
             setTotal(35);
             setItems(productsss);
@@ -251,7 +249,6 @@ function Accesories() {
             setTotal(updatedList.length);
             setItems(updatedList);
             // setGoods()
-            console.log("in else of apply filterd");
         }
     }
     
@@ -266,14 +263,12 @@ function Accesories() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get("/api/products");
+                const res = await axios.get(`${baseUrl}/api/products`);
                 setproductsss(res.data);
                 setLoader(false);
-                console.log("insideuse effect")
                 // setTotal(res.data.length)
             } catch (err) { }
         };
-        console.log(productsss)
         getProducts();
         // setGoods(productsss)
         setnumberOfButtons(Math.round(total / showPerPage))
@@ -292,8 +287,6 @@ function Accesories() {
             if(needalert){
                 sorted = [...productsss].sort((a, b) => a[sortProperty] - b[sortProperty]);
                 setGoods(sorted);
-                console.log(sorted)
-                console.log("set products")
 
             }else{
                 sorted = [...items].sort((a, b) => a[sortProperty] - b[sortProperty]);
@@ -393,23 +386,7 @@ function Accesories() {
                             <div className={(filteredbrand==="siemens") ? "selected" : "unselected"} onClick={selectBrand}><p name="4"  style={{ cursor: "pointer" }}>Vivo</p><p></p></div>
                         </div>
                     </div>
-                    {/* <div className='sidebarHeader'>
-                        <div className="removecat" onClick={slectcat} ><h3>IPhone</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
-
-                        <div className='elementsContainer'>
-                            <div className={(selcat==="iphones") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPhone</p><p> </p></div>
-                        </div>
-                        <div className="removecat" onClick={slectcat} ><h3>IPad</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
-
-                        <div className='elementsContainer'>
-                            <div className={(selcat==="ipad") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple iPad</p><p> </p></div>
-                        </div>
-                        <div className="removecat" onClick={slectcat} ><h3>Macbook</h3><i style={{ cursor: "pointer" }} className={(selcat)?"cancle fa-solid fa-xmark":"cancled"} title="remove filter"></i></div>
-
-                        <div className='elementsContainer'>
-                            <div className={(selcat==="macbook") ? "selected" : "unselected"} ><p  onClick={slectcat} style={{ cursor: "pointer" }}>Apple MacBook</p><p> </p></div>
-                        </div>
-                    </div> */}
+            
                 </div>
                 <div className='largesidebar'>
                     <div className='advertise'>
@@ -444,10 +421,7 @@ function Accesories() {
                                         </span>
                                     </div>
                                 </div>
-                                <div style={{ width: "15%" }} className='d-flex text-end flex-row flex-nowrap overflow-visible align-items-center'>
-                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/ios-glyphs/30/000000/squared-menu.png" alt="" /></button>
-                                    <button style={{ border: "0", padding: "10px 5px", margin: "0 10px" }}><img className='myAuto' style={{ margin: "auto" }} src="https://img.icons8.com/material-rounded/24/000000/menu--v2.png" alt="" /></button>
-                                </div>
+                                
                             </div>
                         </div>
 {console.log("goods",goods,!goods.length)}

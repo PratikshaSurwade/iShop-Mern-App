@@ -11,7 +11,6 @@ export default function Facilitis() {
     <div className="Facilitis">
         <div className="subFacilities">
             <img src={shipping} alt="Fascilitis"/>
-            {/* <img src={img} alt="Fascilitis"/> */}
 
             <h4 className="facilityName">FREE SHIPPING</h4>
             <div className="decription">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus esse suscipit excepturi ut officiis doloribus inventore dolores assumenda reiciendis</div>

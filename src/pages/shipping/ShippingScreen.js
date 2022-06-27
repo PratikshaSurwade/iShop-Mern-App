@@ -14,12 +14,11 @@ const ShippingScreen = () => {
   const cart = useSelector((state) => state.cart);
   let navigate = useNavigate ();
   const { shippingAddress } = cart;
-  console.log(cart)
   const [address, setAddress] = useState(shippingAddress.address);
   const [city, setCity] = useState(shippingAddress.city);
   const [postalcode, setPostalcode] = useState(shippingAddress.postalcode);
   const [country, setCountry] = useState(shippingAddress.country);
-console.log(address)
+  
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, postalcode, country }));

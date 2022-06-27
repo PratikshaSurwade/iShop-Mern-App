@@ -58,7 +58,6 @@ function TopmobBar() {
 							(
 								<div className='profile'>
 									<img className="profilePhoto" src={!userInfo?`${profile}`:`${userInfo.profilePic}`} alt="" />{userInfo.username.split(" ")[0]}
-									{/* {userInfo?`${profile}`:`${userInfo.profile}`} */}
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
 								</div>
 							)}

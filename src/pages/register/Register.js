@@ -71,7 +71,7 @@ const RegisterScreen = () => {
       dispatch(register(username, email, password ,profilePic));
     }
   };
-console.log(profilePic)
+console.log(profilePic);
   return (
     <>
       <FormContainer>

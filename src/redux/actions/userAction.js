@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ORDER_LIST_MY_RESET } from "../constants/orderConstant";
+import baseUrl from "../../pages/path/Baseurl";
 import {
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
@@ -29,7 +30,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      "/api/auth/login",
+      `${baseUrl}/api/auth/login`,
       { email, password },
       config
     );
@@ -55,7 +56,7 @@ export const register = (username, email, password ,profilePic) => async (dispat
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      "/api/auth/register",
+      `${baseUrl}/api/auth/register`,
       { username, email, password ,profilePic },
       config
     );
@@ -93,7 +94,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.get(`/api/users/${id}`,config);
+    const { data } = await axios.get(`${baseUrl}/api/users/${id}`,config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -124,7 +125,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.put("api/users/profile", user , config);
+    const { data } = await axios.put(`${baseUrl}api/users/profile`, user , config);
+    
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

@@ -1,4 +1,5 @@
 import axios from "axios";
+import baseUrl from "../../pages/path/Baseurl";
 import {
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
@@ -28,7 +29,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.post("/api/orders", order, config);
+    const { data } = await axios.post(`${baseUrl}/api/orders`, order, config);
     dispatch({ type: ORDER_CREATE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({
@@ -55,7 +56,7 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.get(`/api/orders/${orderId}`, config);
+    const { data } = await axios.get(`${baseUrl}/api/orders/${orderId}`, config);
     console.log(data)
     dispatch({ type: ORDER_DETAILS_SUCCESS, payload: data });
   } catch (error) {
@@ -85,7 +86,7 @@ export const payOrder = (orderId) => async (dispatch, getState) => {
         },
       };
       const { data } = await axios.put(
-        `http://localhost:3000/api/orders/${orderId}/pay`,
+        `${baseUrl}/api/orders/${orderId}/pay`,
         config
       );
       dispatch({ type: ORDER_PAY_SUCCESS, payload: data });
@@ -113,7 +114,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.get("/api/orders/myorders", config);
+    const { data } = await axios.get(`${baseUrl}/api/orders/myorders`, config);
     dispatch({ type: ORDER_LIST_MY_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

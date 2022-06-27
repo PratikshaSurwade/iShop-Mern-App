@@ -11,11 +11,13 @@ import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
 import FromContainer from "../effects/FromContainer";
 
+import baseUrl from "../path/Baseurl";
+
 const OrderScreen = () => {
   // const { orderId } = useParams();
   const location = useLocation();
   const path = (location.pathname.split("/")[3]);
-  const [sdkReady, setSdkReady] = useState(false);
+
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);
@@ -31,29 +33,9 @@ const OrderScreen = () => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
 
-  // order.itemsPrice = addDecimal(
-  //   order.orderItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
-  // );
-  // const id = (order._id);
-  // const totalprice = order.totalPrice *100;
-  //   console.log(id);
-  // console.log(order.paymentResult)
-
   const [successs, setSuccess] = useState(false);
   const [paid, setPaid] = useState(false);
 
-
-  // -----------------------------------------------
-//important function
-  // const handlePayment = async () => {
-  //   try {
-  //     const verifyUrl = `http://localhost:3000/api/orders/${path}/pay`;
-  //     const { data } = await axios.put(verifyUrl);
-  //     console.log(data)
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const makePayment = (info) => {
     console.log(info)
@@ -64,7 +46,7 @@ const OrderScreen = () => {
       order_id: info.id,
       handler: async (response) => {
         try {
-          const verifyUrl = "http://localhost:3000/api/payment/verify";
+          const verifyUrl = `${baseUrl}/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           setSuccess(data.success);
@@ -89,22 +71,15 @@ const OrderScreen = () => {
     makePayment(info);
   }
 
-  console.log(path);
-  const fetchingorder = () => {
-    dispatch(payOrder(path));
-  }
-  console.log(!order,success,successs);
 
   useEffect(() => {
     if(paid){
-      console.log("inside sucess")
       dispatch(payOrder(path));
       dispatch(getOrderDetails(path));
       setPaid(false);
     }
     if (!order || success) {
       dispatch({ type: ORDER_PAY_RESET });
-      console.log("inside !order")
       dispatch(getOrderDetails(path));
     }
     
@@ -118,7 +93,6 @@ const OrderScreen = () => {
     <Message variant="danger">{error}</Message>
   ) : (
     <Container>
-      {console.log(order)}
 
       <h2 style={{marginTop:"1rem"}}>Order {order._id}</h2>
       <Row>
@@ -174,7 +148,7 @@ const OrderScreen = () => {
                       <Link to={`/api/product/${item.product}`}>{item.name}</Link>
                     </Col>
                     <Col md={4}>
-                      {item.qty} X Rs.{item.price} = Rs.{item.price}
+                      {item.qty} X ₹{item.price} = ₹{item.price}
                     </Col>
                   </Row>
                   {/* {console.log(item)} */}
@@ -194,19 +168,19 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>Rs.{order.itemsPrice}</Col>
+                  <Col>₹{order.itemsPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Shipping</Col>
-                  <Col>Rs.{order.shippingPrice}</Col>
+                  <Col>₹{order.shippingPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Tax</Col>
-                  <Col>Rs.{order.taxPrice}</Col>
+                  <Col>₹{order.taxPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Total</Col>
-                  <Col>Rs.{order.totalPrice}</Col>
+                  <Col>₹{order.totalPrice}</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>

@@ -58,7 +58,7 @@ const Singleproduct = ({ match }) => {
             </div>
             <div className="left__info">
               <p className="left__name">{product.name}</p>
-              <p>Price: ${product.discountedPrice}</p>
+              <p>Price: ₹{product.discountedPrice}</p>
               <p>Description: {product.desc}</p>
             </div>
           </div>
@@ -66,7 +66,7 @@ const Singleproduct = ({ match }) => {
             <div className="right__info">
               <p>
                 Price:
-                <span>${product.discountedPrice}</span>
+                <span>₹{product.discountedPrice}</span>
               </p>
               <p>
                 Status:
