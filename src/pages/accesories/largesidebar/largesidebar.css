@@ -1,0 +1,95 @@
+.sidebarHeader{
+    background-color:#f5f4f4;
+    border-radius: 0.5rem;
+}
+
+.sidebarHeader>h3{
+    margin : 0.4rem;
+}
+
+/**/
+.verticalStrip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.verticalStrip2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-arounf;
+
+}
+
+.flexDiv{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow: visible;
+  align-items: center;
+  width: 25% ;
+  margin: 1%;
+  min-width: 25rem;
+}
+
+.myAuto{
+  width: 1.2rem;
+}
+
+.cardsbox{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Strip bar */
+
+.stripMobile{
+  display: none;
+}
+
+.stripmobile{
+  background-color:#f5f4f4;
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-around ;
+  align-items: center;
+}
+
+@media only  screen and (min-width:250px) and (max-width:370px){
+  .largeSidebar>html{
+    font-size: 50%;
+  }
+  .verticalStrip{
+    display: none;
+  }
+  .stripMobile{
+    display: block;
+  }
+}
+
+@media only  screen and (min-width:370px) and (max-width:576px){
+  .largeSidebar>html{
+    font-size: 70%;
+  }
+  .verticalStrip{
+    display: none;
+  }
+  .stripMobile{
+    display: block;
+  }
+}
+
+@media only  screen and (min-width:576px) and (max-width:768px){
+  .largeSidebar>html{
+    font-size: 80%;
+  }
+  .flexDiv{
+      min-width: 50%;
+      width: 15% ;
+  }
+  .verticalStrip{
+    display: none;
+  }
+}

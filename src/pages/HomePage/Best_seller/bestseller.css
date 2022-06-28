@@ -1,0 +1,144 @@
+
+/* card design */
+
+.subCards{
+    height: 16rem;
+    width: 11rem;
+    /* width: calc(100% * (1/4) - 10px - 1px);     */
+    /* flex: 1 0 18%; */
+    /* margin-top: 1rem; */
+    margin: 1.5rem;
+    border-radius: 0.5rem;
+    /* box-shadow: 0.125rem 0.25rem 0.375rem rgb(197, 195, 195),; */
+    border: rgb(228, 225, 225) solid 0.2rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.subCards:hover{
+    box-shadow: 0px 8px 10px rgb(224, 224, 224), 
+        -10px 8px 15px rgb(230, 227, 227), 10px 8px 15px rgb(230, 227, 227);
+    opacity: 1;
+}
+
+.tag{
+    position: absolute;
+    font-size: 9px;
+    z-index: 2;
+    margin: 3px;
+    padding-left:  5px;
+    padding-right: 5px;
+    border-radius: 4px;
+    background-color: red;
+    color: white;
+}
+
+.hoveritems{
+    position: relative;
+}
+
+.imagepart{
+    z-index: 1;
+    width: 9rem;
+    height: 9rem;
+    padding-top: 10px;
+    /* filter:opacity(70%) blur(8px); */
+}
+
+.itemName{
+    font-weight: 500;
+}
+
+.blurEffect{
+    display: none;
+    position: absolute;
+    margin: -5.4rem 0 0 3.8rem;
+    z-index: 2;
+    font-size:2rem;
+    /* text-align: center; */  
+}
+
+.subCards:hover .imagepart,.subCards:hover .tag{
+    
+    filter:opacity(90%) blur(1rem);
+
+}
+
+.subCards:hover .itemName{
+    font-weight: 700;
+}
+
+.subCards:hover .blurEffect{
+    display: block;
+    position: absolute;
+}
+
+.itemRatings{
+    display: flex;
+    justify-content: center;
+}
+
+.rounded-pill ,.cartBadge1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.itemCount1{
+    position: absolute;
+    z-index: 4;
+    width: 18px;
+    height: 18px;
+    object-fit: cover;
+    font-size: 10px;
+    margin: 0;
+    border-radius: 50%;
+    position:absolute;
+    top:-1px;
+    right: 5px
+    /* left:6px; */
+    /* padding:5px; */
+    
+}
+
+.navLink{
+    text-decoration: none;
+    color: black;
+}
+.navLink:hover{
+    text-decoration: underline;
+}
+/* @media only  screen and (min-width:480px) and (max-width:576px){
+    html{
+        font-size:45%;
+    }
+    
+} */
+
+@media (max-width:576px){
+    .blurEffect>img{
+        width: 3rem;
+        vertical-align: middle;
+        text-align: center;
+        
+    }
+}
+@media only  screen and (min-width:576px) and (max-width:768px){
+    html{
+        font-size:60%;
+    }
+    .blurEffect{
+        margin: -5.4rem 0 0 2.9rem;
+        font-size:0.5rem;
+
+    }
+}
+
+@media only  screen and (min-width:768px) and (max-width:992px){
+    html{
+        font-size:75%;
+    }
+    .blurEffect{
+        margin: -5.4rem 0 0 3.5rem;
+    }
+    
+}

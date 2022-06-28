@@ -1,0 +1,120 @@
+.homePageImg2{
+    display: flex;
+    height: 25rem;
+    justify-content: space-around;
+    align-items: flex-end;
+    color: white;
+    margin-top: 2rem;
+    background-color: #299af6;
+}
+
+.homeImgText{
+    margin-bottom: 5rem;
+    margin-left: 1rem;
+}
+
+.homeImgText>h4{
+    margin: 0px;
+    padding:0.7rem 0.7rem 0.7rem 0rem;
+    border-bottom: white 2px linear;
+    text-decoration: underline 2px white;
+}
+
+.mainImg2{
+    /* position: absolute; */
+    height: 29rem;
+    z-index:1;
+}
+
+/* accesories page */
+
+.homePageImgmob{
+    display: flex;
+    height: 20rem;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    margin-top: 2rem;
+    background-color: #299af6;
+}
+
+.homeImgText2>div{
+    font-size: 2rem;
+    font-weight: 400;
+}
+.homeImgText2>h5{
+    text-decoration: underline 2px white;
+
+}
+
+.mainImgmob1,.mainImgmob2{
+    /* width: 20rem; */
+    height: 20rem;
+}
+
+.navLink{
+    text-decoration: none;
+    color:white
+}
+@media (max-width:576px){
+
+    .homePageImg2{
+
+        display: block;
+        position: relative;
+    }
+   
+    .mainImg2{
+        position: absolute;
+        bottom: 0rem;
+        margin-left: 25%;
+        height: 20rem;
+        bottom: 0rem;
+        /* top: 2rem; */
+    }
+    .homeImgText{
+        position: absolute;
+        margin-top: 1.5rem;
+        margin-right: 2rem;        
+        margin-bottom: 0rem;
+        margin-left: 2rem;
+    }
+    
+    .homePageImgmob{
+        display: block;
+        position: relative;
+
+    }
+    
+    .homeImgText2{
+        position: absolute;
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+    .mainImgpart1{
+        display : none;
+    }
+
+    .mainImgpart2{
+        display: block;
+        
+    }
+    .mainImgmob2{
+        position: absolute;
+        height: 15rem;
+        bottom: 0rem;
+        right: 0rem;
+    }
+}
+
+@media (min-width:576px){
+    .mainImgpart1{
+        display: block;
+    }
+
+    .mainImgpart2{
+        display : none;
+
+    }
+
+}

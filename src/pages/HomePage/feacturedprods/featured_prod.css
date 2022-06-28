@@ -1,0 +1,118 @@
+.itemContain{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: center;
+}
+.sliderElement{
+    width: 15rem;
+    height: 10rem;
+    display: flex;
+    /* flex-direction: row; */
+    /* align-items: center; */
+    border: ridge grey 3px;
+}
+.paddings{
+    padding: 2rem;
+}
+.sliderElement>img{
+    font-size: 3rem;
+}
+.sliderElement:hover{
+    transform: scale(1.15,1.15);
+}
+.itemDetailss{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.sliderContainer{
+    width: 65rem;
+    padding: 2% 1%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sliderContainerrr{
+    min-height: 0;
+    min-width: 0;
+}
+.sliderContainerrr>button{
+    display: none;
+}
+.arrows{
+    font-size: 3rem;
+    color: black;
+}
+.slick-arrow,.slick-next:before, .slick-prev:before {
+    display: none;
+}
+
+.navLink,a{
+    text-decoration: none;
+    color: black;
+}
+.navLink:hover{
+    text-decoration: underline;
+}
+/* @media (max-width:381px){
+    .sliderContainer{
+        width: 15rem;
+    }
+} */
+
+@media only  screen and (min-width:275px) and (max-width:381px){
+    html{
+        font-size: x-small;
+    }
+        .sliderElement>img>{
+            font-size: 0.5rem;
+        }
+        .sliderContainer{
+            width: 25rem;
+        }
+        .sliderContainer>html{
+            font-size: 30%;
+        }
+        ul.slick-dots,.slick-dots li button:before{
+            display: none;
+        }
+        .sliderElement{
+            width: 15rem;
+        }
+        .sliderElement>img{
+            font-size: 1.5rem;
+        }
+}
+@media only  screen and (min-width:381px) and (max-width:576px){
+
+    .sliderContainer{
+        width: 25rem;
+    }
+    .sliderElement{
+        width: 15rem;
+    }
+    ul.slick-dots,.slick-dots li button:before{
+        display: none;
+    }
+}
+
+@media only  screen and (min-width:576px) and (max-width:768px){
+    .sliderContainer{
+        width: 30rem;
+    }
+}
+
+@media only  screen and (min-width:768px) and (max-width:992px){
+    .sliderContainer{
+        width: 45rem;
+    }
+}
+
+@media only  screen and (min-width:992px) and (max-width:1200px){
+    .sliderContainer{
+        width: 55rem;
+    }
+}

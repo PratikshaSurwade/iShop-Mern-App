@@ -1,0 +1,140 @@
+.mainBar{
+    display: flex;
+    padding: 0px 10%;
+    z-index: 5;
+}
+
+.smallsidebar{
+    flex: 3;
+    margin : 10px;
+}
+
+.sidebarHeader >h4 {
+    text-align: center;
+    padding: 1rem;
+}
+.largesidebar{
+    flex: 9;
+    margin : 10px;
+    border-radius: 0.5rem;
+}
+.advertise{
+    margin-top: -2rem;
+    padding: 0px;
+    border-radius: 0.5rem;
+}
+/* //sidebar */
+.sidebarHeader{
+    background-color:#f5f4f4;
+    border-radius: 0.5rem;
+}
+
+.sidebarHeader>h3{
+    margin : 0.4rem;
+}
+
+.elementsContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 10px;
+}
+.ele_classifier{
+    display: flex;
+    justify-content: space-between;
+}
+.accesory,.brand{
+    display: flex;
+    justify-content: space-between;
+}
+.ele_classifier:hover,.accesory:hover,.brand:hover,.selected:hover,.unselected:hover{
+    color: #006CFF;
+    cursor: pointer;
+
+}
+.ranger{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+}
+/* selection of category and brands */
+.selected{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #006CFF;
+}
+.unselected{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:black;
+}
+.removecat{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color:black;
+}
+/* COLOR */
+.colorize{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 1.5rem;
+}
+
+.removeAll {
+    border: none;
+    padding: 0;
+}
+
+.forBlue {
+    border: 2px groove #2200ff;
+}
+
+.forPink{
+    border: 2px groove #FC3E39;
+}
+
+.forBlack{
+    border: 2px groove #171717;
+}
+
+.forYellow{
+    border: 2px groove #C0C0C0;
+}
+
+
+.forLightPink{
+    border: 2px groove #808080;
+}
+
+.forCamron{
+    border: 2px groove #808080;
+}
+
+.display{
+    display: none;
+}
+
+
+@media  (max-width:576px){
+    .mainBar{
+        display: block;
+        padding: 0px;
+    }
+    .mainBar>html{
+        font-size: 50%;
+    }
+    .smallsidebar{
+        display: none;
+    }
+    
+}
+
+@media only  screen and (min-width:576px) and (max-width:768px){
+    .smallsidebar{
+        display: none;
+    }
+}
