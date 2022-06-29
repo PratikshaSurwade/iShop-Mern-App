@@ -31,11 +31,11 @@ const ShippingScreen = () => {
       <FromContainer>
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="address">
-            <Form.Label>Address</Form.Label>
+            <Form.Label style={{marginTop:"1rem"}}>Address</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter Address"
-              value={address}
+              // value={address}
               onChange={(e) => setAddress(e.target.value)}
               required
             ></Form.Control>
@@ -45,7 +45,7 @@ const ShippingScreen = () => {
             <Form.Control
               type="text"
               placeholder="Enter City"
-              value={city}
+              // value={city}
               onChange={(e) => setCity(e.target.value)}
               required
             ></Form.Control>
@@ -55,7 +55,7 @@ const ShippingScreen = () => {
             <Form.Control
               type="text"
               placeholder="Enter postalcode"
-              value={postalcode}
+              // value={postalcode}
               onChange={(e) => setPostalcode(e.target.value)}
               required
             ></Form.Control>
@@ -65,7 +65,7 @@ const ShippingScreen = () => {
             <Form.Control
               type="text"
               placeholder="Enter Country"
-              value={country}
+              // value={country}
               onChange={(e) => setCountry(e.target.value)}
               required
             ></Form.Control>
