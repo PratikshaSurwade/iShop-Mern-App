@@ -45,7 +45,7 @@ hr.hrTopNavbar{
 }
 .navbarItems:hover,.navbarItems>a:hover{
     font-weight: 900;
-    font-size: 1.15rem;
+    /* font-size: 1.15rem; */
     color: #006CFF;
     cursor: pointer;
 }

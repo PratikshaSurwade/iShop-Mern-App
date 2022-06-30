@@ -31,7 +31,7 @@ const Cart = () => {
 
     const getCartSubTotal = () => {
         return cartItems
-            .reduce((price, item) => price + item.price * item.qty, 0)
+            .reduce((price, item) => price + Number(item.price * item.qty) , 0)
             .toFixed(2);
     };
 
@@ -58,7 +58,7 @@ const Cart = () => {
                         </div>
                     ) : (
                         cartItems.map((item) => (
-                            <Scrollbars style={{ minHeight: "18rem" }}>
+                            <Scrollbars style={{ minHeight: "12rem" }}>
                                 <div className='itemContainer'>
                                     <i class="cancle fa-solid fa-xmark" id='one'  onClick={() => removeHandler(item.product)}></i>
                                     <img className='itemImage' id="two" src={item.imageUrl} alt={item.name}></img>
@@ -92,24 +92,21 @@ const Cart = () => {
                 </div>
                 <div className="bottOm">
                     <div className='voucher'>
-                        <span >
+                        {/* <span >
                             <input className="inputVoucher" style={{ height: "3rem", border: "grey solid 1px" }} placeholder="Voucher code"></input>
                             <button className='inputbuton' style={{ height: "3rem", backgroundColor: "#006CFF", color: "white", border: "rgb(0,108,255) solid 1px", borderRadius: "2px" }}>Redeem</button>
-                        </span>
+                        </span> */}
                     </div>
                     <div className='toTal'>
                         <div className='gridofPrices'>
-                            <p>Subtotal</p><p>₹({getCartCount()})</p>
+                            <p>Total Items</p><p>{getCartCount()}</p>
                         </div>
                         <div className='gridofPrices'>
-                            <p>Shipping free</p><p>₹20</p>
-                        </div>
-                        <div className='gridofPrices'>
-                            <p>Coupon</p><p>No</p>
+                            <p>Shipping fee</p><p>₹50</p>
                         </div>
                         <hr style={{ margin: "5px", color: "#d3d3d3" }}></hr>
                         <div className='gridofPrices'>
-                            <h2>TOTAL</h2><h2>₹({getCartSubTotal()})</h2>
+                            <h2>TOTAL</h2><h2>₹({Number(getCartSubTotal()) + 50})</h2>
                         </div>
                         <button className='totalbutton' style={{ height: "3rem", backgroundColor: "#006CFF", color: "white", border: "rgb(0,108,255) solid 1px", borderRadius: "2px" }} disabled={cartItems.length === 0} onClick={checkout}>Check Out</button>
                     </div>

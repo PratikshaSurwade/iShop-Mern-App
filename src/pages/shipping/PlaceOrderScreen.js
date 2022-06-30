@@ -41,6 +41,12 @@ const PlaceOrderScreen = () => {
 		Number(cart.itemsPrice) +
 		Number(cart.shippingPrice) +
 		Number(cart.taxPrice)
+	).toFixed(2);
+
+	const totalAmmount = (
+		Number(cart.itemsPrice) +
+		Number(cart.shippingPrice) +
+		Number(cart.taxPrice)
 	).toFixed(0);
 
 	const makePayment = async (paymentResult) => {
@@ -64,11 +70,10 @@ const PlaceOrderScreen = () => {
 	const placeOrderHandler = async () => {
 		try {
 			const orderUrl = `https://mern-ishop-backend.herokuapp.com/api/payment/orders`;
-			const { data } = await axios.post(orderUrl, { amount: (cart.totalPrice) });
+			const { data } = await axios.post(orderUrl, { amount: (totalAmmount) });
 			// initPayment(data.data);
 			setWaiting(true);
 			makePayment(data.data);
-			console.log("check");
 
 		} catch (error) {
 			console.log(error);
@@ -91,7 +96,7 @@ const PlaceOrderScreen = () => {
 				<Col md={8}>
 					<ListGroup variant="flush">
 						<ListGroup.Item>
-							<h2 style={{marginTop:"1rem"}}>Shipping</h2>
+							<h2 style={{marginTop:"2.5rem"}}>Shipping</h2>
 							<p>
 								<strong>Address :</strong>
 								{cart.shippingAddress.address}&nbsp;
@@ -114,12 +119,12 @@ const PlaceOrderScreen = () => {
 												<img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid />
 												</Col>
 												<Col>
-													<Link to={`/product/${item.product}`}>
+													<Link to={`/api/product/${item.product}`}>
 														{item.name}
 													</Link>
 												</Col>
 												<Col md={4}>
-													{item.qty} X {item.price} = ₹{item.price}
+													{item.qty} X {item.price} = ₹{Number(item.price)*Number(item.qty)}
 												</Col>
 											</Row>
 										</ListGroup.Item>

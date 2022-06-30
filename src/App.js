@@ -16,6 +16,7 @@ import Accesories from "./pages/accesories/Accesories";
 // import Tab from "./pages/accesories/Tab";
 import Tabsec from "./pages/accesories/tab2";
 import Signup from "./pages/register/signup";
+import Loader from "./pages/effects/loader";
 
 function App() {
   const user = false;
@@ -38,7 +39,7 @@ function App() {
           </Route>
 
           {/* <Route path="/cat/:category" element={<Tab />} exact /> */}
-          <Route path="/cat/:category" element={<Tabsec />} exact />
+          <Route path="/category/:category" element={<Tabsec />} exact />
 
 
           <Route path="/store" element={<Accesories />} exact />
@@ -51,7 +52,7 @@ function App() {
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
           
           <Route path="/cart" element={<Cart />} exact />
-          <Route path="/signup" element={<Signup />} exact />
+          <Route path="/loader" element={<Loader />} exact />
 
 
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />

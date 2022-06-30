@@ -197,7 +197,7 @@ function Tabsec() {
             setPageload(true);
         }
         // console.log(selcat,!selcat,"selcat")
-        // console.log(updatedList);
+        // console.log(updatedList);           
 
         // Price Filter
         if(price[0]!==0 || price[1]!==10000){

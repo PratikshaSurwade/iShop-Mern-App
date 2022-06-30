@@ -11,13 +11,11 @@ import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
 import FromContainer from "../effects/FromContainer";
 
-import baseUrl from "../path/Baseurl";
-
 const OrderScreen = () => {
   // const { orderId } = useParams();
   const location = useLocation();
   const path = (location.pathname.split("/")[3]);
-
+  const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);
@@ -29,9 +27,17 @@ const OrderScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
+  const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
   };
+
+  const itemsPrice = addDecimal(
+    cartItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
+  );
+
 
   const [successs, setSuccess] = useState(false);
   const [paid, setPaid] = useState(false);
@@ -71,6 +77,11 @@ const OrderScreen = () => {
     makePayment(info);
   }
 
+  console.log(path);
+  const fetchingorder = () => {
+    dispatch(payOrder(path));
+  }
+  console.log(!order,success,successs);
 
   useEffect(() => {
     if(paid){
@@ -82,19 +93,17 @@ const OrderScreen = () => {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(path));
     }
-    
-    console.log("success")
-    console.log(success);
+ 
   }, [success, order, path, successs,paid])
 
   return loading ? (
-    <Loader />
+    <Loader style={{marginTop:"3rem"}} />
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
     <Container>
 
-      <h2 style={{marginTop:"1rem"}}>Order {order._id}</h2>
+      <h2 style={{marginTop:"3rem"}}>Order {order._id}</h2>
       <Row>
         <Col md={8}>
           <ListGroup.Item variant="flush">
@@ -151,12 +160,10 @@ const OrderScreen = () => {
                       {item.qty} X ₹{item.price} = ₹{item.price}
                     </Col>
                   </Row>
-                  {/* {console.log(item)} */}
 
                 </ListGroup.Item>
               ))}
             </ListGroup>
-            {/* )} */}
           </ListGroup.Item>
         </Col>
         <Col md={4}>
@@ -168,7 +175,7 @@ const OrderScreen = () => {
               <ListGroup.Item>
                 <Row>
                   <Col>Items</Col>
-                  <Col>₹{order.itemsPrice}</Col>
+                  <Col>₹{itemsPrice}</Col>
                 </Row>
                 <Row>
                   <Col>Shipping</Col>

@@ -35,10 +35,10 @@ const Heading = () => {
               <Subnavbar />
             </div>
           </div>
-          <div className="navbarItems" title="Homepage"> <NavLink to="/cat/iphone" style={{ color: "" }}>IPHONE</NavLink></div>
-          <div className="navbarItems" title="Homepage"> <NavLink to="/cat/ipad" style={{ color: "" }}>IPAD</NavLink></div>
-          <div className="navbarItems" title="Homepage"> <NavLink to="/cat/macbook" style={{ color: "" }}>MACBOOK</NavLink></div>
-          <div className="navbarItems" title="Homepage"> <NavLink to="/cat/accessories" style={{ color: "" }}>ACCESSORIES</NavLink></div>
+          <div className="navbarItems" title="iPhone Store"> <NavLink to="/category/iphone" style={{ color: "" }}>IPHONE</NavLink></div>
+          <div className="navbarItems" title="iPad Store"> <NavLink to="/category/ipad" style={{ color: "" }}>IPAD</NavLink></div>
+          <div className="navbarItems" title="Macbook Store"> <NavLink to="/category/macbook" style={{ color: "" }}>MACBOOK</NavLink></div>
+          <div className="navbarItems" title="Accessories Store"> <NavLink to="/category/accessories" style={{ color: "" }}>ACCESSORIES</NavLink></div>
 
         </div>
         <hr style={{ margin: "0px 10%" }}></hr>
@@ -67,10 +67,10 @@ const Heading = () => {
                 <Nav className="justify-content-end flex-grow-1 pe-3">
                   <div className="linkItems2"><NavLink to="/home" style={{ color: "inherit" }}>HOME</NavLink></div>
                   <div className="linkItems2"><NavLink to="/store" style={{ color: "inherit" }}>STORE</NavLink></div>
-                  <div className="linkItems2"><NavLink to="/cat/iphone" style={{ color: "inherit" }}>IPHONE</NavLink></div>
-                  <div className="linkItems2"><NavLink to="/cat/ipad" style={{ color: "inherit" }}>IPAD</NavLink></div>
-                  <div className="linkItems2"><NavLink to="/cat/macbook" style={{ color: "inherit" }}>MACBOOK</NavLink></div>
-                  <div className="linkItems2"><NavLink to="/cat/accessories" style={{ color: "inherit" }}>ACCESORIES</NavLink></div>
+                  <div className="linkItems2"><NavLink to="/category/iphone" style={{ color: "inherit" }}>IPHONE</NavLink></div>
+                  <div className="linkItems2"><NavLink to="/category/ipad" style={{ color: "inherit" }}>IPAD</NavLink></div>
+                  <div className="linkItems2"><NavLink to="/category/macbook" style={{ color: "inherit" }}>MACBOOK</NavLink></div>
+                  <div className="linkItems2"><NavLink to="/category/accessories" style={{ color: "inherit" }}>ACCESORIES</NavLink></div>
 
                 </Nav>
 
