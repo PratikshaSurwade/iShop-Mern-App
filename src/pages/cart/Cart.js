@@ -25,6 +25,14 @@ const Cart = () => {
         dispatch(removeFromCart(id));
     };
 
+    const addDecimal = (num) => {
+        return (Math.round(num * 100) / 100).toFixed(2);
+      };
+
+    const itemsPrice = addDecimal(
+        cartItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
+      );
+
     const getCartCount = () => {
         return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
     };
@@ -99,7 +107,7 @@ const Cart = () => {
                     </div>
                     <div className='toTal'>
                         <div className='gridofPrices'>
-                            <p>Total Items</p><p>{getCartCount()}</p>
+                            <p>Items</p><p>{itemsPrice}</p>
                         </div>
                         <div className='gridofPrices'>
                             <p>Shipping fee</p><p>₹50</p>

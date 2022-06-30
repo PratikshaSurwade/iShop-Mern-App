@@ -1,15 +1,11 @@
 import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import FromContainer from "../effects/FromContainer";
-import { Link ,useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import { saveShippingAddress } from "../../redux/actions/cartActions";
-// import ChekcoutStep from "../components/shared/CheckoutStep";
-// import CheckoutStep from "../effects/CheckoutStep.jsx";
 
 const ShippingScreen = () => {
-  const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
   let navigate = useNavigate ();
@@ -19,16 +15,22 @@ const ShippingScreen = () => {
   const [postalcode, setPostalcode] = useState("");
   const [country, setCountry] = useState("");
   
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
-    dispatch(saveShippingAddress({ address, city, postalcode, country }));
-    navigate("/placeorder");
+      try {
+          // const { data } = await axios.post( "http://localhost:7000/api/carts/shipping", { address, city, postalcode, country });
+          cart.shippingAddress ={ address, city, postalcode, country };
+
+      } catch (err) { console.log(err) }
+      navigate("/placeorder");
   };
 
   return (
     <>
       {/* <CheckoutStep step1 step2 /> */}
       <FromContainer>
+      <h2 style={{marginTop:"3rem"}}>Shipping Details </h2>
+
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="address">
             <Form.Label style={{marginTop:"1rem"}}>Address</Form.Label>

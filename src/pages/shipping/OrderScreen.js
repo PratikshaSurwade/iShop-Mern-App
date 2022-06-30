@@ -54,7 +54,7 @@ const OrderScreen = () => {
         try {
           const verifyUrl = `https://mern-ishop-backend.herokuapp.com/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
-          console.log(data);
+          // console.log(data);
           setSuccess(data.success);
           setPaid(true);
           console.log("Payment Verified Succeessfully");
@@ -73,15 +73,13 @@ const OrderScreen = () => {
   };
   const setpayment = () => {
     const info = (order.paymentResult);
-    console.log(info);
+    // console.log(info);
     makePayment(info);
   }
 
-  console.log(path);
   const fetchingorder = () => {
     dispatch(payOrder(path));
   }
-  console.log(!order,success,successs);
 
   useEffect(() => {
     if(paid){
@@ -130,11 +128,8 @@ const OrderScreen = () => {
             )}
           </ListGroup.Item>
           <ListGroup.Item>
-            <h2>Payment Method</h2>
-            <p>
-              <strong>Method :</strong>
-              <strong>{order.paymentMethod}</strong>
-            </p>
+            <h2>Payment Details</h2>
+            
             {order.isPaid ? (
               <Message variant="success">Paid On {order.paidAt}</Message>
             ) : (

@@ -15,6 +15,8 @@ const PlaceOrderScreen = () => {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
 
+	const [ btn , setBtn ] = useState(false);
+
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, success, error } = orderCreate;
 
@@ -63,9 +65,13 @@ const PlaceOrderScreen = () => {
 					taxPrice: cart.taxPrice,
 					totalPrice: cart.totalPrice,
 				}));
-			setsucesss(true);
+
 		}
 	}
+
+	// const continueForPayment = () => {
+	// 	setsucesss(true);
+	// }
 
 	const placeOrderHandler = async () => {
 		try {
@@ -74,6 +80,7 @@ const PlaceOrderScreen = () => {
 			// initPayment(data.data);
 			setWaiting(true);
 			makePayment(data.data);
+			setBtn(true);
 
 		} catch (error) {
 			console.log(error);
@@ -89,7 +96,7 @@ const PlaceOrderScreen = () => {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success, userInfo]);
+	}, [navigate, success, userInfo,successs]);
 	return (
 		<Container>
 			<Row>
@@ -169,6 +176,36 @@ const PlaceOrderScreen = () => {
 							>
 								Make payment
 							</Button> */}
+						
+								<Button
+								type="button"
+								className="btn-block"
+								disabled={cart.cartItems === 0}
+								onClick={placeOrderHandler}
+							>
+								{btn ? <>Continue For Payment</> : <>Place Order</> }
+							</Button>
+							{/* {btn? (
+								<>
+								<Button
+								type="button"
+								className="btn-block"
+								disabled
+								onClick={placeOrderHandler}
+							>
+								Place Order
+							</Button>
+							<Button
+								type="button"
+								className="btn-block"
+								disabled={cart.cartItems === 0}
+								onClick={continueForPayment}
+							>
+								Continue for Payment
+							</Button>
+							</>
+							) : (
+								<>
 							<Button
 								type="button"
 								className="btn-block"
@@ -177,6 +214,15 @@ const PlaceOrderScreen = () => {
 							>
 								Place Order
 							</Button>
+							<Button
+							type="button"
+							className="btn-block"
+							disabled
+							onClick={continueForPayment}
+						>
+							Continue for Payment
+						</Button></>)} */}
+							
 							{/* {console.log(successs)}
 							 {!successs?<Button
 								type="button"
