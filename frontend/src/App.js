@@ -58,7 +58,6 @@ function App() {
           <Route path="/payment" element={<PaymentScreen />} exact />
 
           <Route path="/login?redirect=placeorder" element={<Login />} />
-          <Route path="/placeorder/login?redirect=placeorder" element={<PlaceOrderScreen />} />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />

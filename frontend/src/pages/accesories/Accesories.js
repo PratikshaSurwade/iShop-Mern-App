@@ -239,7 +239,7 @@ function Accesories() {
 
         if (!updatedList.length) {
             setNeedAlert(true);
-            setTotal(35);
+            setTotal(56);
             setItems(productsss);
             setGoods(productsss)
         }
