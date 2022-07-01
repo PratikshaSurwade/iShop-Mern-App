@@ -25,6 +25,8 @@ const RegisterScreen = () => {
   // const redirect = location.pathname;
 
   console.log(location)
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
+
   const redirect = (location.pathname+"/redirect") ? location.pathname.split("=")[1] : "/";
   console.log(redirect)
 

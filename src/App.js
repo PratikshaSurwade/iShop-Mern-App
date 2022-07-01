@@ -17,9 +17,17 @@ import Accesories from "./pages/accesories/Accesories";
 import Tabsec from "./pages/accesories/tab2";
 import Signup from "./pages/register/signup";
 import Loader from "./pages/effects/loader";
+import { useSelector } from "react-redux";
+
 
 function App() {
   const user = false;
+
+
+  const userLogin = useSelector((state) => state.userLogin);
+	const { userInfo } = userLogin;
+
+
   return (
     <>
       <BrowserRouter>
@@ -48,6 +56,10 @@ function App() {
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />
           <Route path="/payment" element={<PaymentScreen />} exact />
+
+          <Route path="/login?redirect=placeorder" element={<Login />} />
+          <Route path="/placeorder/login?redirect=placeorder" element={<PlaceOrderScreen />} />
+
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
           
@@ -55,8 +67,8 @@ function App() {
           <Route path="/loader" element={<Loader />} exact />
 
 
-          <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
-          <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
+          <Route path="/login" element={ <Login />} />
+          <Route path="/register" element={ <Register />} />
         </Routes>
         <Footer />
       </BrowserRouter>

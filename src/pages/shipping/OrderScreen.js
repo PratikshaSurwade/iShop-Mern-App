@@ -15,7 +15,6 @@ const OrderScreen = () => {
   // const { orderId } = useParams();
   const location = useLocation();
   const path = (location.pathname.split("/")[3]);
-  const [sdkReady, setSdkReady] = useState(false);
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);

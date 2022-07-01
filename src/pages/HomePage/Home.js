@@ -120,7 +120,7 @@ function Home() {
 			</div>
 			{console.log(list.length)}
 			<div className="loadMoreForWeb">
-				{(list.length===0||list.length>=8) ? (
+				{(list.length===0||list.length>=9) ? (
 					expanded? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
 				) : (<>...</>) }		
 			</div>

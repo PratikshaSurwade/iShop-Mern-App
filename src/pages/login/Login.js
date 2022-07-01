@@ -14,10 +14,8 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   let navigate = useNavigate ();
   const location = useLocation();
-  console.log(location)
 
-  const redirect = location.pathname ? location.pathname.split("=")[1] : "/";
-  console.log(redirect)
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.userLogin);
@@ -25,9 +23,9 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-        navigate("/");
+        navigate(redirect);
     }
-  }, [navigate,userInfo]);
+  }, [navigate,userInfo,redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();

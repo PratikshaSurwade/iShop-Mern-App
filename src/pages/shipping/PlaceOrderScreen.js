@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+
 import axios from "axios";
 import Message from "../effects/Message";
 
@@ -14,6 +16,13 @@ const PlaceOrderScreen = () => {
 	const cart = useSelector((state) => state.cart);
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
+
+	const location = useLocation();
+	// const redirect = location.pathname;
+  
+
+	const redirect = ("/login?redirect=/placeorder");
+	// const redirect = (location.pathname+"/redirect") ? location.pathname.split("=")[1] : "/";
 
 	const [ btn , setBtn ] = useState(false);
 
@@ -89,14 +98,14 @@ const PlaceOrderScreen = () => {
 	useEffect(() => {
 
 		if (!userInfo) {
-			navigate("/login");
+			navigate(redirect);
 		}
 		  
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success, userInfo,successs]);
+	}, [navigate, success, userInfo,successs,redirect]);
 	return (
 		<Container>
 			<Row>
