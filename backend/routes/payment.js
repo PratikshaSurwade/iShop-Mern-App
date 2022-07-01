@@ -6,18 +6,15 @@ const { nanoid } =require("nanoid");
 
 router.post("/orders", async (req, res) => {
 	try {
-		console.log("req");
 		const instance = new Razorpay({
 			key_id: process.env.KEY_ID,
 			key_secret: process.env.KEY_SECRET,
 		});
-		console.log("first");
 		const options = {
 			amount: req.body.amount * 100,
 			currency: "INR",
 			receipt: nanoid(10),
 		};
-		console.log("second")
 
 		instance.orders.create(options, (error, order) => {
 			if (error) {
@@ -59,16 +56,14 @@ router.get("/orders/pay/:id", async (req, res) => {
 
 router.post("/verify", async (req, res) => {
 	try {
-		// console.log(req)
+		
 		const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =
 			req.body;
 		const sign = razorpay_order_id + "|" + razorpay_payment_id;
-		// console.log(razorpay_signature)
 		const expectedSign =crypto
 		.createHmac("sha256", process.env.KEY_SECRET)
 		.update(sign.toString())
 		.digest("hex");
-		// console.log(expectedSign)
 
 		if (razorpay_signature === expectedSign) {
 			console.log("Payment verified successfully");

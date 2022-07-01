@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
-const bcryptjs = require('bcrypt');
+// const bcryptjs = require('bcrypt');
 const CryptoJS = require("crypto-js");
 const jwt = require("jsonwebtoken");
 
@@ -10,9 +10,9 @@ const cloudinary = require('cloudinary').v2
 
 //cloudinary
 cloudinary.config({
-  cloud_name: 'dn9hxyxud',
-  api_key: '288723588442291',
-  api_secret: 'yRPWxzL6jCHBJPNfxPaAIF6Z2k4'
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
 })
 
 //Register
