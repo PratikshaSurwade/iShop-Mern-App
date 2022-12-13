@@ -7,7 +7,7 @@ import {
 } from "../constants/cartConstants";
 
 export const addToCart = (id, qty) => async (dispatch, getState) => {
-  const { data } = await axios.get(`https://mern-ishop-backend.herokuapp.com/api/products/${id}`);
+  const { data } = await axios.get(`https://ishop-ecommerce-site.onrender.com/api/products/${id}`);
   dispatch({
     type: actionTypes.ADD_TO_CART,
     payload: {
