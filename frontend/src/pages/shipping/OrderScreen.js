@@ -51,9 +51,9 @@ const OrderScreen = () => {
       order_id: info.id,
       handler: async (response) => {
         try {
-          const verifyUrl = `https://mern-ishop-backend.herokuapp.com/api/payment/verify`;
+          const verifyUrl = `https://ishop-ecommerce-site.onrender.com/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
-          // console.log(data);
+          console.log(data);
           setSuccess(data.success);
           setPaid(true);
           console.log("Payment Verified Succeessfully");

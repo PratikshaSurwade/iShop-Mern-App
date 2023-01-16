@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slider } from '@material-ui/core';
+import Slider from '@mui/material/Slider';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./store.css";
@@ -9,10 +9,11 @@ import { useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
 import Items from '../HomePage/Best_seller/Bestseller';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
+// import ListItemButton from '@mui/material/ListItemButton';
+// import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
+// import { Alert } from 'react-bootstrap';
 import AlertTitle from '@mui/material/AlertTitle';
 import baseUrl from '../path/Baseurl';
 
@@ -263,7 +264,7 @@ function Accesories() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`https://mern-ishop-backend.herokuapp.com/api/products`);
+                const res = await axios.get(`https://ishop-ecommerce-site.onrender.com/api/products`);
                 setproductsss(res.data);
                 setLoader(false);
                 // setTotal(res.data.length)
@@ -326,6 +327,7 @@ function Accesories() {
                         </div>
                         <div className='elementsContainer'>
                         <Slider
+                                size='small'
                                 value={price}
                                 onChange={priceHandler}
                                 valueLabelDisplay="auto"
@@ -454,7 +456,7 @@ function Accesories() {
                                     ) : (
                                         <>
                                             <Alert severity="error">
-                                                <AlertTitle>Sorry No items found </AlertTitle>
+                                                <Alert.Heading>Sorry No items found </Alert.Heading>
                                                 No result found for your Search!<br></br> <strong>Please Do Check other Items</strong>
                                             </Alert>
                                             <div className='cardsbox'>

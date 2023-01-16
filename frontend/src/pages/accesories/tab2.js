@@ -1,5 +1,5 @@
 import React from 'react';
-import { Slider } from '@material-ui/core';
+import Slider from '@mui/material/Slider';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./store.css";
@@ -261,7 +261,7 @@ function Tabsec() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`https://mern-ishop-backend.herokuapp.com/api/products/cat/${path}`);
+                const res = await axios.get(`https://ishop-ecommerce-site.onrender.com/api/products/cat/${path}`);
                 setNewpath(true);
                 setproductsss(res.data);
                 setLoader(false);               
