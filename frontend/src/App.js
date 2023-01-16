@@ -22,11 +22,8 @@ import { useSelector } from "react-redux";
 
 function App() {
   const user = false;
-
-
   const userLogin = useSelector((state) => state.userLogin);
 	const { userInfo } = userLogin;
-
 
   return (
     <>
@@ -48,11 +45,8 @@ function App() {
 
           {/* <Route path="/cat/:category" element={<Tab />} exact /> */}
           <Route path="/category/:category" element={<Tabsec />} exact />
-
-
           <Route path="/store" element={<Accesories />} exact />
-
-
+        
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />
           <Route path="/payment" element={<PaymentScreen />} exact />
@@ -64,7 +58,6 @@ function App() {
           
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/loader" element={<Loader />} exact />
-
 
           <Route path="/login" element={ <Login />} />
           <Route path="/register" element={ <Register />} />
