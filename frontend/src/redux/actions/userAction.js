@@ -30,7 +30,7 @@ export const login = (email, password) => async (dispatch) => {
     dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      `https://ishop-ecommerce-site.onrender.com/api/auth/login`,
+      `${baseUrl}/api/auth/login`,
       { email, password },
       config
     );
@@ -56,7 +56,7 @@ export const register = (username, email, password ,profilePic) => async (dispat
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
-      `https://ishop-ecommerce-site.onrender.com/api/auth/register`,
+      `${baseUrl}/api/auth/register`,
       { username, email, password ,profilePic },
       config
     );
@@ -94,7 +94,7 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.get(`https://ishop-ecommerce-site.onrender.com/api/users/${id}`,config);
+    const { data } = await axios.get(`${baseUrl}/api/users/${id}`,config);
 
     dispatch({
       type: USER_DETAILS_SUCCESS,
@@ -125,7 +125,7 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${userInfo.accessToken}`,
       },
     };
-    const { data } = await axios.put(`https://ishop-ecommerce-site.onrender.com/api/users/profile`, user , config);
+    const { data } = await axios.put(`${baseUrl}/api/users/profile`, user , config);
     
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (error) {

@@ -12,6 +12,7 @@ import Items from '../HomePage/Best_seller/accesoriespage';
 import Loader from "../effects/loader.js";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import baseUrl from '../path/Baseurl';
 
 
 function Tab() {
@@ -235,7 +236,7 @@ function Tab() {
 
             try {
                 console.log("in getprod");
-                const res = await axios.get(`http://localhost:3000/api/products/cat/${path}`);
+                const res = await axios.get(`${baseUrl}/api/products/cat/${path}`);
                 setNewpath(true);
                 console.log("gett ready");
                 setproductsss(res.data);

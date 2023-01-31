@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import baseUrl from "../path/Baseurl";
 import "./App.css";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
 			order_id: data.id,
 			handler: async (response) => {
 				try {
-					const verifyUrl = "http://ishop-ecommerce-site.onrender.com/api/payment/verify";
+					const verifyUrl = `${baseUrl}/api/payment/verify`;
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
 				} catch (error) {
@@ -38,7 +39,7 @@ function App() {
 
 	const handlePayment = async () => {
 		try {
-			const orderUrl = "http://localhost:8080/api/payment/orders";
+			const orderUrl = `${baseUrl}/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: book.price });
 			console.log(data);
 			initPayment(data.data);
@@ -48,7 +49,7 @@ function App() {
 	};
 	const fetchingorder = async () => {
 		try {
-		  const verifyUrl = `http://localhost:3000/api/orders/${order._id}/pay`;
+		  const verifyUrl = `${baseUrl}/api/orders/${order._id}/pay`;
 		  const { data } = await axios.put(verifyUrl);
 	
 		} catch (error) {

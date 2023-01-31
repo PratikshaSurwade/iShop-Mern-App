@@ -10,6 +10,7 @@ import Message from "../effects/Message";
 import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
 import FromContainer from "../effects/FromContainer";
+import baseUrl from "../path/Baseurl";
 
 const OrderScreen = () => {
   // const { orderId } = useParams();
@@ -51,7 +52,7 @@ const OrderScreen = () => {
       order_id: info.id,
       handler: async (response) => {
         try {
-          const verifyUrl = `https://ishop-ecommerce-site.onrender.com/api/payment/verify`;
+          const verifyUrl = `${baseUrl}/api/payment/verify`;
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           setSuccess(data.success);

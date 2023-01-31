@@ -25,16 +25,9 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+  .connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, })
   .then(() => console.log("DB Connection Successfull!"))
-  .catch((err) => {
-    console.log(err);
-  });
-
-// app.use(cors());
+  .catch((err) => { console.log(err); });
 
 // app.get("/", async (req, res) => {
 //     try {

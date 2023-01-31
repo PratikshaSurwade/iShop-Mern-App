@@ -264,7 +264,7 @@ function Accesories() {
         setLoader(true);
         const getProducts = async () => {
             try {
-                const res = await axios.get(`https://ishop-ecommerce-site.onrender.com/api/products`);
+                const res = await axios.get(`${baseUrl}/api/products`);
                 setproductsss(res.data);
                 setLoader(false);
                 // setTotal(res.data.length)
