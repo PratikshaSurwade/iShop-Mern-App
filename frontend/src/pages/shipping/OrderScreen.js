@@ -9,7 +9,6 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
-import FromContainer from "../effects/FromContainer";
 import baseUrl from "../path/Baseurl";
 
 const OrderScreen = () => {
@@ -20,11 +19,11 @@ const OrderScreen = () => {
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-
+console.log("order",order)
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success } = orderPay;
 
-  const userLogin = useSelector((state) => state.userLogin);
+  const userLogin = useSelector((state) => state.user);
   const { userInfo } = userLogin;
 
   const cart = useSelector((state) => state.cart);
@@ -115,8 +114,11 @@ const OrderScreen = () => {
               {userInfo.email}
             </p>
             <p>
+              {/* {console.log(order.shippingAddress.address)} */}
+              {/* {console.log(order.shippingAddress)} */}
+
               <strong>Address :</strong>
-              {order.shippingAddress.address};
+              {order.shippingAddress.address}&nbsp;
               {order.shippingAddress.city}&nbsp;
               {order.shippingAddress.postalcode}&nbsp;
               {order.shippingAddress.country}&nbsp;
@@ -146,7 +148,7 @@ const OrderScreen = () => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid />
+                      <img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid="true" />
                     </Col>
                     <Col>
                       <Link to={`/api/product/${item.product}`}>{item.name}</Link>

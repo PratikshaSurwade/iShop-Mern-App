@@ -110,9 +110,12 @@ function Home() {
 						</div>
 					) : (
 						listavailable ? (list.slice(pagination.start, pagination.end).map((info) => {
-							return <Bestseller info={info} />;
+							return <Bestseller info={info} key={info._id} />;
+							{console.log(info)}
 						})) : (products.slice(pagination.start, pagination.end).map((info) => {
-							return <Bestseller info={info} />;
+							return <Bestseller info={info} key={info._id} />;
+							{console.log(info)}
+
 						}))
 					)}
 

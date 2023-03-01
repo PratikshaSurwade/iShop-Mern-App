@@ -19,7 +19,7 @@ import {
 } from "../constants/userContants";
 
 export const logout = () => (dispatch) => {
-  localStorage.removeItem("userInfo");
+  localStorage.removeItem("user");
   dispatch({ type: ORDER_LIST_MY_RESET });
   dispatch({ type: USER_DETAILS_RESET });
   dispatch({ type: USER_LOGOUT });
@@ -38,7 +38,7 @@ export const login = (email, password) => async (dispatch) => {
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("user", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_LOGIN_FAIL,
@@ -68,7 +68,7 @@ export const register = (username, email, password ,profilePic) => async (dispat
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
-    localStorage.setItem("userInfo", JSON.stringify(data));
+    localStorage.setItem("user", JSON.stringify(data));
   } catch (error) {
     dispatch({
       type: USER_REGISTER_FAIL,
@@ -86,16 +86,17 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       type: USER_DETAILS_REQUEST,
     });
     const {
-      userLogin: { userInfo },
+      user
     } = getState();
+    console.log(user.accessToken)
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.accessToken}`,
+        Authorization: `Bearer ${user.accessToken}`,
       },
     };
     const { data } = await axios.get(`${baseUrl}/api/users/${id}`,config);
-
+console.log(data)
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
@@ -117,15 +118,15 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       type: USER_UPDATE_PROFILE_REQUEST,
     });
     const {
-      userLogin: { userInfo },
+      user
     } = getState();
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${userInfo.accessToken}`,
+        Authorization: `Bearer ${user.accessToken}`,
       },
     };
-    const { data } = await axios.put(`${baseUrl}/api/users/profile`, user , config);
+    const { data } = await axios.put(`${baseUrl}/api/users/${user.id}`, user , config);
     
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (error) {

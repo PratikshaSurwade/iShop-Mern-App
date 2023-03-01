@@ -18,12 +18,12 @@ import Tabsec from "./pages/accesories/tab2";
 import Signup from "./pages/register/signup";
 import Loader from "./pages/effects/loader";
 import { useSelector } from "react-redux";
+import Updateprofile from "./pages/Updateprofile/Updateprofile";
 
 
 function App() {
   const user = false;
-  const userLogin = useSelector((state) => state.userLogin);
-	const { userInfo } = userLogin;
+  const userInfo = useSelector((state) => state.user);
 
   return (
     <>
@@ -51,7 +51,7 @@ function App() {
           <Route path="/shipping" element={<ShippingScreen />} exact />
           <Route path="/payment" element={<PaymentScreen />} exact />
 
-          <Route path="/login?redirect=placeorder" element={<Login />} />
+          <Route path="/login?redirect=placeorder" element={ <Login /> } />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
@@ -61,6 +61,9 @@ function App() {
 
           <Route path="/login" element={ <Login />} />
           <Route path="/register" element={ <Register />} />
+
+          <Route path="/profile" element={ <Updateprofile />} />
+
         </Routes>
         <Footer />
       </BrowserRouter>

@@ -23,7 +23,7 @@ function TopmobBar() {
 			.toFixed(2);
 	};
 	
-	const userLogin = useSelector((state) => state.userLogin);
+	const userLogin = useSelector((state) => state.user);
 	const { userInfo } = userLogin;
 	const dispatch = useDispatch();
 

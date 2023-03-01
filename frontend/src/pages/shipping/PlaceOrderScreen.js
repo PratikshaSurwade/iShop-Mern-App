@@ -30,7 +30,7 @@ const PlaceOrderScreen = () => {
 	const { order, success, error } = orderCreate;
 
 	// const [paymentResult, setPaymentResult] = useState({});
-	const userLogin = useSelector((state) => state.userLogin);
+	const userLogin = useSelector((state) => state.user);
 	const { userInfo } = userLogin;
 
 	const [ successs ,setsucesss] =  useState(false);
@@ -59,12 +59,14 @@ const PlaceOrderScreen = () => {
 		Number(cart.shippingPrice) +
 		Number(cart.taxPrice)
 	).toFixed(0);
-
+console.log("userdet from order page",userInfo)
 	const makePayment = async (paymentResult) => {
 		
 		if(waiting){
+			console.log(paymentResult)
 			dispatch(
 				createOrder({
+					user:userInfo._id,
 					orderItems: cart.cartItems,
 					shippingAddress: cart.shippingAddress,
 					paymentMethod: cart.paymentMethod,
@@ -81,14 +83,16 @@ const PlaceOrderScreen = () => {
 	// const continueForPayment = () => {
 	// 	setsucesss(true);
 	// }
-
+console.log(cart)
 	const placeOrderHandler = async () => {
+	
 		try {
-			const orderUrl = `https://ishop-ecommerce-site.onrender.com/api/payment/orders`;
+			const orderUrl = `${baseUrl}/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: (totalAmmount) });
 			// initPayment(data.data);
 			setWaiting(true);
 			makePayment(data.data);
+			console.log("api/payment/orders from frontend",data.data)
 			setBtn(true);
 
 		} catch (error) {
@@ -132,7 +136,7 @@ const PlaceOrderScreen = () => {
 										<ListGroup.Item key={index}>
 											<Row>
 												<Col md={1}>
-												<img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid />
+												<img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid="true" />
 												</Col>
 												<Col>
 													<Link to={`/api/product/${item.product}`}>

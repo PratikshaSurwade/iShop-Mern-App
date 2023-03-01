@@ -73,7 +73,7 @@ const ShippingScreen = () => {
             ></Form.Control>
           </Form.Group>
           <Button type="submit" variant="primary">
-            continue
+            Continue
           </Button>
         </Form>
       </FromContainer>

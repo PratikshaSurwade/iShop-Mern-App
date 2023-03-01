@@ -7,7 +7,6 @@ const cors = require("cors");
 const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const productRoute = require("./routes/product");
-const cartRoute = require("./routes/cart");
 const orderRoute = require("./routes/order");
 const paymentRoutes = require("./routes/payment");
 //image to cloudinary
@@ -42,8 +41,6 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 //Products in our app
 app.use("/api/products", productRoute);
-//Cart details
-app.use("/api/carts", cartRoute);
 //Order summary
 app.use("/api/orders", orderRoute);
 //Payment method

@@ -5,6 +5,7 @@ const crypto = require("crypto");
 const { nanoid } =require("nanoid");
 
 router.post("/orders", async (req, res) => {
+	console.log("iam in /api/payment/orders")
 	try {
 		const instance = new Razorpay({
 			key_id: process.env.KEY_ID,
@@ -22,6 +23,7 @@ router.post("/orders", async (req, res) => {
 				return res.status(500).json({ message: "Something Went Wrong!" });
 			}
 			res.status(200).json({ data: order });
+			console.log("iam in /api/payment/orders",order)
 			console.log(order)
 		});
 
@@ -55,6 +57,7 @@ router.get("/orders/pay/:id", async (req, res) => {
 
 
 router.post("/verify", async (req, res) => {
+	console.log("i am in api/payment/verify")
 	try {
 		
 		const { razorpay_order_id, razorpay_payment_id, razorpay_signature } =

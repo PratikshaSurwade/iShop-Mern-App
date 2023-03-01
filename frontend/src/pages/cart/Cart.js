@@ -66,17 +66,17 @@ const Cart = () => {
                         </div>
                     ) : (
                         cartItems.map((item) => (
-                            <Scrollbars style={{ minHeight: "12rem" }}>
-                                <div className='itemContainer'>
-                                    <i class="cancle fa-solid fa-xmark" id='one'  onClick={() => removeHandler(item.product)}></i>
+                            <Scrollbars style={{ minHeight: "12rem" }} key={item._id} >
+                                <div className='itemContainer' key={item._id}>
+                                    <i className="cancle fa-solid fa-xmark" id='one'  onClick={() => removeHandler(item.product)}></i>
                                     <img className='itemImage' id="two" src={item.imageUrl} alt={item.name}></img>
                                     <div className='itemname' id='three'>{item.name}</div>
                                     <div className='perItemPrice' id='notShow'>{item.price}</div>
                                     <div id='four'>
                                         <div className='itemsCount'>
-                                            {/* <i class="fa-solid fa-plus" ></i>
+                                            {/* <i className="fa-solid fa-plus" ></i>
                                             <p>543</p>
-                                            <i class="fa-solid fa-minus"  ></i> */}
+                                            <i className="fa-solid fa-minus"  ></i> */}
                                             <select
                                                 value={item.qty}
                                                 onChange={(e) => qtyChangeHandler(item.product, e.target.value)}

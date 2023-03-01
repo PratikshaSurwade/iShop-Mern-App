@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./topbar.css";
 import Badge from 'react-bootstrap/Badge';
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import profile from "./icons/profile_icon.svg";
 import bag_icon from "./icons/bag_icon.svg";
@@ -23,8 +23,8 @@ function Topbar() {
 			.toFixed(2);
 	};
 	
-	const userLogin = useSelector((state) => state.userLogin);
-	const { userInfo } = userLogin;
+	const user = useSelector((state) => state.user);
+	const { userInfo } = user;
 	const dispatch = useDispatch();
 
 	const logoutHandler = () => {
@@ -61,10 +61,9 @@ function Topbar() {
 							:
 							(
 								<div className='profile'>
-									<img className="profilePhoto" src={!userInfo?`${profile}`:`${userInfo.profilePic}`} alt="" />{userInfo.username.split(" ")[0]}
+									<Link to="/profile"><img className="profilePhoto" src={!userInfo?`${profile}`:`${userInfo.profilePic}`} alt="" /><span style={{ textDecoration: "none" }}>{userInfo.username.split(" ")[0]}</span></Link>
 									{/* {userInfo?`${profile}`:`${userInfo.profile}`} */}
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
-									{console.log(userInfo.profilePic)}
 								</div>
 							)}
 							

@@ -49,11 +49,12 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //GET USER
-router.get("/:id", verifyTokenAndAdmin, async (req, res) => {
+router.get("/:id",  async (req, res) => {
   try {
+    console.log(req.params.id)
     const user = await User.findById(req.params.id);
-    const { password, ...others } = user._doc;
-    res.status(200).json(others);
+    // const { password, ...others } = user._doc;
+    res.status(200).json(user);
   } catch (err) {
     res.status(500).json(err);
   }

@@ -12,7 +12,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToCart } from "../../../redux/actions/cartActions";
 
 function Bestseller(props) {
-
     const [qty, setQty] = useState(1);
 
     const cart = useSelector((state) => state.cart);
@@ -40,8 +39,7 @@ function Bestseller(props) {
     }
   
     return (
-        <>
-            <div className="subCards">
+        <div className="subCards">
                 <div className="tag">HOT</div>
                 <div className="hoveritems">
                     <img className="imagepart" src={props.info.img} alt="" ></img>
@@ -75,7 +73,7 @@ function Bestseller(props) {
                     </span>
                 </div>
             </div>
-        </>
+    
     )
 }
 export default Bestseller;

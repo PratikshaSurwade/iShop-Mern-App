@@ -6,6 +6,8 @@ const router = require("express").Router();
 //CREATE
 
 router.post("/", async (req, res) => {
+	console.log("iam in /api/orders")
+
 	const newOrder = new Order(req.body);
 
 	try {
@@ -53,12 +55,23 @@ router.delete("/:id", async (req, res) => {
 	}
 });
 
-//GET USER ORDERS
+//GET ORDER DETAILS
 router.get("/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
 		console.log(id);
 		const orders = await Order.findById(id);
+		console.log(orders);
+		res.status(200).json(orders);
+	} catch (err) {
+		res.status(500).json(err);
+	}
+});
+// 		const orders = await Order.find({ user: req.params.id });
+//GET USER'S ORDER DETAILS
+router.get("/user/:id", async (req, res) => {
+	try {
+		const orders = await Order.find({ user: req.params.id });
 		console.log(orders);
 		res.status(200).json(orders);
 	} catch (err) {
@@ -78,6 +91,7 @@ router.get("/", async (req, res) => {
 });
 
 router.put("/:id/pay", async (req, res) => {
+	console.log("i am from /api/orders/:id/pay")
 	let paymentId;
 	let email_address;
 	let cardId;
