@@ -89,7 +89,7 @@ function Footer() {
           </div>
         </div>
         <hr></hr>
-        <div style={{textAlign:"end"}}>
+        <div style={{ textAlign: "end" }}>
           <img src={unionCard} alt="" ></img>
           <img src={masterCard} alt=""></img>
           <img src={paypal} alt=""></img>
