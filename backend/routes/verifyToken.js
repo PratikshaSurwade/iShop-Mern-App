@@ -30,7 +30,7 @@ const verifyTokenAndAdmin = (req, res, next) => {
       next();
     } else {
       res.status(403).json("You are not alowed to do that!");
-    } 
+    }
   });
 };
 

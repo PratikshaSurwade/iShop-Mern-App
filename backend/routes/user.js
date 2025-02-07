@@ -49,7 +49,7 @@ router.delete("/:id", verifyTokenAndAuthorization, async (req, res) => {
 });
 
 //GET USER
-router.get("/:id",  async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     console.log(req.params.id)
     const user = await User.findById(req.params.id);

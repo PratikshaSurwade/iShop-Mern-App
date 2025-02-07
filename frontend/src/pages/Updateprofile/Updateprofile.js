@@ -4,16 +4,14 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
 import Loader from "../effects/loader.js";
-import { getUserDetails , updateUserProfile } from "../../redux/actions/userAction";
+import { getUserDetails, updateUserProfile } from "../../redux/actions/userAction";
 import FormContainer from "../effects/FromContainer";
 
 function Updateprofile() {
 
-
   const dispatch = useDispatch();
   const userLoggedin = useSelector((state) => state.user);
   const { userInfo } = userLoggedin;
-
   const userprofile = useSelector((state) => state.userDetails);
   const { loading, error, user } = userprofile;
   const [loader, setloader] = useState(false)
@@ -39,23 +37,21 @@ function Updateprofile() {
 
   useEffect(() => {
     dispatch(getUserDetails(userInfo._id));
-  
   }, [])
-  
+
   const [username, setUsername] = useState(userInfo.username);
   const [email, setEmail] = useState(userInfo.email);
   const [password, setPassword] = useState(userInfo.password);
   const [confirmPassword, setConfirmPassword] = useState(userInfo.password);
   const [message, setMessage] = useState(userInfo.password);
-  const [ profilePic, setprofilePic] = useState(userInfo.profilePic);
-   const submitHandler = ()=> {
-    dispatch(updateUserProfile(username, email, password ,profilePic));
-
-   }
+  const [profilePic, setprofilePic] = useState(userInfo.profilePic);
+  const submitHandler = () => {
+    dispatch(updateUserProfile(username, email, password, profilePic));
+  }
   return (
     <div>Updateprofile
-        <FormContainer>
-        <h1 style={{marginTop:"1.5rem"}}>Profile</h1>
+      <FormContainer>
+        <h1 style={{ marginTop: "1.5rem" }}>Profile</h1>
         {error && <Message varient="danger">{error}</Message>}
         {loading && <Loader />}
         {message && <Message variant="danger">{message}</Message>}
@@ -106,15 +102,14 @@ function Updateprofile() {
             ></Form.Control>
             {loader ? (
               <>
-        <h3>Loading...</h3>
-        <h6>Kindly wait for Preview...</h6>
-        </>
-      ) : (
-        <img src={profilePic} style={{ width: '300px' }} />
-      )}
+                <h3>Loading...</h3>
+                <h6>Kindly wait for Preview...</h6>
+              </>
+            ) : (
+              <img src={profilePic} style={{ width: '300px' }} />
+            )}
           </Form.Group>
-      
-          
+
           <Button type="submit" varient="primary">
             SING IN
           </Button>
@@ -124,7 +119,7 @@ function Updateprofile() {
             Have an
           </Col>
         </Row>
-        
+
       </FormContainer>
     </div>
   )

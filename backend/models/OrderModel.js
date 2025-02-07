@@ -73,7 +73,7 @@ const orderSchema = mongoose.Schema(
       paymentId: {
         type: String,
       },
-      cardId:{
+      cardId: {
         type: String,
       }
     },

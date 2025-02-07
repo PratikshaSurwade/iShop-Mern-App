@@ -44,7 +44,7 @@ router.post("/register", async (req, res) => {
       req.body.password,
       process.env.PASS_SEC
     ).toString(),
-    profilePic:req.body.profilePic,
+    profilePic: req.body.profilePic,
   });
 
   try {
@@ -77,7 +77,7 @@ router.post("/register", async (req, res) => {
 //         ).toString(),
 //         profilePic: result.url,
 //     });
-    
+
 //     const savedUser = newUser.save()
 //       .then(savedUser => {
 //         console.log(savedUser)
@@ -91,12 +91,12 @@ router.post("/register", async (req, res) => {
 //   })
 
 
-  // try {
-  //   const savedUser = await newUser.save();
-  //   res.status(201).json(savedUser);
-  // } catch (err) {
-  //   res.status(500).json(err);
-  // }
+// try {
+//   const savedUser = await newUser.save();
+//   res.status(201).json(savedUser);
+// } catch (err) {
+//   res.status(500).json(err);
+// }
 // });
 
 //Login

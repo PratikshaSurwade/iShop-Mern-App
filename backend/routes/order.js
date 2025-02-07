@@ -119,7 +119,7 @@ router.put("/:id/pay", async (req, res) => {
 				cardId = (order.items[0].card_id);
 			}
 		});
-			(order.paymentResult.status = 'paid'),
+		(order.paymentResult.status = 'paid'),
 			(order.paymentResult.paymentId = paymentId),
 			(order.paymentResult.email_address = email_address),
 			(order.paymentResult.cardId = cardId),
@@ -134,7 +134,7 @@ router.put("/:id/pay", async (req, res) => {
 		throw new Error("Order Not Found");
 	}
 });
-	
+
 ////Advanced MongoDB Functions
 // GET MONTHLY INCOME
 
