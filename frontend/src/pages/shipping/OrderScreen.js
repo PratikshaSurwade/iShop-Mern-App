@@ -19,7 +19,7 @@ const OrderScreen = () => {
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-console.log("order",order)
+  console.log("order",order)
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success } = orderPay;
 
@@ -76,10 +76,6 @@ console.log("order",order)
     makePayment(info);
   }
 
-  const fetchingorder = () => {
-    dispatch(payOrder(path));
-  }
-
   useEffect(() => {
     if(paid){
       dispatch(payOrder(path));
@@ -114,9 +110,6 @@ console.log("order",order)
               {userInfo.email}
             </p>
             <p>
-              {/* {console.log(order.shippingAddress.address)} */}
-              {/* {console.log(order.shippingAddress)} */}
-
               <strong>Address :</strong>
               {order.shippingAddress.address}&nbsp;
               {order.shippingAddress.city}&nbsp;
