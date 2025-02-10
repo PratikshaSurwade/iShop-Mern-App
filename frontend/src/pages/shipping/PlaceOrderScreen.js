@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Row, Col, ListGroup, Image, Card ,Container } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { createOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,12 +19,12 @@ const PlaceOrderScreen = () => {
 
 	const location = useLocation();
 	// const redirect = location.pathname;
-  
+
 
 	const redirect = ("/login?redirect=/placeorder");
 	// const redirect = (location.pathname+"/redirect") ? location.pathname.split("=")[1] : "/";
 
-	const [ btn , setBtn ] = useState(false);
+	const [btn, setBtn] = useState(false);
 
 	const orderCreate = useSelector((state) => state.orderCreate);
 	const { order, success, error } = orderCreate;
@@ -33,8 +33,8 @@ const PlaceOrderScreen = () => {
 	const userLogin = useSelector((state) => state.user);
 	const { userInfo } = userLogin;
 
-	const [ successs ,setsucesss] =  useState(false);
-	const [ waiting , setWaiting ] = useState(false);
+	const [successs, setsucesss] = useState(false);
+	const [waiting, setWaiting] = useState(false);
 
 	//fun for decimal
 	const addDecimal = (num) => {
@@ -59,14 +59,14 @@ const PlaceOrderScreen = () => {
 		Number(cart.shippingPrice) +
 		Number(cart.taxPrice)
 	).toFixed(0);
-console.log("userdet from order page",userInfo)
+	console.log("userdet from order page", userInfo)
 	const makePayment = async (paymentResult) => {
-		
-		if(waiting){
+
+		if (waiting) {
 			console.log(paymentResult)
 			dispatch(
 				createOrder({
-					user:userInfo._id,
+					user: userInfo._id,
 					orderItems: cart.cartItems,
 					shippingAddress: cart.shippingAddress,
 					paymentMethod: cart.paymentMethod,
@@ -83,40 +83,41 @@ console.log("userdet from order page",userInfo)
 	// const continueForPayment = () => {
 	// 	setsucesss(true);
 	// }
-console.log(cart)
+	console.log(cart)
 	const placeOrderHandler = async () => {
-	
+
 		try {
 			const orderUrl = `${baseUrl}/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: (totalAmmount) });
 			// initPayment(data.data);
 			setWaiting(true);
 			makePayment(data.data);
-			console.log("api/payment/orders from frontend",data.data)
+			console.log("api/payment/orders from frontend", data.data)
 			setBtn(true);
 
 		} catch (error) {
 			console.log(error);
-		}};
+		}
+	};
 
 	useEffect(() => {
 
 		if (!userInfo) {
 			navigate(redirect);
 		}
-		  
+
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success, userInfo,successs,redirect]);
+	}, [navigate, success, userInfo, successs, redirect]);
 	return (
 		<Container>
 			<Row>
 				<Col md={8}>
 					<ListGroup variant="flush">
 						<ListGroup.Item>
-							<h2 style={{marginTop:"2.5rem"}}>Shipping</h2>
+							<h2 style={{ marginTop: "2.5rem" }}>Shipping</h2>
 							<p>
 								<strong>Address :</strong>
 								{cart.shippingAddress.address}&nbsp;
@@ -125,7 +126,7 @@ console.log(cart)
 								{cart.shippingAddress.country}&nbsp;
 							</p>
 						</ListGroup.Item>
-						
+
 						<ListGroup.Item>
 							<h2>Order Items</h2>
 							{cart.cartItems.length === 0 ? (
@@ -136,7 +137,7 @@ console.log(cart)
 										<ListGroup.Item key={index}>
 											<Row>
 												<Col md={1}>
-												<img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid="true" />
+													<img style={{ width: "2rem", height: "2rem" }} src={item.imageUrl} alt={item.name} fluid="true" />
 												</Col>
 												<Col>
 													<Link to={`/api/product/${item.product}`}>
@@ -144,7 +145,7 @@ console.log(cart)
 													</Link>
 												</Col>
 												<Col md={4}>
-													{item.qty} X {item.price} = ₹{Number(item.price)*Number(item.qty)}
+													{item.qty} X {item.price} = ₹{Number(item.price) * Number(item.qty)}
 												</Col>
 											</Row>
 										</ListGroup.Item>
@@ -158,7 +159,7 @@ console.log(cart)
 					<Card>
 						<ListGroup variant="flush">
 							<ListGroup.Item>
-								<h2 style={{marginTop:"1rem"}}>Order Summary</h2>
+								<h2 style={{ marginTop: "1rem" }}>Order Summary</h2>
 							</ListGroup.Item>
 							<ListGroup.Item>
 								<Row>
@@ -181,7 +182,7 @@ console.log(cart)
 							<ListGroup.Item>
 								{error && <Message variant="danger">{error}</Message>}
 							</ListGroup.Item>
-						{/* <Button
+							{/* <Button
 								type="button"
 								className="btn-block"
 								disabled={cart.cartItems === 0}
@@ -189,14 +190,14 @@ console.log(cart)
 							>
 								Make payment
 							</Button> */}
-						
-								<Button
+
+							<Button
 								type="button"
 								className="btn-block"
 								disabled={cart.cartItems === 0}
 								onClick={placeOrderHandler}
 							>
-								{btn ? <>Continue For Payment</> : <>Place Order</> }
+								{btn ? <>Continue For Payment</> : <>Place Order</>}
 							</Button>
 							{/* {btn? (
 								<>
@@ -235,7 +236,7 @@ console.log(cart)
 						>
 							Continue for Payment
 						</Button></>)} */}
-							
+
 							{/* {console.log(successs)}
 							 {!successs?<Button
 								type="button"

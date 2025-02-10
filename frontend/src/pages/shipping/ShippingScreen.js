@@ -8,32 +8,32 @@ import { useNavigate } from "react-router-dom";
 const ShippingScreen = () => {
 
   const cart = useSelector((state) => state.cart);
-  let navigate = useNavigate ();
+  let navigate = useNavigate();
   // const { shippingAddress } = cart;
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [postalcode, setPostalcode] = useState("");
   const [country, setCountry] = useState("");
-  
+
   const submitHandler = async (e) => {
     e.preventDefault();
-      try {
-          // const { data } = await axios.post( "http://localhost:7000/api/carts/shipping", { address, city, postalcode, country });
-          cart.shippingAddress ={ address, city, postalcode, country };
+    try {
+      // const { data } = await axios.post( "http://localhost:7000/api/carts/shipping", { address, city, postalcode, country });
+      cart.shippingAddress = { address, city, postalcode, country };
 
-      } catch (err) { console.log(err) }
-      navigate("/placeorder");
+    } catch (err) { console.log(err) }
+    navigate("/placeorder");
   };
 
   return (
     <>
       {/* <CheckoutStep step1 step2 /> */}
       <FromContainer>
-      <h2 style={{marginTop:"3rem"}}>Shipping Details </h2>
+        <h2 style={{ marginTop: "3rem" }}>Shipping Details </h2>
 
         <Form onSubmit={submitHandler}>
           <Form.Group controlId="address">
-            <Form.Label style={{marginTop:"1rem"}}>Address</Form.Label>
+            <Form.Label style={{ marginTop: "1rem" }}>Address</Form.Label>
             <Form.Control
               type="text"
               placeholder="Enter Address"

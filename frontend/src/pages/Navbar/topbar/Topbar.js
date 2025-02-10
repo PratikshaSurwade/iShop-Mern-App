@@ -22,7 +22,7 @@ function Topbar() {
 			.reduce((price, item) => price + item.price * item.qty, 0)
 			.toFixed(2);
 	};
-	
+
 	const user = useSelector((state) => state.user);
 	const { userInfo } = user;
 	const dispatch = useDispatch();
@@ -61,12 +61,12 @@ function Topbar() {
 							:
 							(
 								<div className='profile'>
-									<Link to="/profile"><img className="profilePhoto" src={!userInfo?`${profile}`:`${userInfo.profilePic}`} alt="" /><span style={{ textDecoration: "none" }}>{userInfo.username.split(" ")[0]}</span></Link>
+									<Link to="/profile"><img className="profilePhoto" src={!userInfo ? `${profile}` : `${userInfo.profilePic}`} alt="" /><span style={{ textDecoration: "none" }}>{userInfo.username.split(" ")[0]}</span></Link>
 									{/* {userInfo?`${profile}`:`${userInfo.profile}`} */}
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
 								</div>
 							)}
-							
+
 					{/* <div className='search'><i class="fa-solid fa-magnifying-glass"></i></div> */}
 				</div>
 			</div>

@@ -49,14 +49,14 @@ function App() {
 	};
 	const fetchingorder = async () => {
 		try {
-		  const verifyUrl = `${baseUrl}/api/orders/${order._id}/pay`;
-		  const { data } = await axios.put(verifyUrl);
-	
+			const verifyUrl = `${baseUrl}/api/orders/${order._id}/pay`;
+			const { data } = await axios.put(verifyUrl);
+
 		} catch (error) {
-		  console.log(error);
-	
+			console.log(error);
+
 		}
-	  }
+	}
 	return (
 		<div className="App">
 			<div className="book_container">

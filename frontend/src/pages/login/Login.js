@@ -12,7 +12,7 @@ import { useLocation } from "react-router-dom";
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  let navigate = useNavigate ();
+  let navigate = useNavigate();
   const location = useLocation();
 
   const redirect = location.search ? location.search.split("=")[1] : "/";
@@ -23,9 +23,9 @@ const LoginScreen = () => {
 
   useEffect(() => {
     if (userInfo) {
-        navigate(redirect);
+      navigate(redirect);
     }
-  }, [navigate,userInfo,redirect]);
+  }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ const LoginScreen = () => {
   return (
     <>
       <FormContainer>
-        <h1 style={{marginTop:"1.5rem"}}>SIGN IN</h1>
+        <h1 style={{ marginTop: "1.5rem" }}>SIGN IN</h1>
         {error && <Message varient="danger">{error}</Message>}
         {loading && <Loader />}
         {Loader}

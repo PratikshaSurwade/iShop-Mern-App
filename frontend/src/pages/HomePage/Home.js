@@ -20,7 +20,7 @@ import mobImg from "./mobile_c3.png";
 //import json
 import Featuredproduct from "./feacturedprods/Featuredproduct.js";
 import Loader from "../effects/loader.js";
-       
+
 function Home() {
 	//fetching products from reducer
 	const dispatch = useDispatch();
@@ -35,7 +35,7 @@ function Home() {
 	const [showPerPage, setShowPerPage] = useState(8);
 	// const [total , setTotal] = useState(products.length);
 	const [counter, setCounter] = useState(1);
-	const [ expanded , setExpanded ] = useState(false);
+	const [expanded, setExpanded] = useState(false);
 
 	const selectsubTag = ((e) => {
 		const val = (e.target.innerHTML)
@@ -57,10 +57,10 @@ function Home() {
 		end: showPerPage,
 	})
 	const onPaginationChange = (start, end) => {
-		if(products.length!==0 && ( listavailable ? end>=list.length :end>=products.length  )){
+		if (products.length !== 0 && (listavailable ? end >= list.length : end >= products.length)) {
 			setExpanded(true);
 
-		}else{
+		} else {
 			setpagination({ start: 0, end: end });
 			setExpanded(false);
 		}
@@ -77,7 +77,7 @@ function Home() {
 
 		onPaginationChange(value - showPerPage, value);
 
-	}, [dispatch, subtabSelect, counter,showPerPage]);
+	}, [dispatch, subtabSelect, counter, showPerPage]);
 
 	return (
 		<>
@@ -111,10 +111,10 @@ function Home() {
 					) : (
 						listavailable ? (list.slice(pagination.start, pagination.end).map((info) => {
 							return <Bestseller info={info} key={info._id} />;
-							{console.log(info)}
+							{ console.log(info) }
 						})) : (products.slice(pagination.start, pagination.end).map((info) => {
 							return <Bestseller info={info} key={info._id} />;
-							{console.log(info)}
+							{ console.log(info) }
 
 						}))
 					)}
@@ -123,16 +123,16 @@ function Home() {
 			</div>
 			{console.log(list.length)}
 			<div className="loadMoreForWeb">
-				{(list.length===0||list.length>=9) ? (
-					expanded? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
-				) : (<>...</>) }		
+				{(list.length === 0 || list.length >= 9) ? (
+					expanded ? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
+				) : (<>...</>)}
 			</div>
 			<div className="loadMoreForMob">
-				{(list.length===0||list.length>=8) ? (
-					expanded? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
-				) : (<>...</>) }		
+				{(list.length === 0 || list.length >= 8) ? (
+					expanded ? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
+				) : (<>...</>)}
 			</div>
-			
+
 			{/* {totalPages !== page && <div className="loadmore" onClick={() => setPage(page + 1)}>{loading ? 'Loading...' : 'Load More'}</div>} */}
 			<Iphoneadd />
 			<Facilitis />
