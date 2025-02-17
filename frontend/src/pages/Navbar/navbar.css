@@ -1,24 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 
-body{
+body {
     /* margin: 0px; */
     padding-top: 11rem;
     font-family: 'Varela Round', sans-serif;
 }
-hr.hrTopNavbar{
+
+hr.hrTopNavbar {
     /* margin-top: 45px; */
     margin: 0px;
     color: #d3d3d3;
     /* opacity: 0.2%; */
 }
-.navBar{
+
+.navBar {
     width: 100%;
     position: absolute;
     top: 0px;
     z-index: 10;
-    background-color: white; 
+    background-color: white;
 }
-.logo{
+
+.logo {
     margin-top: 1rem;
     width: 10rem;
     display: block;
@@ -26,30 +29,35 @@ hr.hrTopNavbar{
     margin-right: auto;
 
 }
-.navBarIcon{
+
+.navBarIcon {
     width: 1.3rem;
 }
 
-.navbarItems{  
-    padding: 1.5rem ;
+.navbarItems {
+    padding: 1.5rem;
     /* padding-bottom: 0.5rem; */
     font-weight: bolder;
     text-decoration: none;
     /* color: white    ; */
-    font-size: 1.1rem; 
-    
+    font-size: 1.1rem;
+
 }
-.navbarItems>a{
+
+.navbarItems>a {
     text-decoration: none;
     color: black;
 }
-.navbarItems:hover,.navbarItems>a:hover{
+
+.navbarItems:hover,
+.navbarItems>a:hover {
     font-weight: 900;
     /* font-size: 1.15rem; */
     color: #006CFF;
     cursor: pointer;
 }
-.Navbarstyle{
+
+.Navbarstyle {
     display: flex;
     justify-content: center;
     /* display: block; */
@@ -62,7 +70,7 @@ hr.hrTopNavbar{
     display: inline-block;
     /* z-index: 8; */
 }
-  
+
 .dropdown-content {
     display: none;
     position: absolute;
@@ -74,10 +82,15 @@ hr.hrTopNavbar{
     overflow: visible;
     /* border-top: 1.5px solid rgb(177, 177, 177, 0.5); */
 }
-.dropdown-content >a,.dropdown-content >a:hover,.dropdown-item>a,.dropdown-item>a:hover{
+
+.dropdown-content>a,
+.dropdown-content>a:hover,
+.dropdown-item>a,
+.dropdown-item>a:hover {
     text-decoration: none;
     color: black;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
     position: absolute;
@@ -85,14 +98,16 @@ hr.hrTopNavbar{
 
 
 /* responsive design */
-.navbar-nav .nav-link ,.linkItems2{
+.navbar-nav .nav-link,
+.linkItems2 {
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     padding: 0.8rem 0rem 0.8rem 0rem;
 }
-.linkItems2:hover{
+
+.linkItems2:hover {
     color: #006CFF;
     cursor: pointer;
 }
@@ -100,28 +115,34 @@ hr.hrTopNavbar{
 .offcanvas.show {
     transform: none;
     /* background: rgba(255,255,255,0.5); */
-    background: rgb(71, 70, 70,0.5);
+    background: rgb(71, 70, 70, 0.5);
     backdrop-filter: blur(20px);
 }
-@media (max-width:576px){
-    body{
+
+@media (max-width:576px) {
+    body {
         padding-top: 0.3rem;
     }
-    .logo2{
+
+    .logo2 {
         width: 6rem;
     }
-    .navBar{
+
+    .navBar {
         display: none;
     }
-    .navBar2{
+
+    .navBar2 {
         display: block;
     }
 }
-@media (min-width:576px){
-    .navBar{
+
+@media (min-width:576px) {
+    .navBar {
         display: block;
     }
-    .navBar2{
+
+    .navBar2 {
         display: none;
     }
 }

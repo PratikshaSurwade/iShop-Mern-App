@@ -1,36 +1,39 @@
-.subnavbarContainer{
-    left:0;
-    right:0;
+.subnavbarContainer {
+    left: 0;
+    right: 0;
     /* top: 2rem; */
-  
+
     margin-left: auto;
     margin-right: auto;
     margin-top: -10px;
-  
+
     /* position: relative; */
     background-color: aliceblue;
     height: 15rem;
     width: 60rem;
     z-index: 8;
     overflow: visible;
-    
+
 }
-.Subnavbar{
+
+.Subnavbar {
     display: flex;
     align-items: center;
     justify-content: space-around;
     /* z-index: 8; */
-    
+
 }
-.columnsTab>h4{
+
+.columnsTab>h4 {
     color: #d3d3d3;
 }
-.columnsTab>p{
+
+.columnsTab>p {
     font-size: 0.8rem;
 }
 
-@media (max-width:576px){
-    .subnavbarContainer{
+@media (max-width:576px) {
+    .subnavbarContainer {
         width: auto;
     }
 }

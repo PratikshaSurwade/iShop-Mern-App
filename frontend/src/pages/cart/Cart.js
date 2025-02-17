@@ -4,13 +4,13 @@ import imagee from "./../HomePage/feacturedprods/featuredproducts/Netatmo_rain.s
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link ,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // Actions
 import { addToCart, removeFromCart } from "../../redux/actions/cartActions";
 
 const Cart = () => {
     const dispatch = useDispatch();
-    let navigate = useNavigate ();
+    let navigate = useNavigate();
 
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
@@ -27,11 +27,11 @@ const Cart = () => {
 
     const addDecimal = (num) => {
         return (Math.round(num * 100) / 100).toFixed(2);
-      };
+    };
 
     const itemsPrice = addDecimal(
         cartItems.reduce((acc, item) => Number(acc) + (Number(item.price)) * (Number(item.qty)), 0)
-      );
+    );
 
     const getCartCount = () => {
         return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
@@ -39,7 +39,7 @@ const Cart = () => {
 
     const getCartSubTotal = () => {
         return cartItems
-            .reduce((price, item) => price + Number(item.price * item.qty) , 0)
+            .reduce((price, item) => price + Number(item.price * item.qty), 0)
             .toFixed(2);
     };
 
@@ -47,7 +47,7 @@ const Cart = () => {
         // navigate("/login?redirect=shipping");
         navigate("/shipping");
 
-      };
+    };
     return (
         <>
             <h5 className='topHeader'>Cart</h5>
@@ -68,7 +68,7 @@ const Cart = () => {
                         cartItems.map((item) => (
                             <Scrollbars style={{ minHeight: "12rem" }} key={item._id} >
                                 <div className='itemContainer' key={item._id}>
-                                    <i className="cancle fa-solid fa-xmark" id='one'  onClick={() => removeHandler(item.product)}></i>
+                                    <i className="cancle fa-solid fa-xmark" id='one' onClick={() => removeHandler(item.product)}></i>
                                     <img className='itemImage' id="two" src={item.imageUrl} alt={item.name}></img>
                                     <div className='itemname' id='three'>{item.name}</div>
                                     <div className='perItemPrice' id='notShow'>{item.price}</div>
@@ -91,7 +91,7 @@ const Cart = () => {
                                         </div>
                                     </div>
                                     {/* <div className='itemPrice' id='five'>{( Number(item.qty))*(Number(item.discountedPrice))}</div> */}
-                                    <div className='itemPrice' id='five'>{item.price*item.qty}</div>
+                                    <div className='itemPrice' id='five'>{item.price * item.qty}</div>
                                 </div>
                                 <hr style={{ margin: "5px", color: "#d3d3d3" }}></hr>
                             </Scrollbars>
