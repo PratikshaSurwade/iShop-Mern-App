@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
-import { Button, Row, Col, ListGroup, Image, Card ,Container } from "react-bootstrap";
+import { Button, Row, Col, ListGroup, Image, Card, Container } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,7 +19,7 @@ const OrderScreen = () => {
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-  console.log("order",order)
+  console.log("order", order)
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success } = orderPay;
 
@@ -27,7 +27,7 @@ const OrderScreen = () => {
   const { userInfo } = userLogin;
 
   const cart = useSelector((state) => state.cart);
-    const { cartItems } = cart;
+  const { cartItems } = cart;
 
   const addDecimal = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2);
@@ -77,7 +77,7 @@ const OrderScreen = () => {
   }
 
   useEffect(() => {
-    if(paid){
+    if (paid) {
       dispatch(payOrder(path));
       dispatch(getOrderDetails(path));
       setPaid(false);
@@ -86,17 +86,17 @@ const OrderScreen = () => {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(path));
     }
- 
-  }, [success, order, path, successs,paid])
+
+  }, [success, order, path, successs, paid])
 
   return loading ? (
-    <Loader style={{marginTop:"3rem"}} />
+    <Loader style={{ marginTop: "3rem" }} />
   ) : error ? (
     <Message variant="danger">{error}</Message>
   ) : (
     <Container>
 
-      <h2 style={{marginTop:"3rem"}}>Order {order._id}</h2>
+      <h2 style={{ marginTop: "3rem" }}>Order {order._id}</h2>
       <Row>
         <Col md={8}>
           <ListGroup.Item variant="flush">
@@ -124,7 +124,7 @@ const OrderScreen = () => {
           </ListGroup.Item>
           <ListGroup.Item>
             <h2>Payment Details</h2>
-            
+
             {order.isPaid ? (
               <Message variant="success">Paid On {order.paidAt}</Message>
             ) : (
@@ -141,7 +141,7 @@ const OrderScreen = () => {
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
-                      <img style={{width:"2rem",height:"2rem"}} src={item.imageUrl} alt={item.name} fluid="true" />
+                      <img style={{ width: "2rem", height: "2rem" }} src={item.imageUrl} alt={item.name} fluid="true" />
                     </Col>
                     <Col>
                       <Link to={`/api/product/${item.product}`}>{item.name}</Link>
@@ -185,13 +185,13 @@ const OrderScreen = () => {
               </ListGroup.Item>
             </ListGroup>
           </Card>
-         {(!order.isPaid)? 
-         <Button onClick={setpayment} className="buy_btn">
-            Make Payment
-          </Button>: 
-          <Button onClick={setpayment} disabled className="buy_btn">
-            Make Payment
-          </Button>}
+          {(!order.isPaid) ?
+            <Button onClick={setpayment} className="buy_btn">
+              Make Payment
+            </Button> :
+            <Button onClick={setpayment} disabled className="buy_btn">
+              Make Payment
+            </Button>}
           <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JeDaUBJzpYKfJq" async> </script> </form>
           {/* <button onClick={fetchingorder} className="buy_btn">
             confirm order

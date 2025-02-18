@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams , useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./singleproduct.css"
 import { useSelector, useDispatch } from "react-redux";
 import Loader from "../effects/loader";
@@ -9,7 +9,7 @@ import { addToCart } from "../../redux/actions/cartActions";
 
 const Singleproduct = ({ match }) => {
   const dispatch = useDispatch();
-  let navigate = useNavigate ();
+  let navigate = useNavigate();
 
   const { id } = useParams();
 
@@ -19,13 +19,13 @@ const Singleproduct = ({ match }) => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const setcount= () =>{
+  const setcount = () => {
     const data = cartItems.find(e => e.product === id);
-    if(data){
-      console.log("qty",data.qty);
+    if (data) {
+      console.log("qty", data.qty);
       // setQty(data.qty);
       return data.qty
-  }else{ return 1}; 
+    } else { return 1 };
   }
   const [qty, setQty] = useState(setcount());
 
@@ -34,10 +34,10 @@ const Singleproduct = ({ match }) => {
     if (product && id !== product._id) {
       dispatch(getProductDetails(id));
     }
-  }, [dispatch, match, product,id]);
-// console.log(qty)
+  }, [dispatch, match, product, id]);
+  // console.log(qty)
   const addToCartHandler = () => {
-    dispatch(addToCart(product._id, qty , product.img , product.discountedPrice ,product.name));
+    dispatch(addToCart(product._id, qty, product.img, product.discountedPrice, product.name));
     navigate(`/cart`);
   };
 
@@ -45,9 +45,9 @@ const Singleproduct = ({ match }) => {
     <div className="productscreen">
       {loading ? (
         <div style={{ display: "flex", justifyContent: "center", flexDirection: "column" }}>
-        <h2 style={{ textAlign: "center" }}>Loading...</h2>
-        <Loader />
-    </div>
+          <h2 style={{ textAlign: "center" }}>Loading...</h2>
+          <Loader />
+        </div>
       ) : error ? (
         <h2>{error}</h2>
       ) : (
