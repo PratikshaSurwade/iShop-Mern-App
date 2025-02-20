@@ -40,15 +40,6 @@ export default function Subnavbar() {
           <h4><Link to="/category/accessories" style={{ color: "inherit" }}>IPod</Link></h4>
           <p><NavLink to="/category/ipod">Apple iPod</NavLink></p>
         </div>
-        {/* <div className="columnsTab">
-          <h4>Accessories</h4>
-          <p>Mice & Keyboards</p>
-          <p>Music Creation</p>
-          <p>Networking & Server</p>
-          <p> ...</p>
-          <p> ...</p>
-
-        </div> */}
 
       </div>
     </div>

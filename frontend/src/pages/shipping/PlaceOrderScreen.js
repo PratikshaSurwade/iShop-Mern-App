@@ -101,11 +101,9 @@ const PlaceOrderScreen = () => {
 	};
 
 	useEffect(() => {
-
 		if (!userInfo) {
 			navigate(redirect);
 		}
-
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
@@ -182,15 +180,6 @@ const PlaceOrderScreen = () => {
 							<ListGroup.Item>
 								{error && <Message variant="danger">{error}</Message>}
 							</ListGroup.Item>
-							{/* <Button
-								type="button"
-								className="btn-block"
-								disabled={cart.cartItems === 0}
-								onClick={makePayment}
-							>
-								Make payment
-							</Button> */}
-
 							<Button
 								type="button"
 								className="btn-block"
@@ -199,78 +188,6 @@ const PlaceOrderScreen = () => {
 							>
 								{btn ? <>Continue For Payment</> : <>Place Order</>}
 							</Button>
-							{/* {btn? (
-								<>
-								<Button
-								type="button"
-								className="btn-block"
-								disabled
-								onClick={placeOrderHandler}
-							>
-								Place Order
-							</Button>
-							<Button
-								type="button"
-								className="btn-block"
-								disabled={cart.cartItems === 0}
-								onClick={continueForPayment}
-							>
-								Continue for Payment
-							</Button>
-							</>
-							) : (
-								<>
-							<Button
-								type="button"
-								className="btn-block"
-								disabled={cart.cartItems === 0}
-								onClick={placeOrderHandler}
-							>
-								Place Order
-							</Button>
-							<Button
-							type="button"
-							className="btn-block"
-							disabled
-							onClick={continueForPayment}
-						>
-							Continue for Payment
-						</Button></>)} */}
-
-							{/* {console.log(successs)}
-							 {!successs?<Button
-								type="button"
-								className="btn-block"
-								disabled={cart.cartItems === 0}
-								onClick={makePayment}
-							>
-								Make payment
-							</Button>:<Button
-								type="button"
-								className="btn-block"
-								disabled
-								onClick={makePayment}
-							>
-								Make payment
-							</Button>}
-							
-								{!successs?<Button
-								type="button"
-								className="btn-block"
-								disabled
-								onClick={placeOrderHandler}
-							>
-								Place Order
-							</Button>:<Button
-								type="button"
-								className="btn-block"
-								disabled={cart.cartItems === 0}
-								onClick={placeOrderHandler}
-							>
-								Place Order
-							</Button>
-							}  */}
-
 						</ListGroup>
 					</Card>
 				</Col>

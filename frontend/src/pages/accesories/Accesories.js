@@ -517,43 +517,4 @@ function Accesories() {
         </>
     )
 }
-export default Accesories
-
-/* <ListItemButton
-                                selected={selectedIndex === 2}
-                                onClick={(event, v) => handleListItemClick(event, 2)}
-                            >
-                                <ListItemText primary="devices" />
-                            </ListItemButton>
-                            <ListItemButton
-                                className={(selcat==="watches") ? "selected" : "unselected"}
-                                selected={selectedIndex === 3}
-                                onClick={(event) => handleListItemClick(event, 3)}
-                            >
-                                <ListItemText primary="watches" />
-                            </ListItemButton>
-
-                            <ListItemButton
-                                selected={selectedIndex === 4}
-                                onClick={(event) => handleListItemClick(event, 4)}
-                            >
-                                <ListItemText primary="iphone" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 5}
-                                onClick={(event) => handleListItemClick(event, 5)}
-                            >
-                                <ListItemText primary="ipad" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 6}
-                                onClick={(event) => handleListItemClick(event, 6)}
-                            >
-                                <ListItemText primary="wireless" />
-                            </ListItemButton>
-                            <ListItemButton
-                                selected={selectedIndex === 7}
-                                onClick={(event) => handleListItemClick(event, 7)}
-                            >
-                                <ListItemText primary="headphones" />
-                            </ListItemButton> */
+export default Accesories;
