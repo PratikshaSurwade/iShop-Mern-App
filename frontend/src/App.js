@@ -13,37 +13,27 @@ import PaymentScreen from "./pages/shipping/PaymentScreen";
 import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
 import Accesories from "./pages/accesories/Accesories";
-// import Tab from "./pages/accesories/Tab";
 import Tabsec from "./pages/accesories/tab2";
-import Signup from "./pages/register/signup";
 import Loader from "./pages/effects/loader";
 import { useSelector } from "react-redux";
 import Updateprofile from "./pages/Updateprofile/Updateprofile";
 
 
 function App() {
-  const user = false;
-  const userInfo = useSelector((state) => state.user);
-
   return (
     <>
       <BrowserRouter>
         <Heading />
         <Routes>
         <Route path="/" element={<Home />} exact />
-
           <Route path="/home" element={<Home />} exact >
             <Route path="/home" element={<Home />} exact />
-
             <Route path="/home/mac" element={<Home />} exact />
             <Route path="/home/iphone" element={<Home />} exact />
             <Route path="/home/ipad" element={<Home />} exact />
             <Route path="/home/ipod" element={<Home />} exact />
             <Route path="/home/accessories" element={<Home />} exact />
-
           </Route>
-
-          {/* <Route path="/cat/:category" element={<Tab />} exact /> */}
           <Route path="/category/:category" element={<Tabsec />} exact />
           <Route path="/store" element={<Accesories />} exact />
         
