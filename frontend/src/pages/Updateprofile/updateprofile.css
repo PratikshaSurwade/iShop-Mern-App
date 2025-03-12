@@ -1,0 +1,19 @@
+.userDetailsContainer{
+    margin: 0 10%;
+}
+
+.cartLink{
+    font-size: large;
+    color: black;
+    font-weight: bold;
+}
+
+.cartLink:hover{
+    cursor: pointer;
+    border-bottom: red solid ;
+}
+.orderSummary{
+    display: grid;
+    grid-template-columns: 5% 50% 15% 15% 15%;
+}
+

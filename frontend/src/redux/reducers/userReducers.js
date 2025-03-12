@@ -21,7 +21,7 @@ export const userReducer = (state = {}, action) => {
     case USER_REGISTER_REQUEST:
 
       return { loading: true };
-    case USER_LOGIN_SUCCESS:
+    case USER_LOGIN_SUCCESS: 
     case USER_REGISTER_SUCCESS:
 
       return { loading: false, userInfo: action.payload };

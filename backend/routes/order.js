@@ -68,6 +68,7 @@ router.get("/:id", async (req, res) => {
 	}
 });
 // 		const orders = await Order.find({ user: req.params.id });
+
 //GET USER'S ORDER DETAILS
 router.get("/user/:id", async (req, res) => {
 	try {
