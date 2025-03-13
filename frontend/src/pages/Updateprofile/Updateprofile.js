@@ -6,6 +6,7 @@ import "./updateprofile.css";
 import Message from "../effects/Message";
 import Loader from "../effects/loader.js";
 import { getUserDetails, updateUserProfile } from "../../redux/actions/userAction";
+import { listMyOrders } from "../../redux/actions/orderAction.js";
 import FormContainer from "../effects/FromContainer";
 
 function Updateprofile() {
@@ -13,13 +14,12 @@ function Updateprofile() {
   const dispatch = useDispatch();
   const userLoggedin = useSelector((state) => state.user);
   const { userInfo } = userLoggedin;
-  const userprofile = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userprofile;
+;
   const [loader, setloader] = useState(false);
 
-  const userprofile = useSelector((state) => state.userDetails);
-  const { loading, error, user } = userprofile;
-
+  const userOrders = useSelector((state) => state.orderListMy);
+  const {loading, orders} = userOrders;
+  console.log("userorders",userOrders);
   // listMyOrders
 
   const uploadImage = async e => {
@@ -36,20 +36,18 @@ function Updateprofile() {
       }
     )
     const file = await res.json()
-
     setloader(false);
   }
 
   useEffect(() => {
-    dispatch(getUserDetails(userInfo._id));
-  }, [])
-
+		dispatch(listMyOrders())
+	}, [])
   return (
     <>
 			<div className='storeTitle'>User Details</div>
 			<div className='userDetailsContainer'>
-				{!loading && user &&
-					<h3>User name :  {user.username}</h3>
+				{ userInfo &&
+					<h3>User name :  {userInfo.username}</h3>
 				}
 
 				<Link to="/cart" className='cartLink'>Your Cart</Link>
@@ -65,12 +63,12 @@ function Updateprofile() {
 				</div>
 				<hr style={{ margin: "5px", color: "#d3d3d3" }}></hr>
 
-				{/* {!ordersLoading && userOrder && Array.isArray(userOrder) && (
-					userOrder.map((item,index) => (
+				{!loading && orders && Array.isArray(orders) && (
+					orders.map((item,index) => (
 						<>
 							<div className='orderSummary'>
 								<p>{(index+1)}</p>
-								<Link to={`/orderpage/${item._id}`}><div>{item.orderItems.map((orderItem) => (<><p>{orderItem.name}</p></>))}</div></Link>
+								<Link to={`/api/orders/${item._id}`}><div>{item.orderItems.map((orderItem) => (<><p>{orderItem.name}</p></>))}</div></Link>
 								<div>{item.totalPrice}</div>
 								<div>{item.isPaid ? "Paid" : "Not Paid"}</div>
 								<div>{item.isDeliverd ? "✓" : "✗"}</div>
@@ -79,7 +77,7 @@ function Updateprofile() {
 							<hr style={{ margin: "5px", color: "#d3d3d3" }}></hr>
 						</>
 					))
-				)} */}
+				)}
 			</div>
 		</>
   )
