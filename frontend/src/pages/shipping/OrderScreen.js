@@ -88,7 +88,7 @@ const OrderScreen = () => {
       dispatch(getOrderDetails(path));
     }
 
-  }, [success, order, path, successs, paid])
+  }, [path, success, order,successs, paid])
 
   return loading ? (
     <Loader style={{ marginTop: "3rem" }} />

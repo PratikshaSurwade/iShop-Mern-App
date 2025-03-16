@@ -17,10 +17,6 @@ const PlaceOrderScreen = () => {
 	const dispatch = useDispatch();
 	let navigate = useNavigate();
 
-	const location = useLocation();
-	// const redirect = location.pathname;
-
-
 	const redirect = ("/login?redirect=/placeorder");
 	// const redirect = (location.pathname+"/redirect") ? location.pathname.split("=")[1] : "/";
 

@@ -14,7 +14,6 @@ function Updateprofile() {
   const dispatch = useDispatch();
   const userLoggedin = useSelector((state) => state.user);
   const { userInfo } = userLoggedin;
-;
   const [loader, setloader] = useState(false);
 
   const userOrders = useSelector((state) => state.orderListMy);
