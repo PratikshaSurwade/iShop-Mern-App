@@ -50,14 +50,14 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-export const register = (username, email, password ,profilePic) => async (dispatch) => {
+export const register = (username, email, password, profilePic) => async (dispatch) => {
 
   try {
     dispatch({ type: USER_REGISTER_REQUEST });
     const config = { headers: { "Content-Type": "application/json" } };
     const { data } = await axios.post(
       `${baseUrl}/api/auth/register`,
-      { username, email, password ,profilePic },
+      { username, email, password, profilePic },
       config
     );
     dispatch({
@@ -95,8 +95,8 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
         Authorization: `Bearer ${user.accessToken}`,
       },
     };
-    const { data } = await axios.get(`${baseUrl}/api/users/${id}`,config);
-console.log(data)
+    const { data } = await axios.get(`${baseUrl}/api/users/${id}`, config);
+    console.log(data)
     dispatch({
       type: USER_DETAILS_SUCCESS,
       payload: data,
@@ -126,8 +126,8 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
         Authorization: `Bearer ${user.accessToken}`,
       },
     };
-    const { data } = await axios.put(`${baseUrl}/api/users/${user.id}`, user , config);
-    
+    const { data } = await axios.put(`${baseUrl}/api/users/${user.id}`, user, config);
+
     dispatch({ type: USER_UPDATE_PROFILE_SUCCESS, payload: data });
   } catch (error) {
     dispatch({

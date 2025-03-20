@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Heading />
         <Routes>
-        <Route path="/" element={<Home />} exact />
+          <Route path="/" element={<Home />} exact />
           <Route path="/home" element={<Home />} exact >
             <Route path="/home" element={<Home />} exact />
             <Route path="/home/mac" element={<Home />} exact />
@@ -36,23 +36,23 @@ function App() {
           </Route>
           <Route path="/category/:category" element={<Tabsec />} exact />
           <Route path="/store" element={<Accesories />} exact />
-        
+
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />
           <Route path="/payment" element={<PaymentScreen />} exact />
 
-          <Route path="/login?redirect=placeorder" element={ <Login /> } />
+          <Route path="/login?redirect=placeorder" element={<Login />} />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
           <Route path="/api/orders/:id" element={<OrderScreen />} exact />
-          
+
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/loader" element={<Loader />} exact />
 
-          <Route path="/login" element={ <Login />} />
-          <Route path="/register" element={ <Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-          <Route path="/profile" element={ <Updateprofile />} />
+          <Route path="/profile" element={<Updateprofile />} />
 
         </Routes>
         <Footer />

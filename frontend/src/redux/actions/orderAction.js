@@ -116,7 +116,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
     const {
       user
     } = getState();
-    console.log("user:",user.userInfo._id);
+    console.log("user:", user.userInfo._id);
     const config = {
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
