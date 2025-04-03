@@ -12,7 +12,6 @@ const paymentRoutes = require("./routes/payment");
 //image to cloudinary
 const fileUpload = require('express-fileupload');
 
-
 dotenv.config();
 
 app.use(fileUpload({
@@ -39,7 +38,7 @@ mongoose
 app.use("/api/auth", authRoute);
 
 app.use("/api/users", userRoute);
-//Products in our app
+//Products
 app.use("/api/products", productRoute);
 //Order summary
 app.use("/api/orders", orderRoute);
