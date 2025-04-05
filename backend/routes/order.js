@@ -12,7 +12,7 @@ router.post("/", async (req, res) => {
 
 	try {
 		const savedOrder = await newOrder.save();
-		res.status(200).json(savedOrder);
+		res.status(201).json(savedOrder);
 		console.log("order saved suucessfully")
 	} catch (err) {
 		res.status(500).json(err);
@@ -22,26 +22,35 @@ router.post("/", async (req, res) => {
 //UPDATE
 router.put("/:id", async (req, res) => {
 	try {
-		const updatedOrder = await Order.findByIdAndUpdate(
-			(updatedOrder.isPaid = true),
-			(updatedOrder.paidAt = Date.now()),
-			(updatedOrder.paymentResult = {
+		const orderId = req.params.id;
+
+		const updateFields = {
+			isPaid: true,
+			paidAt: Date.now(),
+			paymentResult: {
 				id: req.body.id,
 				status: req.body.status,
 				update_time: req.body.created_at,
-				// email_address: req.body.payer.email_address,
-			}),
-			console.log(updatedOrder),
+				// email_address: req.body.payer.email_address, // uncomment if needed
+			}
+		};
 
-			console.log("order found 3")
-
+		const updatedOrder = await Order.findByIdAndUpdate(
+			orderId,
+			{ $set: updateFields },
+			{ new: true }
 		);
-		console.log("order reset")
-		res.status(200).json(updatedOrder);
-	} catch (err) {
-		console.log("order reset error")
 
-		res.status(500).json(err);
+		if (!updatedOrder) {
+			return res.status(404).json({ message: "Order not found" });
+		}
+
+		console.log("✅ Order updated:", updatedOrder);
+		res.status(200).json(updatedOrder);
+
+	} catch (err) {
+		console.error("❌ Error updating order:", err);
+		res.status(500).json({ error: "Server error while updating order" });
 	}
 });
 

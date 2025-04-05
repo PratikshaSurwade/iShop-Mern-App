@@ -11,24 +11,11 @@ const router = require("express").Router();
 
 //cloudinary
 cloudinary.config({
-  cloud_name: 'dn9hxyxud',
-  api_key: '288723588442291',
-  api_secret: 'yRPWxzL6jCHBJPNfxPaAIF6Z2k4'
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_API_SECRET
 })
 //CREATE
-
-// router.post("/", verifyTokenAndAdmin, async (req, res) => {
-
-//     const newProduct = new Product(req.body);
-
-//     try {    
-//       const savedProduct = await newProduct.save();
-//     res.status(200).json(savedProduct);
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// })
-
 
 router.post("/", verifyTokenAndAdmin, (req, res) => {
   // const newProduct = new Product(req.body);
@@ -63,7 +50,6 @@ router.post("/", verifyTokenAndAdmin, (req, res) => {
       })
   })
 })
-
 
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
@@ -152,7 +138,6 @@ router.get("/", async (req, res) => {
 
 //select sub category 
 router.get("/cat/:category/", async (req, res) => {
-
   try {
     const catfilter = await Product.find({ categories : req.params.category })
     res.status(200).json(catfilter);
@@ -160,7 +145,6 @@ router.get("/cat/:category/", async (req, res) => {
   catch (error) {
     res.status(500).json(error);
   }
-
 });
 
 module.exports = router;
