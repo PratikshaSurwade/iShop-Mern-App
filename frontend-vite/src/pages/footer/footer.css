@@ -1,0 +1,33 @@
+.footerContainer{
+    margin: 3rem 15%;
+}
+
+.subfooter1{
+    display: grid;
+    grid-template-columns: 40% 30% 30%;
+    grid-column: 40% 30% 30%;
+}
+.tiTle{
+    color: #d3d3d3;
+}
+.subfooter2{
+    display:  flex;
+    justify-content: space-between;
+}
+.columnTab>p{
+    font-size: 0.7rem;
+}
+.box1,.box2>div{
+    font-size: 0.8rem;
+}
+.footer_icons{
+    color: #006CFF;
+}
+.fa-facebook-f{
+    margin-right: 2rem;
+}
+@media (max-width:576px){
+    .footerContainer{
+        display: none;
+    }
+}

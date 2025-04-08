@@ -1,0 +1,23 @@
+.page{
+    display: none;
+}
+
+@media (max-width:576px){
+ 
+    .page{
+        display: block;
+    }
+    .webpagination{
+        display: none;
+    }
+}
+
+@media (min-width:576px){
+
+    .webpagination{
+        display: block;
+    }
+    .page{
+        display: none;
+    }
+}

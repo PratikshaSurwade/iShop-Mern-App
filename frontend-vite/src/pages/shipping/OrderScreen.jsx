@@ -10,6 +10,7 @@ import Message from "../effects/Message";
 import Loader from "../effects/loader";
 import { useLocation } from 'react-router-dom';
 import baseUrl from "../path/Baseurl";
+import loadRazorpay from "../path/loadRazorpay";
 
 const OrderScreen = () => {
   // const { orderId } = useParams();
@@ -43,33 +44,38 @@ const OrderScreen = () => {
   const [paid, setPaid] = useState(false);
 
 
-  const makePayment = (info) => {
-    console.log(info)
-    const options = {
-      key: "rzp_test_9oRiUh2HfSJzwy",
-      amount: info.totalPrice,
-      currency: info.currency,
-      order_id: info.id,
-      handler: async (response) => {
-        try {
-          const verifyUrl = `${baseUrl}/api/payment/verify`;
-          const { data } = await axios.post(verifyUrl, response);
-          console.log(data);
-          setSuccess(data.success);
-          setPaid(true);
-          console.log("Payment Verified Succeessfully");
-        } catch (error) {
-          console.log("Payment Verification Failed")
-          console.log(error);
-        }
-      },
-      theme: {
-        color: "#3399cc",
-      },
-    };
-    console.log(options,"options")
-    const rzp1 = new window.Razorpay(options);
-    rzp1.open();
+  const makePayment = async (info) => {
+    const isLoaded = await loadRazorpay();
+  if (!isLoaded) {
+    alert("Razorpay SDK failed to load. Are you online?");
+    return;
+  }
+
+  const options = {
+    key: "rzp_test_9oRiUh2HfSJzwy",
+    amount: info.totalPrice,
+    currency: info.currency,
+    order_id: info.id,
+    handler: async (response) => {
+      try {
+        const verifyUrl = `${baseUrl}/api/payment/verify`;
+        const { data } = await axios.post(verifyUrl, response);
+        console.log(data);
+        setSuccess(data.success);
+        setPaid(true);
+        console.log("Payment Verified Successfully");
+      } catch (error) {
+        console.log("Payment Verification Failed");
+        console.log(error);
+      }
+    },
+    theme: {
+      color: "#3399cc",
+    },
+  };
+
+  const rzp = new window.Razorpay(options);
+  rzp.open();
 
   };
   const setpayment = () => {
@@ -194,7 +200,7 @@ const OrderScreen = () => {
             <Button onClick={setpayment} disabled className="buy_btn">
               Make Payment
             </Button>}
-          <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JeDaUBJzpYKfJq" async> </script> </form>
+          {/* <form><script src="https://checkout.razorpay.com/v1/payment-button.js" data-payment_button_id="pl_JeDaUBJzpYKfJq" async> </script> </form> */}
           {/* <button onClick={fetchingorder} className="buy_btn">
             confirm order
           </button> */}

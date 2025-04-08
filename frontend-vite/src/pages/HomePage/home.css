@@ -1,0 +1,144 @@
+.mainImg{
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+}
+
+.mobImg{
+    display: none;
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+}
+
+.subHead{
+    text-align: center;
+    margin-top: 1rem;
+    font-weight: 700;
+}
+
+.sortbestSeller>a{
+    color: black;
+    font-weight: 600;
+    text-align: center;
+}
+
+.sortbestSeller{
+    display: none;
+    background-color: #f1f1f1;
+    width: 100%;
+}
+
+.loadMoreForMob{
+    display: none;
+}
+
+.sortbestSeller>.dropdown-menu.show {
+    text-align: center;
+    font-weight: 400;
+    /* display: flex; */
+    width: 100%;
+    background-color: #f1f1f1;
+}
+
+.subHeadSubpoints{
+    display: flex;
+    justify-content: center;
+}
+
+.subListItems{
+    padding: 1.5rem ;
+    font-weight: bold;
+    text-decoration: none;
+    color: black    ;
+    font-size: 1rem; 
+}
+
+.subListItems:hover{
+    color: #006CFF;
+    cursor: pointer;
+}
+
+.homepageItems{
+    width: 60rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+}
+
+.loadmore{
+    color: #006CFF ;
+    text-align: center;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.Feactured{
+    margin: 3rem 10%;
+}
+
+.sliderContainerrr{
+    min-height: 0;
+    min-width: 0;
+}
+
+.arrows{
+    font-size: 3rem;
+}
+
+.navlinkremoval{
+    text-decoration: none;
+    color: black;
+}
+
+
+@media (max-width:576px){
+
+    .homepageItems {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subHeadSubpoints,.loadMoreForWeb{
+        display: none;
+    }
+    .mobImg{
+        display: block;
+    }
+    .mainImg{
+        display: none;
+    }
+    .sortbestSeller,.loadMoreForMob{
+        display: block;
+    }
+    .loadmore{
+        display: none;
+    }
+}
+
+@media only  screen and (min-width:768px) and (max-width:992px){
+    .homepageItems {
+        width: 60rem;
+    }
+    
+}
+@media only  screen and (min-width:992px) and (max-width:1200px){
+    .homepageItems {
+        width: 59rem;
+    }
+}
+
+
+@media (min-width:1200px){
+    .homepageItems {
+    width: 60rem;
+    }
+}
