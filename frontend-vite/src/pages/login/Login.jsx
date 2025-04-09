@@ -19,13 +19,13 @@ const LoginScreen = () => {
 
   const dispatch = useDispatch();
   const userLogin = useSelector((state) => state.user);
-  const { loading, error, userInfo } = userLogin;
+  const { loading, error, user } = userLogin;
 
   useEffect(() => {
-    if (userInfo) {
+    if (user) {
       navigate(redirect);
     }
-  }, [navigate, userInfo, redirect]);
+  }, [navigate, user, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -83,7 +83,7 @@ export default LoginScreen;
 //     return (
 //         <div className="login">
 //             <span className="loginTitle">Login</span>
-//             <form className="loginForm">
+//             <form className="logrm">
 //                 <label >Email</label>
 //                 <input type="text" className="loginInput" placeholder="Enter your email..."></input>
 //                 <label >Password</label>
@@ -119,13 +119,13 @@ export default LoginScreen;
 
 //   const dispatch = useDispatch();
 //   const userLogin = useSelector((state) => state.userLogin);
-//   const { loading, error, userInfo } = userLogin;
+//   const { loading, error, user } = userLogin;
 
 //   useEffect(() => {
-//     if (userInfo) {
+//     if (user) {
 //         navigate("/");
 //     }
-//   }, [navigate,userInfo]);
+//   }, [navigate,user]);
 
 //   const submitHandler = (e) => {
 //     e.preventDefault();

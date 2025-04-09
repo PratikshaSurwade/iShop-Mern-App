@@ -23,8 +23,8 @@ function Topbar() {
 			.toFixed(2);
 	};
 
-	const user = useSelector((state) => state.user);
-	const { userInfo } = user;
+	const userdata = useSelector((state) => state.user);
+	const { user} = userdata;
 	const dispatch = useDispatch();
 
 	const logoutHandler = () => {
@@ -48,7 +48,7 @@ function Topbar() {
 				</div>
 				<div className='secondBar'>
 					{
-						!userInfo
+						!user
 							?
 							(
 								<div className='topRight'>
@@ -61,8 +61,8 @@ function Topbar() {
 							:
 							(
 								<div className='profile'>
-									<Link to="/profile"><img className="profilePhoto" src={!userInfo ? `${profile}` : `${userInfo.profilePic}`} alt="" /><span style={{ textDecoration: "none" }}>{userInfo.username.split(" ")[0]}</span></Link>
-									{/* {userInfo?`${profile}`:`${userInfo.profile}`} */}
+									<Link to="/profile"><img className="profilePhoto" src={!user ? `${profile}` : `${user.profilePic}`} alt="" /><span style={{ textDecoration: "none" }}>{user.username.split(" ")[0]}</span></Link>
+									{/* {user?`${profile}`:`${user.profile}`} */}
 									<button className="logout" onClick={logoutHandler}>LOGOUT</button>
 								</div>
 							)}

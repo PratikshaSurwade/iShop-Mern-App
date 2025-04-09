@@ -14,7 +14,9 @@ import {
   USER_UPDATE_PROFILE_FAIL,
   USER_DETAILS_RESET,
 } from "../constants/userContants";
-
+const initialState = localStorage.getItem("user")
+  ? JSON.parse(localStorage.getItem("user"))
+  : null;
 export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_LOGIN_REQUEST:
@@ -24,7 +26,7 @@ export const userReducer = (state = {}, action) => {
     case USER_LOGIN_SUCCESS: 
     case USER_REGISTER_SUCCESS:
 
-      return { loading: false, userInfo: action.payload };
+      return { loading: false, user: action.payload };
     case USER_LOGIN_FAIL:
     case USER_REGISTER_FAIL:
 

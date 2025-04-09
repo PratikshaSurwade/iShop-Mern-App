@@ -12,8 +12,8 @@ import FormContainer from "../effects/FromContainer.jsx";
 function Updateprofile() {
 
   const dispatch = useDispatch();
-  const userLoggedin = useSelector((state) => state.user);
-  const { userInfo } = userLoggedin;
+  const user = useSelector((state) => state.user);
+  console.log("Redux user:", user);
   const [loader, setloader] = useState(false);
 
   const userOrders = useSelector((state) => state.orderListMy);
@@ -45,8 +45,9 @@ function Updateprofile() {
     <>
 			<div className='storeTitle'>User Details</div>
 			<div className='userDetailsContainer'>
-				{ userInfo &&
-					<h3>User name :  {userInfo.username}</h3>
+				{console.log(user,"user")}
+				{ user &&
+					<h3>User name :  {user.username}</h3>
 				}
 
 				<Link to="/cart" className='cartLink'>Your Cart</Link>

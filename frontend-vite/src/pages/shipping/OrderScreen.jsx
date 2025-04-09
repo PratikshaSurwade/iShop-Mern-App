@@ -26,7 +26,7 @@ const OrderScreen = () => {
   const { loading: loadingPay, success } = orderPay;
 
   const userLogin = useSelector((state) => state.user);
-  const { userInfo } = userLogin;
+  const { user } = userLogin;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -111,11 +111,11 @@ const OrderScreen = () => {
             <h2>Shipping</h2>
             <p>
               <strong>Name : </strong>
-              {userInfo.username}
+              {user.username}
             </p>
             <p>
               <strong>Email : </strong>
-              {userInfo.email}
+              {user.email}
             </p>
             <p>
               <strong>Address :</strong>

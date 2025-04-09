@@ -27,7 +27,7 @@ const PlaceOrderScreen = () => {
 
 	// const [paymentResult, setPaymentResult] = useState({});
 	const userLogin = useSelector((state) => state.user);
-	const { userInfo } = userLogin;
+	const { user } = userLogin;
 
 	const [successs, setsucesss] = useState(false);
 	const [waiting, setWaiting] = useState(false);
@@ -55,14 +55,14 @@ const PlaceOrderScreen = () => {
 		Number(cart.shippingPrice) +
 		Number(cart.taxPrice)
 	).toFixed(0);
-	console.log("userdet from order page", userInfo)
+	console.log("userdet from order page", user)
 	const makePayment = async (paymentResult) => {
 
 		if (waiting) {
 			console.log(paymentResult)
 			dispatch(
 				createOrder({
-					user: userInfo._id,
+					user: user._id,
 					orderItems: cart.cartItems,
 					shippingAddress: cart.shippingAddress,
 					paymentMethod: cart.paymentMethod,
@@ -97,14 +97,14 @@ const PlaceOrderScreen = () => {
 	};
 
 	useEffect(() => {
-		if (!userInfo) {
+		if (!user) {
 			navigate(redirect);
 		}
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
 		//eslint-disable-next-line
-	}, [navigate, success, userInfo, successs, redirect]);
+	}, [navigate, success, user, successs, redirect]);
 	return (
 		<Container>
 			<Row>
