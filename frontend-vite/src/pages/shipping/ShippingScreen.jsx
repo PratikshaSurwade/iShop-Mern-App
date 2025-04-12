@@ -42,7 +42,7 @@ const ShippingScreen = () => {
               required
             ></Form.Control>
           </Form.Group>
-          <Form.Group controlId="city">
+          {/* <Form.Group controlId="city">
             <Form.Label>City</Form.Label>
             <Form.Control
               type="text"
@@ -61,7 +61,7 @@ const ShippingScreen = () => {
               onChange={(e) => setPostalcode(e.target.value)}
               required
             ></Form.Control>
-          </Form.Group>
+          </Form.Group> */}
           <Form.Group controlId="country">
             <Form.Label>Country</Form.Label>
             <Form.Control
