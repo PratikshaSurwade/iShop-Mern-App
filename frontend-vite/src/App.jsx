@@ -15,7 +15,6 @@ import OrderScreen from "./pages/shipping/OrderScreen";
 import Accesories from "./pages/accesories/Accesories";
 import Tabsec from "./pages/accesories/tab2";
 import Loader from "./pages/effects/loader";
-import { useSelector } from "react-redux";
 import Updateprofile from "./pages/Updateprofile/Updateprofile";
 
 

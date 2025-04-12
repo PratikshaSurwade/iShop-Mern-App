@@ -3,11 +3,7 @@ import { Link } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import "./updateprofile.css";
-import Message from "../effects/Message.jsx";
-import Loader from "../effects/loader.jsx";
-import { getUserDetails, updateUserProfile } from "../../redux/actions/userAction.jsx";
 import { listMyOrders } from "../../redux/actions/orderAction.jsx";
-import FormContainer from "../effects/FromContainer.jsx";
 
 function Updateprofile() {
 
