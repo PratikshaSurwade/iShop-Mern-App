@@ -46,36 +46,36 @@ const OrderScreen = () => {
 
   const makePayment = async (info) => {
     const isLoaded = await loadRazorpay();
-  if (!isLoaded) {
-    alert("Razorpay SDK failed to load. Are you online?");
-    return;
-  }
+    if (!isLoaded) {
+      alert("Razorpay SDK failed to load. Are you online?");
+      return;
+    }
 
-  const options = {
-    key: "rzp_test_9oRiUh2HfSJzwy",
-    amount: info.totalPrice,
-    currency: info.currency,
-    order_id: info.id,
-    handler: async (response) => {
-      try {
-        const verifyUrl = `${baseUrl}/api/payment/verify`;
-        const { data } = await axios.post(verifyUrl, response);
-        console.log(data);
-        setSuccess(data.success);
-        setPaid(true);
-        console.log("Payment Verified Successfully");
-      } catch (error) {
-        console.log("Payment Verification Failed");
-        console.log(error);
-      }
-    },
-    theme: {
-      color: "#3399cc",
-    },
-  };
+    const options = {
+      key: "rzp_test_9oRiUh2HfSJzwy",
+      amount: info.totalPrice,
+      currency: info.currency,
+      order_id: info.id,
+      handler: async (response) => {
+        try {
+          const verifyUrl = `${baseUrl}/api/payment/verify`;
+          const { data } = await axios.post(verifyUrl, response);
+          console.log(data);
+          setSuccess(data.success);
+          setPaid(true);
+          console.log("Payment Verified Successfully");
+        } catch (error) {
+          console.log("Payment Verification Failed");
+          console.log(error);
+        }
+      },
+      theme: {
+        color: "#3399cc",
+      },
+    };
 
-  const rzp = new window.Razorpay(options);
-  rzp.open();
+    const rzp = new window.Razorpay(options);
+    rzp.open();
 
   };
   const setpayment = () => {
@@ -95,7 +95,7 @@ const OrderScreen = () => {
       dispatch(getOrderDetails(path));
     }
 
-  }, [path, success, order,successs, paid])
+  }, [path, success, order, successs, paid])
 
   return loading ? (
     <Loader style={{ marginTop: "3rem" }} />
