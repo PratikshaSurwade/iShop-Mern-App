@@ -16,14 +16,13 @@ import {
 } from "../constants/orderConstant";
 
 export const createOrder = (order) => async (dispatch, getState) => {
-  console.log(order)
 
   try {
     dispatch({
       type: ORDER_CREATE_REQUEST,
     });
     const {
-      user
+      user: { user },
     } = getState();
     const config = {
       headers: {
@@ -50,7 +49,7 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
       type: ORDER_DETAILS_REQUEST,
     });
     const {
-      user
+      user: { user },
     } = getState();
     const config = {
       headers: {
@@ -79,7 +78,7 @@ export const payOrder = (orderId) => async (dispatch, getState) => {
       type: ORDER_PAY_REQUEST,
     });
     const {
-      user
+      user: { user },
     } = getState();
     const config = {
       headers: {
@@ -114,7 +113,7 @@ export const listMyOrders = () => async (dispatch, getState) => {
       type: ORDER_LIST_MY_REQUEST,
     });
     const {
-      user
+      user: { user },
     } = getState();
     console.log("user:", user._id);
     const config = {

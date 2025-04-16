@@ -42,13 +42,13 @@ const cartItemsInLocalStorage = localStorage.getItem("cart")
   ? JSON.parse(localStorage.getItem("cart"))
   : [];
 
-const INITIAL_STATE = {
-  cart: {
-    cartItems: cartItemsInLocalStorage,
-  },
-  user:  userFromStorage ,
-};
-
+  const INITIAL_STATE = {
+    cart: {
+      cartItems: cartItemsInLocalStorage,
+    },
+    user: { user: userFromStorage },
+  };
+  
 const middleware = [thunk];
 
 const store = createStore(

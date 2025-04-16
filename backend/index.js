@@ -46,6 +46,6 @@ app.use("/api/orders", orderRoute);
 app.use("/api/payment", paymentRoutes);
 
 
-app.listen(process.env.PORT || 7000, () => {
+app.listen(process.env.PORT || 7001, () => {
     console.log("Backend server is running at port 7000!");
   });

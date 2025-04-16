@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// import { PayPalButton } from "react-paypal-button-v2";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
 import { Button, Row, Col, ListGroup, Image, Card, Container } from "react-bootstrap";
@@ -15,18 +14,20 @@ import loadRazorpay from "../path/loadRazorpay";
 const OrderScreen = () => {
   // const { orderId } = useParams();
   const location = useLocation();
+    const { id } = useParams();
+  console.log("id",id)
   const path = (location.pathname.split("/")[3]);
-  console.log(path)
+  console.log("path",path)
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-  console.log("order", order)
+
   const orderPay = useSelector((state) => state.orderPay);
-  const { loading: loadingPay, success } = orderPay;
+  const { loadingPay, success } = orderPay;
 
   const userLogin = useSelector((state) => state.user);
-  const { user } = userLogin;
+  const { user ,loadingUser} = userLogin;
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -62,7 +63,11 @@ const OrderScreen = () => {
           const { data } = await axios.post(verifyUrl, response);
           console.log(data);
           setSuccess(data.success);
-          setPaid(true);
+          if (data.success) {
+						setPaid(true);
+						dispatch(getOrderDetails(path))
+						// You could also trigger a re-fetch of the order details after payment
+					}
           console.log("Payment Verified Successfully");
         } catch (error) {
           console.log("Payment Verification Failed");
@@ -109,14 +114,9 @@ const OrderScreen = () => {
         <Col md={8}>
           <ListGroup.Item variant="flush">
             <h2>Shipping</h2>
-            <p>
-              <strong>Name : </strong>
-              {user.username}
-            </p>
-            <p>
-              <strong>Email : </strong>
-              {user.email}
-            </p>
+            <p><strong>Name:</strong> {user?.username || 'N/A'}</p>
+            <p><strong>Email:</strong> {user?.email || 'N/A'}</p>
+
             <p>
               <strong>Address :</strong>
               {order.shippingAddress.address}&nbsp;

@@ -8,8 +8,9 @@ import { listMyOrders } from "../../redux/actions/orderAction.jsx";
 function Updateprofile() {
 
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const { loadingUser , user} = useSelector((state) => state.user);
   console.log("Redux user:", user);
+//   const {loading, user} = user
   const [loader, setloader] = useState(false);
 
   const userOrders = useSelector((state) => state.orderListMy);
