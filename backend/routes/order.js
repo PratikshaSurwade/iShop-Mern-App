@@ -6,14 +6,12 @@ const router = require("express").Router();
 //CREATE
 
 router.post("/", async (req, res) => {
-	console.log("iam in /api/orders")
 
 	const newOrder = new Order(req.body);
 
 	try {
 		const savedOrder = await newOrder.save();
 		res.status(201).json(savedOrder);
-		console.log("order saved suucessfully")
 	} catch (err) {
 		res.status(500).json(err);
 	}
@@ -68,9 +66,7 @@ router.delete("/:id", async (req, res) => {
 router.get("/:id", async (req, res) => {
 	try {
 		const id = req.params.id;
-		console.log(id);
 		const orders = await Order.findById(id);
-		console.log(orders);
 		res.status(200).json(orders);
 	} catch (err) {
 		res.status(500).json(err);
@@ -82,7 +78,6 @@ router.get("/:id", async (req, res) => {
 router.get("/user/:id", async (req, res) => {
 	try {
 		const orders = await Order.find({ user: req.params.id });
-		console.log(orders);
 		res.status(200).json(orders);
 	} catch (err) {
 		res.status(500).json(err);

@@ -9,7 +9,6 @@ import Login from "./pages/login/Login";
 import Register from "./pages/register/Register";
 import Singleproduct from "./pages/singleproduct/Singleproduct";
 import ShippingScreen from "./pages/shipping/ShippingScreen";
-import PaymentScreen from "./pages/shipping/PaymentScreen";
 import PlaceOrderScreen from "./pages/shipping/PlaceOrderScreen";
 import OrderScreen from "./pages/shipping/OrderScreen";
 import Accesories from "./pages/accesories/Accesories";
@@ -38,12 +37,11 @@ function App() {
 
           <Route path="/api/products/:id" element={<Singleproduct />} exact />
           <Route path="/shipping" element={<ShippingScreen />} exact />
-          <Route path="/payment" element={<PaymentScreen />} exact />
 
           <Route path="/login?redirect=placeorder" element={<Login />} />
 
           <Route path="/placeorder" element={<PlaceOrderScreen />} exact />
-          <Route path="/api/orders/:id" element={<OrderScreen />} exact />
+          <Route path="/api/orders/:orderId" element={<OrderScreen />} exact />
 
           <Route path="/cart" element={<Cart />} exact />
           <Route path="/loader" element={<Loader />} exact />

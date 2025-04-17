@@ -14,10 +14,9 @@ import loadRazorpay from "../path/loadRazorpay";
 const OrderScreen = () => {
   // const { orderId } = useParams();
   const location = useLocation();
-    const { id } = useParams();
-  console.log("id",id)
-  const path = (location.pathname.split("/")[3]);
-  console.log("path",path)
+    const { orderId } = useParams();
+  console.log("orderId",orderId)
+  
   const dispatch = useDispatch();
 
   const orderDetails = useSelector((state) => state.orderDetails);
@@ -65,7 +64,7 @@ const OrderScreen = () => {
           setSuccess(data.success);
           if (data.success) {
 						setPaid(true);
-						dispatch(getOrderDetails(path))
+						dispatch(getOrderDetails(orderId))
 						// You could also trigger a re-fetch of the order details after payment
 					}
           console.log("Payment Verified Successfully");
@@ -91,16 +90,16 @@ const OrderScreen = () => {
 
   useEffect(() => {
     if (paid) {
-      dispatch(payOrder(path));
-      dispatch(getOrderDetails(path));
+      dispatch(payOrder(orderId));
+      dispatch(getOrderDetails(orderId));
       setPaid(false);
     }
-    if (!order || success) {
+    if (!order || order._id !== orderId || success) {
       dispatch({ type: ORDER_PAY_RESET });
-      dispatch(getOrderDetails(path));
+      dispatch(getOrderDetails(orderId));
     }
 
-  }, [path, success, order, successs, paid])
+  }, [orderId, success, order, successs, paid])
 
   return loading ? (
     <Loader style={{ marginTop: "3rem" }} />
@@ -145,7 +144,9 @@ const OrderScreen = () => {
               <Message>Your Cart is Empty</Message>
             ) : ( */}
             <ListGroup variant="flush">
-              {order.orderItems.map((item, index) => (
+              {order.orderItems.length === 0 ? (
+              <Message>Your Cart is Empty</Message>
+            ) : (order.orderItems.map((item, index) => (
                 <ListGroup.Item key={index}>
                   <Row>
                     <Col md={1}>
@@ -160,7 +161,7 @@ const OrderScreen = () => {
                   </Row>
 
                 </ListGroup.Item>
-              ))}
+              )))}
             </ListGroup>
           </ListGroup.Item>
         </Col>
