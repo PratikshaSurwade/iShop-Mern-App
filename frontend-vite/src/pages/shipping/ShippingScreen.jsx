@@ -18,9 +18,7 @@ const ShippingScreen = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      // const { data } = await axios.post( "http://localhost:7000/api/carts/shipping", { address, city, postalcode, country });
       cart.shippingAddress = { address, city, postalcode, country };
-
     } catch (err) { console.log(err) }
     navigate("/placeorder");
   };

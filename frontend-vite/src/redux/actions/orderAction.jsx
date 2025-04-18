@@ -72,7 +72,7 @@ export const getOrderDetails = (orderId) => async (dispatch, getState) => {
 };
 
 export const payOrder = (orderId) => async (dispatch, getState) => {
-  console.log(orderId)
+  console.log(orderId,"from payorder")
   try {
     dispatch({
       type: ORDER_PAY_REQUEST,
