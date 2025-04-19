@@ -14,8 +14,6 @@ import OrderScreen from "./pages/shipping/OrderScreen";
 import Accesories from "./pages/accesories/Accesories";
 import Tabsec from "./pages/accesories/tab2";
 import Loader from "./pages/effects/loader";
-import Updateprofile from "./pages/Updateprofile/Updateprofile";
-
 
 function App() {
   return (
@@ -48,9 +46,6 @@ function App() {
 
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-
-          <Route path="/profile" element={<Updateprofile />} />
-
         </Routes>
         <Footer />
       </BrowserRouter>
