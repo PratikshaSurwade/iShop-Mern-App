@@ -27,22 +27,14 @@ mongoose
   .then(() => console.log("DB Connection Successfull!"))
   .catch((err) => { console.log(err); });
 
-// app.get("/", async (req, res) => {
-//     try {
-//       res.send("Hello this is eccommerce app iShop backend");
-//     } catch (err) {
-//       res.status(500).json(err);
-//     }
-//   });
-
+//User
 app.use("/api/auth", authRoute);
-
 app.use("/api/users", userRoute);
 //Products
 app.use("/api/products", productRoute);
-//Order summary
+//Order
 app.use("/api/orders", orderRoute);
-//Payment method
+//Payment
 app.use("/api/payment", paymentRoutes);
 
 

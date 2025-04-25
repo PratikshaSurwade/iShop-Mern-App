@@ -15,13 +15,13 @@ cloudinary.config({
   api_key: process.env.CLOUD_API_KEY,
   api_secret: process.env.CLOUD_API_SECRET
 })
-//CREATE
 
-router.post("/", verifyTokenAndAdmin, (req, res) => {
-  // const newProduct = new Product(req.body);
-  const file = req.files.photo;
-  cloudinary.uploader.upload(file.tempFilePath, (err, result) => {
-    console.log(result);
+//CREATE
+router.post("/", verifyTokenAndAdmin, async (req, res) => {
+  try {
+    const file = req.files.photo;
+
+    const result = await cloudinary.uploader.upload(file.tempFilePath);
 
     const newProduct = new Product({
       name: req.body.name,
@@ -37,19 +37,15 @@ router.post("/", verifyTokenAndAdmin, (req, res) => {
       discountedPrice: req.body.discountedPrice,
       rating: req.body.rating,
     });
-    
-    const savedProduct = newProduct.save()
-      .then(savedProduct => {
-        console.log(savedProduct)
-        res.status(200).json(savedProduct);
-      })
 
-      .catch(err => {
-        console.log(err)
-        res.status(500).json(err);
-      })
-  })
-})
+    const savedProduct = await newProduct.save();
+    res.status(200).json(savedProduct);
+
+  } catch (err) {
+    console.error("Error while creating product:", err);
+    res.status(500).json({ message: "Server Error", error: err });
+  }
+});
 
 //UPDATE
 router.put("/:id", verifyTokenAndAdmin, async (req, res) => {
@@ -139,9 +135,9 @@ router.get("/", async (req, res) => {
 //select sub category 
 router.get("/cat/:category/", async (req, res) => {
   try {
-    const catfilter = await Product.find({ categories : req.params.category })
+    const catfilter = await Product.find({ categories: req.params.category })
     res.status(200).json(catfilter);
-  } 
+  }
   catch (error) {
     res.status(500).json(error);
   }
