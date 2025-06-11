@@ -25,6 +25,7 @@ function Topbar() {
 
 	const userdata = useSelector((state) => state.user);
 	const { user} = userdata;
+	console.log(user)
 	const dispatch = useDispatch();
 
 	const logoutHandler = () => {

@@ -16,8 +16,8 @@ import {
 } from "../constants/userContants";
 
 const initialState = {
-  user: localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
+  user: localStorage.getItem("userData")
+    ? JSON.parse(localStorage.getItem("userData"))
     : null,
 };
 

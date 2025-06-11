@@ -34,8 +34,8 @@ const reducer = combineReducers({
   orderListMy: orderListMyReducer
 });
 
-const userFromStorage = localStorage.getItem("user")
-  ? JSON.parse(localStorage.getItem("user"))
+const userFromStorage = localStorage.getItem("userData")
+  ? JSON.parse(localStorage.getItem("userData"))
   : null;
 
 const cartItemsInLocalStorage = localStorage.getItem("cart")
