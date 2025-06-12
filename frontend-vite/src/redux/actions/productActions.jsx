@@ -2,7 +2,7 @@ import * as actionTypes from "../constants/productConstants";
 import baseUrl from "../../pages/path/Baseurl";
 import axios from "axios";
 
-export const getProducts = () => async (dispatch, getState) => {
+export const getProducts = () => async (dispatch) => {
   try {
     dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
 

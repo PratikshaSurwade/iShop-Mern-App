@@ -16,11 +16,8 @@ const OrderScreen = () => {
 	const orderDetails = useSelector((state) => state.orderDetails);
 	const { order, loading, error } = orderDetails;
 
-	const orderPay = useSelector((state) => state.orderPay);
-	const { loadingPay, success } = orderPay;
-
 	const userLogin = useSelector((state) => state.user);
-	const { user, loadingUser } = userLogin;
+	const { user } = userLogin;
 
 	const cart = useSelector((state) => state.cart);
 	const { cartItems } = cart;
@@ -36,7 +33,6 @@ const OrderScreen = () => {
 		)
 	);
 
-	const [successs, setSuccess] = useState(false);
 	const [paid, setPaid] = useState(false);
 
 	const makePayment = async (info) => {
@@ -56,7 +52,6 @@ const OrderScreen = () => {
 					const verifyUrl = `${baseUrl}/api/payment/verify`;
 					const { data } = await axios.post(verifyUrl, response);
 					console.log(data);
-					setSuccess(data.success);
 					if (data.success) {
 						setPaid(true);
 						dispatch(getOrderDetails(orderId));
@@ -85,7 +80,7 @@ const OrderScreen = () => {
 	useEffect(() => {
 		dispatch(payOrder(orderId));
 		dispatch(getOrderDetails(orderId));
-	}, [orderId, paid]);
+	}, [orderId, paid, dispatch]);
 
 	return loading ? (
 		<Loader style={{ marginTop: "3rem" }} />
