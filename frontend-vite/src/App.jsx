@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import "./index.css";
 
 import Heading from "./pages/Navbar/Navbar";
 import Home from "./pages/HomePage/Home";
@@ -15,7 +16,6 @@ import Accesories from "./pages/accesories/Accesories";
 import Tabsec from "./pages/accesories/tab2";
 import Loader from "./pages/effects/loader";
 import Updateprofile from "./pages/Updateprofile/Updateprofile";
-
 
 function App() {
   return (
