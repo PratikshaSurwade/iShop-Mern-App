@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-// import { PayPalButton } from "react-paypal-button-v2";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { ORDER_PAY_RESET } from "../../redux/constants/orderConstant";
-import { Button, Row, Col, ListGroup, Image, Card, Container } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Button, Row, Col, ListGroup, Card, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { getOrderDetails, payOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../effects/Message";
@@ -12,7 +11,7 @@ import { useLocation } from 'react-router-dom';
 import baseUrl from "../path/Baseurl";
 
 const OrderScreen = () => {
-  // const { orderId } = useParams();
+
   const location = useLocation();
   const path = (location.pathname.split("/")[3]);
   console.log(path)
@@ -20,7 +19,7 @@ const OrderScreen = () => {
 
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
-  console.log("order", order)
+  console.log("order", order);
   const orderPay = useSelector((state) => state.orderPay);
   const { loading: loadingPay, success } = orderPay;
 
@@ -89,7 +88,7 @@ const OrderScreen = () => {
       dispatch(getOrderDetails(path));
     }
 
-  }, [path, success, order,successs, paid])
+  }, [path, success, order,successs, paid ,dispatch])
 
   return loading ? (
     <Loader style={{ marginTop: "3rem" }} />
