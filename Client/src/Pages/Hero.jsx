@@ -12,7 +12,7 @@ const Hero = () => {
           <p className="cursor-pointer">iPad</p>
           <p className="cursor-pointer">Accessories</p>
         </div>
-        <div className="flex gap-10 flex-nowrap">
+        <div className="flex gap-10 px-100 bg-amber-200">
           <Card />
           <Card />
           <Card />
