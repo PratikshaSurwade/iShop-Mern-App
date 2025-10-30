@@ -2,7 +2,7 @@ import React from 'react';
 
 const Navbar = () => {
   return (
-    <div className="h-25 bg-amber-200 w-screen flex flex-col items-center px-4 gap-2 mt-0">
+    <div className="mt-5 h-25 bg-amber-200 w-screen flex flex-col items-center px-4 gap-2 mt-0">
       
         <img src="./iSHOPLogo.svg" className='h-10' alt="Logo Loading..." />
         <div className=" flex gap-15 font-bold text-lg">
