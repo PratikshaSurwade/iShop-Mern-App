@@ -1,12 +1,22 @@
+import { Route, Routes } from "react-router-dom"
 import Hero from "./Pages/Hero"
 import Navbar from "./Pages/Navbar"
+import Storepage from "./Pages/Storepage"
+import Register from "./components/auth/Register"
+import Login from "./components/auth/Login" 
 
 function App() {
 
   return (
     <>
       <Navbar />
-      <Hero />
+      <Routes>
+				<Route path="/" element={<Hero />} />
+				<Route path="/store" element={<Storepage />} />
+        <Route path="/register" element={<Register />} />
+				<Route path="/login" element={<Login />} />
+      </Routes>
+      
     </>
   )
 }
