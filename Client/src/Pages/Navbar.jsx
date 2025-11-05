@@ -18,9 +18,9 @@ const Navbar = () => {
     //     </div>
     // </div>
 
-		<div className='navBar'>
-			<div className='navBarTop'>
-				<div className='navBarTopLeft'><Link to="/cart">Items <span style={{ color: "red" }}></span></Link></div>
+		<div className='w-screen h-70 bg-red-400 text-center'>
+			<div className='w-screen h-10 bg-amber-400 flex justify-between'>
+				<div className='w-15 bg-blue-600'><Link to="/cart">Items <span style={{ color: "red" }}></span></Link></div>
 				{!userLoading && user  
 					?(
 					<div className='navBarTopRight'><Link to={`/user/${user._id}`}>User</Link></div>
@@ -30,7 +30,7 @@ const Navbar = () => {
 			</div>
 			<hr style={{ color: "#e3e3e3" }}></hr>
 			<img src='https://mern-ishop-ecommerce-app.netlify.app/static/media/iSHOP%20Logo.d093de95c7a229e25fd7b98af962e3ce.svg' alt='Logo'></img>
-			<div className='navBarBottom'>
+			<div className='w-screen bg-blue-600 flex gap-10 justify-center'>
 				<h3><Link to="/" className='navBarLinks'>HOME</Link></h3>
 				<h3><Link to="/store" className='navBarLinks'>STORE</Link></h3>
 				<h3><Link to="/store/ipad" className='navBarLinks'>IPAD</Link></h3>
