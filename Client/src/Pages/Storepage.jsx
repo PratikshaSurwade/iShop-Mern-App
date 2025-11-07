@@ -6,7 +6,11 @@ const Storepage = () => {
   const path = category.split("/")[2]
   
   return (
-    <div>Storepage  {path? `: ${path}` : ""}</div>
+    <>
+      <div>Storepage  {path? `: ${path}` : ""}</div>
+
+      <div>Container</div>
+    </>
   )
 }
 
