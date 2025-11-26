@@ -4,6 +4,7 @@ import Navbar from "./Pages/Navbar"
 import Storepage from "./Pages/Storepage"
 import Register from "./components/auth/Register"
 import Login from "./components/auth/Login" 
+import User from "./Pages/User"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/store/:category" element={<Storepage />} />
         <Route path="/register" element={<Register />} />
 				<Route path="/login" element={<Login />} />
+        <Route path="/user" element={<User />} />
       </Routes>
       
     </>
