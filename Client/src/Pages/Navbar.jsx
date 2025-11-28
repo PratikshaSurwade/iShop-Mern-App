@@ -6,8 +6,12 @@ const Navbar = () => {
   const [userLoading, setUserLoading] = useState(false);
 
   return (
-    <div className="mt-5 h-25 w-screen flex flex-col items-center px-4 gap-2">
-        <img src="../iSHOPLogo.svg" className='h-10' alt="Logo Loading..." />
+    <div className=" h-25 w-screen flex flex-col items-center  px-4 gap-2">
+        <div className='h-10 w-screen flex items-center justify-around'>
+          <Link to='/user'>User</Link>
+          <p><Link to="/login">Login</Link>/<Link to="/register">Register</Link></p>
+        </div>
+        <img src="../iSHOPLogo.svg" className='' alt="Logo Loading..." />
         <div className="p-20 flex gap-15 font-bold text-lg">
           <Link to="/">HOME</Link>
           <Link to="/store">STORE</Link>
