@@ -3,13 +3,11 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
       <div className="bg-white w-full max-w-md p-8 rounded-3xl shadow-lg space-y-6">
 
-        {/* Logo / Title */}
         <div className="text-center space-y-2">
           <h1 className="text-2xl font-bold text-gray-800">Welcome Back 👋</h1>
           <p className="text-gray-500 text-sm">Login to continue shopping</p>
         </div>
 
-        {/* Form */}
         <form className="space-y-6">
 
           {/* Email */}

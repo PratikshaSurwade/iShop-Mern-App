@@ -12,6 +12,8 @@ const Hero = () => {
           <Card /> 
           <Card />
           <Card />
+          <Card />
+          <Card />
         </div>
       </div>
     </>

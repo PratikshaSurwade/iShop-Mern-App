@@ -61,14 +61,12 @@ export default function RegisterPage() {
           </button>
         </form>
 
-        {/* Divider */}
         <div className="relative flex items-center justify-center py-2">
           <span className="w-1/3 border-b border-gray-300"></span>
           <span className="px-3 text-gray-400 text-sm">OR</span>
           <span className="w-1/3 border-b border-gray-300"></span>
         </div>
 
-        {/* Google Auth */}
         <button className="w-full border border-gray-400 py-3 rounded-xl flex items-center justify-center gap-3 hover:bg-gray-100 transition">
           <img src="https://www.svgrepo.com/show/475656/google-color.svg" className="w-5 h-5" />
           <span>Continue with Google</span>

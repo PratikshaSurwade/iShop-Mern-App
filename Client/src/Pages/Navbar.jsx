@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
-  const [user, setUser] = useState(null);
-  const [userLoading, setUserLoading] = useState(false);
 
   return (
     <div className=" h-25 w-screen flex flex-col items-center  px-4 gap-2">
