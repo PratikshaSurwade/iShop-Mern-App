@@ -14,10 +14,10 @@ export default function RegisterPage() {
 
           {/* Full Name */}
           <div className="flex flex-col gap-2">
-            <label className="text-gray-600 text-sm">Full Name</label>
+            <label className="text-gray-600 text-sm">Enter Full Name</label>
             <input
               type="text"
-              placeholder="John Doe"
+              placeholder="Enter your name here"
               className="w-full border-b border-gray-300 focus:border-black p-2 outline-none"
             />
           </div>
@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
           {/* Password */}
           <div className="flex flex-col gap-2">
-            <label className="text-gray-600 text-sm">Password</label>
+            <label className="text-gray-600 text-sm">Enter your Password</label>
             <input
               type="password"
               placeholder="••••••••"
