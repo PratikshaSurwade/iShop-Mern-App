@@ -5,7 +5,6 @@ const Storepage = () => {
   const path = category.split("/")[2];
   console.log(category);
 
-  
   return (
     <>
       <div className='bg-gray-300 w-full h-10 text-center '>Storepage  {path? `: ${path}` : `: ${path}`}</div>
