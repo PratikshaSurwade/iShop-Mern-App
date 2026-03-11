@@ -26,6 +26,13 @@
 .fa-facebook-f{
     margin-right: 2rem;
 }
+
+.footerCards{
+    text-align: end;
+    display: flex;
+    justify-content: flex-end;
+}
+
 @media (max-width:576px){
     .footerContainer{
         display: none;

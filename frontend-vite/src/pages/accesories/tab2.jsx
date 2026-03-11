@@ -4,13 +4,10 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./store.css";
 import "./largesidebar/largesidebar.css";
-import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Iphonemob from '../HomePage/iphoneadd/iphonemob';
 import Items from '../HomePage/Best_seller/Bestseller';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
 import Loader from "../effects/loader";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
@@ -24,7 +21,6 @@ function Tabsec() {
     const { products, loading, error } = getProducts;
     // console.log(products)
 
-    const [prices, setPrice] = useState([4, 99]);
     const [productsss, setproductsss] = useState([]);
     const [goods, setGoods] = useState([]);
     const [goodsAvailable, setIsGoodsAvilable] = useState(false);
@@ -38,12 +34,10 @@ function Tabsec() {
     const path = location.pathname.split("/")[2];
     console.log(path);
     // const [ path , setPath ] = useState(loc);
-    const [filteredprice, setFilteredprice] = useState([null]);
     //color
     const [selectedcolor, setSelectedcolor] = useState(null);
 
     //filtered data    
-    const [filteredProducts, setFilteredProducts] = useState([]);
 
 
     const [blueClicked, setBlueClicked] = useState(false);
@@ -255,7 +249,7 @@ function Tabsec() {
         }
     }
     
-    console.log(price, prices, filteredbrand, selcat, selectedcolor);
+    console.log(price, filteredbrand, selcat, selectedcolor);
     
     useEffect(() => {
         setLoader(true);
@@ -289,7 +283,7 @@ function Tabsec() {
         setGoods([]);
 
 
-        console.log("in useeffect",price,newpath, prices, filteredbrand, selcat, selectedcolor,goods);
+        console.log("in useeffect",price,newpath, filteredbrand, selcat, selectedcolor,goods);
 
     }, [path])
     
@@ -329,7 +323,7 @@ function Tabsec() {
         sortArray(sortType);
 
 
-    }, [ counter, showPerPage, numberOfButtons, total, sortType,filteredProducts]);
+    }, [ counter, showPerPage, numberOfButtons, total, sortType]);
 
     return (
         <>

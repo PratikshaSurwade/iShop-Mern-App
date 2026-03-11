@@ -39,9 +39,10 @@
 
 .imagepart{
     z-index: 1;
-    width: 9rem;
+    width: 100%;
     height: 9rem;
     padding-top: 10px;
+    text-align: center;
     /* filter:opacity(70%) blur(8px); */
 }
 
