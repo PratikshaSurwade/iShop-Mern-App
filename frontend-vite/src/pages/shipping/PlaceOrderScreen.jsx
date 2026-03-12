@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { createOrder } from "../../redux/actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
 import axios from "axios";
 import Message from "../effects/Message";
@@ -71,8 +70,8 @@ const PlaceOrderScreen = () => {
 					shippingPrice: cart.shippingPrice,
 					taxPrice: cart.taxPrice,
 					totalPrice: cart.totalPrice,
-				}));
-
+				})
+			);
 		}
 	}
 
@@ -85,7 +84,6 @@ const PlaceOrderScreen = () => {
 		try {
 			const orderUrl = `${baseUrl}/api/payment/orders`;
 			const { data } = await axios.post(orderUrl, { amount: (totalAmmount) });
-			// initPayment(data.data);
 			setWaiting(true);
 			makePayment(data.data);
 			console.log("api/payment/orders from frontend", data.data)
@@ -103,7 +101,6 @@ const PlaceOrderScreen = () => {
 		if (success) {
 			navigate(`/api/orders/${order._id}`);
 		}
-		//eslint-disable-next-line
 	}, [navigate, success, user, successs, redirect]);
 	return (
 		<Container>

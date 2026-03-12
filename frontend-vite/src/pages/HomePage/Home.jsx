@@ -6,13 +6,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 import Iphoneadd from "./iphoneadd/iphoneadd.jsx";
 import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProducts as listProducts } from "../../redux/actions/productActions.jsx";
 
 import "./home.css";
-import axios from "axios";
 
 import mainImg from "./corousel_3.png";
 import mobImg from "./mobile_c3.png";
@@ -111,17 +109,14 @@ function Home() {
 					) : (
 						listavailable ? (list.slice(pagination.start, pagination.end).map((info) => {
 							return <Bestseller info={info} key={info._id} />;
-							{ console.log(info) }
 						})) : (products.slice(pagination.start, pagination.end).map((info) => {
 							return <Bestseller info={info} key={info._id} />;
-							{ console.log(info) }
 
 						}))
 					)}
 
 				</div>
 			</div>
-			{console.log(list.length)}
 			<div className="loadMoreForWeb">
 				{(list.length === 0 || list.length >= 9) ? (
 					expanded ? <><div className="loadmore" onClick={() => setCounter(1)}>Show Less</div></> : <><div className="loadmore" onClick={() => setCounter((counter + 1))}>LOAD MORE</div></>
