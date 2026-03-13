@@ -84,7 +84,7 @@ function Home() {
 			<h2 className="subHead">BEST SELLER</h2>
 			<NavDropdown className="sortbestSeller" title="All" id="basic-nav-dropdown" >
 				<NavDropdown.Item><NavLink className="navlinkremoval" onClick={selectsubTag} to="/home/mac">Mac</NavLink></NavDropdown.Item>
-				<NavDropdown.Item ><NavLink to="/home/iphone" onClick={selectsubTag}>iPhone</NavLink></NavDropdown.Item>
+				<NavDropdown.Item><NavLink to="/home/iphone" onClick={selectsubTag}>iPhone</NavLink></NavDropdown.Item>
 				<NavDropdown.Item><NavLink to="/home/ipad" onClick={selectsubTag}>iPad</NavLink></NavDropdown.Item>
 				<NavDropdown.Item><NavLink to="/home/ipod" onClick={selectsubTag}>iPod</NavLink></NavDropdown.Item>
 				<NavDropdown.Item><NavLink to="/home/accessories" onClick={selectsubTag}>Accessories</NavLink></NavDropdown.Item>

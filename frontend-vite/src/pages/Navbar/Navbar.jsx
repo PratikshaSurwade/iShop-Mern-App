@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import 'bootstrap/dist/css/bootstrap.min.css';
-
 import "./navbar.css";
 import logo from "./iSHOP Logo.svg"
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import Nav from 'react-bootstrap/Nav';
-import Form from 'react-bootstrap/Form';
-import { Button } from "react-bootstrap";
-import FormControl from 'react-bootstrap/FormControl';
 import navbarIcon from "./hamburger_icon.svg";
 
 import Subnavbar from "./subnavbar/Subnavbar";
