@@ -1,12 +1,9 @@
-import React from 'react';
 import { Slider } from '@material-ui/core';
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./store.css";
 import "./largesidebar/largesidebar.css";
-import { Link } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
-import Iphonemob from '../HomePage/iphoneadd/iphonemob.jsx';
 import Items from '../HomePage/Best_seller/accesoriespage';
 
 import Loader from "../effects/loader.js";
@@ -31,7 +28,6 @@ function Tab() {
 
     //filtered data
     const [filteredProducts, setFilteredProducts] = useState([]);
-
 
     const [blueClicked, setBlueClicked] = useState(true);
     const [darkPinkClicked, setDarkPinkClicked] = useState(false);

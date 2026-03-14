@@ -25,8 +25,6 @@ function Tabsec() {
     const [goods, setGoods] = useState([]);
     const [goodsAvailable, setIsGoodsAvilable] = useState(false);
 
-
-
     //filtered data 1,2,3
     const [filteredbrand, setFilteredbrand] = useState(null);
     const location = useLocation();
@@ -38,7 +36,6 @@ function Tabsec() {
     const [selectedcolor, setSelectedcolor] = useState(null);
 
     //filtered data    
-
 
     const [blueClicked, setBlueClicked] = useState(false);
     const [darkPinkClicked, setDarkPinkClicked] = useState(false);
@@ -190,7 +187,6 @@ function Tabsec() {
         else{
             setPageload(true);
         }
-        // console.log(selcat,!selcat,"selcat")
         // console.log(updatedList);           
 
         // Price Filter
